@@ -1,0 +1,1162 @@
+[
+  {
+    "name": "牛津大学",
+    "name_en": "University of Oxford",
+    "abbreviation": "Oxford",
+    "official_website": "https://www.ox.ac.uk",
+    "description": "牛津大学成立于1096年，是英语世界中最古老的大学，也是全球最负盛名的高等学府之一。采用独特的学院制和导师制教学模式，由39所独立学院和6个永久私人学堂组成。牛津在人文、社会科学、自然科学和医学等领域均享有卓越声誉，培养了众多诺贝尔奖得主、英国首相和世界领袖。",
+    "ranking": {
+      "qs": "3",
+      "the": "1",
+      "guardian": "1"
+    },
+    "admission_requirements": {
+      "a_level": "A*A*A-AAA（多数课程要求A*AA以上）",
+      "ielts": "总分7.0-7.5，小分不低于6.5-7.0（课程分级：Standard 7.0/6.5, Higher 7.5/7.0）",
+      "ucas_deadline": "2025年10月15日18:00（英国时间）",
+      "personal_statement": "极其重要，需体现学术热情和学科思考深度",
+      "interview": "需要面试，通常12月进行",
+      "acceptance_rate": "约17.5%"
+    },
+    "popular_majors": [
+      "PPE（哲学政治经济）",
+      "数学",
+      "医学",
+      "法律",
+      "英语文学",
+      "历史",
+      "化学",
+      "物理",
+      "工程科学",
+      "计算机科学"
+    ],
+    "tuition": {
+      "amount": "£35,260-£59,260",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "人文社科较低，医学和实验室科学较高"
+    },
+    "living_cost": {
+      "amount": "£14,250-£20,350",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "牛津地区，含住宿、餐饮、交通等"
+    },
+    "location": {
+      "city": "牛津",
+      "region": "英格兰东南部"
+    },
+    "type": "学院制公立研究型大学",
+    "features": [
+      "独特的学院制和导师制",
+      "英语世界最古老大学",
+      "人文社科传统强校",
+      "丰富的图书馆和博物馆资源"
+    ],
+    "facilities": "拥有100多个图书馆（包括著名的博德利图书馆）、世界级实验室、博物馆、运动中心和学生宿舍设施。",
+    "academic_resources": "拥有英国最大的大学图书馆系统，研究实力在REF评估中名列前茅，每年吸引大量研究经费。",
+    "collegiate_system": "是"
+  },
+  {
+    "name": "剑桥大学",
+    "name_en": "University of Cambridge",
+    "abbreviation": "Cambridge",
+    "official_website": "https://www.cam.ac.uk",
+    "description": "剑桥大学成立于1209年，是世界第四古老的大学，采用学院制和导师制教学。由31个学院组成，在数学、自然科学、工程和医学等领域享有盛誉。剑桥大学培养了120多位诺贝尔奖得主，是全球学术研究的顶尖中心之一。",
+    "ranking": {
+      "qs": "5",
+      "the": "5",
+      "guardian": "3"
+    },
+    "admission_requirements": {
+      "a_level": "A*A*A-A*AA（科学类课程通常要求A*A*A）",
+      "ielts": "总分7.5，小分不低于7.0",
+      "ucas_deadline": "2025年10月15日18:00（英国时间）",
+      "personal_statement": "极其重要，需展现学术能力和学科热情",
+      "interview": "需要面试，约75%申请者获邀面试，12月进行",
+      "acceptance_rate": "约21%"
+    },
+    "popular_majors": [
+      "数学",
+      "自然科学",
+      "工程",
+      "医学",
+      "计算机科学",
+      "经济",
+      "法律",
+      "英语",
+      "历史",
+      "化学"
+    ],
+    "tuition": {
+      "amount": "£27,000-£70,554",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "人文社科较低，临床医学最高"
+    },
+    "living_cost": {
+      "amount": "£12,000-£18,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "剑桥地区生活费"
+    },
+    "location": {
+      "city": "剑桥",
+      "region": "英格兰东部"
+    },
+    "type": "学院制公立研究型大学",
+    "features": [
+      "学院制和导师制教学",
+      "自然科学和数学传统强校",
+      "诺贝尔奖得主摇篮",
+      "世界顶尖研究中心"
+    ],
+    "facilities": "拥有116个图书馆、9个博物馆和收藏馆、运动中心、音乐厅和先进的研究设施。",
+    "academic_resources": "研究实力在全英名列前茅，拥有卡文迪许实验室等世界知名研究机构，每年研究经费充裕。",
+    "collegiate_system": "是"
+  },
+  {
+    "name": "帝国理工学院",
+    "name_en": "Imperial College London",
+    "abbreviation": "ICL/Imperial",
+    "official_website": "https://www.imperial.ac.uk",
+    "description": "帝国理工学院成立于1907年，位于伦敦南肯辛顿，是一所专注于科学、工程、医学和商业的世界顶尖研究型大学。作为G5超级精英大学成员，帝国理工在STEM领域享有全球声誉，国际化程度极高，超过60%学生来自海外。",
+    "ranking": {
+      "qs": "2",
+      "the": "9",
+      "guardian": "5"
+    },
+    "admission_requirements": {
+      "a_level": "A*A*A-AAA（多数STEM课程要求A*A*A，数学通常要求A*）",
+      "ielts": "总分7.0，小分不低于6.5（Standard 6.5/6.0, Higher 7.0/6.5）",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "非常重要，需突出STEM学科能力和热情",
+      "interview": "部分课程需要面试或在线评估",
+      "acceptance_rate": "约14.7%"
+    },
+    "popular_majors": [
+      "机械工程",
+      "电子电气工程",
+      "计算机科学",
+      "医学",
+      "化学工程",
+      "土木工程",
+      "生物科学",
+      "物理",
+      "数学",
+      "商科"
+    ],
+    "tuition": {
+      "amount": "£35,100-£47,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "科学工程类约£35,000-£42,000，医学约£47,000+"
+    },
+    "living_cost": {
+      "amount": "£14,400-£21,600",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伦敦地区，住宿费较高"
+    },
+    "location": {
+      "city": "伦敦",
+      "region": "英格兰（南肯辛顿）"
+    },
+    "type": "公立研究型大学（非学院制）",
+    "features": [
+      "专注STEM领域的世界名校",
+      "位于伦敦中心地段",
+      "研究驱动型教学",
+      "强大的产业联系"
+    ],
+    "facilities": "拥有先进的实验室、图书馆、创新中心、运动中心和多个校区，包括White City新校区。",
+    "academic_resources": "研究实力在全英名列前茅，尤其在工程和医学领域，与工业界和商业界有紧密合作。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "伦敦大学学院",
+    "name_en": "University College London",
+    "abbreviation": "UCL",
+    "official_website": "https://www.ucl.ac.uk",
+    "description": "伦敦大学学院成立于1826年，是伦敦第一所大学，也是英国第一所世俗大学。作为G5超级精英大学成员，UCL在医学、建筑、法律、教育、工程和社会科学等领域均处于世界领先地位。UCL是国际化程度最高的英国大学之一，53%的学生来自海外。",
+    "ranking": {
+      "qs": "9",
+      "the": "22",
+      "guardian": "13"
+    },
+    "admission_requirements": {
+      "a_level": "A*A*A-ABB（多数课程AAA-AAB）",
+      "ielts": "总分6.5-8.0（课程分级：Level 1 6.5/6.0至Level 5 8.0/8.0）",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "非常重要",
+      "interview": "部分课程需要面试",
+      "acceptance_rate": "约30%"
+    },
+    "popular_majors": [
+      "建筑学",
+      "医学",
+      "法律",
+      "心理学",
+      "经济学",
+      "计算机科学",
+      "工程",
+      "教育学",
+      "生物科学",
+      "社会科学"
+    ],
+    "tuition": {
+      "amount": "£29,800-£43,500",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "人文社科较低，计算机和医学较高"
+    },
+    "living_cost": {
+      "amount": "£14,400-£21,600",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伦敦地区生活费较高"
+    },
+    "location": {
+      "city": "伦敦",
+      "region": "英格兰（布鲁姆斯伯里）"
+    },
+    "type": "公立研究型大学（非学院制）",
+    "features": [
+      "伦敦第一所大学",
+      "多学科综合强校",
+      "国际化程度极高",
+      "G5超级精英大学成员"
+    ],
+    "facilities": "拥有17个图书馆、博物馆和收藏馆、先进的研究设施、运动中心和遍布伦敦市中心的校园。",
+    "academic_resources": "研究实力在全英名列前茅，在医学和建筑学领域世界领先，拥有多个跨学科研究机构。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "伦敦政治经济学院",
+    "name_en": "London School of Economics and Political Science",
+    "abbreviation": "LSE",
+    "official_website": "https://www.lse.ac.uk",
+    "description": "伦敦政治经济学院成立于1895年，是全球最顶尖的社会科学研究和教学机构之一。LSE专注于经济学、政治学、社会学、法律、会计和金融等社会科学领域，培养了众多诺贝尔奖经济学奖得主和世界领导人。",
+    "ranking": {
+      "qs": "50",
+      "the": "50",
+      "guardian": "4"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAA（多数课程要求AAA）",
+      "ielts": "总分7.0，小分不低于7.0（写作需7.0）",
+      "ucas_deadline": "2026年1月14日",
+      "personal_statement": "极其重要，需展现对社会科学的深刻思考",
+      "interview": "通常不需要面试",
+      "acceptance_rate": "约9%"
+    },
+    "popular_majors": [
+      "经济学",
+      "政治学",
+      "国际关系",
+      "社会学",
+      "会计与金融",
+      "法律",
+      "管理学",
+      "社会政策",
+      "哲学",
+      "统计"
+    ],
+    "tuition": {
+      "amount": "£28,000-£38,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "约£32,000-£38,000每年"
+    },
+    "living_cost": {
+      "amount": "£15,000-£22,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伦敦中心区域生活费较高"
+    },
+    "location": {
+      "city": "伦敦",
+      "region": "英格兰（霍尔本）"
+    },
+    "type": "公立研究型大学（非学院制，专注社会科学）",
+    "features": [
+      "全球顶尖社会科学学府",
+      "经济学和政治学传统强校",
+      "位于伦敦法律和金融中心",
+      "精英教学和研究水平"
+    ],
+    "facilities": "拥有世界最大的社会科学图书馆、现代化教学楼、研究中心和学生宿舍。",
+    "academic_resources": "拥有全球最大的社会科学图书馆，经济学和政治学研究影响力全球领先。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "爱丁堡大学",
+    "name_en": "University of Edinburgh",
+    "abbreviation": "Edinburgh",
+    "official_website": "https://www.ed.ac.uk",
+    "description": "爱丁堡大学成立于1582年，是苏格兰最古老的大学之一，也是英语世界第六古老的大学。作为罗素集团成员，爱丁堡大学在医学、科学、工程、人文和社会科学等领域享有盛誉，拥有优美的历史校园和强大的研究实力。",
+    "ranking": {
+      "qs": "27",
+      "the": "29",
+      "guardian": "15"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-AAB（医学和工程课程要求更高）",
+      "ielts": "总分6.5，小分不低于5.5（多数课程）；部分课程要求7.0",
+      "ucas_deadline": "2026年1月14日（医学/兽医：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约47%"
+    },
+    "popular_majors": [
+      "医学",
+      "生物科学",
+      "工程",
+      "计算机科学",
+      "商学",
+      "英语文学",
+      "历史",
+      "法律",
+      "心理学",
+      "经济"
+    ],
+    "tuition": {
+      "amount": "£22,000-£35,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "苏格兰本科学制通常为4年"
+    },
+    "living_cost": {
+      "amount": "£10,000-£15,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "爱丁堡生活费低于伦敦"
+    },
+    "location": {
+      "city": "爱丁堡",
+      "region": "苏格兰"
+    },
+    "type": "公立研究型大学（苏格兰古老大学体系）",
+    "features": [
+      "苏格兰最负盛名的大学",
+      "历史悠久的研究型大学",
+      "医学和科学传统强校",
+      "4年本科学制"
+    ],
+    "facilities": "拥有现代化图书馆、实验室、运动设施和历史建筑校园。",
+    "academic_resources": "研究实力在苏格兰领先，在生命科学和医学领域尤其突出。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "曼彻斯特大学",
+    "name_en": "University of Manchester",
+    "abbreviation": "Manchester",
+    "official_website": "https://www.manchester.ac.uk",
+    "description": "曼彻斯特大学成立于1824年，是英国最大的单一校址大学，也是罗素集团创始成员。大学在科学、工程、医学、人文和社会科学等领域具有卓越的研究和教学实力，以其创新传统和多元文化氛围著称。",
+    "ranking": {
+      "qs": "34",
+      "the": "53",
+      "guardian": "31"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-ABB（视课程而定）",
+      "ielts": "总分6.0-7.0，小分不低于5.5-6.5（课程分级）",
+      "ucas_deadline": "2026年1月14日",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约56%"
+    },
+    "popular_majors": [
+      "工程",
+      "计算机科学",
+      "商科",
+      "生物科学",
+      "化学",
+      "物理",
+      "药学",
+      "法律",
+      "经济学",
+      "社会科学"
+    ],
+    "tuition": {
+      "amount": "£19,000-£28,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "实验室课程较高"
+    },
+    "living_cost": {
+      "amount": "£12,000-£16,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "曼彻斯特生活费适中"
+    },
+    "location": {
+      "city": "曼彻斯特",
+      "region": "英格兰西北部"
+    },
+    "type": "公立研究型大学（单一校址）",
+    "features": [
+      "英国最大的单一校址大学",
+      "罗素集团创始成员",
+      "工程和科学传统强校",
+      "多元化学生群体"
+    ],
+    "facilities": "拥有英国最大的大学图书馆之一、先进的研究设施、运动中心和校园设施。",
+    "academic_resources": "研究实力强劲，尤其在材料科学、工程和社会科学领域，是全英研究最活跃的大学之一。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "伦敦国王学院",
+    "name_en": "King's College London",
+    "abbreviation": "KCL/King's",
+    "official_website": "https://www.kcl.ac.uk",
+    "description": "伦敦国王学院成立于1829年，是伦敦大学创校学院之一，也是罗素集团成员。KCL在医学、法律、人文科学、社会科学和国际事务等领域享有卓越声誉，拥有多个世界级研究中心。",
+    "ranking": {
+      "qs": "40",
+      "the": "36",
+      "guardian": "28"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-ABB（多数课程AAB-AAA）",
+      "ielts": "总分7.0，小分不低于6.5（多数课程）",
+      "ucas_deadline": "2026年1月14日（医学/牙医：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约13%"
+    },
+    "popular_majors": [
+      "医学",
+      "法律",
+      "国际关系",
+      "护理学",
+      "牙医学",
+      "英语",
+      "历史",
+      "生物科学",
+      "经济学",
+      "哲学"
+    ],
+    "tuition": {
+      "amount": "£21,000-£35,800",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "医学和牙医课程费用最高可达£61,000"
+    },
+    "living_cost": {
+      "amount": "£15,000-£22,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伦敦地区生活费，KCL官方建议每月约£1,770"
+    },
+    "location": {
+      "city": "伦敦",
+      "region": "英格兰（斯特兰德/滑铁卢）"
+    },
+    "type": "公立研究型大学（非学院制）",
+    "features": [
+      "伦敦大学创校学院",
+      "医学和法律传统强校",
+      "位于伦敦中心",
+      "世界级研究设施"
+    ],
+    "facilities": "拥有多个校区、先进的医学和牙科教学设施、图书馆、研究实验室和学生宿舍。",
+    "academic_resources": "在医学研究、法律和社会科学领域实力强劲，拥有多个专业研究所。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "布里斯托大学",
+    "name_en": "University of Bristol",
+    "abbreviation": "Bristol",
+    "official_website": "https://www.bristol.ac.uk",
+    "description": "布里斯托大学成立于1876年，是英国顶尖的研究型大学之一，罗素集团成员。大学在工程、科学、医学、社会科学和法律等领域具有卓越实力，以其研究质量和学生体验而闻名。",
+    "ranking": {
+      "qs": "54",
+      "the": "78",
+      "guardian": "16"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-ABB（多数课程AAA-AAB）",
+      "ielts": "总分6.0-7.5（视课程而定，小分不低于5.5-7.0）",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约67%"
+    },
+    "popular_majors": [
+      "工程",
+      "计算机科学",
+      "物理",
+      "经济",
+      "法律",
+      "生物科学",
+      "数学",
+      "心理学",
+      "化学",
+      "社会科学"
+    ],
+    "tuition": {
+      "amount": "£18,000-£27,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "实验室课程较高"
+    },
+    "living_cost": {
+      "amount": "£11,000-£15,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "布里斯托生活费适中，低于伦敦"
+    },
+    "location": {
+      "city": "布里斯托",
+      "region": "英格兰西南部"
+    },
+    "type": "公立研究型大学（非学院制）",
+    "features": [
+      "罗素集团成员",
+      "工程和传统科学强校",
+      "研究质量卓越",
+      "学生满意度高"
+    ],
+    "facilities": "拥有现代化校园、图书馆、实验室、运动中心和学生宿舍设施。",
+    "academic_resources": "研究实力在全英排名前列，尤其在工程和科学领域，拥有多个研究中心。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "华威大学",
+    "name_en": "University of Warwick",
+    "abbreviation": "Warwick",
+    "official_website": "https://www.warwick.ac.uk",
+    "description": "华威大学成立于1965年，是英国最年轻的顶尖大学之一，罗素集团成员。大学在商科、经济学、数学、统计学和计算机科学等领域表现尤为突出，华威商学院享誉全球。",
+    "ranking": {
+      "qs": "69",
+      "the": "106",
+      "guardian": "8"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-ABB（多数课程AAB-AAA）",
+      "ielts": "总分6.0-7.0（小分不低于5.5-6.5）",
+      "ucas_deadline": "2026年1月14日",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约14%"
+    },
+    "popular_majors": [
+      "商科/管理",
+      "经济学",
+      "数学",
+      "统计学",
+      "计算机科学",
+      "工程",
+      "法律",
+      "英语",
+      "政治",
+      "社会学"
+    ],
+    "tuition": {
+      "amount": "£19,000-£29,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "商科和计算机类较高"
+    },
+    "living_cost": {
+      "amount": "£10,500-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "考文垂地区生活费较低"
+    },
+    "location": {
+      "city": "考文垂",
+      "region": "英格兰中部"
+    },
+    "type": "公立研究型大学（非学院制）",
+    "features": [
+      "商科和经济学顶尖",
+      "罗素集团成员",
+      "年轻但声誉卓著",
+      "校园环境优美"
+    ],
+    "facilities": "拥有现代化的校园设施、图书馆、艺术中心、运动设施和学生宿舍。",
+    "academic_resources": "在商科、经济学和应用数学领域研究实力强劲，与工商业界联系紧密。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "格拉斯哥大学",
+    "name_en": "University of Glasgow",
+    "abbreviation": "Glasgow",
+    "official_website": "https://www.gla.ac.uk",
+    "description": "格拉斯哥大学成立于1451年，是英语世界第四古老的大学，也是苏格兰最古老的大学之一。大学在医学、法律、工程、生命科学和人文社科等领域具有卓越实力，是罗素集团成员。",
+    "ranking": {
+      "qs": "78",
+      "the": "87",
+      "guardian": "18"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-ABB（视课程而定）",
+      "ielts": "总分6.5，小分不低于6.0（多数课程）",
+      "ucas_deadline": "2026年1月14日（医学/兽医：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约84%"
+    },
+    "popular_majors": [
+      "医学",
+      "兽医",
+      "法律",
+      "工程",
+      "生物科学",
+      "经济学",
+      "英语文学",
+      "历史",
+      "计算机科学",
+      "化学"
+    ],
+    "tuition": {
+      "amount": "£18,000-£28,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "苏格兰本科学制通常为4年"
+    },
+    "living_cost": {
+      "amount": "£10,000-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "格拉斯哥生活费低于英格兰南部"
+    },
+    "location": {
+      "city": "格拉斯哥",
+      "region": "苏格兰"
+    },
+    "type": "公立研究型大学（苏格兰古老大学体系）",
+    "features": [
+      "苏格兰古老大学",
+      "医学和兽医传统强校",
+      "4年本科学制",
+      "高性价比"
+    ],
+    "facilities": "拥有现代化图书馆、实验室、运动中心和历史建筑校园。",
+    "academic_resources": "在医学、兽医科学和生命科学领域研究实力强劲。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "南安普顿大学",
+    "name_en": "University of Southampton",
+    "abbreviation": "Southampton",
+    "official_website": "https://www.southampton.ac.uk",
+    "description": "南安普顿大学成立于1862年，是英国顶尖的研究型大学之一，罗素集团成员。大学在工程、海洋科学、计算机科学、物理和医学等领域具有卓越实力，以其创新研究和与工业界的紧密联系而著称。",
+    "ranking": {
+      "qs": "80",
+      "the": "115",
+      "guardian": "22"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-ABB（视课程而定）",
+      "ielts": "总分6.0-6.5（小分不低于5.5-6.0）",
+      "ucas_deadline": "2026年1月14日",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约70%"
+    },
+    "popular_majors": [
+      "工程",
+      "海洋科学",
+      "计算机科学",
+      "电子工程",
+      "物理",
+      "医学",
+      "心理学",
+      "数学",
+      "生物科学",
+      "商科"
+    ],
+    "tuition": {
+      "amount": "£18,000-£26,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "工程类课程较高"
+    },
+    "living_cost": {
+      "amount": "£10,000-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "南安普顿生活费适中"
+    },
+    "location": {
+      "city": "南安普顿",
+      "region": "英格兰南部"
+    },
+    "type": "公立研究型大学",
+    "features": [
+      "工程和海洋科学强校",
+      "罗素集团成员",
+      "研究实力卓越",
+      "与工业界联系紧密"
+    ],
+    "facilities": "拥有先进的工程实验室、海洋研究中心、图书馆、运动设施和学生宿舍。",
+    "academic_resources": "在工程、海洋科学和计算机领域研究实力强劲，拥有多个专业研究中心。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "杜伦大学",
+    "name_en": "Durham University",
+    "abbreviation": "Durham",
+    "official_website": "https://www.durham.ac.uk",
+    "description": "杜伦大学成立于1832年，是英国第三古老的大学，采用独特的学院制。大学在人文社科、科学、工程和商业等领域具有卓越实力，以其传统学术氛围和美丽的历史校园而闻名。",
+    "ranking": {
+      "qs": "89",
+      "the": "148",
+      "guardian": "6"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（视课程而定）",
+      "ielts": "总分6.5，小分不低于6.0（多数课程）",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约41%"
+    },
+    "popular_majors": [
+      "英语文学",
+      "历史",
+      "地理",
+      "商科",
+      "法律",
+      "物理",
+      "数学",
+      "化学",
+      "心理学",
+      "社会科学"
+    ],
+    "tuition": {
+      "amount": "£22,000-£29,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "实验室课程较高"
+    },
+    "living_cost": {
+      "amount": "£10,500-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "杜伦是小城市，生活费适中"
+    },
+    "location": {
+      "city": "杜伦",
+      "region": "英格兰东北部"
+    },
+    "type": "公立研究型大学（学院制）",
+    "features": [
+      "学院制传统大学",
+      "英国第三古老大学",
+      "人文社科传统强校",
+      "优美的历史校园"
+    ],
+    "facilities": "拥有学院宿舍、图书馆、大教堂景观校园、运动设施和学生社团设施。",
+    "academic_resources": "在人文社科和纯科学领域研究实力强劲，拥有多个跨学科研究中心。",
+    "collegiate_system": "是"
+  },
+  {
+    "name": "伯明翰大学",
+    "name_en": "University of Birmingham",
+    "abbreviation": "Birmingham",
+    "official_website": "https://www.birmingham.ac.uk",
+    "description": "伯明翰大学成立于1900年，是英国第一所公民大学，罗素集团创始成员。大学在工程、医学、物理、社会科学、商科和教育等领域具有卓越实力，拥有英国最大的校园之一。",
+    "ranking": {
+      "qs": "80",
+      "the": "93",
+      "guardian": "23"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-ABB（视课程而定）",
+      "ielts": "总分6.0-6.5（小分不低于5.5-6.0）",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约13.5%"
+    },
+    "popular_majors": [
+      "工程",
+      "医学",
+      "物理",
+      "商科",
+      "教育",
+      "法律",
+      "生物科学",
+      "心理学",
+      "化学",
+      "体育科学"
+    ],
+    "tuition": {
+      "amount": "£18,000-£26,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "医学课程费用较高"
+    },
+    "living_cost": {
+      "amount": "£10,000-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伯明翰生活费适中，低于伦敦"
+    },
+    "location": {
+      "city": "伯明翰",
+      "region": "英格兰中部"
+    },
+    "type": "公立研究型大学",
+    "features": [
+      "英国第一所公民大学",
+      "罗素集团创始成员",
+      "校园规模英国最大之一",
+      "体育科学强校"
+    ],
+    "facilities": "拥有公园式校园、图书馆、运动中心、音乐厅和学生宿舍，校园面积达276英亩。",
+    "academic_resources": "在医学、工程和社会科学研究方面实力强劲，是全英研究最活跃的大学之一。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "利兹大学",
+    "name_en": "University of Leeds",
+    "abbreviation": "Leeds",
+    "official_website": "https://www.leeds.ac.uk",
+    "description": "利兹大学成立于1904年，是罗素集团成员，在商科、传媒、工程、医学和环境科学等领域具有卓越实力。大学以其研究影响力、学生就业能力和多元化的学生群体而著称。",
+    "ranking": {
+      "qs": "82",
+      "the": "123",
+      "guardian": "27"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-ABB（视课程而定）",
+      "ielts": "总分6.0，小分不低于5.5（多数课程）；部分要求6.5",
+      "ucas_deadline": "2026年1月14日",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约72%"
+    },
+    "popular_majors": [
+      "商科",
+      "传媒",
+      "工程",
+      "环境科学",
+      "医学",
+      "地理",
+      "法律",
+      "生物科学",
+      "化学",
+      "社会学"
+    ],
+    "tuition": {
+      "amount": "£18,000-£25,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "商科和医学类较高"
+    },
+    "living_cost": {
+      "amount": "£10,000-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "利兹生活费适中，性价比较高"
+    },
+    "location": {
+      "city": "利兹",
+      "region": "英格兰北部（约克郡）"
+    },
+    "type": "公立研究型大学",
+    "features": [
+      "罗素集团成员",
+      "商科和传媒强校",
+      "研究影响力强",
+      "学生就业率高"
+    ],
+    "facilities": "拥有现代化图书馆、运动设施、学生会大楼和多个研究中心。",
+    "academic_resources": "在商科、传媒和环境科学等领域研究实力强劲。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "谢菲尔德大学",
+    "name_en": "University of Sheffield",
+    "abbreviation": "Sheffield",
+    "official_website": "https://www.sheffield.ac.uk",
+    "description": "谢菲尔德大学成立于1905年，是罗素集团成员，以其卓越的研究、优秀的教学质量和学生体验而闻名。大学在工程、材料科学、新闻学、医学和社会科学等领域具有突出实力。",
+    "ranking": {
+      "qs": "105",
+      "the": "124",
+      "guardian": "25"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-BBB（视课程而定）",
+      "ielts": "总分6.0-6.5，小分不低于5.5-6.0",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约76%"
+    },
+    "popular_majors": [
+      "工程",
+      "材料科学",
+      "新闻学",
+      "建筑学",
+      "医学",
+      "生物科学",
+      "心理学",
+      "商科",
+      "法律",
+      "城市规划"
+    ],
+    "tuition": {
+      "amount": "£18,000-£25,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "工程类课程较高"
+    },
+    "living_cost": {
+      "amount": "£9,500-£13,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "谢菲尔德是英国生活费最低的学生城市之一"
+    },
+    "location": {
+      "city": "谢菲尔德",
+      "region": "英格兰北部（南约克郡）"
+    },
+    "type": "公立研究型大学",
+    "features": [
+      "罗素集团成员",
+      "工程和传统材料科学强校",
+      "新闻学知名",
+      "学生体验优秀"
+    ],
+    "facilities": "拥有先进的工程实验室、新闻中心、学生会大楼和运动设施。",
+    "academic_resources": "在工程、材料科学和新闻学领域研究实力强劲。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "诺丁汉大学",
+    "name_en": "University of Nottingham",
+    "abbreviation": "Nottingham",
+    "official_website": "https://www.nottingham.ac.uk",
+    "description": "诺丁汉大学成立于1881年，是罗素集团成员，在药学、工程、商科、农业和社会科学等领域具有卓越实力。大学拥有美丽的校园和强大的国际合作关系，在马来西亚和中国设有海外校区。",
+    "ranking": {
+      "qs": "108",
+      "the": "136",
+      "guardian": "30"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-BBB（视课程而定）",
+      "ielts": "总分6.0-7.0，小分不低于5.5-6.0",
+      "ucas_deadline": "2026年1月14日（医学/兽医：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约80%"
+    },
+    "popular_majors": [
+      "药学",
+      "工程",
+      "商科",
+      "农业",
+      "法律",
+      "英语",
+      "生物科学",
+      "心理学",
+      "兽医",
+      "建筑"
+    ],
+    "tuition": {
+      "amount": "£18,000-£26,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "兽医和医学类较高"
+    },
+    "living_cost": {
+      "amount": "£10,000-£14,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "诺丁汉生活费适中"
+    },
+    "location": {
+      "city": "诺丁汉",
+      "region": "英格兰中部"
+    },
+    "type": "公立研究型大学",
+    "features": [
+      "罗素集团成员",
+      "药学和兽医传统强校",
+      "国际化程度高",
+      "拥有海外校区"
+    ],
+    "facilities": "拥有公园式校园、图书馆、运动设施和学生宿舍，校园环境优美。",
+    "academic_resources": "在药学、农业科学和工程领域研究实力强劲。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "伦敦玛丽女王大学",
+    "name_en": "Queen Mary University of London",
+    "abbreviation": "QMUL/Queen Mary",
+    "official_website": "https://www.qmul.ac.uk",
+    "description": "伦敦玛丽女王大学成立于1887年，是伦敦大学成员和罗素集团成员。大学在法律、牙科、医学、材料科学和人文社科等领域具有卓越实力，主校区位于伦敦东部的Mile End。",
+    "ranking": {
+      "qs": "120",
+      "the": "141",
+      "guardian": "46"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-BBB（视课程而定）",
+      "ielts": "总分6.5-7.0，小分不低于6.0-6.5（写作通常要求6.5+）",
+      "ucas_deadline": "2026年1月14日（医学/牙医：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约64%"
+    },
+    "popular_majors": [
+      "法律",
+      "牙科",
+      "医学",
+      "材料科学",
+      "计算机科学",
+      "经济",
+      "英语",
+      "历史",
+      "工程",
+      "数学"
+    ],
+    "tuition": {
+      "amount": "£22,000-£28,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伦敦地区学费相对较高"
+    },
+    "living_cost": {
+      "amount": "£13,000-£18,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "伦敦东区生活费较中心区域稍低"
+    },
+    "location": {
+      "city": "伦敦",
+      "region": "英格兰（Mile End/东区）"
+    },
+    "type": "公立研究型大学（伦敦大学成员）",
+    "features": [
+      "罗素集团和伦敦大学成员",
+      "法律和牙科传统强校",
+      "位于伦敦东区",
+      "研究实力卓越"
+    ],
+    "facilities": "拥有现代化教学楼、图书馆、研究实验室、运动设施和学生宿舍。",
+    "academic_resources": "在法律、牙科和材料科学领域研究实力强劲。",
+    "collegiate_system": "否"
+  },
+  {
+    "name": "兰卡斯特大学",
+    "name_en": "Lancaster University",
+    "abbreviation": "Lancaster",
+    "official_website": "https://www.lancaster.ac.uk",
+    "description": "兰卡斯特大学成立于1964年，是英国顶尖的新兴大学之一，采用独特的学院制。大学在商科、语言学、环境科学、社会学和数学等领域表现突出，学生满意度一直名列前茅。",
+    "ranking": {
+      "qs": "141",
+      "the": "155",
+      "guardian": "10"
+    },
+    "admission_requirements": {
+      "a_level": "AAB-ABB（视课程而定）",
+      "ielts": "总分6.5，小分不低于5.5-6.0",
+      "ucas_deadline": "2026年1月14日",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约18.7%"
+    },
+    "popular_majors": [
+      "商科/管理",
+      "语言学",
+      "环境科学",
+      "社会学",
+      "数学",
+      "计算机科学",
+      "英语文学",
+      "心理学",
+      "创意写作",
+      "统计"
+    ],
+    "tuition": {
+      "amount": "£18,000-£25,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "兰卡斯特管理学院（LUMS）课程较高"
+    },
+    "living_cost": {
+      "amount": "£9,500-£13,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "兰卡斯特生活费较低，性价比高"
+    },
+    "location": {
+      "city": "兰卡斯特",
+      "region": "英格兰西北部"
+    },
+    "type": "公立研究型大学（学院制）",
+    "features": [
+      "学院制大学",
+      "商科和管理学强校",
+      "学生满意度高",
+      "环境优美"
+    ],
+    "facilities": "拥有现代化校园、图书馆、艺术中心、运动设施和学院住宿系统。",
+    "academic_resources": "在商科、语言学和环境科学领域研究实力强劲。",
+    "collegiate_system": "是"
+  },
+  {
+    "name": "纽卡斯尔大学",
+    "name_en": "Newcastle University",
+    "abbreviation": "Newcastle",
+    "official_website": "https://www.ncl.ac.uk",
+    "description": "纽卡斯尔大学成立于1834年，是罗素集团成员，在医学、科学、工程、人文社科和建筑学等领域具有卓越实力。大学以其友好的城市氛围、优秀的教学质量和研究影响力而闻名。",
+    "ranking": {
+      "qs": "129",
+      "the": "168",
+      "guardian": "38"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-BBB（视课程而定）",
+      "ielts": "总分6.5，小分不低于5.5-6.0",
+      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "personal_statement": "重要",
+      "interview": "部分课程需要",
+      "acceptance_rate": "约73%"
+    },
+    "popular_majors": [
+      "医学",
+      "建筑学",
+      "工程",
+      "生物科学",
+      "商科",
+      "法律",
+      "心理学",
+      "英语",
+      "计算机科学",
+      "地理"
+    ],
+    "tuition": {
+      "amount": "£20,400-£46,200",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "人文社科较低，医学和牙科最高"
+    },
+    "living_cost": {
+      "amount": "£9,000-£12,000",
+      "currency": "GBP",
+      "period": "每年",
+      "note": "纽卡斯尔是英国生活费最低的学生城市之一"
+    },
+    "location": {
+      "city": "纽卡斯尔",
+      "region": "英格兰东北部"
+    },
+    "type": "公立研究型大学",
+    "features": [
+      "罗素集团成员",
+      "医学和建筑学强校",
+      "学生友好城市",
+      "性价比高"
+    ],
+    "facilities": "拥有现代化校园、图书馆、运动中心、学生会大楼和先进的医学教学设施。",
+    "academic_resources": "在医学、工程和建筑学领域研究实力强劲。",
+    "collegiate_system": "否"
+  }
+]

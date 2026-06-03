@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* 纸感暖白背景 + 学院蓝绿主色，偏教育机构气质 */
+    --background: 40 33% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 201 55% 38%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 25% 96%;
+    --secondary-foreground: 222 47% 18%;
+    --muted: 210 22% 95%;
+    --muted-foreground: 215 16% 42%;
+    --accent: 201 35% 94%;
+    --accent-foreground: 201 55% 28%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 90%;
+    --input: 214 32% 90%;
+    --ring: 201 50% 42%;
+    --radius: 0.75rem;
+    --sidebar-background: 40 25% 97%;
+    --sidebar-foreground: 222 30% 22%;
+    --sidebar-primary: 201 55% 38%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 25% 94%;
+    --sidebar-accent-foreground: 222 47% 18%;
+    --sidebar-border: 214 28% 88%;
+    --sidebar-ring: 201 50% 42%;
+  }
+
+  .dark {
+    --background: 222 24% 8%;
+    --foreground: 210 30% 96%;
+    --card: 222 22% 11%;
+    --card-foreground: 210 30% 96%;
+    --popover: 222 22% 11%;
+    --popover-foreground: 210 30% 96%;
+    --primary: 198 55% 55%;
+    --primary-foreground: 222 47% 8%;
+    --secondary: 217 19% 18%;
+    --secondary-foreground: 210 30% 96%;
+    --muted: 217 19% 18%;
+    --muted-foreground: 215 16% 65%;
+    --accent: 201 30% 18%;
+    --accent-foreground: 198 60% 75%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217 19% 20%;
+    --input: 217 19% 20%;
+    --ring: 198 55% 50%;
+    --sidebar-background: 222 24% 9%;
+    --sidebar-foreground: 210 25% 92%;
+    --sidebar-primary: 198 55% 55%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 217 19% 16%;
+    --sidebar-accent-foreground: 210 30% 96%;
+    --sidebar-border: 217 19% 18%;
+    --sidebar-ring: 198 55% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  ::selection {
+    @apply bg-primary/20 text-foreground;
+  }
+}
+
+@layer utilities {
+  /* 弹层内列表：细滚动条，避免系统默认粗灰条 */
+  .thin-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted-foreground) / 0.28) transparent;
+  }
+  .thin-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted-foreground) / 0.22);
+    border-radius: 9999px;
+  }
+  .thin-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: hsl(var(--muted-foreground) / 0.38);
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* 防止打印时阴影/背景影响观感 */
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Transcript page helpers */
+  .transcript-root .transcript-page {
+    padding: 0 !important;
+    max-width: none !important;
+  }
+
+  /* 避免卡片/表格在分页处被硬拆 */
+  .transcript-root .print\\:break-inside-avoid {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

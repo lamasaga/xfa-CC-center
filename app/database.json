@@ -1,0 +1,345 @@
+{
+  "users": [
+    {
+      "id": "7fc5f449-e95d-4865-8987-475ffad0feac",
+      "username": "admin",
+      "password": "$2a$10$nwPMUdu8YZnvOciE1iCBoeYQ.7i4U1Nb./mqzFMYkmicmJ4MauTCK",
+      "name": "系统管理员",
+      "email": "admin@school.com",
+      "role": "admin",
+      "created_at": "2026-03-12T06:51:18.101Z",
+      "updated_at": "2026-03-12T06:51:18.102Z"
+    },
+    {
+      "id": "85a85a18-cb85-49d9-b1fa-ac993fa1dff6",
+      "username": "editor",
+      "password": "$2a$10$Bi61jL9Z8nIMS3g0wzxvB.glO0QU8zFblsjJnRJ3v90nb4eTijr7a",
+      "name": "李老师",
+      "email": "li@school.com",
+      "role": "editor",
+      "created_at": "2026-03-12T06:51:18.105Z",
+      "updated_at": "2026-03-12T06:51:18.105Z"
+    },
+    {
+      "id": "ae776a49-f9a2-417e-b960-6cbd22871422",
+      "username": "viewer",
+      "password": "$2a$10$NCVYhaP4usdPwyecm.pyY.pfOqUcHNzdqft215wqSVNKtqdcrMRq2",
+      "name": "张老师",
+      "email": "zhang@school.com",
+      "role": "viewer",
+      "created_at": "2026-03-12T06:51:18.107Z",
+      "updated_at": "2026-03-12T06:51:18.107Z"
+    },
+    {
+      "id": "1691b97d-cbd7-47ca-945b-1004c9c9de3d",
+      "username": "advisor",
+      "password": "$2a$10$Bi61jL9Z8nIMS3g0wzxvB.glO0QU8zFblsjJnRJ3v90nb4eTijr7a",
+      "name": "王顾问",
+      "email": "wang@school.com",
+      "role": "editor",
+      "created_at": "2026-03-12T06:51:18.109Z",
+      "updated_at": "2026-03-12T06:51:18.109Z"
+    }
+  ],
+  "students": [
+    {
+      "id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "name": "张同学",
+      "english_name": "Michael Zhang",
+      "grade": "A2",
+      "school": "上海某国际学校",
+      "enrollment_year": 2023,
+      "advisor_id": "1691b97d-cbd7-47ca-945b-1004c9c9de3d",
+      "phone": "138****8888",
+      "email": "michael.zhang@example.com",
+      "wechat": "michael_zhang",
+      "parent_name": "张先生",
+      "parent_phone": "139****9999",
+      "parent_email": "",
+      "status": "active",
+      "created_at": "2026-03-12T06:51:18.112Z",
+      "updated_at": "2026-03-12T06:51:18.112Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "017697d1-1fb0-4d9b-8ff9-90671b0e49dc",
+      "name": "Mathematics",
+      "subject_code": "Math",
+      "board": "Edexcel",
+      "grade_level": "A2",
+      "teacher_id": "85a85a18-cb85-49d9-b1fa-ac993fa1dff6",
+      "academic_year": "2024-2025",
+      "semester": "Fall",
+      "max_students": 20,
+      "description": "",
+      "created_at": "2026-03-12T06:51:18.114Z"
+    },
+    {
+      "id": "e85b05a2-14fd-49aa-9582-3b4e5cd3ac6d",
+      "name": "Physics",
+      "subject_code": "Phys",
+      "board": "CIE",
+      "grade_level": "A2",
+      "teacher_id": "85a85a18-cb85-49d9-b1fa-ac993fa1dff6",
+      "academic_year": "2024-2025",
+      "semester": "Fall",
+      "max_students": 20,
+      "description": "",
+      "created_at": "2026-03-12T06:51:18.116Z"
+    },
+    {
+      "id": "d2d6c63c-d3ff-4274-8534-93c9db321fec",
+      "name": "Chemistry",
+      "subject_code": "Chem",
+      "board": "CIE",
+      "grade_level": "A2",
+      "teacher_id": "85a85a18-cb85-49d9-b1fa-ac993fa1dff6",
+      "academic_year": "2024-2025",
+      "semester": "Fall",
+      "max_students": 20,
+      "description": "",
+      "created_at": "2026-03-12T06:51:18.117Z"
+    },
+    {
+      "id": "7b1d1ce4-8697-44d4-870c-408f168505a8",
+      "name": "Economics",
+      "subject_code": "Econ",
+      "board": "Edexcel",
+      "grade_level": "A2",
+      "teacher_id": "85a85a18-cb85-49d9-b1fa-ac993fa1dff6",
+      "academic_year": "2024-2025",
+      "semester": "Fall",
+      "max_students": 20,
+      "description": "",
+      "created_at": "2026-03-12T06:51:18.119Z"
+    }
+  ],
+  "student_courses": [
+    {
+      "id": "f001b4fb-4e72-40a6-97f2-9f4541517c95",
+      "course_id": "017697d1-1fb0-4d9b-8ff9-90671b0e49dc",
+      "grade": "A",
+      "score": 88,
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "internal_grade": "A",
+      "internal_score": 88,
+      "status": "enrolled",
+      "created_at": "2026-03-12T06:51:18.122Z",
+      "updated_at": "2026-03-12T06:51:18.122Z"
+    },
+    {
+      "id": "4a84bab1-90c8-466f-8255-d8ac4e89028a",
+      "course_id": "e85b05a2-14fd-49aa-9582-3b4e5cd3ac6d",
+      "grade": "A",
+      "score": 90,
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "internal_grade": "A",
+      "internal_score": 90,
+      "status": "enrolled",
+      "created_at": "2026-03-12T06:51:18.124Z",
+      "updated_at": "2026-03-12T06:51:18.124Z"
+    },
+    {
+      "id": "63b7c609-95ca-4468-b3a7-ba0d85dbf7a7",
+      "course_id": "d2d6c63c-d3ff-4274-8534-93c9db321fec",
+      "grade": "B",
+      "score": 82,
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "internal_grade": "B",
+      "internal_score": 82,
+      "status": "enrolled",
+      "created_at": "2026-03-12T06:51:18.126Z",
+      "updated_at": "2026-03-12T06:51:18.126Z"
+    },
+    {
+      "id": "3c6b52eb-f04a-446c-b6c6-9fbc4f977577",
+      "course_id": "7b1d1ce4-8697-44d4-870c-408f168505a8",
+      "grade": "A",
+      "score": 85,
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "internal_grade": "A",
+      "internal_score": 85,
+      "status": "enrolled",
+      "created_at": "2026-03-12T06:51:18.128Z",
+      "updated_at": "2026-03-12T06:51:18.128Z"
+    }
+  ],
+  "unit_grades": [],
+  "target_universities": [
+    {
+      "id": "1741f0a4-e034-4396-993d-9cd50084efdc",
+      "name": "University of Cambridge",
+      "country": "UK",
+      "ranking": 2,
+      "course_name": "Mathematics",
+      "a_level_requirement": "A*A*A",
+      "language_requirement": "IELTS 7.5 (7.0)",
+      "application_deadline": "2024-10-15",
+      "subject_requirements": "[]",
+      "notes": "",
+      "created_at": "2026-03-12T06:51:18.130Z"
+    },
+    {
+      "id": "63cbe726-b5a8-481c-9fc3-f4c91de70746",
+      "name": "Imperial College London",
+      "country": "UK",
+      "ranking": 6,
+      "course_name": "Mathematics with Statistics",
+      "a_level_requirement": "A*A*A",
+      "language_requirement": "IELTS 7.0 (6.5)",
+      "application_deadline": "2025-01-29",
+      "subject_requirements": "[]",
+      "notes": "",
+      "created_at": "2026-03-12T06:51:18.131Z"
+    },
+    {
+      "id": "0f41226e-9348-45f1-8c7b-0a6e9c57ff75",
+      "name": "University of Warwick",
+      "country": "UK",
+      "ranking": 10,
+      "course_name": "Mathematics and Statistics",
+      "a_level_requirement": "A*AA",
+      "language_requirement": "IELTS 6.5 (6.0)",
+      "application_deadline": "2025-01-29",
+      "subject_requirements": "[]",
+      "notes": "",
+      "created_at": "2026-03-12T06:51:18.133Z"
+    },
+    {
+      "id": "90903ce5-0c5c-4128-b7f3-3cd9c76b43f6",
+      "name": "University of Manchester",
+      "country": "UK",
+      "ranking": 28,
+      "course_name": "Mathematics",
+      "a_level_requirement": "AAA",
+      "language_requirement": "IELTS 6.5 (6.0)",
+      "application_deadline": "2025-01-29",
+      "subject_requirements": "[]",
+      "notes": "",
+      "created_at": "2026-03-12T06:51:18.135Z"
+    }
+  ],
+  "student_universities": [
+    {
+      "id": "afa73c0c-0525-4a8a-aaa8-aa69141e1dbf",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "university_id": "1741f0a4-e034-4396-993d-9cd50084efdc",
+      "application_type": "reach",
+      "status": "preparing",
+      "created_at": "2026-03-12T06:51:18.137Z",
+      "updated_at": "2026-03-12T06:51:18.137Z"
+    },
+    {
+      "id": "78c47aa7-cb30-4c00-ba25-023a2da1abda",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "university_id": "63cbe726-b5a8-481c-9fc3-f4c91de70746",
+      "application_type": "target",
+      "status": "preparing",
+      "created_at": "2026-03-12T06:51:18.139Z",
+      "updated_at": "2026-03-12T06:51:18.139Z"
+    },
+    {
+      "id": "30b1e63f-f68a-47bd-a2d3-bf6eeda6a9dc",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "university_id": "0f41226e-9348-45f1-8c7b-0a6e9c57ff75",
+      "application_type": "target",
+      "status": "interested",
+      "created_at": "2026-03-12T06:51:18.140Z",
+      "updated_at": "2026-03-12T06:51:18.140Z"
+    },
+    {
+      "id": "efd88a7e-636a-4682-88f2-68e39328dc01",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "university_id": "90903ce5-0c5c-4128-b7f3-3cd9c76b43f6",
+      "application_type": "safety",
+      "status": "interested",
+      "created_at": "2026-03-12T06:51:18.142Z",
+      "updated_at": "2026-03-12T06:51:18.142Z"
+    }
+  ],
+  "language_scores": [
+    {
+      "id": "be473e96-4d45-4f7e-9cf2-7aa9d4981e87",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "test_type": "IELTS",
+      "overall_score": 7,
+      "listening_score": 7.5,
+      "reading_score": 7,
+      "writing_score": 6.5,
+      "speaking_score": 7,
+      "test_date": "2024-08-15",
+      "valid_until": "2026-08-15",
+      "is_best_score": 1,
+      "created_at": "2026-03-12T06:51:18.144Z"
+    }
+  ],
+  "standardized_tests": [
+    {
+      "id": "515a26f0-ccbb-4283-9969-e4b29eb84d07",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "test_type": "SAT",
+      "score": 1450,
+      "max_score": 1600,
+      "section_scores": "{\"reading\":720,\"math\":730}",
+      "test_date": "2024-10-05",
+      "is_best_score": 1,
+      "created_at": "2026-03-12T06:51:18.146Z"
+    }
+  ],
+  "extracurriculars": [
+    {
+      "id": "2f917e36-7c13-44d7-899f-699c5aca25e9",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "name": "数学建模社团",
+      "activity_type": "academic",
+      "role": "社长",
+      "organization": "校内社团",
+      "start_date": "2023-09",
+      "ongoing": 1,
+      "description": "组织每周数学建模讨论，带领团队参加HiMCM比赛",
+      "hours_per_week": 4,
+      "achievements": "[\"HiMCM 2024 Meritorious Award\",\"组织5场校内讲座\"]",
+      "created_at": "2026-03-12T06:51:18.153Z"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "01374295-95b5-47bc-a53c-ea24e1dd14a9",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "title": "S1补考冲刺",
+      "description": "重点复习概率分布和假设检验",
+      "category": "academic",
+      "priority": "urgent",
+      "deadline": "2025-01-10",
+      "status": "pending",
+      "created_at": "2026-03-12T06:51:18.147Z",
+      "updated_at": "2026-03-12T06:51:18.147Z"
+    },
+    {
+      "id": "a905d653-530b-489a-9ef1-291de98fd371",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "title": "化学AS补考准备",
+      "description": "强化有机化学反应机理",
+      "category": "academic",
+      "priority": "urgent",
+      "deadline": "2025-01-15",
+      "status": "pending",
+      "created_at": "2026-03-12T06:51:18.149Z",
+      "updated_at": "2026-03-12T06:51:18.149Z"
+    },
+    {
+      "id": "6521fa4a-99f6-44e2-9d6e-a3dd23fc5881",
+      "student_id": "2f70e9e3-efee-4a29-87d4-81c16ad65168",
+      "title": "STEP考试准备",
+      "description": "开始STEP II真题练习",
+      "category": "standardized",
+      "priority": "high",
+      "deadline": "2025-03-01",
+      "status": "pending",
+      "created_at": "2026-03-12T06:51:18.151Z",
+      "updated_at": "2026-03-12T06:51:18.151Z"
+    }
+  ],
+  "exam_schedule": []
+}

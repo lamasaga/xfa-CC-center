@@ -1,0 +1,1205 @@
+{
+  "加拿大": [
+    {
+      "name": "多伦多大学",
+      "name_en": "University of Toronto",
+      "abbreviation": "UofT",
+      "country": "加拿大",
+      "official_website": "https://www.utoronto.ca",
+      "description": "多伦多大学成立于1827年，是加拿大历史最悠久、规模最大的公立研究型大学之一。主校区位于安大略省多伦多市中心，拥有三个校区。作为加拿大顶尖学府，多伦多大学在全球享有极高声誉，培养了众多诺贝尔奖得主和 Rhodes学者。学校在医学、工程、商学、人文社科等领域均有卓越表现，是加拿大研究经费最充裕的大学。",
+      "ranking": {
+        "qs": 29,
+        "the": 21,
+        "source": "QS 2026 / THE 2026"
+      },
+      "admission_requirements": {
+        "a_level": "至少3门A-Level成绩，BBB至A*A*A不等，具体要求因专业而异。热门专业如商科、工程通常要求AAB以上。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业要求7.0",
+        "toefl": "总分100（写作不低于22）",
+        "application_deadline": "主申请截止日期为1月中旬（OUAC系统），部分专业为12月",
+        "acceptance_rate": "约43%",
+        "notes": "不同学院要求差异较大，工程、罗德曼商学院、计算机科学竞争激烈"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "商科/罗德曼商学院",
+        "工程学",
+        "生命科学",
+        "心理学",
+        "经济学",
+        "护理学"
+      ],
+      "tuition": {
+        "amount": "44000-60000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "医科、工程、商科较高，文科相对较低"
+      },
+      "living_cost": {
+        "amount": "22000-30000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "多伦多市区生活成本较高"
+      },
+      "location": {
+        "city": "多伦多"
+      },
+      "type": "公立",
+      "features": [
+        "加拿大排名第一的大学",
+        "诺贝尔奖得主摇篮",
+        "研究经费加拿大第一",
+        "强大的校友网络",
+        "三校区体系"
+      ],
+      "facilities": "拥有世界一流的图书馆系统（超过4400万册藏书）、先进的研究实验室、运动中心、学生宿舍和现代化的教学楼。每个校区都有完善的食堂、医疗中心和学术支持服务。",
+      "academic_resources": "拥有加拿大最大的研究图书馆系统，年度研究经费超过15亿加元。在人工智能、生物技术、纳米技术、社会科学等领域处于全球领先地位。与全球300多所大学有交换协议。",
+      "work_visa_policy": "毕业后可申请最长3年的毕业后工签（PGWP）。多伦多大学属于DLI指定院校，毕业生可通过加拿大经验类移民（CEC）申请永久居民身份。"
+    },
+    {
+      "name": "不列颠哥伦比亚大学",
+      "name_en": "University of British Columbia",
+      "abbreviation": "UBC",
+      "country": "加拿大",
+      "official_website": "https://www.ubc.ca",
+      "description": "不列颠哥伦比亚大学（UBC）成立于1908年，是加拿大西部最顶尖的研究型大学，主校区位于温哥华，另在奥肯那根设有分校。UBC以其卓越的研究实力、优美的校园环境和国际化氛围闻名，常年位居加拿大前三。学校在林业、海洋科学、工程、商学和环境科学等领域具有世界领先地位。",
+      "ranking": {
+        "qs": 40,
+        "the": 41,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "至少3门A-Level（或6门AS-Level），成绩要求因专业而异，通常需要ABB以上。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业要求7.0",
+        "toefl": "总分90（阅读听力不低于22，写作口语不低于21）",
+        "application_deadline": "1月15日（主申请截止），部分奖学金申请更早",
+        "acceptance_rate": "约54%（温哥华校区约44%）",
+        "notes": "温哥华校区竞争激烈，奥肯那根校区录取率较高。个人简介（Personal Profile）是重要评估因素。"
+      },
+      "popular_majors": [
+        "商科",
+        "计算机科学",
+        "工程学",
+        "林业",
+        "海洋科学",
+        "环境科学",
+        "心理学",
+        "国际关系"
+      ],
+      "tuition": {
+        "amount": "41000-61000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "商科和工程学费较高，文科相对较低"
+      },
+      "living_cost": {
+        "amount": "20000-28000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "温哥华是加拿大生活成本最高的城市之一"
+      },
+      "location": {
+        "city": "温哥华"
+      },
+      "type": "公立",
+      "features": [
+        "加拿大最美校园之一",
+        "全球顶尖研究型大学",
+        "海洋和林业研究领先",
+        "奥肯那根双校区",
+        "可持续发展领导者"
+      ],
+      "facilities": "温哥华校区坐落在太平洋沿岸，占地400英亩，拥有现代化实验室、图书馆、运动设施和学生宿舍。UBC拥有加拿大最大的研究图书馆之一，以及先进的高性能计算设施。",
+      "academic_resources": "年度研究经费超过7亿加元，在清洁技术、数字媒体、健康和生命科学等领域具有突出优势。与全球200多所大学有合作关系，提供丰富的海外交流机会。",
+      "work_visa_policy": "毕业后可申请最长3年的PGWP。温哥华是加拿大科技中心之一，提供丰富的就业机会，毕业生可通过省提名计划（BC PNP）申请移民。"
+    },
+    {
+      "name": "麦吉尔大学",
+      "name_en": "McGill University",
+      "abbreviation": "McGill",
+      "country": "加拿大",
+      "official_website": "https://www.mcgill.ca",
+      "description": "麦吉尔大学成立于1821年，位于魁北克省蒙特利尔市，是加拿大最古老的高等学府之一，被誉为'加拿大的哈佛'。麦吉尔以其严格的学术标准、卓越的研究实力和多元化的国际学生群体闻名。学校在医学、法学、工程学和管理学等领域具有世界级声誉，培养了大量罗德学者和诺贝尔奖得主。",
+      "ranking": {
+        "qs": 27,
+        "the": 41,
+        "source": "QS 2026 / THE 2026"
+      },
+      "admission_requirements": {
+        "a_level": "至少3门A-Level（3门不同科目），或2门A-Level+2门AS-Level。Arts要求AAA-AAB，Science要求AAA，Engineering要求AAA，Medicine竞争极为激烈。",
+        "ielts": "总分6.5，部分专业如教育、法律要求更高",
+        "toefl": "总分90（单项不低于21），部分专业要求100",
+        "application_deadline": "1月15日（秋季入学），部分专业更早",
+        "acceptance_rate": "约46%",
+        "notes": "魁北克省学费政策独特，麦吉尔提供学费保证计划（guaranteed tuition）。医学院和法学院竞争异常激烈。"
+      },
+      "popular_majors": [
+        "医学",
+        "法学",
+        "工程学",
+        "商科",
+        "计算机科学",
+        "心理学",
+        "生物科学",
+        "经济学"
+      ],
+      "tuition": {
+        "amount": "29000-50000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "魁北克本地学生学费远低于其他省份和国际学生，国际学生学费因专业差异大"
+      },
+      "living_cost": {
+        "amount": "20000-28000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "蒙特利尔生活成本低于多伦多和温哥华"
+      },
+      "location": {
+        "city": "蒙特利尔"
+      },
+      "type": "公立",
+      "features": [
+        "加拿大哈佛",
+        "罗德学者数量加拿大第一",
+        "医学院全球顶尖",
+        "研究密集型大学",
+        "英法双语环境"
+      ],
+      "facilities": "位于蒙特利尔市中心的皇家山脚下，校园历史悠久且优美。拥有现代化实验室、研究图书馆、运动中心和学生宿舍。麦吉尔大学健康中心（MUHC）是加拿大最大的医疗研究机构之一。",
+      "academic_resources": "研究经费充裕，在神经科学、癌症研究、航空航天、材料科学等领域处于世界前沿。拥有多个国家级研究中心，与全球250多所大学有合作协议。",
+      "work_visa_policy": "毕业后可申请最长3年PGWP。蒙特利尔是加拿大第二大都市和法语区经济中心，提供丰富的就业和移民机会。魁北克省有独立的移民政策（PEQ）。"
+    },
+    {
+      "name": "麦克马斯特大学",
+      "name_en": "McMaster University",
+      "abbreviation": "McMaster",
+      "country": "加拿大",
+      "official_website": "https://www.mcmaster.ca",
+      "description": "麦克马斯特大学成立于1887年，位于安大略省汉密尔顿市，是加拿大U15研究型大学联盟成员。学校以其创新的问题导向学习法（PBL）和健康科学项目闻名全球。工程学院和健康科学学院是麦马的王牌学院，核反应堆研究设施是加拿大大学中唯一的此类设施。",
+      "ranking": {
+        "qs": 150,
+        "the": 140,
+        "source": "QS 2025 / THE 2025（估算）"
+      },
+      "admission_requirements": {
+        "a_level": "5门GCE科目（至少2门A-Level），A-Level成绩至少C。工程和科学专业要求A-Level数学和物理/化学。健康科学竞争激烈。",
+        "ielts": "总分6.5（单项不低于6.0）",
+        "toefl": "总分86（单项不低于20）",
+        "application_deadline": "1月15日（OUAC系统）",
+        "acceptance_rate": "约44%",
+        "notes": "健康科学（Health Sciences）是加拿大最难进的本科项目之一，录取率极低。工程学院提供带薪实习（Co-op）机会。"
+      },
+      "popular_majors": [
+        "健康科学",
+        "工程学",
+        "商学",
+        "生命科学",
+        "计算机科学",
+        "心理学",
+        "护理学"
+      ],
+      "tuition": {
+        "amount": "32000-45000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "工程和健康科学学费较高"
+      },
+      "living_cost": {
+        "amount": "18000-25000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "汉密尔顿生活成本低于多伦多"
+      },
+      "location": {
+        "city": "汉密尔顿"
+      },
+      "type": "公立",
+      "features": [
+        "问题导向学习法先驱",
+        "健康科学加拿大顶尖",
+        "核反应堆研究设施",
+        "工程Co-op项目强",
+        "U15研究型大学成员"
+      ],
+      "facilities": "拥有加拿大唯一的大学核反应堆、世界级健康科学中心、先进工程实验室和现代化图书馆。校园绿树成荫，距离多伦多约1小时车程。",
+      "academic_resources": "在健康科学、工程、材料科学和核研究等领域处于加拿大领先地位。年度研究经费约3亿加元，与业界有密切合作。",
+      "work_visa_policy": "毕业后可申请最长3年PGWP。汉密尔顿靠近多伦多，就业机会丰富，可通过安大略省省提名计划（OINP）申请移民。"
+    },
+    {
+      "name": "阿尔伯塔大学",
+      "name_en": "University of Alberta",
+      "abbreviation": "UAlberta",
+      "country": "加拿大",
+      "official_website": "https://www.ualberta.ca",
+      "description": "阿尔伯塔大学成立于1908年，位于阿尔伯塔省省会埃德蒙顿市，是加拿大顶尖的研究型大学之一。学校在能源、环境科学、工程、医学和农业研究方面处于世界领先地位。作为U15成员，阿尔伯塔大学每年获得可观的研究经费，是加拿大西部研究实力最强的大学之一。",
+      "ranking": {
+        "qs": 96,
+        "the": 109,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩，具体要求因学院而异，一般要求至少BBC以上。工程专业要求数学、物理、化学 prerequisite。",
+        "ielts": "总分6.5（单项不低于5.5）",
+        "toefl": "总分90（单项不低于21）",
+        "application_deadline": "3月1日（大部分专业），部分热门专业1月15日",
+        "acceptance_rate": "约51-58%",
+        "notes": "接受预测成绩申请，但需在3月1日后提交正式成绩单。A-Level成绩A或B可获得转学分。"
+      },
+      "popular_majors": [
+        "工程学",
+        "能源与环境",
+        "计算机科学",
+        "医学",
+        "商学",
+        "农业科学",
+        "药学",
+        "护理学"
+      ],
+      "tuition": {
+        "amount": "24000-35000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "相对于多伦多和温哥华的学校，学费较为亲民"
+      },
+      "living_cost": {
+        "amount": "15000-22000",
+        "currency": "CAD",
+        "period": "每年",
+        "note": "埃德蒙顿生活成本在加拿大主要城市中较低"
+      },
+      "location": {
+        "city": "埃德蒙顿"
+      },
+      "type": "公立",
+      "features": [
+        "能源研究世界领先",
+        "研究经费加拿大前五",
+        "U15成员",
+        "学费性价比高",
+        "发现胰岛素的研究机构"
+      ],
+      "facilities": "拥有150多座建筑、世界级图书馆系统、先进的研究实验室和运动设施。校园占地广阔，提供丰富的学生宿舍和课外活动选择。",
+      "academic_resources": "年度研究经费超过5亿加元，在能源、健康科学、人工智能和环境可持续性研究方面处于全球前沿。拥有多个国家级研究主席职位。",
+      "work_visa_policy": "毕业后可申请最长3年PGWP。阿尔伯塔省经济增长迅速，提供丰富的就业和移民机会，省提名计划（AINP）对毕业生友好。"
+    }
+  ],
+  "澳大利亚": [
+    {
+      "name": "墨尔本大学",
+      "name_en": "University of Melbourne",
+      "abbreviation": "UniMelb",
+      "country": "澳大利亚",
+      "official_website": "https://www.unimelb.edu.au",
+      "description": "墨尔本大学成立于1853年，是澳大利亚历史最悠久的大学之一，也是澳洲八校联盟（Group of Eight）的核心成员。学校位于墨尔本市中心，以其卓越的研究实力、创新的'墨尔本模式'教育和广泛的学科覆盖闻名。墨尔本大学在医学、法学、商学和人文社科领域享有极高声誉。",
+      "ranking": {
+        "qs": 19,
+        "the": 39,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩（按A*=6, A=5, B=4, C=3, D=2, E=1换算）。农业要求9分（CCC），文科要求12分（BBB），商科要求13分（ABB），生物科学要求14分（AAB），口腔健康要求15分（AAA）。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业如法律、教育要求7.0",
+        "toefl": "总分79（写作21，口语18，阅读听力13）",
+        "application_deadline": "12月31日（Semester 1主申请截止），部分专业可延至1月",
+        "acceptance_rate": "约70%",
+        "notes": "采用墨尔本模式，本科阶段提供通识教育，研究生阶段进行专业深造。需额外注意 prerequisite 科目要求。"
+      },
+      "popular_majors": [
+        "法学",
+        "医学",
+        "商科",
+        "工程学",
+        "生物科学",
+        "建筑学",
+        "教育学",
+        "心理学"
+      ],
+      "tuition": {
+        "amount": "35000-71000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "医学和牙科最高，文科相对较低"
+      },
+      "living_cost": {
+        "amount": "24000-30000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "墨尔本生活成本低于悉尼"
+      },
+      "location": {
+        "city": "墨尔本"
+      },
+      "type": "公立",
+      "features": [
+        "澳洲八校联盟创始成员",
+        "墨尔本模式教育创新",
+        "研究实力澳洲第一",
+        "医学和法学全球顶尖",
+        "就业竞争力强"
+      ],
+      "facilities": "拥有南半球最大的大学图书馆系统、世界级的研究实验室、体育设施和学生宿舍。主校区位于墨尔本市中心，交通便利。",
+      "academic_resources": "年度研究经费澳洲第一，拥有100多个研究中心和研究所。在生物医学、神经科学、材料科学、气候变化研究等领域处于全球领先地位。",
+      "work_visa_policy": "毕业后可申请485临时毕业生签证（Post-Study Work Stream），学士学位获2年工签（2024年7月后新规）。墨尔本作为澳洲文化首都，提供丰富就业机会。"
+    },
+    {
+      "name": "悉尼大学",
+      "name_en": "University of Sydney",
+      "abbreviation": "USyd",
+      "country": "澳大利亚",
+      "official_website": "https://www.sydney.edu.au",
+      "description": "悉尼大学成立于1850年，是澳大利亚第一所大学，也是澳洲八校联盟的创始成员。学校主校区位于悉尼市中心，以其哥特式建筑和卓越学术声誉闻名。悉尼大学在法律、医学、工程、商学和人文社科等领域均处于世界领先水平，是澳洲最受国际学生欢迎的大学之一。",
+      "ranking": {
+        "qs": 25,
+        "the": 61,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩（按A*=6, A=5, B=4, C=3, D=2, E=1换算），一般要求13-17分。商科和工程通常要求BBB以上。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业如法律、医学要求7.0-7.5",
+        "toefl": "总分85（阅读听力口语17，写作19）",
+        "application_deadline": "1月15日（Semester 1主申请截止）",
+        "acceptance_rate": "约30%",
+        "notes": "部分专业如医学需要额外入学考试（如ISAT）和面试。采用灵活的学位结构，允许跨学科选课。"
+      },
+      "popular_majors": [
+        "法学",
+        "医学",
+        "工程学",
+        "商科",
+        "护理学",
+        "建筑学",
+        "教育学",
+        "心理学"
+      ],
+      "tuition": {
+        "amount": "46000-61000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "医学和法律学费最高，文科相对较低"
+      },
+      "living_cost": {
+        "amount": "30000-36000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "悉尼是澳大利亚生活成本最高的城市"
+      },
+      "location": {
+        "city": "悉尼"
+      },
+      "type": "公立",
+      "features": [
+        "澳大利亚第一所大学",
+        "澳洲八校联盟创始成员",
+        "哥特式建筑群",
+        "毕业生就业力全球前列",
+        "综合学科覆盖广"
+      ],
+      "facilities": "拥有哥特复兴式建筑群（被称为'哈利波特楼'）、现代化图书馆、研究实验室和运动中心。提供丰富的学生宿舍和课外社团活动。",
+      "academic_resources": "年度研究经费超过8亿澳元，在癌症研究、神经科学、可持续发展和公共卫生等领域处于世界前沿。与全球250多所大学有合作协议。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。悉尼作为澳洲最大城市和经济中心，提供广泛的就业和移民机会。"
+    },
+    {
+      "name": "新南威尔士大学",
+      "name_en": "University of New South Wales",
+      "abbreviation": "UNSW",
+      "country": "澳大利亚",
+      "official_website": "https://www.unsw.edu.au",
+      "description": "新南威尔士大学（UNSW）成立于1949年，位于悉尼肯辛顿区，是澳洲八校联盟成员和亚太地区顶尖的研究型大学。UNSW以工程、商科、法律和科学见长，尤其在光伏太阳能、量子计算和金融科技等前沿领域具有全球影响力。学校采用三学期制（UNSW3+），提供更灵活的学习节奏。",
+      "ranking": {
+        "qs": 20,
+        "the": 83,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩（按A*=6, A=5, B=4, C=3, D=2, E=1换算），一般要求12-16分。商科和工程要求较高。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业要求7.0",
+        "toefl": "总分90（写作23，阅读听力口语22）",
+        "application_deadline": "11月30日（Term 1主申请截止），部分专业接受多轮申请",
+        "acceptance_rate": "约60%",
+        "notes": "采用三学期制（Term 1/2/3），入学时间更灵活。工程和商科是王牌专业，竞争激烈。接受预测成绩申请。"
+      },
+      "popular_majors": [
+        "工程学",
+        "商科",
+        "法学",
+        "计算机科学",
+        "建筑学",
+        "精算学",
+        "金融学",
+        "心理学"
+      ],
+      "tuition": {
+        "amount": "44000-87000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "商科和工程学费较高，医学类最高"
+      },
+      "living_cost": {
+        "amount": "28000-35000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "悉尼生活成本较高"
+      },
+      "location": {
+        "city": "悉尼"
+      },
+      "type": "公立",
+      "features": [
+        "澳洲八校联盟成员",
+        "工程和商科澳洲顶尖",
+        "三学期制灵活入学",
+        "光伏研究全球第一",
+        "就业竞争力强"
+      ],
+      "facilities": "拥有现代化的校园设施、世界级的工程实验室、图书馆和运动中心。UNSW的太阳能研究设施是全球最先进的之一。",
+      "academic_resources": "在光伏技术、量子计算、气候变化和水资源管理等领域处于全球领先地位。与业界合作紧密，提供丰富的实习和就业机会。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。UNSW与众多企业有合作关系，毕业生就业率高。"
+    },
+    {
+      "name": "澳大利亚国立大学",
+      "name_en": "Australian National University",
+      "abbreviation": "ANU",
+      "country": "澳大利亚",
+      "official_website": "https://www.anu.edu.au",
+      "description": "澳大利亚国立大学（ANU）成立于1946年，位于首都堪培拉，是澳大利亚唯一由联邦议会立法成立的大学。ANU以卓越的研究实力和精英教育模式著称，师生比为澳洲最优。学校在政治学、国际关系、法学、物理学和天文学等领域具有世界级声誉，是培养澳大利亚公务员的摇篮。",
+      "ranking": {
+        "qs": 32,
+        "the": 73,
+        "source": "QS 2026 / THE 2026"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩（按A*=6, A=5, B=4, C=3, D=2, E=1换算），一般要求BBB（10-12分），法律和政治学要求更高（15-17分）。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业要求7.0",
+        "toefl": "总分80（阅读和写作20）",
+        "application_deadline": "12月15日（主申请截止）",
+        "acceptance_rate": "约35%",
+        "notes": "ANU位于首都堪培拉，校园氛围学术性强。政治和国际关系专业全球顶尖，与政府部门联系紧密。"
+      },
+      "popular_majors": [
+        "政治学与国际关系",
+        "法学",
+        "物理学",
+        "天文学",
+        "计算机科学",
+        "经济学",
+        "精算学",
+        "社会科学"
+      ],
+      "tuition": {
+        "amount": "42000-57000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "研究型硕士学费通常较低"
+      },
+      "living_cost": {
+        "amount": "22000-28000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "堪培拉生活成本低于悉尼和墨尔本"
+      },
+      "location": {
+        "city": "堪培拉"
+      },
+      "type": "公立",
+      "features": [
+        "澳洲唯一国立大学",
+        "师生比全澳最优",
+        "政治和国际关系全球顶尖",
+        "研究密集型大学",
+        "精英教育模式"
+      ],
+      "facilities": "校园位于堪培拉市中心附近，拥有世界级图书馆、研究天文台、超级计算中心和运动设施。校园环境优美，学术氛围浓厚。",
+      "academic_resources": "作为澳洲国家研究机构，ANU拥有天文与天体物理研究院、克劳福德公共政策学院等国家级研究机构。在核物理、天文、政治学研究方面处于全球前沿。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。堪培拉作为首都，政府部门和研究机构提供丰富的实习和就业机会。"
+    },
+    {
+      "name": "莫纳什大学",
+      "name_en": "Monash University",
+      "abbreviation": "Monash",
+      "country": "澳大利亚",
+      "official_website": "https://www.monash.edu",
+      "description": "莫纳什大学成立于1958年，以一战将军约翰·莫纳什爵士命名，主校区位于墨尔本。学校是澳洲八校联盟成员和澳大利亚规模最大的大学之一。莫纳什在药学、教育学、工程、商学和医学等领域具有突出优势，在马来西亚、南非、中国和印度设有海外校区。",
+      "ranking": {
+        "qs": 36,
+        "the": 58,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩（按A*=5, A=5, B=4, C=3, D=2, E=1换算），一般要求总分8-12分。不同学院要求不同。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业要求7.0",
+        "toefl": "总分79（阅读13，听力12，写作21，口语18）",
+        "application_deadline": "无固定截止日期，建议提前申请，主要入学为Semester 1（3月）",
+        "acceptance_rate": "约73%",
+        "notes": "全年接受申请，热门专业可能提前满位。药学是全球顶尖专业之一。提供多个入学路径（预科、文凭课程等）。"
+      },
+      "popular_majors": [
+        "药学",
+        "教育学",
+        "工程学",
+        "商科",
+        "医学",
+        "护理学",
+        "法学",
+        "信息技术"
+      ],
+      "tuition": {
+        "amount": "39000-56000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "医学和药学学费较高"
+      },
+      "living_cost": {
+        "amount": "24000-30000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "墨尔本生活成本适中"
+      },
+      "location": {
+        "city": "墨尔本"
+      },
+      "type": "公立",
+      "features": [
+        "澳洲规模最大的大学",
+        "药学专业全球第二",
+        "八校联盟成员",
+        "国际化程度高",
+        "多校区布局"
+      ],
+      "facilities": "拥有先进的教学和研究设施、现代化的图书馆、运动中心和多种学生宿舍。莫纳什医疗中心是澳大利亚最大的医疗教学医院之一。",
+      "academic_resources": "在药学、生物医学、新材料和可持续能源研究方面处于全球领先地位。与业界合作紧密，拥有完善的产学合作网络。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。莫纳什毕业生就业率较高，可通过维多利亚州担保申请移民。"
+    },
+    {
+      "name": "昆士兰大学",
+      "name_en": "University of Queensland",
+      "abbreviation": "UQ",
+      "country": "澳大利亚",
+      "official_website": "https://www.uq.edu.au",
+      "description": "昆士兰大学（UQ）成立于1909年，位于昆士兰州首府布里斯班，是澳洲八校联盟创始成员之一。学校以其卓越的研究实力、优美的校园环境和高质量的教学闻名。UQ在生物科学、工程、公共卫生和体育科学等领域具有突出优势，是HPV疫苗和核磁共振技术的重要研发机构。",
+      "ranking": {
+        "qs": 42,
+        "the": 77,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩（按A*=6, A=5, B=4, C=3, D=2, E=1换算），一般要求12-15分。工程和科学专业要求数学和物理/化学。",
+        "ielts": "总分6.5（单项不低于6.0）",
+        "toefl": "总分87（写作21，阅读听力口语19）",
+        "application_deadline": "11月30日（Semester 1主申请截止）",
+        "acceptance_rate": "约40%",
+        "notes": "部分专业如医学需要额外的入学考试（ISAT/UCAT）。接受预测成绩申请。"
+      },
+      "popular_majors": [
+        "生物科学",
+        "工程学",
+        "公共卫生",
+        "商学",
+        "计算机科学",
+        "心理学",
+        "兽医学",
+        "体育科学"
+      ],
+      "tuition": {
+        "amount": "43000-57000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "兽医学和医学学费较高"
+      },
+      "living_cost": {
+        "amount": "20000-26000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "布里斯班生活成本低于悉尼和墨尔本"
+      },
+      "location": {
+        "city": "布里斯班"
+      },
+      "type": "公立",
+      "features": [
+        "八校联盟创始成员",
+        "HPV疫苗研发地",
+        "研究经费充裕",
+        "校园环境优美",
+        "亚热带气候宜人"
+      ],
+      "facilities": "拥有广阔的河岸校园、世界级图书馆、研究实验室和运动设施。UQ的兽医科学设施是澳洲最先进的之一。",
+      "academic_resources": "在生物多样性、水资源管理、疫苗开发和矿业工程等领域处于全球领先地位。年度研究经费超过4亿澳元。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。布里斯班作为2032年奥运会举办城市，提供丰富的就业和基础设施发展机会。"
+    },
+    {
+      "name": "西澳大学",
+      "name_en": "University of Western Australia",
+      "abbreviation": "UWA",
+      "country": "澳大利亚",
+      "official_website": "https://www.uwa.edu.au",
+      "description": "西澳大学（UWA）成立于1911年，位于西澳大利亚州首府珀斯，是澳洲八校联盟成员。学校以其卓越的研究实力和与业界的紧密联系闻名，在矿业工程、海洋科学、农业科学和医学等领域具有全球优势。珀斯与中国无时差，是中国学生的热门选择。",
+      "ranking": {
+        "qs": 77,
+        "the": 131,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩，一般要求CCC（约ATAR 75），竞争激烈的专业要求更高。工程和科学要求数学和物理/化学 prerequisite。",
+        "ielts": "总分6.5（单项不低于6.0）",
+        "toefl": "总分82（写作22，口语20，听力20，阅读18）",
+        "application_deadline": "12月（Semester 1主申请截止）",
+        "acceptance_rate": "约38%",
+        "notes": "珀斯与中国无时差。部分工程专业有行业认证优势。提供丰富的奖学金机会。"
+      },
+      "popular_majors": [
+        "矿业工程",
+        "海洋科学",
+        "农业科学",
+        "医学",
+        "商学",
+        "心理学",
+        "工程学",
+        "建筑学"
+      ],
+      "tuition": {
+        "amount": "40000-51000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "矿业和工程学费较高"
+      },
+      "living_cost": {
+        "amount": "18000-25000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "珀斯生活成本适中，住房相对可负担"
+      },
+      "location": {
+        "city": "珀斯"
+      },
+      "type": "公立",
+      "features": [
+        "八校联盟成员",
+        "矿业工程全球顶尖",
+        "海洋研究领先",
+        "与业界联系紧密",
+        "无时差优势"
+      ],
+      "facilities": "拥有美丽的校园环境、现代化研究设施、图书馆和运动中心。海洋研究所和农业研究所设备先进。",
+      "academic_resources": "在矿业工程、海洋科学、农业研究和能源领域处于全球前沿。与西澳州矿业和能源行业合作紧密。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。西澳州对技术移民需求大，州担保政策友好。"
+    },
+    {
+      "name": "阿德莱德大学",
+      "name_en": "University of Adelaide",
+      "abbreviation": "Adelaide",
+      "country": "澳大利亚",
+      "official_website": "https://www.adelaide.edu.au",
+      "description": "阿德莱德大学成立于1874年，是澳大利亚第三古老的大学，位于南澳大利亚州首府阿德莱德市。学校是澳洲八校联盟成员，以其卓越的研究传统和创新精神著称。阿德莱德大学在葡萄酒酿造、健康科学、工程和技术领域具有突出优势。阿德莱德市生活成本适中，移民政策友好。",
+      "ranking": {
+        "qs": 82,
+        "the": 128,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "2门A-Level成绩（至少E等级）或3门AS-Level（至少C等级）。医科要求更高（12分以上）。",
+        "ielts": "总分6.5（单项不低于6.0）",
+        "toefl": "总分79（写作21，口语18，听力阅读13）",
+        "application_deadline": "12月（Semester 1主申请截止），部分专业有多个入学时间",
+        "acceptance_rate": "约75%",
+        "notes": "阿德莱德市生活成本较低，移民政策优惠（偏远地区加分）。葡萄酒酿造专业全球知名。"
+      },
+      "popular_majors": [
+        "葡萄酒酿造",
+        "工程学",
+        "健康科学",
+        "计算机科学",
+        "商科",
+        "医学",
+        "牙科",
+        "信息技术"
+      ],
+      "tuition": {
+        "amount": "41000-99000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "牙科和医学学费较高"
+      },
+      "living_cost": {
+        "amount": "18000-24000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "阿德莱德是澳洲生活成本最低的城市之一"
+      },
+      "location": {
+        "city": "阿德莱德"
+      },
+      "type": "公立",
+      "features": [
+        "八校联盟成员",
+        "澳洲第三古老大学",
+        "葡萄酒酿造全球顶尖",
+        "偏远地区移民加分",
+        "生活成本低"
+      ],
+      "facilities": "拥有历史悠久的建筑和现代化设施并存的校园，先进的研究实验室、图书馆和运动中心。葡萄酒研究中心是全球顶尖的。",
+      "academic_resources": "在健康科学、葡萄酒研究、机器学习和国防科技等领域处于领先地位。年度研究经费约3亿澳元。",
+      "work_visa_policy": "毕业后可申请485签证，阿德莱德属于偏远地区，可获得额外1-2年工签延长。南澳州担保政策对毕业生非常友好。"
+    },
+    {
+      "name": "悉尼科技大学",
+      "name_en": "University of Technology Sydney",
+      "abbreviation": "UTS",
+      "country": "澳大利亚",
+      "official_website": "https://www.uts.edu.au",
+      "description": "悉尼科技大学（UTS）成立于1988年，位于悉尼市中心，是澳大利亚最年轻的顶尖大学之一。UTS以实践导向的教学、与行业的紧密合作和创新的课程设置著称。学校在信息技术、设计、工程、护理和商科等领域表现突出，是澳洲最具创新精神的大学之一。",
+      "ranking": {
+        "qs": 96,
+        "the": 145,
+        "source": "QS 2026 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "2-3门A-Level成绩，一般要求总分在ATAR 69以上（约CDD-BBC）。不同专业要求不同。",
+        "ielts": "总分6.5（写作不低于6.0）",
+        "toefl": "总分79-93（写作不低于21）",
+        "application_deadline": "无固定截止日期，建议提前3-6个月申请",
+        "acceptance_rate": "约19%",
+        "notes": "UTS以实践教学著称，与行业合作紧密。校园位于悉尼市中心，地理位置优越。提供大量实习和Co-op机会。"
+      },
+      "popular_majors": [
+        "信息技术",
+        "设计",
+        "工程学",
+        "护理学",
+        "商科",
+        "建筑学",
+        "法学",
+        "传媒学"
+      ],
+      "tuition": {
+        "amount": "32000-52000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "设计和商科学费适中"
+      },
+      "living_cost": {
+        "amount": "28000-35000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "悉尼市中心生活成本较高"
+      },
+      "location": {
+        "city": "悉尼"
+      },
+      "type": "公立",
+      "features": [
+        "实践导向教学",
+        "与行业合作紧密",
+        "地理位置优越",
+        "创新课程设置",
+        "年轻大学排名前列"
+      ],
+      "facilities": "拥有屡获殊荣的现代化校园建筑、先进的IT实验室、设计工作室和创新中心。位于悉尼科技区，周围环绕众多科技企业。",
+      "academic_resources": "在人工智能、数据科学、可持续设计和健康技术等领域具有突出优势。与悉尼科技园区企业合作紧密，产学研结合度高。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。UTS与众多企业有合作，毕业生就业率高。"
+    },
+    {
+      "name": "麦考瑞大学",
+      "name_en": "Macquarie University",
+      "abbreviation": "MQ",
+      "country": "澳大利亚",
+      "official_website": "https://www.mq.edu.au",
+      "description": "麦考瑞大学成立于1964年，位于悉尼北部的麦考瑞公园商务区，是澳大利亚最具进取精神的大学之一。学校以其卓越的商科、金融、语言学、心理学和脊椎按摩学等专业闻名。麦考瑞大学是澳洲第一所开设精算学课程的大学，其商学院获得AACSB和EQUIS双重认证。",
+      "ranking": {
+        "qs": 130,
+        "the": 178,
+        "source": "QS 2025 / THE 2025（估算）"
+      },
+      "admission_requirements": {
+        "a_level": "2-3门A-Level成绩，一般要求ATAR 65以上。商科和精算学要求较高。",
+        "ielts": "总分6.5（单项不低于6.0）",
+        "toefl": "总分83（阅读12，写作21，听力18，口语18）",
+        "application_deadline": "无固定截止日期，主要入学为Semester 1（2月）和Semester 2（7月）",
+        "acceptance_rate": "约54%",
+        "notes": "麦考瑞商学院享有盛誉，精算学是全球顶尖专业。申请无需申请费。提供预科和文凭课程作为入学途径。"
+      },
+      "popular_majors": [
+        "精算学",
+        "金融学",
+        "会计学",
+        "语言学",
+        "心理学",
+        "脊椎按摩学",
+        "传媒学",
+        "信息技术"
+      ],
+      "tuition": {
+        "amount": "40000-90000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "商科和精算学费适中，脊椎按摩学费较高"
+      },
+      "living_cost": {
+        "amount": "24000-30000",
+        "currency": "AUD",
+        "period": "每年",
+        "note": "悉尼北部生活成本适中"
+      },
+      "location": {
+        "city": "悉尼"
+      },
+      "type": "公立",
+      "features": [
+        "精算学全球顶尖",
+        "商学院双重认证",
+        "无申请费",
+        " Linguistics全球领先",
+        "就业导向强"
+      ],
+      "facilities": "校园位于悉尼最大的商业园区，拥有现代化教学设施、图书馆、运动中心和医院（麦考瑞大学医院）。",
+      "academic_resources": "在认知科学、气候科学、金融技术和语言学等领域处于世界前沿。与麦考瑞公园商务区的企业合作紧密。",
+      "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。麦考瑞公园商务区提供丰富的实习和就业机会。"
+    }
+  ],
+  "香港": [
+    {
+      "name": "香港大学",
+      "name_en": "University of Hong Kong",
+      "abbreviation": "HKU",
+      "country": "中国香港",
+      "official_website": "https://www.hku.hk",
+      "description": "香港大学（HKU）成立于1911年，是香港历史最悠久的高等学府，也是亚洲最具国际化的大学之一。学校位于香港岛薄扶林，以其卓越的医学、法学、商学和牙科学院闻名全球。HKU采用全英文教学，拥有来自全球100多个国家的学生和教师，学术氛围国际化。",
+      "ranking": {
+        "qs": 17,
+        "the": 35,
+        "source": "QS 2025 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩，一般要求3A以上。医学要求4A*，法学要求3A*，工程要求3A，商科要求2A*1A。",
+        "ielts": "总分6.5（单项不低于6.0），部分专业如法律要求7.0-7.5",
+        "toefl": "总分93（写作不低于25）",
+        "application_deadline": "12月中旬（主轮申请截止），部分专业延至1月",
+        "acceptance_rate": "约10%",
+        "notes": "HKU是全港竞争最激烈的大学之一。医学院和牙医学院录取要求极高。面试是部分专业的重要评估环节。"
+      },
+      "popular_majors": [
+        "法学",
+        "医学",
+        "牙医学",
+        "商科",
+        "工程学",
+        "建筑学",
+        "社会科学",
+        "教育学"
+      ],
+      "tuition": {
+        "amount": "182000-218000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "非本地学生学费，STEM和非STEM专业差异不大"
+      },
+      "living_cost": {
+        "amount": "120000-180000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "包括住宿、餐饮和日常开销"
+      },
+      "location": {
+        "city": "香港"
+      },
+      "type": "公立",
+      "features": [
+        "香港历史最悠久的大学",
+        "全英文教学",
+        "医学和法学亚洲顶尖",
+        "国际化程度高",
+        "研究型大学"
+      ],
+      "facilities": "拥有现代化的教学楼、图书馆、医学中心和学生宿舍。校园位于香港岛西部，交通便利，设施完善。",
+      "academic_resources": "在传染病研究、癌症治疗、法律和金融研究等领域处于全球前沿。拥有多个世界级的研究中心和研究所。",
+      "work_visa_policy": "毕业后可申请IANG签证（非本地毕业生留港/回港就业安排），可在港无条件居留24个月寻找工作。"
+    },
+    {
+      "name": "香港中文大学",
+      "name_en": "Chinese University of Hong Kong",
+      "abbreviation": "CUHK",
+      "country": "中国香港",
+      "official_website": "https://www.cuhk.edu.hk",
+      "description": "香港中文大学（CUHK）成立于1963年，位于新界沙田，是香港唯一一所采用书院制的综合性研究型大学。学校以中英双语教学为特色，在商学、医学、工程、社会科学和中文研究等领域享有盛誉。CUHK拥有香港最大的校园，风景优美，学术氛围浓厚。",
+      "ranking": {
+        "qs": 36,
+        "the": 44,
+        "source": "QS 2025 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩，一般要求ABB以上。商科和医学要求更高。接受中文科目作为A-Level选修。",
+        "ielts": "总分6.5，部分专业要求7.0",
+        "toefl": "总分79（网考）",
+        "application_deadline": "1月初（主轮申请截止）",
+        "acceptance_rate": "约10%",
+        "notes": "CUHK是香港唯一采用书院制的大学，学生可体验独特的书院文化。部分课程采用粤语授课，需注意语言要求。"
+      },
+      "popular_majors": [
+        "商科",
+        "医学",
+        "工程学",
+        "社会科学",
+        "中文研究",
+        "计算机科学",
+        "经济学",
+        "心理学"
+      ],
+      "tuition": {
+        "amount": "145000-178000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "非本地学生学费"
+      },
+      "living_cost": {
+        "amount": "100000-150000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "沙田区生活成本较港岛低"
+      },
+      "location": {
+        "city": "香港"
+      },
+      "type": "公立",
+      "features": [
+        "书院制特色",
+        "香港最大校园",
+        "中英双语教学",
+        "商学和医学突出",
+        "人文学科强"
+      ],
+      "facilities": "拥有香港最大的大学校园（137公顷），设施包括现代化图书馆、研究中心、运动场馆和学生宿舍。校园依山傍海，环境优美。",
+      "academic_resources": "在中文研究、生物医学、机器人技术和金融科技等领域处于全球领先地位。拥有多个国家重点实验室。",
+      "work_visa_policy": "毕业后可申请IANG签证，可在港无条件居留24个月寻找工作。CUHK与内地联系紧密，也提供大湾区就业机会。"
+    },
+    {
+      "name": "香港科技大学",
+      "name_en": "Hong Kong University of Science and Technology",
+      "abbreviation": "HKUST",
+      "country": "中国香港",
+      "official_website": "https://www.ust.hk",
+      "description": "香港科技大学（HKUST）成立于1991年，位于新界清水湾，是香港最年轻的顶尖研究型大学之一。学校以理工科和商科见长，尤其在工程、计算机科学、商学和物理等领域具有世界级声誉。HKUST以创新的教学方法、卓越的研究实力和与业界的紧密联系著称。",
+      "ranking": {
+        "qs": 47,
+        "the": 64,
+        "source": "QS 2025 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level成绩，一般要求AAB以上。工程和科学专业要求AAA。商科竞争激烈。",
+        "ielts": "总分6.0（单项不低于5.5），部分专业要求6.5",
+        "toefl": "总分80（网考）",
+        "application_deadline": "1月初（主轮申请截止）",
+        "acceptance_rate": "约10-15%",
+        "notes": "HKUST以理工科和商科见长，是全港最国际化的大学之一。提供丰富的交换生和实习机会。"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "工程学",
+        "商学",
+        "物理学",
+        "数学",
+        "经济学",
+        "数据科学",
+        "生物科技"
+      ],
+      "tuition": {
+        "amount": "155000-215000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "非本地学生学费"
+      },
+      "living_cost": {
+        "amount": "120000-170000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "清水湾地区住宿成本较高"
+      },
+      "location": {
+        "city": "香港"
+      },
+      "type": "公立",
+      "features": [
+        "理工科和商科顶尖",
+        "年轻但发展迅速",
+        "海景校园",
+        "研究型大学",
+        "创业氛围浓厚"
+      ],
+      "facilities": "拥有现代化的校园设施、海景图书馆、先进的研究实验室和创新中心。提供多种学生宿舍选择，校园可俯瞰清水湾。",
+      "academic_resources": "在人工智能、大数据、金融科技和材料科学等领域处于全球前沿。与众多科技企业有紧密合作，包括腾讯、华为等。",
+      "work_visa_policy": "毕业后可申请IANG签证，可在港无条件居留24个月。HKUST与科技公司合作紧密，毕业生就业率极高。"
+    },
+    {
+      "name": "香港城市大学",
+      "name_en": "City University of Hong Kong",
+      "abbreviation": "CityU",
+      "country": "中国香港",
+      "official_website": "https://www.cityu.edu.hk",
+      "description": "香港城市大学（CityU）成立于1984年，位于九龙塘，是香港一所现代化的公立研究型大学。学校以其卓越的法律、商学、工程、创意媒体和数据科学等学科闻名。CityU注重创新和应用研究，与业界合作紧密，是香港发展最快的大学之一。",
+      "ranking": {
+        "qs": 62,
+        "the": 80,
+        "source": "QS 2025 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "至少3门GCE A-Level（A2/IAL）成绩达到E或以上，2门AS相当于1门AL。不接受同一科目同时算AL和AS成绩。",
+        "ielts": "总分6.5",
+        "toefl": "总分79（网考）",
+        "application_deadline": "1月中旬（主轮申请截止）",
+        "acceptance_rate": "约15-20%",
+        "notes": "CityU以实践导向教学著称，与业界合作紧密。创意媒体学院和法律学院竞争激烈。"
+      },
+      "popular_majors": [
+        "法律",
+        "商学",
+        "工程学",
+        "创意媒体",
+        "数据科学",
+        "计算机科学",
+        "语言学",
+        "公共政策"
+      ],
+      "tuition": {
+        "amount": "140000-180000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "非本地学生学费"
+      },
+      "living_cost": {
+        "amount": "100000-150000",
+        "currency": "HKD",
+        "period": "每年",
+        "note": "九龙区生活成本适中"
+      },
+      "location": {
+        "city": "香港"
+      },
+      "type": "公立",
+      "features": [
+        "年轻且发展迅速",
+        "法律和创意媒体突出",
+        "与业界合作紧密",
+        "研究实力强",
+        "地理位置优越"
+      ],
+      "facilities": "拥有现代化校园、先进的研究设施、创意媒体中心和运动场馆。校园位于九龙中心地带，交通便利。",
+      "academic_resources": "在材料科学、纳米技术、创意媒体和法律研究等领域处于全球前沿。拥有多个国家级研究中心。",
+      "work_visa_policy": "毕业后可申请IANG签证，可在港无条件居留24个月寻找工作。CityU毕业生在商界和创意产业就业率高。"
+    }
+  ],
+  "新加坡": [
+    {
+      "name": "新加坡国立大学",
+      "name_en": "National University of Singapore",
+      "abbreviation": "NUS",
+      "country": "新加坡",
+      "official_website": "https://www.nus.edu.sg",
+      "description": "新加坡国立大学（NUS）成立于1905年，是新加坡历史最悠久、最负盛名的公立研究型大学，也是亚洲排名最高的大学之一。学校采用全英文教学，拥有来自全球100多个国家的学生和教师。NUS在工程、计算机科学、商学、法学和医学等领域具有世界级声誉，以其卓越的研究实力、创新教育和强大的行业联系闻名。",
+      "ranking": {
+        "qs": 8,
+        "the": 19,
+        "source": "QS 2025 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "英国A-Level：至少4门A-Level科目成绩优异，通常要求AAA以上。竞争激烈的课程（如法律、医学、计算机科学）要求A*A*A以上。",
+        "ielts": "总分6.5（写作不低于6.5），部分专业要求7.0",
+        "toefl": "总分92（网考）",
+        "application_deadline": "2月底至3月初（主申请截止），部分专业有提前录取",
+        "acceptance_rate": "约10-15%",
+        "notes": "NUS对国际生A-Level要求极高，竞争激烈。新加坡A-Level（H2）与英国A-Level计分方式不同。面试是部分专业的必要环节。"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "工程学",
+        "商学",
+        "法学",
+        "医学",
+        "建筑学",
+        "数据科学",
+        "经济学"
+      ],
+      "tuition": {
+        "amount": "30000-37500",
+        "currency": "SGD",
+        "period": "每年",
+        "note": "国际生学费（无补贴），含消费税。获得政府学费补贴（Tuition Grant）后可大幅降低学费"
+      },
+      "living_cost": {
+        "amount": "15000-20000",
+        "currency": "SGD",
+        "period": "每年",
+        "note": "包括住宿、餐饮和日常开销"
+      },
+      "location": {
+        "city": "新加坡"
+      },
+      "type": "公立",
+      "features": [
+        "亚洲排名第一的大学",
+        "全英文教学",
+        "政府学费补贴计划",
+        "双学位和交换项目丰富",
+        "与行业联系紧密"
+      ],
+      "facilities": "拥有三个校区（肯特岗、武吉知马、欧南），世界级图书馆、先进的研究实验室、运动中心和多种学生宿舍。校园绿树成荫，设施现代化。",
+      "academic_resources": "在人工智能、数据科学、生物医学、新材料和可持续发展研究等领域处于全球前沿。年度研究经费充裕，与全球300多所大学有合作。",
+      "work_visa_policy": "毕业后可申请长期社交访问准证（LTVP）最长12个月寻找工作。获得雇主offer后可申请就业准证（EP）。新加坡欢迎国际人才，就业率高。"
+    },
+    {
+      "name": "南洋理工大学",
+      "name_en": "Nanyang Technological University",
+      "abbreviation": "NTU",
+      "country": "新加坡",
+      "official_website": "https://www.ntu.edu.sg",
+      "description": "南洋理工大学（NTU）成立于1991年，是新加坡两所顶尖公立大学之一，以其在工程、科技、商学和艺术设计等领域的卓越表现闻名。NTU拥有亚洲最美丽的校园之一，以其创新的教学模式、强大的研究实力和与业界的紧密合作著称。学校在材料科学、电气工程和人工智能等领域具有全球领先地位。",
+      "ranking": {
+        "qs": 15,
+        "the": 32,
+        "source": "QS 2025 / THE 2025"
+      },
+      "admission_requirements": {
+        "a_level": "至少4门A-Level科目（A2），在一次考试中完成。一般要求AAA以上。工程和科学竞争激烈。不接受分次考试的成绩。",
+        "ielts": "总分6.0（写作6.0），部分专业要求6.5",
+        "toefl": "总分90（口语不低于25，非工程和科学专业要求不同）",
+        "application_deadline": "3月底（主申请截止），建议尽早申请",
+        "acceptance_rate": "约20-25%",
+        "notes": "NTU以理工科见长，工程类专业全球顶尖。接受预测成绩申请，但需在成绩公布后3天内提交正式成绩。校园住宿保证第一年国际生。"
+      },
+      "popular_majors": [
+        "电气与电子工程",
+        "材料科学",
+        "计算机科学",
+        "商学",
+        "数据科学",
+        "人工智能",
+        "传媒学",
+        "艺术与设计"
+      ],
+      "tuition": {
+        "amount": "31000-40000",
+        "currency": "SGD",
+        "period": "每年",
+        "note": "国际生学费（无补贴），获得Tuition Grant后可大幅降低"
+      },
+      "living_cost": {
+        "amount": "12000-18000",
+        "currency": "SGD",
+        "period": "每年",
+        "note": "校内住宿相对便宜"
+      },
+      "location": {
+        "city": "新加坡"
+      },
+      "type": "公立",
+      "features": [
+        "亚洲最美校园之一",
+        "工程和材料科学全球顶尖",
+        "政府学费补贴",
+        "第一年国际生住宿保证",
+        "创新创业氛围浓"
+      ],
+      "facilities": "拥有被誉为世界最美校园之一的云南园校区，设施包括现代化教学楼、世界级图书馆、研究中心和运动场馆。校内宿舍条件优良。",
+      "academic_resources": "在材料科学、人工智能、清洁能源和生物医学工程等领域处于全球领先地位。拥有多个国家级研究中心，研究经费充裕。",
+      "work_visa_policy": "毕业后可申请LTVP最长12个月寻找工作。NTU与众多企业有合作，毕业生就业率高。新加坡对STEM专业人才需求大，移民政策友好。"
+    }
+  ]
+}

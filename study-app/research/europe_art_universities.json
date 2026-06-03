@@ -1,0 +1,1721 @@
+{
+  "comprehensive": [
+    {
+      "name": "苏黎世联邦理工学院",
+      "name_en": "ETH Zurich",
+      "country": "瑞士",
+      "official_website": "https://ethz.ch/en.html",
+      "description": "ETH Zurich（瑞士联邦理工学院）成立于1855年，是全球顶尖的理工科大学之一，在QS世界排名中常年位居前10。学校以严谨的学术氛围和卓越的研究实力著称，培养了包括爱因斯坦在内的众多诺贝尔奖得主。本科阶段所有课程以德语授课，硕士阶段约90%课程为英语授课。",
+      "ranking": {
+        "qs": 7,
+        "the": 11
+      },
+      "admission_requirements": {
+        "a_level": "A*A*A，必须包含数学和一门科学科目（物理/化学/生物）",
+        "english_requirement": "本科为德语授课，硕士要求TOEFL iBT 100或IELTS 7.0",
+        "local_language": "本科所有课程以德语授课，需C1水平（Goethe-Zertifikat C1/TestDaF/DSH-2）",
+        "application_deadline": "本科：11月30日；硕士：12月15日（秋季入学）",
+        "notes": "所有本科申请者需通过swissuniversities学历认证，部分学历可能需要参加入学考试"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "机械工程",
+        "建筑学",
+        "物理学",
+        "化学工程",
+        "电气工程"
+      ],
+      "tuition": {
+        "amount": "1,460",
+        "currency": "CHF",
+        "period": "每年",
+        "note": "瑞士公立大学，学费极低（约730 CHF/学期），所有学生一视同仁"
+      },
+      "living_cost": {
+        "amount": "25,000-31,000",
+        "currency": "CHF",
+        "period": "每年"
+      },
+      "location": {
+        "city": "苏黎世"
+      },
+      "features": [
+        "全球顶尖理工科院校",
+        "德语本科教学",
+        "极低学费",
+        "严格的Basisprüfung（基础考试）筛选机制"
+      ],
+      "english_programs": "本科无英语授课项目，所有 Bachelor 课程均为德语授课。硕士阶段约90%课程为英语授课"
+    },
+    {
+      "name": "洛桑联邦理工学院",
+      "name_en": "EPFL",
+      "country": "瑞士",
+      "official_website": "https://www.epfl.ch/en/",
+      "description": "EPFL（洛桑联邦理工学院）是瑞士两大联邦理工学院之一，QS世界排名第14位。学校以年轻化、创业导向的学术氛围著称，在计算机科学、微工程、神经技术和生命科学领域具有突出优势。本科以法语授课，硕士以英语授课为主。",
+      "ranking": {
+        "qs": 14,
+        "the": 32
+      },
+      "admission_requirements": {
+        "a_level": "A*A*A，必须包含数学和一门科学科目",
+        "english_requirement": "本科法语授课，硕士要求TOEFL iBT 95-100或IELTS 6.5-7.0",
+        "local_language": "本科所有课程以法语授课，需B2水平（DELF B2/DALF C1/TCF B2+）",
+        "application_deadline": "本科：4月30日；硕士：12月15日（秋季入学）",
+        "notes": "无入学考试要求（对于等效学历），但第一年propédeutique考试为严格筛选机制，35-50%学生可能不通过"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "微工程学",
+        "生命科学",
+        "建筑学",
+        "数据科学"
+      ],
+      "tuition": {
+        "amount": "1,266",
+        "currency": "CHF",
+        "period": "每年",
+        "note": "瑞士公立大学，学费极低（约633 CHF/学期）"
+      },
+      "living_cost": {
+        "amount": "25,000-31,000",
+        "currency": "CHF",
+        "period": "每年"
+      },
+      "location": {
+        "city": "洛桑"
+      },
+      "features": [
+        "年轻且创业导向的学术氛围",
+        "法语本科教学",
+        "极低学费",
+        "propédeutique第一年严格筛选"
+      ],
+      "english_programs": "本科无英语授课项目，所有 Bachelor 课程均为法语授课。硕士阶段约95%课程为英语授课"
+    },
+    {
+      "name": "阿姆斯特丹大学",
+      "name_en": "University of Amsterdam",
+      "country": "荷兰",
+      "official_website": "https://www.uva.nl/en",
+      "description": "阿姆斯特丹大学成立于1632年，是荷兰最大的综合性大学，也是欧洲研究型大学联盟成员。学校在社会科学与经济学、人文学科和自然科学领域享有盛誉。UvA提供大量英语授课本科项目，是欧洲大陆对国际学生最友好的大学之一。",
+      "ranking": {
+        "qs": 53,
+        "the": 56
+      },
+      "admission_requirements": {
+        "a_level": "通常要求ABB-AAB，视具体专业而定",
+        "english_requirement": "IELTS 6.5-7.0（单项不低于6.0）或TOEFL iBT 92-100",
+        "local_language": "英语授课项目无需荷兰语，但部分项目可能要求基础荷兰语",
+        "application_deadline": "本科：1月15日（秋季入学）；部分专业4月1日",
+        "notes": "通过Studielink系统申请，部分热门专业有名额限制（Numerus Fixus）"
+      },
+      "popular_majors": [
+        "经济学与计量经济学",
+        "传媒学",
+        "心理学",
+        "法学",
+        "计算机科学"
+      ],
+      "tuition": {
+        "amount": "2,530",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "荷兰公立大学，EU/EEA学生学费约2,530 EUR/年；非EU国际学生约12,000-16,000 EUR/年（2025-2026学年）"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "阿姆斯特丹"
+      },
+      "features": [
+        "荷兰最大综合性大学",
+        "大量英语授课本科项目",
+        "欧洲研究型大学联盟成员",
+        "国际化程度高"
+      ],
+      "english_programs": "提供超过20个英语授课本科项目，涵盖经济学、社会科学、人文学科、自然科学等领域"
+    },
+    {
+      "name": "代尔夫特理工大学",
+      "name_en": "Delft University of Technology",
+      "country": "荷兰",
+      "official_website": "https://www.tudelft.nl/en/",
+      "description": "代尔夫特理工大学（TU Delft）成立于1842年，是荷兰历史最悠久、规模最大的理工大学，QS世界排名第57位。学校在航空航天工程、建筑学、土木工程和水利工程领域处于世界领先地位。",
+      "ranking": {
+        "qs": 57,
+        "the": 56
+      },
+      "admission_requirements": {
+        "a_level": "AAA-A*A*A，视具体专业而定，必须包含数学和物理（部分专业还需化学/生物）",
+        "english_requirement": "IELTS 6.5-7.0或TOEFL iBT 90-100",
+        "local_language": "部分本科项目为英语授课（如航空航天工程、计算机科学等），部分为荷兰语授课",
+        "application_deadline": "1月15日（Numerus Fixus项目）；4月1日（其他项目）",
+        "notes": "非EU学生需支付约12,000-18,000 EUR/年学费。英语授课项目包括航空航天工程、计算机科学、纳米生物学等"
+      },
+      "popular_majors": [
+        "航空航天工程",
+        "建筑学",
+        "土木工程",
+        "计算机科学",
+        "工业设计工程"
+      ],
+      "tuition": {
+        "amount": "2,314",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "EU/EEA学生学费约2,314 EUR/年；非EU国际学生约12,000-18,000 EUR/年"
+      },
+      "living_cost": {
+        "amount": "11,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "代尔夫特"
+      },
+      "features": [
+        "荷兰最大理工大学",
+        "航空航天工程全球领先",
+        "部分英语授课本科项目",
+        "与工业界联系紧密"
+      ],
+      "english_programs": "提供多个英语授课本科项目：航空航天工程、应用地球科学、计算机科学与工程、纳米生物学、地球气候与技术等"
+    },
+    {
+      "name": "慕尼黑工业大学",
+      "name_en": "Technical University of Munich",
+      "country": "德国",
+      "official_website": "https://www.tum.de/en/",
+      "description": "慕尼黑工业大学（TUM）成立于1868年，是德国顶尖理工大学之一，QS世界排名第28位。学校在工程、自然科学、计算机科学和医学领域具有卓越实力。TUM提供部分英语授课本科项目，是德国国际化程度最高的大学之一。",
+      "ranking": {
+        "qs": 28,
+        "the": 30
+      },
+      "admission_requirements": {
+        "a_level": "A*AA-ABB，视具体专业而定， STEM专业要求数学和科学科目高分",
+        "english_requirement": "英语授课项目要求IELTS 6.5或TOEFL iBT 88；德语授课项目要求TestDaF 4×4或DSH-2",
+        "local_language": "多数本科项目为德语授课，部分新兴专业为英语授课",
+        "application_deadline": "冬季入学：5月15日；夏季入学：1月15日",
+        "notes": "巴伐利亚州对非EU学生收取每学期2,000-3,000 EUR学费。部分热门专业竞争激烈（如计算机科学）"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "机械工程",
+        "电气工程",
+        "建筑学",
+        "数据科学",
+        "医学"
+      ],
+      "tuition": {
+        "amount": "144",
+        "currency": "EUR",
+        "period": "每年（学期费）",
+        "note": "德国公立大学免学费，仅收取约72 EUR/学期管理费；巴伐利亚州对非EU学生收取2,000-3,000 EUR/学期学费（约4,000-6,000 EUR/年）"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "慕尼黑"
+      },
+      "features": [
+        "德国顶尖理工大学",
+        "部分英语授课本科项目",
+        "卓越的研究实力",
+        "与工业界紧密联系"
+      ],
+      "english_programs": "提供多个英语授课本科项目：计算机科学、数据科学、工程科学、信息工程、航空航天、化学工程等。2024年起巴伐利亚州对非EU学生收取学费"
+    },
+    {
+      "name": "海德堡大学",
+      "name_en": "Heidelberg University",
+      "country": "德国",
+      "official_website": "https://www.uni-heidelberg.de/en",
+      "description": "海德堡大学成立于1386年，是德国最古老的大学，QS世界排名第84位。学校在生命科学、医学、人文社会科学和自然科学领域具有深厚传统和卓越实力。作为德国精英大学之一，海德堡大学提供部分英语授课项目。",
+      "ranking": {
+        "qs": 84,
+        "the": 47
+      },
+      "admission_requirements": {
+        "a_level": "AAB-BBB，视具体专业而定",
+        "english_requirement": "英语授课项目要求IELTS 6.5或TOEFL iBT 90；德语授课项目要求TestDaF/DSH-2",
+        "local_language": "多数本科项目为德语授课，需提供C1德语水平证明",
+        "application_deadline": "冬季入学：7月15日；夏季入学：1月15日",
+        "notes": "通过Uni-Assist申请，需支付75 EUR申请费。部分专业对国际学生有限额"
+      },
+      "popular_majors": [
+        "生命科学",
+        "医学",
+        "物理学",
+        "化学",
+        "政治学",
+        "经济学"
+      ],
+      "tuition": {
+        "amount": "1,500",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "德国公立大学免学费，仅收取约150 EUR/学期管理费；巴登-符腾堡州对非EU学生收取1,500 EUR/学期学费（约3,000 EUR/年）"
+      },
+      "living_cost": {
+        "amount": "10,000-12,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "海德堡"
+      },
+      "features": [
+        "德国最古老大学",
+        "生命科学和医学领域卓越",
+        "美丽历史悠久的校园",
+        "德国精英大学之一"
+      ],
+      "english_programs": "提供部分英语授课硕士项目，本科英语授课项目较少，主要为德语授课"
+    },
+    {
+      "name": "巴黎文理研究大学",
+      "name_en": "Paris Sciences et Lettres (PSL)",
+      "country": "法国",
+      "official_website": "https://www.psl.eu/en",
+      "description": "PSL大学是法国顶尖的综合性研究型大学，由巴黎高等师范学院、巴黎第九大学等11所著名院校合并而成。QS世界排名第24位，是法国排名最高的大学。学校在数学、物理、计算机科学、经济学和人文学科等领域具有世界领先水平。",
+      "ranking": {
+        "qs": 24,
+        "the": 40
+      },
+      "admission_requirements": {
+        "a_level": "AAA-A*A*A，视具体专业而定",
+        "english_requirement": "英语授课项目要求IELTS 6.5-7.0或TOEFL iBT 90-100",
+        "local_language": "多数本科项目为法语授课（B2水平），部分硕士项目为英语授课",
+        "application_deadline": "本科：4月-6月；硕士：视具体项目而定",
+        "notes": "法国公立大学学费极低，但需通过Campus France或Etudes en France申请"
+      },
+      "popular_majors": [
+        "数学",
+        "物理学",
+        "计算机科学",
+        "经济学",
+        "哲学",
+        "化学"
+      ],
+      "tuition": {
+        "amount": "170-243",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "法国公立大学学费极低，本科约170 EUR/年，硕士约243 EUR/年。非EU学生可能需支付约2,770-3,770 EUR/年差异化注册费"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "巴黎"
+      },
+      "features": [
+        "法国排名第一大学",
+        "数学和物理全球顶尖",
+        "极低学费",
+        "由多所法国精英院校合并而成"
+      ],
+      "english_programs": "本科英语授课项目较少，硕士阶段提供多个英语授课项目，尤其在科学和商科领域"
+    },
+    {
+      "name": "巴黎萨克雷大学",
+      "name_en": "Université Paris-Saclay",
+      "country": "法国",
+      "official_website": "https://www.universite-paris-saclay.fr/en",
+      "description": "巴黎萨克雷大学是法国最大的综合性大学之一，QS世界排名第73位。学校在数学、物理、计算机科学、生命科学和工程领域具有卓越实力。作为巴黎-萨克雷科学集群的核心，学校与众多研究机构（CNRS、CEA等）紧密合作。",
+      "ranking": {
+        "qs": 73,
+        "the": 64
+      },
+      "admission_requirements": {
+        "a_level": "AAB-ABB，视具体专业而定，数学和科学科目成绩优秀",
+        "english_requirement": "英语授课项目要求IELTS 6.0-6.5或TOEFL iBT 80-90",
+        "local_language": "多数本科项目为法语授课，部分硕士项目为英语授课",
+        "application_deadline": "本科：视专业而定；硕士：3月-6月",
+        "notes": "法国公立大学学费极低，通过Etudes en France平台申请"
+      },
+      "popular_majors": [
+        "数学",
+        "物理学",
+        "计算机科学",
+        "电气工程",
+        "生命科学",
+        "经济学"
+      ],
+      "tuition": {
+        "amount": "170-243",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "法国公立大学学费极低，本科约170 EUR/年；非EU学生可能需支付约2,770 EUR/年差异化注册费"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "巴黎（萨克雷）"
+      },
+      "features": [
+        "法国最大的综合性大学之一",
+        "数学和物理领域世界领先",
+        "极低学费",
+        "与顶级研究机构紧密合作"
+      ],
+      "english_programs": "提供多个英语授课硕士项目，本科英语授课项目较少"
+    },
+    {
+      "name": "索邦大学",
+      "name_en": "Sorbonne University",
+      "country": "法国",
+      "official_website": "https://www.sorbonne-universite.fr/en",
+      "description": "索邦大学成立于2018年，由巴黎第六大学和巴黎第四大学合并而成，是法国最负盛名的大学之一。QS世界排名第63位，在数学、物理、医学和人文学科领域具有深厚传统和卓越实力。",
+      "ranking": {
+        "qs": 63,
+        "the": 75
+      },
+      "admission_requirements": {
+        "a_level": "AAB-BBB，视具体专业而定",
+        "english_requirement": "英语授课项目要求IELTS 6.0或TOEFL iBT 80",
+        "local_language": "多数本科项目为法语授课（B2水平），需提供法语能力证明",
+        "application_deadline": "本科：4月-6月；硕士：视具体项目而定",
+        "notes": "法国公立大学学费极低。非EU学生可能需支付差异化注册费"
+      },
+      "popular_majors": [
+        "数学",
+        "物理学",
+        "医学",
+        "文学与语言",
+        "海洋学",
+        "计算机科学"
+      ],
+      "tuition": {
+        "amount": "170-243",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "法国公立大学学费极低，本科约170 EUR/年；非EU学生可能需支付约2,770 EUR/年差异化注册费"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "巴黎"
+      },
+      "features": [
+        "法国最负盛名的大学之一",
+        "数学和物理领域世界领先",
+        "极低学费",
+        "人文学科传统深厚"
+      ],
+      "english_programs": "本科英语授课项目较少，硕士阶段提供部分英语授课项目，尤其在科学和医学领域"
+    },
+    {
+      "name": "瑞典皇家理工学院",
+      "name_en": "KTH Royal Institute of Technology",
+      "country": "瑞典",
+      "official_website": "https://www.kth.se/en",
+      "description": "KTH皇家理工学院成立于1827年，是瑞典最大、最负盛名的理工科大学，QS世界排名第78位。学校在工程、计算机科学、建筑学和自然科学领域具有卓越实力。KTH提供多个英语授课本科项目，是北欧地区国际化程度最高的理工院校之一。",
+      "ranking": {
+        "qs": 78,
+        "the": 97
+      },
+      "admission_requirements": {
+        "a_level": "ABB-AAB，必须包含数学和物理/化学",
+        "english_requirement": "IELTS 6.5（单项不低于5.5）或TOEFL iBT 90（写作不低于20）",
+        "local_language": "部分本科项目为英语授课，无需瑞典语",
+        "application_deadline": "本科：4月15日；硕士：1月15日（秋季入学）",
+        "notes": "通过University Admissions in Sweden系统申请，需支付900 SEK申请费。本科录取率约9-10%，竞争激烈"
+      },
+      "popular_majors": [
+        "计算机科学",
+        "电子工程",
+        "机械工程",
+        "建筑学",
+        "工业工程与管理"
+      ],
+      "tuition": {
+        "amount": "122,000",
+        "currency": "SEK",
+        "period": "每年",
+        "note": "非EU/EEA学生需支付学费，约122,000 SEK/年（约11,000 EUR）；EU/EEA学生免学费"
+      },
+      "living_cost": {
+        "amount": "10,000-12,000",
+        "currency": "SEK",
+        "period": "每月",
+        "note": "约120,000-144,000 SEK/年（约11,000-13,000 EUR）"
+      },
+      "location": {
+        "city": "斯德哥尔摩"
+      },
+      "features": [
+        "瑞典最大理工科大学",
+        "多个英语授课本科项目",
+        "与工业界紧密联系",
+        "诺贝尔奖评选机构之一"
+      ],
+      "english_programs": "提供一个英语授课本科项目（信息与通信技术，ICT），所有硕士项目均为英语授课"
+    },
+    {
+      "name": "隆德大学",
+      "name_en": "Lund University",
+      "country": "瑞典",
+      "official_website": "https://www.lunduniversity.lu.se/",
+      "description": "隆德大学成立于1666年，是瑞典历史最悠久、规模最大的大学之一，QS世界排名第85位。学校提供广泛的学科领域，在医学、法学、科学、工程和社会科学方面均具有卓越实力。隆德大学提供多个英语授课本科项目，对国际学生非常友好。",
+      "ranking": {
+        "qs": 85,
+        "the": 95
+      },
+      "admission_requirements": {
+        "a_level": "ABB-BBB，视具体专业而定",
+        "english_requirement": "IELTS 6.5（单项不低于5.5）或TOEFL iBT 90（写作不低于20）",
+        "local_language": "英语授课项目无需瑞典语",
+        "application_deadline": "本科：4月15日；硕士：1月15日（秋季入学）",
+        "notes": "通过University Admissions in Sweden系统申请，需支付900 SEK申请费。录取率约34%"
+      },
+      "popular_majors": [
+        "生物医学",
+        "发展研究",
+        "国际商务",
+        "数学",
+        "物理",
+        "美术"
+      ],
+      "tuition": {
+        "amount": "100,000-145,000",
+        "currency": "SEK",
+        "period": "每年",
+        "note": "非EU/EEA学生需支付学费，约100,000-145,000 SEK/年（约9,000-13,000 EUR），视专业而定；EU/EEA学生免学费"
+      },
+      "living_cost": {
+        "amount": "9,000-11,000",
+        "currency": "SEK",
+        "period": "每月",
+        "note": "约108,000-132,000 SEK/年（约10,000-12,000 EUR）"
+      },
+      "location": {
+        "city": "隆德"
+      },
+      "features": [
+        "瑞典历史最悠久大学之一",
+        "多个英语授课本科项目",
+        "国际化程度高",
+        "美丽的大学城"
+      ],
+      "english_programs": "提供10个英语授课本科项目：生物医学、发展研究、经济与社会、美术、国际商务、数学、音乐、物理地理与生态系统科学、物理学等"
+    },
+    {
+      "name": "哥本哈根大学",
+      "name_en": "University of Copenhagen",
+      "country": "丹麦",
+      "official_website": "https://www.ku.dk/en",
+      "description": "哥本哈根大学成立于1479年，是丹麦最古老、最大的大学，QS世界排名第107位。学校在生命科学、社会科学、人文学科和自然科学领域具有卓越实力。哥本哈根大学提供多个英语授课硕士项目，部分本科项目也提供英语授课。",
+      "ranking": {
+        "qs": 107,
+        "the": 97
+      },
+      "admission_requirements": {
+        "a_level": "ABB-BBB，视具体专业而定",
+        "english_requirement": "IELTS 6.5或TOEFL iBT 83",
+        "local_language": "部分本科项目为丹麦语授课，硕士项目多为英语授课",
+        "application_deadline": "本科：7月5日；硕士：1月15日（秋季入学）",
+        "notes": "丹麦对非EU/EEA学生收取学费，约45,000-120,000 DKK/年"
+      },
+      "popular_majors": [
+        "生物科学",
+        "计算机科学",
+        "经济学",
+        "法学",
+        "健康科学",
+        "人文学科"
+      ],
+      "tuition": {
+        "amount": "45,000-120,000",
+        "currency": "DKK",
+        "period": "每年",
+        "note": "非EU/EEA学生需支付学费，约45,000-120,000 DKK/年（约6,000-16,000 EUR）；EU/EEA学生免学费"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "DKK",
+        "period": "每月",
+        "note": "约120,000-156,000 DKK/年（约16,000-21,000 EUR）"
+      },
+      "location": {
+        "city": "哥本哈根"
+      },
+      "features": [
+        "丹麦最古老大学",
+        "生命科学领域世界领先",
+        "人文学科传统深厚",
+        "高生活质量"
+      ],
+      "english_programs": "提供多个英语授课硕士项目，部分本科项目为英语授课，如计算机科学、经济学等"
+    },
+    {
+      "name": "奥斯陆大学",
+      "name_en": "University of Oslo",
+      "country": "挪威",
+      "official_website": "https://www.uio.no/english/",
+      "description": "奥斯陆大学成立于1811年，是挪威最古老、规模最大的大学，QS世界排名第119位。学校在人文学科、社会科学、法学、医学和自然科学领域具有卓越实力。挪威公立大学对所有学生免收学费，是欧洲最具性价比的留学目的地之一。",
+      "ranking": {
+        "qs": 119,
+        "the": 124
+      },
+      "admission_requirements": {
+        "a_level": "ABB-BBB，视具体专业而定",
+        "english_requirement": "IELTS 6.5或TOEFL iBT 90",
+        "local_language": "本科多为挪威语授课，硕士提供多个英语授课项目",
+        "application_deadline": "本科和硕士：11月15日（秋季入学）",
+        "notes": "挪威公立大学对所有学生免学费，仅需支付约600 NOK/学期注册费"
+      },
+      "popular_majors": [
+        "法学",
+        "医学",
+        "经济学",
+        "人文学科",
+        "社会科学",
+        "自然科学"
+      ],
+      "tuition": {
+        "amount": "0",
+        "currency": "NOK",
+        "period": "每年",
+        "note": "挪威公立大学对所有学生免学费，仅需支付约600 NOK/学期（约120 EUR/年）注册费"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "NOK",
+        "period": "每月",
+        "note": "约144,000-180,000 NOK/年（约12,000-15,000 EUR）"
+      },
+      "location": {
+        "city": "奥斯陆"
+      },
+      "features": [
+        "挪威最古老大学",
+        "对所有学生免学费",
+        "法学和人文学科传统深厚",
+        "极高的生活质量"
+      ],
+      "english_programs": "本科英语授课项目较少，硕士阶段提供大量英语授课项目"
+    },
+    {
+      "name": "赫尔辛基大学",
+      "name_en": "University of Helsinki",
+      "country": "芬兰",
+      "official_website": "https://www.helsinki.fi/en",
+      "description": "赫尔辛基大学成立于1640年，是芬兰最古老、最大的大学，QS世界排名第117位。学校在教育、法律、医学、社会科学和自然科学领域具有卓越实力。芬兰公立大学对所有学生免收学费（EU/EEA学生），非EU学生需支付约8,000-18,000 EUR/年学费。",
+      "ranking": {
+        "qs": 117,
+        "the": 121
+      },
+      "admission_requirements": {
+        "a_level": "ABB-BBB，视具体专业而定",
+        "english_requirement": "IELTS 6.5或TOEFL iBT 92",
+        "local_language": "英语授课项目无需芬兰语",
+        "application_deadline": "本科和硕士：1月中旬（秋季入学）",
+        "notes": "非EU/EEA学生需支付约8,000-18,000 EUR/年学费；EU/EEA学生免学费"
+      },
+      "popular_majors": [
+        "教育学",
+        "法学",
+        "计算机科学",
+        "社会科学",
+        "生命科学",
+        "环境科学"
+      ],
+      "tuition": {
+        "amount": "8,000-18,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "非EU/EEA学生需支付约8,000-18,000 EUR/年学费；EU/EEA学生免学费"
+      },
+      "living_cost": {
+        "amount": "900-1,200",
+        "currency": "EUR",
+        "period": "每月",
+        "note": "约10,800-14,400 EUR/年"
+      },
+      "location": {
+        "city": "赫尔辛基"
+      },
+      "features": [
+        "芬兰最古老大学",
+        "教育学领域世界领先",
+        "EU/EEA学生免学费",
+        "高质量的研究环境"
+      ],
+      "english_programs": "提供多个英语授课硕士项目，部分本科项目也提供英语授课"
+    },
+    {
+      "name": "圣三一学院",
+      "name_en": "Trinity College Dublin",
+      "country": "爱尔兰",
+      "official_website": "https://www.tcd.ie/",
+      "description": "圣三一学院都柏林成立于1592年，是爱尔兰最古老、最负盛名的大学，QS世界排名第87位。学校在人文学科、社会科学、科学、工程和医学领域均具有卓越实力。圣三一学院是爱尔兰唯一一所QS世界排名前100的大学。",
+      "ranking": {
+        "qs": 87,
+        "the": 134
+      },
+      "admission_requirements": {
+        "a_level": "A*A*A-ABB，视具体专业而定，最低要求ABB",
+        "english_requirement": "IELTS 6.5（单项不低于6.0）或TOEFL iBT 90",
+        "local_language": "英语国家，所有课程为英语授课",
+        "application_deadline": "本科：2月1日（部分专业不同）",
+        "notes": "爱尔兰大学接受A-Level成绩直接申请，录取率约34%。非EU学生学费约20,000-30,000 EUR/年"
+      },
+      "popular_majors": [
+        "英语文学",
+        "历史学",
+        "计算机科学",
+        "经济学",
+        "法学",
+        "生物化学"
+      ],
+      "tuition": {
+        "amount": "20,000-30,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "非EU/EEA学生学费约20,000-30,000 EUR/年；EU/EEA学生学费约3,000-5,000 EUR/年"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "都柏林"
+      },
+      "features": [
+        "爱尔兰最古老大学",
+        "英语国家环境",
+        "人文学科传统深厚",
+        "位于都柏林市中心"
+      ],
+      "english_programs": "所有课程均为英语授课"
+    },
+    {
+      "name": "鲁汶大学",
+      "name_en": "KU Leuven",
+      "country": "比利时",
+      "official_website": "https://www.kuleuven.be/english/",
+      "description": "鲁汶大学（KU Leuven）成立于1425年，是比利时最大、历史最悠久的大学，QS世界排名第63位。学校在神学、法学、工程、医学和人文社会科学领域具有卓越实力。KU Leuven是欧洲最古老的天主教大学之一，也是欧洲领先的研究型大学。",
+      "ranking": {
+        "qs": 63,
+        "the": 43
+      },
+      "admission_requirements": {
+        "a_level": "3门A-Level，每门至少C级，视专业可能有更高要求",
+        "english_requirement": "IELTS 6.5（单项不低于6.0）或TOEFL iBT 90",
+        "local_language": "多数本科项目为荷兰语授课，部分硕士项目为英语授课",
+        "application_deadline": "非EU学生：3月1日（部分项目更早）",
+        "notes": "本科荷兰语授课为主，英语授课硕士项目较多。录取率约34%"
+      },
+      "popular_majors": [
+        "神学",
+        "法学",
+        "工程学",
+        "商业经济学",
+        "心理学",
+        "建筑学"
+      ],
+      "tuition": {
+        "amount": "1,098-6,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "比利时公立大学学费较低，EU/EEA学生约1,098 EUR/年；非EU学生约4,000-8,000 EUR/年"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "鲁汶"
+      },
+      "features": [
+        "比利时最大大学",
+        "欧洲最古老大学之一",
+        "研究实力强",
+        "神学领域全球领先"
+      ],
+      "english_programs": "本科荷兰语授课为主，硕士阶段提供多个英语授课项目"
+    },
+    {
+      "name": "维也纳大学",
+      "name_en": "University of Vienna",
+      "country": "奥地利",
+      "official_website": "https://www.univie.ac.at/en/",
+      "description": "维也纳大学成立于1365年，是德语世界最古老的大学，QS世界排名第130位。学校在人文学科、社会科学、法学和自然科学领域具有深厚传统。维也纳大学学费极低，是欧洲最具性价比的留学目的地之一。",
+      "ranking": {
+        "qs": 130,
+        "the": 120
+      },
+      "admission_requirements": {
+        "a_level": "ABB-BBB，视具体专业而定",
+        "english_requirement": "英语授课项目要求IELTS 6.5或TOEFL iBT 90",
+        "local_language": "多数本科项目为德语授课，需C1德语水平",
+        "application_deadline": "冬季入学：9月5日；夏季入学：2月5日",
+        "notes": "奥地利公立大学学费极低。非EU学生约1,500 EUR/年。通过u:space在线申请系统申请"
+      },
+      "popular_majors": [
+        "人文学科",
+        "法学",
+        "社会科学",
+        "经济学",
+        "自然科学",
+        "心理学"
+      ],
+      "tuition": {
+        "amount": "363.36",
+        "currency": "EUR",
+        "period": "每学期",
+        "note": "奥地利公立大学学费极低，约363.36 EUR/学期（约727 EUR/年）；非EU学生同价，毕业后每多一个学期约800 EUR"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "维也纳"
+      },
+      "features": [
+        "德语世界最古老大学",
+        "学费极低",
+        "人文学科传统深厚",
+        "位于历史文化名城维也纳"
+      ],
+      "english_programs": "提供少量英语授课本科项目，硕士阶段英语授课项目较多"
+    },
+    {
+      "name": "米兰理工大学",
+      "name_en": "Politecnico di Milano",
+      "country": "意大利",
+      "official_website": "https://www.polimi.it/en/",
+      "description": "米兰理工大学（PoliMi）成立于1863年，是意大利最大、最负盛名的理工科大学，QS世界排名第111位。学校在建筑学、设计、工程和时尚管理领域具有卓越实力。PoliMi提供多个英语授课本科项目，是意大利国际化程度最高的大学之一。",
+      "ranking": {
+        "qs": 111,
+        "the": 201
+      },
+      "admission_requirements": {
+        "a_level": "AAA-BBB，视具体专业而定，数学和物理成绩要求较高",
+        "english_requirement": "IELTS 6.0或TOEFL iBT 79（英语授课项目）",
+        "local_language": "部分本科项目为英语授课，部分为意大利语授课",
+        "application_deadline": "本科：1月30日（第一轮）；硕士：视具体项目",
+        "notes": "需通过入学考试（TOL/TOLC-I/SAT等），工程类、建筑类和设计类专业竞争较激烈"
+      },
+      "popular_majors": [
+        "建筑学",
+        "工业设计",
+        "时尚管理",
+        "电子工程",
+        "计算机工程",
+        "土木工程"
+      ],
+      "tuition": {
+        "amount": "3,000-4,500",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "意大利公立大学学费基于家庭收入（ISEE）计算，约3,000-4,500 EUR/年；最高不超过约4,500 EUR/年"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "米兰"
+      },
+      "features": [
+        "意大利最大理工科大学",
+        "建筑和设计领域全球顶尖",
+        "多个英语授课本科项目",
+        "与时尚产业紧密联系"
+      ],
+      "english_programs": "2026/27学年起推出三个全新英语授课本科项目：工程科学、工业工程、过程工程。建筑、设计和工程类硕士项目全部为英语授课"
+    },
+    {
+      "name": "巴塞罗那大学",
+      "name_en": "University of Barcelona",
+      "country": "西班牙",
+      "official_website": "https://www.ub.edu/en/",
+      "description": "巴塞罗那大学成立于1450年，是西班牙最古老的大学之一，QS世界排名第165位。学校在人文社科、自然科学、医学和健康科学领域具有卓越实力。巴塞罗那大学位于充满活力的巴塞罗那市，是地中海地区最具吸引力的留学目的地之一。",
+      "ranking": {
+        "qs": 165,
+        "the": 156
+      },
+      "admission_requirements": {
+        "a_level": "BBB-BBC，视具体专业而定",
+        "english_requirement": "英语授课项目要求IELTS 6.0或TOEFL iBT 80",
+        "local_language": "多数本科项目为西班牙语或加泰罗尼亚语授课，需B1-B2水平",
+        "application_deadline": "本科：6月15日；硕士：视具体项目",
+        "notes": "西班牙公立大学学费极低。医学和法学等专业可能需要入学考试。需通过UNED平台认证学历"
+      },
+      "popular_majors": [
+        "商科经济学",
+        "法学",
+        "医学",
+        "心理学",
+        "化学",
+        "环境科学"
+      ],
+      "tuition": {
+        "amount": "1,500-2,500",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "西班牙公立大学学费极低，约1,500-2,500 EUR/年（加泰罗尼亚地区）"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "巴塞罗那"
+      },
+      "features": [
+        "西班牙最古老大学之一",
+        "学费极低",
+        "地中海生活方式",
+        "加泰罗尼亚地区最高学府"
+      ],
+      "english_programs": "提供少量英语授课本科项目，硕士阶段英语授课项目较多"
+    },
+    {
+      "name": "马德里自治大学",
+      "name_en": "Autonomous University of Madrid",
+      "country": "西班牙",
+      "official_website": "https://www.uam.es/uam/en",
+      "description": "马德里自治大学（UAM）成立于1968年，是西班牙最负盛名的大学之一，QS世界排名第198位。学校在自然科学、社会科学、法学和经济学领域具有卓越实力。UAM以其高学术标准和优秀的研究实力著称。",
+      "ranking": {
+        "qs": 198,
+        "the": 251
+      },
+      "admission_requirements": {
+        "a_level": "BBB-BBC，视具体专业而定",
+        "english_requirement": "英语授课项目要求IELTS 6.5或TOEFL iBT 80",
+        "local_language": "多数本科项目为西班牙语授课，需B2水平（DELE/SIELE B2）",
+        "application_deadline": "本科：视专业而定；硕士：2月-9月",
+        "notes": "西班牙公立大学学费极低，约1,500-3,500 EUR/年。EU学历持有者可申请提前录取"
+      },
+      "popular_majors": [
+        "工商管理",
+        "生物学",
+        "法学",
+        "计算机科学",
+        "心理学",
+        "经济学"
+      ],
+      "tuition": {
+        "amount": "1,500-3,500",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "西班牙公立大学学费极低，约1,500-3,500 EUR/年"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "马德里"
+      },
+      "features": [
+        "西班牙最负盛名的大学之一",
+        "学费极低",
+        "自然科学领域卓越",
+        "高学术标准"
+      ],
+      "english_programs": "本科英语授课项目较少，硕士阶段提供部分英语授课项目"
+    }
+  ],
+  "art_design": [
+    {
+      "name": "罗德岛设计学院",
+      "name_en": "Rhode Island School of Design (RISD)",
+      "country": "美国",
+      "official_website": "https://www.risd.edu/",
+      "description": "罗德岛设计学院（RISD）成立于1877年，是美国最顶尖的艺术设计学院之一，在QS艺术与设计排名中常年位居前3。学校以严格的艺术教育和创新的创作环境著称，培养了众多国际知名艺术家和设计师。",
+      "type": "艺术/设计",
+      "admission_requirements": {
+        "a_level": "学术成绩要求相对灵活，通常BCC以上即可，重点考察作品集",
+        "portfolio": "提交12-20件近期作品，展示创意思维、实验精神和技法多样性。强烈推荐包含直接从观察中创作的绘画/素描作品（非照片/视频）。最多3件作品可展示创作过程/草图",
+        "portfolio_weight": "作品集占录取决策的70%以上权重，是最重要的录取因素",
+        "interview": "可选面试，非必须",
+        "audition": "不适用",
+        "ielts": "IELTS 6.5或TOEFL iBT 93",
+        "application_deadline": "早申请：11月3日；常规申请：1月20日",
+        "acceptance_rate": "约10-19%，录取率极低"
+      },
+      "popular_programs": [
+        "插画",
+        "工业设计",
+        "平面设计",
+        "服装设计",
+        "建筑学",
+        "绘画"
+      ],
+      "tuition": {
+        "amount": "56,435",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "living_cost": {
+        "amount": "15,000-18,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "location": {
+        "city": "普罗维登斯（罗德岛州）"
+      },
+      "facilities": "拥有顶级的工作室设施、数字实验室、木工坊、金属工坊、纺织工坊、陶瓷窑炉和3D打印实验室",
+      "alumni_achievements": [
+        "多位麦克阿瑟天才奖获得者",
+        "众多知名艺术家和设计师",
+        "多位迪士尼和皮克斯动画师"
+      ],
+      "features": [
+        "美国顶尖艺术院校",
+        "极低录取率",
+        "强调手绘基础",
+        "与布朗大学提供双学位项目"
+      ],
+      "portfolio_tips": "作品集应展示创意探索和概念深度，避免临摹、同人作品或超风格化卡通。强调从直接观察中创作的作品。展示多种媒介的实验，但质量重于数量"
+    },
+    {
+      "name": "帕森斯设计学院",
+      "name_en": "Parsons School of Design",
+      "country": "美国",
+      "official_website": "https://www.newschool.edu/parsons/",
+      "description": "帕森斯设计学院成立于1896年，是美国最著名的艺术与设计学院之一，QS艺术与设计排名位居全球前5。学校位于纽约市，在时尚设计、平面设计、工业设计和建筑学领域具有卓越声誉。",
+      "type": "设计",
+      "admission_requirements": {
+        "a_level": "学术成绩要求灵活，最低CGPA 2.0，重点考察作品集",
+        "portfolio": "提交8-12件作品（Parsons Challenge），展示创造力、概念思维和技术能力。需完成Parsons Challenge主题创作任务",
+        "portfolio_weight": "作品集占录取决策的约70%权重",
+        "interview": "部分专业可选面试",
+        "audition": "不适用",
+        "ielts": "IELTS 7.0或TOEFL iBT 92或Duolingo 115",
+        "application_deadline": "早申请：11月1日；常规申请：1月6日",
+        "acceptance_rate": "约35-63%（按专业不同差异很大，时尚设计仅8-12%）"
+      },
+      "popular_programs": [
+        "时尚设计",
+        "战略设计与管理",
+        "沟通设计",
+        "产品设计",
+        "室内设计",
+        "建筑设计"
+      ],
+      "tuition": {
+        "amount": "53,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "living_cost": {
+        "amount": "20,000-25,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "location": {
+        "city": "纽约市"
+      },
+      "facilities": "位于纽约市格林威治村，拥有先进的时尚工坊、数字实验室、3D打印设施、摄影棚和设计工作室",
+      "alumni_achievements": [
+        "Tom Ford（时尚设计师）",
+        "Marc Jacobs（时尚设计师）",
+        "Donna Karan（时尚设计师）"
+      ],
+      "features": [
+        "位于纽约市中心",
+        "时尚设计全球顶尖",
+        "与行业联系紧密",
+        "新学院旗下"
+      ],
+      "portfolio_tips": "Parsons Challenge是必需的独特创作任务，展示对主题的创造性思考。作品集应展示原创性、概念深度和过程思考"
+    },
+    {
+      "name": "艺术中心设计学院",
+      "name_en": "ArtCenter College of Design",
+      "country": "美国",
+      "official_website": "https://www.artcenter.edu/",
+      "description": "艺术中心设计学院（ArtCenter）成立于1930年，是美国顶尖的私立设计学院之一，在工业设计、交通工具设计、娱乐设计和平面设计领域具有世界级声誉。学校位于加州帕萨迪纳，毗邻洛杉矶。",
+      "type": "设计",
+      "admission_requirements": {
+        "a_level": "学术成绩要求灵活，重点考察作品集",
+        "portfolio": "按专业要求提交：交通工具设计需3-4个汽车项目；产品设计需3-5个项目展示完整创作过程。作品集需展示手绘草图、概念发展过程到最终渲染",
+        "portfolio_weight": "作品集占录取决策的绝对主导地位（80%以上）",
+        "interview": "不强制要求",
+        "audition": "不适用",
+        "ielts": "IELTS 6.5或TOEFL iBT 80",
+        "application_deadline": "滚动录取，建议尽早申请",
+        "acceptance_rate": "约70-80%（各专业差异很大，交通工具设计竞争激烈）"
+      },
+      "popular_programs": [
+        "交通工具设计",
+        "产品设计",
+        "娱乐设计",
+        "环境设计",
+        "插画",
+        "电影"
+      ],
+      "tuition": {
+        "amount": "48,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "living_cost": {
+        "amount": "15,000-20,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "location": {
+        "city": "帕萨迪纳（加利福尼亚州）"
+      },
+      "facilities": "拥有顶级的交通工具设计工作室、3D打印实验室、数字媒体中心、摄影棚和电影制作设备",
+      "alumni_achievements": [
+        "众多汽车设计师（宝马、奔驰、特斯拉等）",
+        "工业设计师",
+        "电影概念艺术家"
+      ],
+      "features": [
+        "交通工具设计全球顶尖",
+        "工业设计领域卓越",
+        "与娱乐产业紧密联系",
+        "实践导向教学"
+      ],
+      "portfolio_tips": "交通工具设计作品集需展示手绘汽车草图、透视基础和marker渲染技巧。产品设计需展示完整的设计过程：从调研、概念草图到最终方案。手绘能力是关键"
+    },
+    {
+      "name": "普瑞特艺术学院",
+      "name_en": "Pratt Institute",
+      "country": "美国",
+      "official_website": "https://www.pratt.edu/",
+      "description": "普瑞特艺术学院（Pratt）成立于1887年，是美国著名的艺术与设计学院，位于纽约市布鲁克林区。学校在建筑设计、室内设计、工业设计和平面设计领域具有卓越声誉，是美国艺术院校协会（NASAD）认证成员。",
+      "type": "艺术/设计",
+      "admission_requirements": {
+        "a_level": "学术成绩要求灵活，通常CCC以上即可",
+        "portfolio": "提交10-15件近期最佳作品，通过SlideRoom提交。建议包含直接观察素描（非照片），展示多种媒介的实验",
+        "portfolio_weight": "作品集占录取决策的约60-70%权重",
+        "interview": "不强制要求，但可预约作品集评审",
+        "audition": "不适用",
+        "ielts": "IELTS 6.5或TOEFL iBT 79",
+        "application_deadline": "早申请：11月1日；常规申请：1月5日",
+        "acceptance_rate": "约50-55%"
+      },
+      "popular_programs": [
+        "室内设计",
+        "建筑设计",
+        "工业设计",
+        "平面设计",
+        "插画",
+        "时装设计"
+      ],
+      "tuition": {
+        "amount": "55,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "living_cost": {
+        "amount": "18,000-22,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "location": {
+        "city": "纽约市（布鲁克林）"
+      },
+      "facilities": "拥有布鲁克林主校区和曼哈顿校区，设施包括木工坊、金属工坊、陶艺工坊、数字实验室、摄影棚和图书馆",
+      "alumni_achievements": [
+        "众多著名设计师和艺术家",
+        "室内设计师",
+        "建筑设计师"
+      ],
+      "features": [
+        "室内设计和建筑设计领域顶尖",
+        "纽约市双校区",
+        "实践导向教学",
+        "丰富的工坊设施"
+      ],
+      "portfolio_tips": "作品集应展示直接观察素描能力，包含多种媒介的作品。强调创作过程和概念发展。质量和多样性并重"
+    },
+    {
+      "name": "库伯联盟学院",
+      "name_en": "The Cooper Union",
+      "country": "美国",
+      "official_website": "https://cooper.edu/",
+      "description": "库伯联盟学院成立于1859年，是美国最著名的小型私立学院之一，专注于建筑、艺术和工程教育。学校以其严格的学术标准、全免学费政策和极低的录取率著称。库伯联盟的建筑和艺术项目在全球享有盛誉。",
+      "type": "艺术/设计/建筑/工程",
+      "admission_requirements": {
+        "a_level": "学术成绩要求较高，通常AAA以上",
+        "portfolio": "建筑学院：提交作品集展示创造力和设计能力；艺术学院：提交作品集展示艺术天赋和概念深度。需完成命题创作（Home Test）",
+        "portfolio_weight": "作品集占录取决策的约60%权重",
+        "interview": "部分申请者会被邀请面试",
+        "audition": "不适用",
+        "ielts": "IELTS 7.0或TOEFL iBT 100",
+        "application_deadline": "12月上旬",
+        "acceptance_rate": "约11%（建筑4%，艺术8%，工程23%）"
+      },
+      "popular_programs": [
+        "建筑学",
+        "美术",
+        "电气工程",
+        "机械工程",
+        "化学工程"
+      ],
+      "tuition": {
+        "amount": "22,275",
+        "currency": "USD",
+        "period": "每年",
+        "note": "所有被录取学生自动获得半额奖学金（22,275 USD/年），需额外申请助学金"
+      },
+      "living_cost": {
+        "amount": "18,000-22,000",
+        "currency": "USD",
+        "period": "每年"
+      },
+      "location": {
+        "city": "纽约市（曼哈顿）"
+      },
+      "facilities": "拥有先进的建筑工作室、艺术工坊、工程实验室和位于曼哈顿东村的标志性建筑",
+      "alumni_achievements": [
+        "众多普利茨克奖得主",
+        "著名艺术家和建筑师",
+        "丹尼尔·里伯斯金（建筑师）"
+      ],
+      "features": [
+        "全免半额学费政策",
+        "录取率极低",
+        "建筑学全球顶尖",
+        "纽约曼哈顿校区"
+      ],
+      "portfolio_tips": "Home Test是库伯联盟独特的命题创作测试，考察创意解决问题的能力。作品集应展示原创思维和概念深度，避免陈词滥调"
+    },
+    {
+      "name": "中央圣马丁艺术与设计学院",
+      "name_en": "Central Saint Martins (UAL)",
+      "country": "英国",
+      "official_website": "https://www.arts.ac.uk/colleges/central-saint-martins",
+      "description": "中央圣马丁艺术与设计学院是伦敦艺术大学（UAL）旗下最著名的学院，QS艺术与设计排名位居全球前3。学校在时尚设计、平面设计、珠宝设计和纯艺术领域具有世界级声誉，是英国最具影响力的艺术设计学院。",
+      "type": "艺术/设计/时尚",
+      "admission_requirements": {
+        "a_level": "通常要求ABB-BBB，部分专业可能接受更低成绩",
+        "portfolio": "提交PDF格式作品集（不超过10MB），包含8-10张概念发展图、4-6张最终效果图、3-4张自制服装照片、2-3张纯艺术作品。需展示Fashion Art journal",
+        "portfolio_weight": "作品集占录取决策的绝对主导地位（70%以上）",
+        "interview": "大多数专业需要面试",
+        "audition": "不适用",
+        "ielts": "IELTS 6.0-6.5（视专业而定）",
+        "application_deadline": "本科：1月31日（通过UCAS）",
+        "acceptance_rate": "约20-25%"
+      },
+      "popular_programs": [
+        "时尚设计",
+        "珠宝设计",
+        "平面设计",
+        "纯艺术",
+        "纺织品设计",
+        "表演设计"
+      ],
+      "tuition": {
+        "amount": "25,000-28,000",
+        "currency": "GBP",
+        "period": "每年",
+        "note": "国际学生学费约25,000-28,000 GBP/年"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "GBP",
+        "period": "每年"
+      },
+      "location": {
+        "city": "伦敦"
+      },
+      "facilities": "位于伦敦国王十字区，拥有先进的时尚工坊、纺织品实验室、3D打印设施、摄影棚和展览空间",
+      "alumni_achievements": [
+        "Alexander McQueen（时尚设计师）",
+        "Stella McCartney（时尚设计师）",
+        "John Galliano（时尚设计师）"
+      ],
+      "features": [
+        "英国顶尖艺术设计学院",
+        "时尚设计全球领先",
+        "伦敦艺术大学旗下",
+        "行业联系紧密"
+      ],
+      "portfolio_tips": "作品集必须包含Fashion Art journal展示设计过程。强调创意发展过程，不仅仅是最终成品。展示对时尚行业的理解和个人创意视角"
+    },
+    {
+      "name": "皇家艺术学院",
+      "name_en": "Royal College of Art (RCA)",
+      "country": "英国",
+      "official_website": "https://www.rca.ac.uk/",
+      "description": "皇家艺术学院（RCA）成立于1837年，是全球最顶尖的艺术与设计研究生院校，QS艺术与设计排名常年位居全球第1。RCA只提供硕士和博士项目，在纯艺术、设计、传播和材料科学领域具有世界领先地位。",
+      "type": "艺术/设计",
+      "admission_requirements": {
+        "a_level": "仅提供研究生项目，要求本科学位（2:1以上）",
+        "portfolio": "提交1个PDF文件（最多15页），包含10-15张作品图片，附作品说明（标题、日期、尺寸、材料）。需包含portfolio statement（最多200字）。可嵌入最多2个1分钟视频片段",
+        "portfolio_weight": "作品集占录取决策的绝对主导地位（80%以上）",
+        "interview": "部分专业需要面试",
+        "audition": "不适用",
+        "ielts": "IELTS 6.5（写作不低于6.0，部分专业要求更高）",
+        "application_deadline": "第一轮：11月（部分专业）；第二轮：2月-3月",
+        "acceptance_rate": "约15-25%（各专业不同）"
+      },
+      "popular_programs": [
+        "绘画",
+        "雕塑",
+        "时尚设计",
+        "产品设计",
+        "服务设计",
+        "信息体验设计"
+      ],
+      "tuition": {
+        "amount": "35,000-40,000",
+        "currency": "GBP",
+        "period": "每年",
+        "note": "国际学生学费约35,000-40,000 GBP/年"
+      },
+      "living_cost": {
+        "amount": "15,000-18,000",
+        "currency": "GBP",
+        "period": "每年"
+      },
+      "location": {
+        "city": "伦敦"
+      },
+      "facilities": "拥有多个校区（南肯辛顿、巴特西、白城），配备顶级的工作室、工坊、数字实验室和展览空间",
+      "alumni_achievements": [
+        "David Hockney（艺术家）",
+        "Ridley Scott（导演）",
+        "James Dyson（发明家）"
+      ],
+      "features": [
+        "全球排名第一艺术院校",
+        "仅提供研究生项目",
+        "QS艺术与设计常年第1",
+        "产学研结合紧密"
+      ],
+      "portfolio_tips": "作品集应精炼且具代表性（最多15页）。强调作品的当代语境定位。包含portfolio statement说明创作理念和关注点。视频（2分钟）是展示个人魅力和艺术视野的重要机会"
+    },
+    {
+      "name": "切尔西艺术学院",
+      "name_en": "Chelsea College of Arts (UAL)",
+      "country": "英国",
+      "official_website": "https://www.arts.ac.uk/colleges/chelsea-college-of-arts",
+      "description": "切尔西艺术学院是伦敦艺术大学（UAL）旗下著名学院之一，在美术、平面设计、室内与空间设计和纺织品设计领域具有卓越声誉。学院以其创新性的教学方法和与当代艺术的紧密联系著称。",
+      "type": "艺术/设计",
+      "admission_requirements": {
+        "a_level": "通常要求BBC-CCC，重点考察作品集",
+        "portfolio": "提交PDF或SlideRoom作品集，展示创意能力、技术技能和概念思维。需包含调研过程、概念发展和最终成品",
+        "portfolio_weight": "作品集占录取决策的约70%权重",
+        "interview": "大多数专业需要面试",
+        "audition": "不适用",
+        "ielts": "IELTS 6.0-6.5（视专业而定）",
+        "application_deadline": "本科：1月31日（通过UCAS）",
+        "acceptance_rate": "约30-40%"
+      },
+      "popular_programs": [
+        "纯艺术",
+        "平面设计",
+        "室内与空间设计",
+        "纺织品设计"
+      ],
+      "tuition": {
+        "amount": "25,000-28,000",
+        "currency": "GBP",
+        "period": "每年",
+        "note": "国际学生学费约25,000-28,000 GBP/年"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "GBP",
+        "period": "每年"
+      },
+      "location": {
+        "city": "伦敦"
+      },
+      "facilities": "位于伦敦泰晤士河畔，拥有专业的工作室、版画工坊、纺织品实验室和展览空间",
+      "alumni_achievements": [
+        "Anish Kapoor（雕塑家）",
+        "Steve McQueen（导演/艺术家）",
+        "Ralph Fiennes（演员）"
+      ],
+      "features": [
+        "伦敦艺术大学旗下",
+        "纯艺术和设计领域卓越",
+        "泰晤士河畔校区",
+        "与当代艺术界联系紧密"
+      ],
+      "portfolio_tips": "作品集应展示调研能力、概念发展过程和最终成品。强调个人创意视角和对当代艺术的兴趣。包含多种媒介的实验作品"
+    },
+    {
+      "name": "格拉斯哥艺术学院",
+      "name_en": "Glasgow School of Art",
+      "country": "英国",
+      "official_website": "https://www.gsa.ac.uk/",
+      "description": "格拉斯哥艺术学院（GSA）成立于1845年，是苏格兰最顶尖的艺术设计学院，QS艺术与设计排名位居全球前15。学校在建筑学、纯艺术和设计领域具有卓越声誉，以其独特的艺术氛围和创新教学方法著称。",
+      "type": "艺术/设计/建筑",
+      "admission_requirements": {
+        "a_level": "ABB-BBB，视具体专业而定",
+        "portfolio": "提交15-25件最佳作品，附创作说明和艺术旅程解释。需展示实验精神，避免过于保守",
+        "portfolio_weight": "作品集占录取决策的约70%权重",
+        "interview": "大多数专业需要面试",
+        "audition": "不适用",
+        "ielts": "IELTS 6.0（本科）或6.5（研究生）",
+        "application_deadline": "本科：1月31日（通过UCAS）",
+        "acceptance_rate": "约20-25%"
+      },
+      "popular_programs": [
+        "建筑学",
+        "纯艺术",
+        "通信设计",
+        "室内设计",
+        "银器和珠宝设计"
+      ],
+      "tuition": {
+        "amount": "21,000-23,000",
+        "currency": "GBP",
+        "period": "每年",
+        "note": "国际学生学费约21,000-23,000 GBP/年"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "GBP",
+        "period": "每年"
+      },
+      "location": {
+        "city": "格拉斯哥"
+      },
+      "facilities": "拥有历史悠久的麦金托什建筑和现代化工作室，配备专业的艺术工坊、数字实验室和展览空间",
+      "alumni_achievements": [
+        "Charles Rennie Mackintosh（建筑师/设计师）",
+        "Douglas Gordon（艺术家）",
+        "Peter Capaldi（演员/导演）"
+      ],
+      "features": [
+        "苏格兰最顶尖艺术学院",
+        "建筑学全球知名",
+        "麦金托什建筑遗产",
+        "创新教学方法"
+      ],
+      "portfolio_tips": "作品集应展示大胆的创新精神和实验态度。强调个人创意发展过程。专业展示和高质量图片至关重要"
+    },
+    {
+      "name": "巴黎国立高等美术学院",
+      "name_en": "École nationale supérieure des Beaux-Arts de Paris (ENSBA)",
+      "country": "法国",
+      "official_website": "https://www.beauxartsparis.fr/en",
+      "description": "巴黎国立高等美术学院（Beaux-Arts de Paris）成立于17世纪，是世界上最古老、最负盛名的美术学院之一。学校在纯艺术领域具有深厚的历史传统和卓越声誉，培养了众多世界级艺术家。",
+      "type": "艺术",
+      "admission_requirements": {
+        "a_level": "学术成绩要求灵活，重点考察作品集和艺术才华",
+        "portfolio": "提交数字作品集（20-25页，最大20MB），展示当代艺术实践（绘画、雕塑、装置、摄影、视频等）。需已完成至少2年艺术学习但不超过4年",
+        "portfolio_weight": "作品集占录取决策的绝对主导地位",
+        "interview": "选拔委员会面试",
+        "audition": "不适用",
+        "ielts": "无最低语言要求，但建议法语B1水平",
+        "application_deadline": "交换生：5月15日（提名）；6月1日（申请）",
+        "acceptance_rate": "约10-15%"
+      },
+      "popular_programs": [
+        "绘画",
+        "雕塑/装置",
+        "版画与绘画",
+        "摄影",
+        "视频艺术"
+      ],
+      "tuition": {
+        "amount": "400-1,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "法国公立美术学院学费极低"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "巴黎"
+      },
+      "facilities": "位于巴黎左岸圣日耳曼德佩区，拥有历史悠久的工作室、版画工坊、雕塑工坊和展览空间",
+      "alumni_achievements": [
+        "印象派大师们",
+        "Pierre Bonnard（画家）",
+        " numerous Prix de Rome winners"
+      ],
+      "features": [
+        "世界上最古老美术学院之一",
+        "纯艺术领域传统深厚",
+        "学费极低",
+        "位于巴黎艺术核心区"
+      ],
+      "portfolio_tips": "作品集需展示活跃的当代艺术实践。强调个人艺术语言和创作理念。理论课程为法语授课，建议具备基础法语能力"
+    },
+    {
+      "name": "安特卫普皇家艺术学院",
+      "name_en": "Royal Academy of Fine Arts Antwerp",
+      "country": "比利时",
+      "official_website": "https://www.ap-arts.be/en",
+      "description": "安特卫普皇家艺术学院是比利时最负盛名的艺术学院之一，在时尚设计和纯艺术领域具有世界级声誉。学校以其严格的选拔机制和卓越的教学质量著称，是欧洲最具挑战性的艺术学院之一。",
+      "type": "艺术/设计/时尚",
+      "admission_requirements": {
+        "a_level": "学术成绩要求灵活，重点考察作品集和入学考试表现",
+        "portfolio": "提交数字作品集进行预选。作品集通过后需参加为期3-5天的艺术入学考试（7月），包含工作室创作和绘画测试。时尚专业仅允许线下考试",
+        "portfolio_weight": "作品集是获得入学考试资格的关键，入学考试是最终录取的决定性因素",
+        "interview": "入学考试包含面试环节",
+        "audition": "不适用",
+        "ielts": "英语B2水平（CEFR）",
+        "application_deadline": "时尚专业：3月25日；其他专业：5月27日",
+        "acceptance_rate": "约15-20%"
+      },
+      "popular_programs": [
+        "时尚设计",
+        "纯艺术（雕塑/绘画/版画）",
+        "平面设计",
+        "珠宝设计"
+      ],
+      "tuition": {
+        "amount": "1,000-5,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "比利时公立艺术学院学费较低"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "安特卫普"
+      },
+      "facilities": "拥有多个校区，配备专业的时尚工作室、艺术工坊、版画工坊和展览空间",
+      "alumni_achievements": [
+        "安特卫普六君子（时尚设计师）",
+        " numerous international fashion designers"
+      ],
+      "features": [
+        "时尚设计全球顶尖",
+        "严格的入学考试机制",
+        "安特卫普六君子母校",
+        "学费低廉"
+      ],
+      "portfolio_tips": "作品集需通过预选获得入学考试资格。入学考试包含为期3天的实际创作任务和绘画测试。时尚专业必须线下参加入学考试"
+    },
+    {
+      "name": "法国时尚学院",
+      "name_en": "ESMOD Paris",
+      "country": "法国",
+      "official_website": "https://www.esmod.com/en",
+      "description": "ESMOD（法国时尚学院）成立于1841年，是世界上历史最悠久的时装设计学校之一。学校在时装设计、服装制版和时尚营销领域具有卓越声誉，在全球15个国家设有分校。",
+      "type": "时尚",
+      "admission_requirements": {
+        "a_level": "高中毕业或同等学历（A-Level/IB），无特定成绩要求",
+        "portfolio": "本科第一年不强制要求作品集，需完成指定的创作任务（moodboard和创意制作）。研究生需提交完整作品集",
+        "portfolio_weight": "创作任务占申请评估的重要部分，但非决定性因素",
+        "interview": "动机面试是必须的，考察时尚行业兴趣和职业规划",
+        "audition": "不适用",
+        "ielts": "本科无强制语言证书要求；研究生要求IELTS 7.0或同等水平",
+        "application_deadline": "滚动录取，建议尽早申请，班级通常在5月前满额",
+        "acceptance_rate": "约40-50%"
+      },
+      "popular_programs": [
+        "时装设计（学士）",
+        "时尚营销与传播（学士）",
+        "时尚设计总监（研究生）",
+        "国际时尚管理（研究生）"
+      ],
+      "tuition": {
+        "amount": "12,000-16,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "巴黎校区学费约12,000-16,000 EUR/年"
+      },
+      "living_cost": {
+        "amount": "12,000-15,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "巴黎"
+      },
+      "facilities": "位于巴黎市中心，拥有专业的时装工作室、制版室、缝纫工坊和数字设计实验室",
+      "alumni_achievements": [
+        " numerous international fashion designers",
+        "Thierry Mugler（校友）"
+      ],
+      "features": [
+        "世界上最古老的时装学校之一",
+        "巴黎时尚中心位置",
+        "本科第一年不需作品集",
+        "行业认可度极高"
+      ],
+      "portfolio_tips": "本科第一年申请不需作品集，但需完成学校指定的创作任务（制作moodboard和指定创意作品）。动机和创意潜力比技术技能更重要。研究生需提交高质量作品集"
+    },
+    {
+      "name": "柏丽慕达时装学院",
+      "name_en": "Polimoda",
+      "country": "意大利",
+      "official_website": "https://www.polimoda.com/",
+      "description": "柏丽慕达时装学院（Polimoda）位于意大利佛罗伦萨，是全球顶尖的时尚教育机构之一。学校在时尚设计、时尚营销、时尚品牌管理和鞋履设计领域具有卓越声誉，与意大利时尚产业联系紧密。",
+      "type": "时尚",
+      "admission_requirements": {
+        "a_level": "高中毕业或同等学历，无特定成绩要求",
+        "portfolio": "本科申请通常需要作品集或创意项目。研究生需提交完整作品集展示设计能力和创意视野",
+        "portfolio_weight": "作品集占录取评估的重要部分",
+        "interview": "动机面试是必须的",
+        "audition": "不适用",
+        "ielts": "IELTS 6.0-6.5（视项目而定）",
+        "application_deadline": "滚动录取，建议尽早申请",
+        "acceptance_rate": "约40-50%"
+      },
+      "popular_programs": [
+        "时装设计",
+        "时尚品牌管理",
+        "时尚营销",
+        "鞋履设计",
+        "奢侈品管理"
+      ],
+      "tuition": {
+        "amount": "18,000-28,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "学费约18,000-28,000 EUR/年，视项目而定"
+      },
+      "living_cost": {
+        "amount": "10,000-13,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "佛罗伦萨"
+      },
+      "facilities": "位于佛罗伦萨，拥有专业的时尚工作室、制版室、数字实验室和材料图书馆",
+      "alumni_achievements": [
+        " numerous international fashion designers and brand managers"
+      ],
+      "features": [
+        "意大利顶尖时尚学院",
+        "佛罗伦萨时尚中心",
+        "与意大利时尚产业紧密联系",
+        "实践导向教学"
+      ],
+      "portfolio_tips": "作品集应展示对时尚的热情和创意潜力。包含设计草图、灵感板、材料实验和任何相关的创意作品。强调个人风格和对时尚产业的理解"
+    },
+    {
+      "name": "埃因霍温设计学院",
+      "name_en": "Design Academy Eindhoven",
+      "country": "荷兰",
+      "official_website": "https://www.designacademy.nl/",
+      "description": "埃因霍温设计学院（DAE）成立于1947年，是荷兰最顶尖的设计学院之一，在工业设计、概念设计和信息设计领域具有世界级声誉。学校以其实验性的教学方法和批判性设计理念著称。",
+      "type": "设计",
+      "admission_requirements": {
+        "a_level": "高中毕业或同等学历，重点考察作品集和创意潜力",
+        "portfolio": "提交展示创意能力和设计思维的作品集，需包含概念发展过程和最终作品",
+        "portfolio_weight": "作品集占录取决策的绝对主导地位（80%以上）",
+        "interview": "面试是必须的",
+        "audition": "不适用",
+        "ielts": "IELTS 6.0或同等水平",
+        "application_deadline": "通常在2月-4月",
+        "acceptance_rate": "约20-25%"
+      },
+      "popular_programs": [
+        "信息设计",
+        "产品设计",
+        "社交设计",
+        "时尚设计",
+        "食物设计"
+      ],
+      "tuition": {
+        "amount": "10,000-12,000",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "非EU学生学费约10,000-12,000 EUR/年；EU学生学费较低"
+      },
+      "living_cost": {
+        "amount": "10,000-12,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "埃因霍温"
+      },
+      "facilities": "拥有专业的设计工作室、数字实验室、材料工坊和展览空间",
+      "alumni_achievements": [
+        "Maarten Baas（设计师）",
+        "Hella Jongerius（设计师）",
+        "numerous Dutch designers"
+      ],
+      "features": [
+        "荷兰最顶尖设计学院之一",
+        "概念设计领域全球领先",
+        "批判性设计理念",
+        "学费相对较低"
+      ],
+      "portfolio_tips": "作品集应展示实验精神和批判性设计思维。强调概念发展和创作过程。展示对材料、形式和功能的创新思考"
+    },
+    {
+      "name": "柏林艺术大学",
+      "name_en": "Berlin University of the Arts (UdK Berlin)",
+      "country": "德国",
+      "official_website": "https://www.udk-berlin.de/en/",
+      "description": "柏林艺术大学（UdK Berlin）是德国最大、最负盛名的艺术大学之一，在音乐、美术、设计和表演艺术领域具有卓越声誉。学校以其跨学科的艺术教育和柏林独特的文化氛围著称。",
+      "type": "艺术/设计/音乐/表演",
+      "admission_requirements": {
+        "a_level": "高中毕业或同等学历，重点考察作品集和艺术才华",
+        "portfolio": "提交数字或纸质作品集（视专业要求）。预选通过后需参加入学考试（线上），包含实际创作任务和面试",
+        "portfolio_weight": "作品集是预选的关键，入学考试是最终录取的决定性因素",
+        "interview": "入学考试包含面试",
+        "audition": "音乐和表演专业需要试镜",
+        "ielts": "德语授课项目需德语B2/C1；部分英语项目需IELTS 6.5",
+        "application_deadline": "通常在3月-4月（冬季学期）",
+        "acceptance_rate": "约15-20%"
+      },
+      "popular_programs": [
+        "纯艺术",
+        "建筑设计",
+        "视觉传达",
+        "时装设计",
+        "音乐表演"
+      ],
+      "tuition": {
+        "amount": "0",
+        "currency": "EUR",
+        "period": "每年",
+        "note": "德国公立大学免学费，仅收取约350 EUR/学期注册费"
+      },
+      "living_cost": {
+        "amount": "10,000-12,000",
+        "currency": "EUR",
+        "period": "每年"
+      },
+      "location": {
+        "city": "柏林"
+      },
+      "facilities": "拥有多个校区，配备专业的艺术工作室、音乐厅、剧场、电影制作设施和展览空间",
+      "alumni_achievements": [
+        " numerous German artists and musicians",
+        "Kraftwerk（乐队成员校友）"
+      ],
+      "features": [
+        "德国最大艺术大学",
+        "免学费",
+        "柏林文化环境独特",
+        "跨学科艺术教育"
+      ],
+      "portfolio_tips": "作品集需通过预选获得入学考试资格。入学考试通常在6月线上举行，包含实际创作任务和面试。建议提前准备德语能力"
+    }
+  ]
+}

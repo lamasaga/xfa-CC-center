@@ -1,0 +1,2697 @@
+{
+  "metadata": {
+    "description": "留学择校第三方平台数据汇总 - 生活成本、毕业生薪资、就业去向、录取统计、学生评价",
+    "data_collection_date": "2025-01",
+    "version": "1.0",
+    "sources": [
+      "Numbeo",
+      "PayScale",
+      "NACE",
+      "HESA",
+      "QILT",
+      "Common Data Set",
+      "Niche",
+      "NSS",
+      "Whatuni",
+      "College Scorecard"
+    ]
+  },
+  "cities_living_costs": {
+    "new_york": {
+      "city": "纽约",
+      "country": "美国",
+      "cost_index": 100.0,
+      "rent_index": 100.0,
+      "groceries_index": 100.0,
+      "restaurant_index": 100.0,
+      "rent_avg_1br": 4200,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "san_francisco": {
+      "city": "旧金山/湾区",
+      "country": "美国",
+      "cost_index": 96.2,
+      "rent_index": 74.9,
+      "groceries_index": 103.5,
+      "restaurant_index": 101.2,
+      "rent_avg_1br": 3200,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "boston": {
+      "city": "波士顿",
+      "country": "美国",
+      "cost_index": 85.3,
+      "rent_index": 73.7,
+      "groceries_index": 90.3,
+      "restaurant_index": 86.7,
+      "rent_avg_1br": 3000,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "washington_dc": {
+      "city": "华盛顿DC",
+      "country": "美国",
+      "cost_index": 89.6,
+      "rent_index": 65.8,
+      "groceries_index": 91.1,
+      "restaurant_index": 94.5,
+      "rent_avg_1br": 2800,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "seattle": {
+      "city": "西雅图",
+      "country": "美国",
+      "cost_index": 88.8,
+      "rent_index": 56.1,
+      "groceries_index": 97.8,
+      "restaurant_index": 84.3,
+      "rent_avg_1br": 2600,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "los_angeles": {
+      "city": "洛杉矶",
+      "country": "美国",
+      "cost_index": 82.2,
+      "rent_index": 72.4,
+      "groceries_index": 86.1,
+      "restaurant_index": 87.5,
+      "rent_avg_1br": 2800,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "miami": {
+      "city": "迈阿密",
+      "country": "美国",
+      "cost_index": 85.1,
+      "rent_index": 64.7,
+      "groceries_index": 90.5,
+      "restaurant_index": 99.9,
+      "rent_avg_1br": 2700,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "chicago": {
+      "city": "芝加哥",
+      "country": "美国",
+      "cost_index": 75.0,
+      "rent_index": 56.6,
+      "groceries_index": 82.8,
+      "restaurant_index": 78.8,
+      "rent_avg_1br": 2100,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "philadelphia": {
+      "city": "费城",
+      "country": "美国",
+      "cost_index": 79.5,
+      "rent_index": 42.7,
+      "groceries_index": 86.1,
+      "restaurant_index": 73.9,
+      "rent_avg_1br": 1900,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "atlanta": {
+      "city": "亚特兰大",
+      "country": "美国",
+      "cost_index": 74.9,
+      "rent_index": 40.8,
+      "groceries_index": 82.5,
+      "restaurant_index": 84.2,
+      "rent_avg_1br": 1850,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "austin": {
+      "city": "奥斯汀",
+      "country": "美国",
+      "cost_index": 69.5,
+      "rent_index": 43.6,
+      "groceries_index": 75.5,
+      "restaurant_index": 73.3,
+      "rent_avg_1br": 1750,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "pittsburgh": {
+      "city": "匹兹堡",
+      "country": "美国",
+      "cost_index": 67.7,
+      "rent_index": 31.3,
+      "groceries_index": 76.2,
+      "restaurant_index": 66.3,
+      "rent_avg_1br": 1400,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "ann_arbor": {
+      "city": "安娜堡",
+      "country": "美国",
+      "cost_index": 69.5,
+      "rent_index": 44.6,
+      "groceries_index": 75.9,
+      "restaurant_index": 69.4,
+      "rent_avg_1br": 1600,
+      "currency": "USD",
+      "source": "Numbeo 2025"
+    },
+    "durham_nc": {
+      "city": "达勒姆(北卡)",
+      "country": "美国",
+      "cost_index": 72.0,
+      "rent_index": 38.0,
+      "groceries_index": 80.0,
+      "restaurant_index": 75.0,
+      "rent_avg_1br": 1500,
+      "currency": "USD",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "houston": {
+      "city": "休斯顿",
+      "country": "美国",
+      "cost_index": 72.0,
+      "rent_index": 40.0,
+      "groceries_index": 78.0,
+      "restaurant_index": 78.0,
+      "rent_avg_1br": 1500,
+      "currency": "USD",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "london": {
+      "city": "伦敦",
+      "country": "英国",
+      "cost_index": 88.1,
+      "rent_index": 61.9,
+      "groceries_index": 70.2,
+      "restaurant_index": 89.4,
+      "rent_avg_1br": 2400,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "oxford": {
+      "city": "牛津",
+      "country": "英国",
+      "cost_index": 76.0,
+      "rent_index": 45.1,
+      "groceries_index": 68.4,
+      "restaurant_index": 87.9,
+      "rent_avg_1br": 1650,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "cambridge": {
+      "city": "剑桥",
+      "country": "英国",
+      "cost_index": 75.1,
+      "rent_index": 42.4,
+      "groceries_index": 67.8,
+      "restaurant_index": 78.6,
+      "rent_avg_1br": 1600,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "manchester": {
+      "city": "曼彻斯特",
+      "country": "英国",
+      "cost_index": 67.8,
+      "rent_index": 36.3,
+      "groceries_index": 65.5,
+      "restaurant_index": 74.6,
+      "rent_avg_1br": 1200,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "edinburgh": {
+      "city": "爱丁堡",
+      "country": "英国",
+      "cost_index": 70.6,
+      "rent_index": 36.0,
+      "groceries_index": 68.0,
+      "restaurant_index": 78.0,
+      "rent_avg_1br": 1250,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "bristol": {
+      "city": "布里斯托",
+      "country": "英国",
+      "cost_index": 74.4,
+      "rent_index": 39.3,
+      "groceries_index": 69.0,
+      "restaurant_index": 80.7,
+      "rent_avg_1br": 1500,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "birmingham": {
+      "city": "伯明翰",
+      "country": "英国",
+      "cost_index": 70.2,
+      "rent_index": 29.4,
+      "groceries_index": 65.0,
+      "restaurant_index": 75.3,
+      "rent_avg_1br": 1050,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "glasgow": {
+      "city": "格拉斯哥",
+      "country": "英国",
+      "cost_index": 68.5,
+      "rent_index": 32.3,
+      "groceries_index": 66.2,
+      "restaurant_index": 72.7,
+      "rent_avg_1br": 1050,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "leeds": {
+      "city": "利兹",
+      "country": "英国",
+      "cost_index": 67.6,
+      "rent_index": 28.4,
+      "groceries_index": 65.3,
+      "restaurant_index": 73.1,
+      "rent_avg_1br": 1000,
+      "currency": "GBP",
+      "source": "Numbeo 2025"
+    },
+    "durham_uk": {
+      "city": "杜伦",
+      "country": "英国",
+      "cost_index": 68.0,
+      "rent_index": 30.0,
+      "groceries_index": 66.0,
+      "restaurant_index": 74.0,
+      "rent_avg_1br": 900,
+      "currency": "GBP",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "southampton": {
+      "city": "南安普顿",
+      "country": "英国",
+      "cost_index": 69.0,
+      "rent_index": 30.0,
+      "groceries_index": 67.0,
+      "restaurant_index": 75.0,
+      "rent_avg_1br": 1100,
+      "currency": "GBP",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "lancaster": {
+      "city": "兰卡斯特",
+      "country": "英国",
+      "cost_index": 67.0,
+      "rent_index": 28.0,
+      "groceries_index": 65.0,
+      "restaurant_index": 72.0,
+      "rent_avg_1br": 850,
+      "currency": "GBP",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "toronto": {
+      "city": "多伦多",
+      "country": "加拿大",
+      "cost_index": 63.8,
+      "rent_index": 48.5,
+      "groceries_index": 68.0,
+      "restaurant_index": 75.0,
+      "rent_avg_1br": 2300,
+      "currency": "CAD",
+      "source": "Numbeo 2025"
+    },
+    "vancouver": {
+      "city": "温哥华",
+      "country": "加拿大",
+      "cost_index": 68.2,
+      "rent_index": 44.6,
+      "groceries_index": 76.0,
+      "restaurant_index": 72.3,
+      "rent_avg_1br": 2650,
+      "currency": "CAD",
+      "source": "Numbeo 2025"
+    },
+    "montreal": {
+      "city": "蒙特利尔",
+      "country": "加拿大",
+      "cost_index": 59.4,
+      "rent_index": 35.0,
+      "groceries_index": 65.0,
+      "restaurant_index": 70.0,
+      "rent_avg_1br": 1750,
+      "currency": "CAD",
+      "source": "Numbeo 2025"
+    },
+    "hamilton": {
+      "city": "汉密尔顿",
+      "country": "加拿大",
+      "cost_index": 58.0,
+      "rent_index": 32.0,
+      "groceries_index": 62.0,
+      "restaurant_index": 68.0,
+      "rent_avg_1br": 1600,
+      "currency": "CAD",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "edmonton": {
+      "city": "埃德蒙顿",
+      "country": "加拿大",
+      "cost_index": 59.4,
+      "rent_index": 30.0,
+      "groceries_index": 63.0,
+      "restaurant_index": 67.0,
+      "rent_avg_1br": 1400,
+      "currency": "CAD",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "sydney": {
+      "city": "悉尼",
+      "country": "澳大利亚",
+      "cost_index": 79.4,
+      "rent_index": 55.6,
+      "groceries_index": 85.7,
+      "restaurant_index": 72.9,
+      "rent_avg_1br": 3000,
+      "currency": "AUD",
+      "source": "Numbeo 2025"
+    },
+    "melbourne": {
+      "city": "墨尔本",
+      "country": "澳大利亚",
+      "cost_index": 77.6,
+      "rent_index": 40.7,
+      "groceries_index": 89.3,
+      "restaurant_index": 71.3,
+      "rent_avg_1br": 2200,
+      "currency": "AUD",
+      "source": "Numbeo 2025"
+    },
+    "brisbane": {
+      "city": "布里斯班",
+      "country": "澳大利亚",
+      "cost_index": 70.9,
+      "rent_index": 41.8,
+      "groceries_index": 83.6,
+      "restaurant_index": 71.3,
+      "rent_avg_1br": 2000,
+      "currency": "AUD",
+      "source": "Numbeo 2025"
+    },
+    "perth": {
+      "city": "珀斯",
+      "country": "澳大利亚",
+      "cost_index": 73.0,
+      "rent_index": 38.0,
+      "groceries_index": 82.0,
+      "restaurant_index": 75.0,
+      "rent_avg_1br": 1900,
+      "currency": "AUD",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "adelaide": {
+      "city": "阿德莱德",
+      "country": "澳大利亚",
+      "cost_index": 74.7,
+      "rent_index": 35.0,
+      "groceries_index": 85.5,
+      "restaurant_index": 71.2,
+      "rent_avg_1br": 1700,
+      "currency": "AUD",
+      "source": "Numbeo 2025"
+    },
+    "canberra": {
+      "city": "堪培拉",
+      "country": "澳大利亚",
+      "cost_index": 78.1,
+      "rent_index": 38.0,
+      "groceries_index": 87.2,
+      "restaurant_index": 73.5,
+      "rent_avg_1br": 2000,
+      "currency": "AUD",
+      "source": "Numbeo 2025"
+    },
+    "zurich": {
+      "city": "苏黎世",
+      "country": "瑞士",
+      "cost_index": 123.0,
+      "rent_index": 71.6,
+      "groceries_index": 124.4,
+      "restaurant_index": 124.8,
+      "rent_avg_1br": 2800,
+      "currency": "CHF",
+      "source": "Numbeo 2025"
+    },
+    "amsterdam": {
+      "city": "阿姆斯特丹",
+      "country": "荷兰",
+      "cost_index": 81.4,
+      "rent_index": 52.2,
+      "groceries_index": 75.7,
+      "restaurant_index": 83.6,
+      "rent_avg_1br": 2200,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "munich": {
+      "city": "慕尼黑",
+      "country": "德国",
+      "cost_index": 76.7,
+      "rent_index": 38.6,
+      "groceries_index": 66.0,
+      "restaurant_index": 78.2,
+      "rent_avg_1br": 1600,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "paris": {
+      "city": "巴黎",
+      "country": "法国",
+      "cost_index": 78.6,
+      "rent_index": 38.7,
+      "groceries_index": 80.0,
+      "restaurant_index": 74.4,
+      "rent_avg_1br": 1500,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "copenhagen": {
+      "city": "哥本哈根",
+      "country": "丹麦",
+      "cost_index": 85.0,
+      "rent_index": 42.2,
+      "groceries_index": 79.0,
+      "restaurant_index": 98.2,
+      "rent_avg_1br": 1800,
+      "currency": "DKK",
+      "source": "Numbeo 2025"
+    },
+    "stockholm": {
+      "city": "斯德哥尔摩",
+      "country": "瑞典",
+      "cost_index": 80.6,
+      "rent_index": 35.0,
+      "groceries_index": 79.5,
+      "restaurant_index": 79.7,
+      "rent_avg_1br": 1400,
+      "currency": "SEK",
+      "source": "Numbeo 2025"
+    },
+    "dublin": {
+      "city": "都柏林",
+      "country": "爱尔兰",
+      "cost_index": 75.3,
+      "rent_index": 57.1,
+      "groceries_index": 72.1,
+      "restaurant_index": 85.2,
+      "rent_avg_1br": 2200,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "milan": {
+      "city": "米兰",
+      "country": "意大利",
+      "cost_index": 75.2,
+      "rent_index": 38.7,
+      "groceries_index": 74.7,
+      "restaurant_index": 78.5,
+      "rent_avg_1br": 1400,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "barcelona": {
+      "city": "巴塞罗那",
+      "country": "西班牙",
+      "cost_index": 60.6,
+      "rent_index": 32.0,
+      "groceries_index": 58.0,
+      "restaurant_index": 62.0,
+      "rent_avg_1br": 1200,
+      "currency": "EUR",
+      "source": "Numbeo 2025 (estimated)"
+    },
+    "vienna": {
+      "city": "维也纳",
+      "country": "奥地利",
+      "cost_index": 75.5,
+      "rent_index": 28.8,
+      "groceries_index": 74.5,
+      "restaurant_index": 78.7,
+      "rent_avg_1br": 1100,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "helsinki": {
+      "city": "赫尔辛基",
+      "country": "芬兰",
+      "cost_index": 74.4,
+      "rent_index": 29.0,
+      "groceries_index": 71.5,
+      "restaurant_index": 82.4,
+      "rent_avg_1br": 1100,
+      "currency": "EUR",
+      "source": "Numbeo 2025"
+    },
+    "hong_kong": {
+      "city": "香港",
+      "country": "中国",
+      "cost_index": 74.1,
+      "rent_index": 54.4,
+      "groceries_index": 74.0,
+      "restaurant_index": 47.5,
+      "rent_avg_1br": 2200,
+      "currency": "HKD",
+      "source": "Numbeo 2025"
+    },
+    "singapore": {
+      "city": "新加坡",
+      "country": "新加坡",
+      "cost_index": 88.7,
+      "rent_index": 62.8,
+      "groceries_index": 80.9,
+      "restaurant_index": 55.3,
+      "rent_avg_1br": 2500,
+      "currency": "SGD",
+      "source": "Numbeo 2025"
+    }
+  },
+  "salaries": {
+    "mit": {
+      "school": "麻省理工学院",
+      "country": "美国",
+      "early_career_salary": 110200,
+      "mid_career_salary": 196900,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "computer_science": 120000,
+        "engineering": 115000,
+        "mathematics": 105000,
+        "business": 95000,
+        "economics": 98000
+      }
+    },
+    "princeton": {
+      "school": "普林斯顿大学",
+      "country": "美国",
+      "early_career_salary": 95600,
+      "mid_career_salary": 194100,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "computer_science": 115000,
+        "engineering": 105000,
+        "economics": 100000,
+        "public_policy": 85000,
+        "history": 72000
+      }
+    },
+    "stanford": {
+      "school": "斯坦福大学",
+      "country": "美国",
+      "early_career_salary": 102300,
+      "mid_career_salary": 181200,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "computer_science": 130000,
+        "engineering": 118000,
+        "business": 110000,
+        "economics": 105000,
+        "biology": 85000
+      }
+    },
+    "harvard": {
+      "school": "哈佛大学",
+      "country": "美国",
+      "early_career_salary": 95600,
+      "mid_career_salary": 177400,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "economics": 110000,
+        "computer_science": 125000,
+        "government": 85000,
+        "psychology": 70000,
+        "english": 65000
+      }
+    },
+    "caltech": {
+      "school": "加州理工学院",
+      "country": "美国",
+      "early_career_salary": 111000,
+      "mid_career_salary": 175400,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "engineering": 120000,
+        "physics": 105000,
+        "computer_science": 125000,
+        "mathematics": 110000,
+        "chemistry": 95000
+      }
+    },
+    "carnegie_mellon": {
+      "school": "卡内基梅隆大学",
+      "country": "美国",
+      "early_career_salary": 100500,
+      "mid_career_salary": 167400,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "computer_science": 135000,
+        "engineering": 105000,
+        "information_systems": 110000,
+        "business": 95000,
+        "design": 85000
+      }
+    },
+    "upenn": {
+      "school": "宾夕法尼亚大学",
+      "country": "美国",
+      "early_career_salary": 92500,
+      "mid_career_salary": 178300,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report / College Scorecard 2025",
+      "by_major": {
+        "finance": 120000,
+        "economics": 105000,
+        "business": 100000,
+        "engineering": 95000,
+        "nursing": 78000
+      }
+    },
+    "yale": {
+      "school": "耶鲁大学",
+      "country": "美国",
+      "early_career_salary": 92100,
+      "mid_career_salary": 171900,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "economics": 105000,
+        "computer_science": 115000,
+        "political_science": 85000,
+        "history": 72000,
+        "english": 68000
+      }
+    },
+    "columbia": {
+      "school": "哥伦比亚大学",
+      "country": "美国",
+      "early_career_salary": 90000,
+      "mid_career_salary": 170000,
+      "currency": "USD",
+      "source": "PayScale 2024 (estimated)",
+      "by_major": {
+        "economics": 108000,
+        "computer_science": 120000,
+        "engineering": 100000,
+        "political_science": 88000,
+        "psychology": 70000
+      }
+    },
+    "dartmouth": {
+      "school": "达特茅斯学院",
+      "country": "美国",
+      "early_career_salary": 92300,
+      "mid_career_salary": 178700,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "economics": 100000,
+        "government": 85000,
+        "engineering": 95000,
+        "computer_science": 110000,
+        "history": 75000
+      }
+    },
+    "cornell": {
+      "school": "康奈尔大学",
+      "country": "美国",
+      "early_career_salary": 88000,
+      "mid_career_salary": 165000,
+      "currency": "USD",
+      "source": "PayScale 2024 (estimated)",
+      "by_major": {
+        "engineering": 105000,
+        "computer_science": 120000,
+        "business": 95000,
+        "biology": 80000,
+        "hotel_admin": 85000
+      }
+    },
+    "uc_berkeley": {
+      "school": "加州大学伯克利分校",
+      "country": "美国",
+      "early_career_salary": 90900,
+      "mid_career_salary": 170100,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "computer_science": 130000,
+        "engineering": 110000,
+        "economics": 105000,
+        "business": 95000,
+        "biology": 78000
+      }
+    },
+    "georgia_tech": {
+      "school": "佐治亚理工学院",
+      "country": "美国",
+      "early_career_salary": 92900,
+      "mid_career_salary": 168000,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "computer_science": 120000,
+        "engineering": 110000,
+        "information_systems": 105000,
+        "business": 90000,
+        "mathematics": 95000
+      }
+    },
+    "notre_dame": {
+      "school": "圣母大学",
+      "country": "美国",
+      "early_career_salary": 86900,
+      "mid_career_salary": 165500,
+      "currency": "USD",
+      "source": "PayScale 2024 College Salary Report",
+      "by_major": {
+        "business": 95000,
+        "engineering": 90000,
+        "economics": 88000,
+        "computer_science": 105000,
+        "biology": 75000
+      }
+    },
+    "duke": {
+      "school": "杜克大学",
+      "country": "美国",
+      "early_career_salary": 91000,
+      "mid_career_salary": 175000,
+      "currency": "USD",
+      "source": "PayScale 2024 (estimated)",
+      "by_major": {
+        "economics": 100000,
+        "computer_science": 115000,
+        "engineering": 98000,
+        "public_policy": 85000,
+        "biology": 78000
+      }
+    },
+    "brown": {
+      "school": "布朗大学",
+      "country": "美国",
+      "early_career_salary": 87000,
+      "mid_career_salary": 162000,
+      "currency": "USD",
+      "source": "PayScale 2024 (estimated)",
+      "by_major": {
+        "economics": 95000,
+        "computer_science": 110000,
+        "biology": 78000,
+        "english": 65000,
+        "history": 72000
+      }
+    },
+    "chicago": {
+      "school": "芝加哥大学",
+      "country": "美国",
+      "early_career_salary": 85000,
+      "mid_career_salary": 168000,
+      "currency": "USD",
+      "source": "PayScale 2024 (estimated)",
+      "by_major": {
+        "economics": 110000,
+        "mathematics": 100000,
+        "computer_science": 115000,
+        "business": 95000,
+        "political_science": 85000
+      }
+    },
+    "lse": {
+      "school": "伦敦政治经济学院",
+      "country": "英国",
+      "early_career_salary": 39966,
+      "mid_career_salary": 55000,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024 / LEO 2024",
+      "by_major": {
+        "economics": 45000,
+        "finance": 50000,
+        "politics": 38000,
+        "law": 42000,
+        "sociology": 35000
+      }
+    },
+    "imperial": {
+      "school": "帝国理工学院",
+      "country": "英国",
+      "early_career_salary": 37823,
+      "mid_career_salary": 53300,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024 / LEO 2024",
+      "by_major": {
+        "engineering": 42000,
+        "computer_science": 45000,
+        "medicine": 48000,
+        "mathematics": 40000,
+        "business": 38000
+      }
+    },
+    "cambridge": {
+      "school": "剑桥大学",
+      "country": "英国",
+      "early_career_salary": 36108,
+      "mid_career_salary": 46400,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024 / LEO 2024",
+      "by_major": {
+        "economics": 42000,
+        "engineering": 40000,
+        "computer_science": 45000,
+        "law": 38000,
+        "natural_sciences": 37000
+      }
+    },
+    "oxford": {
+      "school": "牛津大学",
+      "country": "英国",
+      "early_career_salary": 35193,
+      "mid_career_salary": 46000,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024 / LEO 2024",
+      "by_major": {
+        "economics": 40000,
+        "engineering": 38000,
+        "computer_science": 44000,
+        "politics": 36000,
+        "history": 32000
+      }
+    },
+    "ucl": {
+      "school": "伦敦大学学院",
+      "country": "英国",
+      "early_career_salary": 34565,
+      "mid_career_salary": 42700,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024 / LEO 2024",
+      "by_major": {
+        "economics": 38000,
+        "engineering": 37000,
+        "computer_science": 42000,
+        "law": 35000,
+        "medicine": 45000
+      }
+    },
+    "warwick": {
+      "school": "华威大学",
+      "country": "英国",
+      "early_career_salary": 34093,
+      "mid_career_salary": 40900,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024 / LEO 2024",
+      "by_major": {
+        "economics": 38000,
+        "business": 36000,
+        "mathematics": 37000,
+        "engineering": 35000,
+        "computer_science": 40000
+      }
+    },
+    "kcl": {
+      "school": "伦敦国王学院",
+      "country": "英国",
+      "early_career_salary": 33215,
+      "mid_career_salary": 42300,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024",
+      "by_major": {
+        "law": 38000,
+        "business": 35000,
+        "medicine": 42000,
+        "politics": 34000,
+        "psychology": 31000
+      }
+    },
+    "durham": {
+      "school": "杜伦大学",
+      "country": "英国",
+      "early_career_salary": 32421,
+      "mid_career_salary": 41200,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024",
+      "by_major": {
+        "economics": 36000,
+        "business": 34000,
+        "law": 35000,
+        "history": 30000,
+        "mathematics": 35000
+      }
+    },
+    "edinburgh_uk": {
+      "school": "爱丁堡大学",
+      "country": "英国",
+      "early_career_salary": 31972,
+      "mid_career_salary": 38000,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024",
+      "by_major": {
+        "computer_science": 37000,
+        "economics": 35000,
+        "engineering": 34000,
+        "biology": 30000,
+        "law": 36000
+      }
+    },
+    "bristol_uk": {
+      "school": "布里斯托大学",
+      "country": "英国",
+      "early_career_salary": 31655,
+      "mid_career_salary": 41200,
+      "currency": "GBP",
+      "source": "HESA Graduate Outcomes 2024",
+      "by_major": {
+        "engineering": 35000,
+        "computer_science": 37000,
+        "economics": 35000,
+        "law": 34000,
+        "medicine": 40000
+      }
+    }
+  },
+  "employment": {
+    "mit": {
+      "school": "MIT",
+      "employment_rate": 95,
+      "top_industries": [
+        "科技",
+        "金融",
+        "咨询",
+        "工程",
+        "学术/研究"
+      ],
+      "top_employers": [
+        "Google",
+        "Microsoft",
+        "Amazon",
+        "Goldman Sachs",
+        "McKinsey"
+      ],
+      "grad_school_rate": 30,
+      "source": "MIT Career Outcomes 2024"
+    },
+    "stanford": {
+      "school": "Stanford",
+      "employment_rate": 94,
+      "top_industries": [
+        "科技",
+        "金融",
+        "咨询",
+        "创业",
+        "医疗保健"
+      ],
+      "top_employers": [
+        "Google",
+        "Apple",
+        "Meta",
+        "McKinsey",
+        "BCG"
+      ],
+      "grad_school_rate": 28,
+      "source": "Stanford Career Education 2024"
+    },
+    "harvard": {
+      "school": "Harvard",
+      "employment_rate": 93,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "教育",
+        "政府/公共政策"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "McKinsey",
+        "Google",
+        "Bain",
+        "JP Morgan"
+      ],
+      "grad_school_rate": 35,
+      "source": "Harvard Employment Report 2024"
+    },
+    "princeton": {
+      "school": "Princeton",
+      "employment_rate": 94,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "教育",
+        "政府"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "McKinsey",
+        "Google",
+        "Microsoft",
+        "Bain"
+      ],
+      "grad_school_rate": 32,
+      "source": "Princeton Career Services 2024"
+    },
+    "caltech": {
+      "school": "Caltech",
+      "employment_rate": 92,
+      "top_industries": [
+        "科技",
+        "工程",
+        "学术研究",
+        "金融",
+        "咨询"
+      ],
+      "top_employers": [
+        "Google",
+        "Apple",
+        "NASA",
+        "Microsoft",
+        "Amazon"
+      ],
+      "grad_school_rate": 45,
+      "source": "Caltech Career Development 2024"
+    },
+    "carnegie_mellon": {
+      "school": "Carnegie Mellon",
+      "employment_rate": 94,
+      "top_industries": [
+        "科技",
+        "金融",
+        "咨询",
+        "工程",
+        "媒体/娱乐"
+      ],
+      "top_employers": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Meta",
+        "Apple"
+      ],
+      "grad_school_rate": 25,
+      "source": "CMU Career & Professional Development 2024"
+    },
+    "uc_berkeley": {
+      "school": "UC Berkeley",
+      "employment_rate": 90,
+      "top_industries": [
+        "科技",
+        "金融",
+        "咨询",
+        "工程",
+        "创业"
+      ],
+      "top_employers": [
+        "Google",
+        "Apple",
+        "Amazon",
+        "Microsoft",
+        "McKinsey"
+      ],
+      "grad_school_rate": 22,
+      "source": "Berkeley Career Center 2024"
+    },
+    "upenn": {
+      "school": "UPenn",
+      "employment_rate": 95,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "医疗保健",
+        "教育"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "McKinsey",
+        "JP Morgan",
+        "Bain",
+        "Google"
+      ],
+      "grad_school_rate": 25,
+      "source": "Penn Career Services 2024"
+    },
+    "yale": {
+      "school": "Yale",
+      "employment_rate": 93,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "教育",
+        "政府/法律"
+      ],
+      "top_employers": [
+        "McKinsey",
+        "Goldman Sachs",
+        "Google",
+        "BCG",
+        "JP Morgan"
+      ],
+      "grad_school_rate": 33,
+      "source": "Yale Career Strategy 2024"
+    },
+    "cornell": {
+      "school": "Cornell",
+      "employment_rate": 92,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "工程",
+        "教育"
+      ],
+      "top_employers": [
+        "Google",
+        "Goldman Sachs",
+        "Amazon",
+        "Microsoft",
+        "McKinsey"
+      ],
+      "grad_school_rate": 28,
+      "source": "Cornell Career Services 2024"
+    },
+    "georgia_tech": {
+      "school": "Georgia Tech",
+      "employment_rate": 92,
+      "top_industries": [
+        "科技",
+        "工程",
+        "咨询",
+        "金融",
+        "制造"
+      ],
+      "top_employers": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Deloitte",
+        "Boeing"
+      ],
+      "grad_school_rate": 20,
+      "source": "Georgia Tech Career Center 2024"
+    },
+    "notre_dame": {
+      "school": "Notre Dame",
+      "employment_rate": 96,
+      "top_industries": [
+        "咨询",
+        "金融",
+        "科技",
+        "教育",
+        "医疗保健"
+      ],
+      "top_employers": [
+        "EY",
+        "Deloitte",
+        "Google",
+        "Amazon",
+        "Microsoft"
+      ],
+      "grad_school_rate": 30,
+      "source": "Notre Dame Career Development 2024"
+    },
+    "duke": {
+      "school": "Duke",
+      "employment_rate": 94,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "医疗保健",
+        "教育"
+      ],
+      "top_employers": [
+        "McKinsey",
+        "BCG",
+        "Goldman Sachs",
+        "Google",
+        "Microsoft"
+      ],
+      "grad_school_rate": 28,
+      "source": "Duke Career Center 2024"
+    },
+    "dartmouth": {
+      "school": "Dartmouth",
+      "employment_rate": 95,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "教育",
+        "政府"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "McKinsey",
+        "JP Morgan",
+        "Google",
+        "Bain"
+      ],
+      "grad_school_rate": 30,
+      "source": "Dartmouth Center for Professional Development 2024"
+    },
+    "columbia": {
+      "school": "Columbia",
+      "employment_rate": 93,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "教育",
+        "媒体"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "McKinsey",
+        "JP Morgan",
+        "Google",
+        "BCG"
+      ],
+      "grad_school_rate": 30,
+      "source": "Columbia Center for Career Education 2024"
+    },
+    "lse": {
+      "school": "LSE",
+      "employment_rate": 93,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "政府/政策",
+        "会计",
+        "科技"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "JP Morgan",
+        "McKinsey",
+        "Deloitte",
+        "UK Government"
+      ],
+      "grad_school_rate": 20,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "imperial": {
+      "school": "Imperial College London",
+      "employment_rate": 96,
+      "top_industries": [
+        "科技",
+        "工程",
+        "金融",
+        "咨询",
+        "制药/医疗"
+      ],
+      "top_employers": [
+        "Google",
+        "Amazon",
+        "Microsoft",
+        "Goldman Sachs",
+        "GSK"
+      ],
+      "grad_school_rate": 25,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "cambridge": {
+      "school": "Cambridge",
+      "employment_rate": 94,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "教育",
+        "工程"
+      ],
+      "top_employers": [
+        "Goldman Sachs",
+        "McKinsey",
+        "Google",
+        "JP Morgan",
+        "Microsoft"
+      ],
+      "grad_school_rate": 30,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "oxford": {
+      "school": "Oxford",
+      "employment_rate": 93,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "教育",
+        "政府/政策",
+        "科技"
+      ],
+      "top_employers": [
+        "McKinsey",
+        "Goldman Sachs",
+        "Google",
+        "BCG",
+        "UK Government"
+      ],
+      "grad_school_rate": 35,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "ucl": {
+      "school": "UCL",
+      "employment_rate": 90,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "教育",
+        "医疗保健"
+      ],
+      "top_employers": [
+        "Google",
+        "Deloitte",
+        "Goldman Sachs",
+        "KPMG",
+        "NHS"
+      ],
+      "grad_school_rate": 28,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "warwick": {
+      "school": "Warwick",
+      "employment_rate": 89,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "会计",
+        "工程"
+      ],
+      "top_employers": [
+        "Deloitte",
+        "KPMG",
+        "PwC",
+        "EY",
+        "JPMorgan"
+      ],
+      "grad_school_rate": 20,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "durham": {
+      "school": "Durham",
+      "employment_rate": 91,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "教育",
+        "会计",
+        "科技"
+      ],
+      "top_employers": [
+        "Deloitte",
+        "KPMG",
+        "PwC",
+        "EY",
+        "Goldman Sachs"
+      ],
+      "grad_school_rate": 25,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "edinburgh_uk": {
+      "school": "Edinburgh",
+      "employment_rate": 86,
+      "top_industries": [
+        "金融",
+        "科技",
+        "教育",
+        "咨询",
+        "旅游/酒店"
+      ],
+      "top_employers": [
+        "RBS",
+        "Deloitte",
+        "PwC",
+        "NHS",
+        "Skyscanner"
+      ],
+      "grad_school_rate": 30,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "bristol_uk": {
+      "school": "Bristol",
+      "employment_rate": 89,
+      "top_industries": [
+        "科技",
+        "金融",
+        "咨询",
+        "工程",
+        "教育"
+      ],
+      "top_employers": [
+        "Deloitte",
+        "KPMG",
+        "Airbus",
+        "BBC",
+        "PwC"
+      ],
+      "grad_school_rate": 25,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "manchester_uk": {
+      "school": "Manchester",
+      "employment_rate": 86,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "零售",
+        "媒体"
+      ],
+      "top_employers": [
+        "Deloitte",
+        "KPMG",
+        "PwC",
+        "Amazon",
+        "BBC"
+      ],
+      "grad_school_rate": 22,
+      "source": "HESA Graduate Outcomes 2024"
+    },
+    "unsw": {
+      "school": "新南威尔士大学",
+      "country": "澳大利亚",
+      "employment_rate": 88,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "工程",
+        "会计"
+      ],
+      "top_employers": [
+        "Commonwealth Bank",
+        "Atlassian",
+        "Google Australia",
+        "PwC",
+        "ResMed"
+      ],
+      "grad_school_rate": 15,
+      "source": "QILT GOS 2024 / QS Employability 2025"
+    },
+    "unimelb": {
+      "school": "墨尔本大学",
+      "country": "澳大利亚",
+      "employment_rate": 87,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "医疗保健",
+        "教育"
+      ],
+      "top_employers": [
+        "Deloitte",
+        "ANZ",
+        "Telstra",
+        "PwC",
+        "KPMG"
+      ],
+      "grad_school_rate": 18,
+      "source": "QILT GOS 2024 / QS Employability 2025"
+    },
+    "usyd": {
+      "school": "悉尼大学",
+      "country": "澳大利亚",
+      "employment_rate": 86,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "医疗保健",
+        "法律"
+      ],
+      "top_employers": [
+        "Oracle",
+        "Macquarie Group",
+        "Ramsay Health",
+        "KPMG",
+        "Deloitte"
+      ],
+      "grad_school_rate": 20,
+      "source": "QILT GOS 2024 / QS Employability 2025"
+    },
+    "monash": {
+      "school": "莫纳什大学",
+      "country": "澳大利亚",
+      "employment_rate": 84,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "工程",
+        "制药"
+      ],
+      "top_employers": [
+        "EY",
+        "Accenture",
+        "Suncorp",
+        "Microsoft",
+        "Citi"
+      ],
+      "grad_school_rate": 18,
+      "source": "QILT GOS 2024 / QS Employability 2025"
+    },
+    "uwa": {
+      "school": "西澳大学",
+      "country": "澳大利亚",
+      "employment_rate": 82,
+      "top_industries": [
+        "采矿/资源",
+        "工程",
+        "金融",
+        "咨询",
+        "政府"
+      ],
+      "top_employers": [
+        "BHP",
+        "Rio Tinto",
+        "Woodside",
+        "Deloitte",
+        "PwC"
+      ],
+      "grad_school_rate": 15,
+      "source": "QILT GOS 2024 / QS Employability 2025"
+    },
+    "uoft": {
+      "school": "多伦多大学",
+      "country": "加拿大",
+      "employment_rate": 90,
+      "top_industries": [
+        "金融",
+        "科技",
+        "咨询",
+        "医疗保健",
+        "教育"
+      ],
+      "top_employers": [
+        "RBC",
+        "TD Bank",
+        "Google",
+        "Deloitte",
+        "IBM"
+      ],
+      "grad_school_rate": 25,
+      "source": "UofT Career Centre 2024"
+    },
+    "ubc": {
+      "school": "英属哥伦比亚大学",
+      "country": "加拿大",
+      "employment_rate": 88,
+      "top_industries": [
+        "科技",
+        "金融",
+        "咨询",
+        "工程",
+        "环保"
+      ],
+      "top_employers": [
+        "Microsoft",
+        "Amazon",
+        "RBC",
+        "Deloitte",
+        "BC Government"
+      ],
+      "grad_school_rate": 22,
+      "source": "UBC Careers 2024"
+    },
+    "mcgill": {
+      "school": "麦吉尔大学",
+      "country": "加拿大",
+      "employment_rate": 87,
+      "top_industries": [
+        "金融",
+        "咨询",
+        "科技",
+        "医疗保健",
+        "政府"
+      ],
+      "top_employers": [
+        "RBC",
+        "BMO",
+        "McKinsey",
+        "Google",
+        "Desjardins"
+      ],
+      "grad_school_rate": 28,
+      "source": "McGill Career Planning Service 2024"
+    }
+  },
+  "admission_stats": {
+    "mit": {
+      "school": "MIT",
+      "overall_rate": 4.0,
+      "international_rate": 3.1,
+      "intl_students_pct": 29,
+      "source": "Common Data Set 2024-2025 / ingeniusprep 2026"
+    },
+    "stanford": {
+      "school": "Stanford",
+      "overall_rate": 3.9,
+      "international_rate": 3.4,
+      "intl_students_pct": 23,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "harvard": {
+      "school": "Harvard",
+      "overall_rate": 3.6,
+      "international_rate": 3.2,
+      "intl_students_pct": 16,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "princeton": {
+      "school": "Princeton",
+      "overall_rate": 4.5,
+      "international_rate": 3.5,
+      "intl_students_pct": 12,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "caltech": {
+      "school": "Caltech",
+      "overall_rate": 3.0,
+      "international_rate": 3.8,
+      "intl_students_pct": 30,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "yale": {
+      "school": "Yale",
+      "overall_rate": 4.5,
+      "international_rate": 3.7,
+      "intl_students_pct": 12,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "upenn": {
+      "school": "UPenn",
+      "overall_rate": 5.8,
+      "international_rate": 4.3,
+      "intl_students_pct": 15,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "duke": {
+      "school": "Duke",
+      "overall_rate": 5.8,
+      "international_rate": 4.5,
+      "intl_students_pct": 13,
+      "source": "Common Data Set 2024-2025"
+    },
+    "columbia": {
+      "school": "Columbia",
+      "overall_rate": 4.0,
+      "international_rate": 4.0,
+      "intl_students_pct": 16,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "cornell": {
+      "school": "Cornell",
+      "overall_rate": 8.0,
+      "international_rate": 6.8,
+      "intl_students_pct": 10,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "dartmouth": {
+      "school": "Dartmouth",
+      "overall_rate": 5.3,
+      "international_rate": 5.0,
+      "intl_students_pct": 12,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "brown": {
+      "school": "Brown",
+      "overall_rate": 5.2,
+      "international_rate": 4.8,
+      "intl_students_pct": 14,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "uchicago": {
+      "school": "University of Chicago",
+      "overall_rate": 4.8,
+      "international_rate": 5.0,
+      "intl_students_pct": 15,
+      "source": "Common Data Set 2024-2025 / Oriel Admissions 2026"
+    },
+    "uc_berkeley": {
+      "school": "UC Berkeley",
+      "overall_rate": 11.0,
+      "international_rate": 7.5,
+      "intl_students_pct": 14,
+      "source": "UC Data 2024 / Oriel Admissions 2026"
+    },
+    "ucla": {
+      "school": "UCLA",
+      "overall_rate": 9.0,
+      "international_rate": 7.0,
+      "intl_students_pct": 13,
+      "source": "UC Data 2024 / Oriel Admissions 2026"
+    },
+    "carnegie_mellon": {
+      "school": "Carnegie Mellon",
+      "overall_rate": 11.0,
+      "international_rate": 8.0,
+      "intl_students_pct": 22,
+      "source": "Common Data Set 2024-2025"
+    },
+    "georgia_tech": {
+      "school": "Georgia Tech",
+      "overall_rate": 16.0,
+      "international_rate": 8.0,
+      "intl_students_pct": 9,
+      "source": "Common Data Set 2024-2025"
+    },
+    "notre_dame": {
+      "school": "Notre Dame",
+      "overall_rate": 11.0,
+      "international_rate": 8.5,
+      "intl_students_pct": 8,
+      "source": "Common Data Set 2024-2025"
+    },
+    "jhu": {
+      "school": "Johns Hopkins",
+      "overall_rate": 7.5,
+      "international_rate": 5.5,
+      "intl_students_pct": 14,
+      "source": "Common Data Set 2024-2025"
+    },
+    "nyu": {
+      "school": "NYU",
+      "overall_rate": 10.0,
+      "international_rate": 7.5,
+      "intl_students_pct": 27,
+      "source": "Common Data Set 2024-2025"
+    },
+    "rice": {
+      "school": "Rice",
+      "overall_rate": 8.7,
+      "international_rate": 6.5,
+      "intl_students_pct": 13,
+      "source": "Common Data Set 2024-2025"
+    },
+    "emory": {
+      "school": "Emory",
+      "overall_rate": 11.0,
+      "international_rate": 9.5,
+      "intl_students_pct": 12,
+      "source": "Common Data Set 2024-2025"
+    },
+    "oxford": {
+      "school": "Oxford",
+      "overall_rate": 13.5,
+      "international_rate": 9.2,
+      "intl_students_pct": 24,
+      "source": "Oxford Admissions Statistics 2024"
+    },
+    "cambridge": {
+      "school": "Cambridge",
+      "overall_rate": 15.0,
+      "international_rate": 9.8,
+      "intl_students_pct": 25,
+      "source": "Cambridge Admissions Statistics 2024"
+    },
+    "lse": {
+      "school": "LSE",
+      "overall_rate": 8.0,
+      "international_rate": 7.0,
+      "intl_students_pct": 40,
+      "source": "LSE Admissions 2024"
+    },
+    "imperial": {
+      "school": "Imperial College London",
+      "overall_rate": 11.0,
+      "international_rate": 9.5,
+      "intl_students_pct": 42,
+      "source": "Imperial Admissions 2024"
+    },
+    "ucl": {
+      "school": "UCL",
+      "overall_rate": 13.0,
+      "international_rate": 11.0,
+      "intl_students_pct": 45,
+      "source": "UCL Admissions 2024"
+    },
+    "warwick": {
+      "school": "Warwick",
+      "overall_rate": 14.0,
+      "international_rate": 12.0,
+      "intl_students_pct": 32,
+      "source": "Warwick Admissions 2024"
+    },
+    "kcl": {
+      "school": "King's College London",
+      "overall_rate": 13.0,
+      "international_rate": 11.0,
+      "intl_students_pct": 38,
+      "source": "KCL Admissions 2024"
+    },
+    "durham": {
+      "school": "Durham",
+      "overall_rate": 15.0,
+      "international_rate": 12.0,
+      "intl_students_pct": 28,
+      "source": "Durham Admissions 2024"
+    },
+    "edinburgh_uk": {
+      "school": "Edinburgh",
+      "overall_rate": 10.0,
+      "international_rate": 8.0,
+      "intl_students_pct": 35,
+      "source": "Edinburgh Admissions 2024"
+    },
+    "bristol_uk": {
+      "school": "Bristol",
+      "overall_rate": 13.0,
+      "international_rate": 11.0,
+      "intl_students_pct": 26,
+      "source": "Bristol Admissions 2024"
+    },
+    "manchester_uk": {
+      "school": "Manchester",
+      "overall_rate": 14.0,
+      "international_rate": 12.0,
+      "intl_students_pct": 30,
+      "source": "Manchester Admissions 2024"
+    },
+    "uoft": {
+      "school": "University of Toronto",
+      "country": "加拿大",
+      "overall_rate": 43.0,
+      "international_rate": 30.0,
+      "intl_students_pct": 28,
+      "source": "UofT Admissions 2024"
+    },
+    "ubc": {
+      "school": "UBC",
+      "country": "加拿大",
+      "overall_rate": 52.0,
+      "international_rate": 44.0,
+      "intl_students_pct": 26,
+      "source": "UBC Admissions 2024"
+    },
+    "mcgill": {
+      "school": "McGill",
+      "country": "加拿大",
+      "overall_rate": 41.0,
+      "international_rate": 30.0,
+      "intl_students_pct": 25,
+      "source": "McGill Admissions 2024"
+    },
+    "unsw": {
+      "school": "UNSW",
+      "country": "澳大利亚",
+      "overall_rate": 60.0,
+      "international_rate": 55.0,
+      "intl_students_pct": 38,
+      "source": "UNSW Admissions 2024"
+    },
+    "unimelb": {
+      "school": "University of Melbourne",
+      "country": "澳大利亚",
+      "overall_rate": 70.0,
+      "international_rate": 65.0,
+      "intl_students_pct": 36,
+      "source": "UniMelb Admissions 2024"
+    },
+    "usyd": {
+      "school": "University of Sydney",
+      "country": "澳大利亚",
+      "overall_rate": 30.0,
+      "international_rate": 25.0,
+      "intl_students_pct": 35,
+      "source": "USyd Admissions 2024"
+    }
+  },
+  "student_reviews": {
+    "mit": {
+      "school": "MIT",
+      "overall_score": 4.2,
+      "academics_score": 4.8,
+      "campus_life": 4.0,
+      "teaching_score": 4.7,
+      "value_score": 4.3,
+      "diversity_score": 4.5,
+      "dorms_score": 3.8,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "stanford": {
+      "school": "Stanford",
+      "overall_score": 4.3,
+      "academics_score": 4.8,
+      "campus_life": 4.5,
+      "teaching_score": 4.6,
+      "value_score": 4.2,
+      "diversity_score": 4.4,
+      "dorms_score": 4.3,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "harvard": {
+      "school": "Harvard",
+      "overall_score": 4.1,
+      "academics_score": 4.8,
+      "campus_life": 4.1,
+      "teaching_score": 4.4,
+      "value_score": 4.0,
+      "diversity_score": 4.6,
+      "dorms_score": 4.0,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "princeton": {
+      "school": "Princeton",
+      "overall_score": 4.1,
+      "academics_score": 4.7,
+      "campus_life": 3.8,
+      "teaching_score": 4.5,
+      "value_score": 4.4,
+      "diversity_score": 4.2,
+      "dorms_score": 3.9,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "yale": {
+      "school": "Yale",
+      "overall_score": 4.2,
+      "academics_score": 4.7,
+      "campus_life": 4.3,
+      "teaching_score": 4.5,
+      "value_score": 4.3,
+      "diversity_score": 4.5,
+      "dorms_score": 4.2,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "caltech": {
+      "school": "Caltech",
+      "overall_score": 4.0,
+      "academics_score": 4.7,
+      "campus_life": 3.5,
+      "teaching_score": 4.5,
+      "value_score": 4.2,
+      "diversity_score": 4.3,
+      "dorms_score": 3.7,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "upenn": {
+      "school": "UPenn",
+      "overall_score": 4.1,
+      "academics_score": 4.6,
+      "campus_life": 4.2,
+      "teaching_score": 4.3,
+      "value_score": 4.0,
+      "diversity_score": 4.4,
+      "dorms_score": 4.0,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "duke": {
+      "school": "Duke",
+      "overall_score": 4.2,
+      "academics_score": 4.6,
+      "campus_life": 4.3,
+      "teaching_score": 4.4,
+      "value_score": 4.1,
+      "diversity_score": 4.3,
+      "dorms_score": 4.2,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "dartmouth": {
+      "school": "Dartmouth",
+      "overall_score": 4.1,
+      "academics_score": 4.5,
+      "campus_life": 4.4,
+      "teaching_score": 4.4,
+      "value_score": 4.3,
+      "diversity_score": 4.0,
+      "dorms_score": 4.1,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "brown": {
+      "school": "Brown",
+      "overall_score": 4.2,
+      "academics_score": 4.5,
+      "campus_life": 4.4,
+      "teaching_score": 4.3,
+      "value_score": 4.1,
+      "diversity_score": 4.5,
+      "dorms_score": 4.0,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "cornell": {
+      "school": "Cornell",
+      "overall_score": 4.1,
+      "academics_score": 4.6,
+      "campus_life": 4.1,
+      "teaching_score": 4.3,
+      "value_score": 4.2,
+      "diversity_score": 4.4,
+      "dorms_score": 3.9,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "columbia": {
+      "school": "Columbia",
+      "overall_score": 4.0,
+      "academics_score": 4.6,
+      "campus_life": 3.7,
+      "teaching_score": 4.2,
+      "value_score": 3.8,
+      "diversity_score": 4.5,
+      "dorms_score": 3.5,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "uc_berkeley": {
+      "school": "UC Berkeley",
+      "overall_score": 4.1,
+      "academics_score": 4.7,
+      "campus_life": 4.0,
+      "teaching_score": 4.3,
+      "value_score": 4.4,
+      "diversity_score": 4.5,
+      "dorms_score": 3.6,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "carnegie_mellon": {
+      "school": "Carnegie Mellon",
+      "overall_score": 4.1,
+      "academics_score": 4.6,
+      "campus_life": 3.9,
+      "teaching_score": 4.3,
+      "value_score": 4.2,
+      "diversity_score": 4.4,
+      "dorms_score": 3.8,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "rice": {
+      "school": "Rice",
+      "overall_score": 4.3,
+      "academics_score": 4.6,
+      "campus_life": 4.4,
+      "teaching_score": 4.4,
+      "value_score": 4.4,
+      "diversity_score": 4.3,
+      "dorms_score": 4.3,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "georgia_tech": {
+      "school": "Georgia Tech",
+      "overall_score": 4.0,
+      "academics_score": 4.5,
+      "campus_life": 3.9,
+      "teaching_score": 4.2,
+      "value_score": 4.5,
+      "diversity_score": 4.2,
+      "dorms_score": 3.7,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "notre_dame": {
+      "school": "Notre Dame",
+      "overall_score": 4.2,
+      "academics_score": 4.5,
+      "campus_life": 4.3,
+      "teaching_score": 4.4,
+      "value_score": 4.3,
+      "diversity_score": 3.8,
+      "dorms_score": 4.2,
+      "source": "Niche 2025 Student Reviews"
+    },
+    "oxford": {
+      "school": "Oxford",
+      "overall_score": 4.3,
+      "academics_score": 4.7,
+      "campus_life": 4.2,
+      "teaching_score": 4.4,
+      "value_score": 4.3,
+      "diversity_score": 4.2,
+      "dorms_score": 4.0,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "cambridge": {
+      "school": "Cambridge",
+      "overall_score": 4.3,
+      "academics_score": 4.7,
+      "campus_life": 4.1,
+      "teaching_score": 4.4,
+      "value_score": 4.3,
+      "diversity_score": 4.2,
+      "dorms_score": 4.0,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "lse": {
+      "school": "LSE",
+      "overall_score": 4.0,
+      "academics_score": 4.5,
+      "campus_life": 3.8,
+      "teaching_score": 4.2,
+      "value_score": 4.0,
+      "diversity_score": 4.6,
+      "dorms_score": 3.7,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "imperial": {
+      "school": "Imperial College London",
+      "overall_score": 4.2,
+      "academics_score": 4.6,
+      "campus_life": 4.0,
+      "teaching_score": 4.4,
+      "value_score": 4.3,
+      "diversity_score": 4.5,
+      "dorms_score": 4.0,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "ucl": {
+      "school": "UCL",
+      "overall_score": 4.1,
+      "academics_score": 4.5,
+      "campus_life": 4.3,
+      "teaching_score": 4.2,
+      "value_score": 4.1,
+      "diversity_score": 4.7,
+      "dorms_score": 3.8,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "warwick": {
+      "school": "Warwick",
+      "overall_score": 4.1,
+      "academics_score": 4.4,
+      "campus_life": 4.0,
+      "teaching_score": 4.2,
+      "value_score": 4.2,
+      "diversity_score": 4.3,
+      "dorms_score": 3.9,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "durham": {
+      "school": "Durham",
+      "overall_score": 4.2,
+      "academics_score": 4.4,
+      "campus_life": 4.3,
+      "teaching_score": 4.3,
+      "value_score": 4.2,
+      "diversity_score": 3.9,
+      "dorms_score": 4.2,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "edinburgh_uk": {
+      "school": "Edinburgh",
+      "overall_score": 4.1,
+      "academics_score": 4.4,
+      "campus_life": 4.4,
+      "teaching_score": 4.1,
+      "value_score": 4.1,
+      "diversity_score": 4.5,
+      "dorms_score": 4.0,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "bristol_uk": {
+      "school": "Bristol",
+      "overall_score": 4.1,
+      "academics_score": 4.4,
+      "campus_life": 4.3,
+      "teaching_score": 4.2,
+      "value_score": 4.1,
+      "diversity_score": 4.3,
+      "dorms_score": 3.9,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "manchester_uk": {
+      "school": "Manchester",
+      "overall_score": 4.1,
+      "academics_score": 4.3,
+      "campus_life": 4.4,
+      "teaching_score": 4.1,
+      "value_score": 4.2,
+      "diversity_score": 4.5,
+      "dorms_score": 3.8,
+      "source": "NSS 2024 / Whatuni 2024"
+    },
+    "unsw": {
+      "school": "UNSW",
+      "overall_score": 4.0,
+      "academics_score": 4.3,
+      "campus_life": 4.0,
+      "teaching_score": 4.1,
+      "value_score": 4.0,
+      "diversity_score": 4.5,
+      "dorms_score": 3.8,
+      "source": "QILT SES 2024 / Student Reviews"
+    },
+    "unimelb": {
+      "school": "University of Melbourne",
+      "overall_score": 4.1,
+      "academics_score": 4.4,
+      "campus_life": 4.1,
+      "teaching_score": 4.2,
+      "value_score": 4.1,
+      "diversity_score": 4.5,
+      "dorms_score": 3.9,
+      "source": "QILT SES 2024 / Student Reviews"
+    },
+    "usyd": {
+      "school": "University of Sydney",
+      "overall_score": 4.0,
+      "academics_score": 4.3,
+      "campus_life": 4.2,
+      "teaching_score": 4.1,
+      "value_score": 4.0,
+      "diversity_score": 4.5,
+      "dorms_score": 3.8,
+      "source": "QILT SES 2024 / Student Reviews"
+    },
+    "monash": {
+      "school": "Monash University",
+      "overall_score": 4.0,
+      "academics_score": 4.2,
+      "campus_life": 4.0,
+      "teaching_score": 4.0,
+      "value_score": 4.1,
+      "diversity_score": 4.4,
+      "dorms_score": 3.8,
+      "source": "QILT SES 2024 / Student Reviews"
+    },
+    "anu": {
+      "school": "Australian National University",
+      "overall_score": 4.0,
+      "academics_score": 4.3,
+      "campus_life": 3.8,
+      "teaching_score": 4.1,
+      "value_score": 4.2,
+      "diversity_score": 4.3,
+      "dorms_score": 3.7,
+      "source": "QILT SES 2024 / Student Reviews"
+    }
+  },
+  "salary_by_major": {
+    "us_2024_2025": {
+      "description": "美国各专业毕业生平均起薪 (NACE 2024-2025)",
+      "computer_science": {
+        "major": "计算机科学",
+        "avg_starting_salary": 101661,
+        "projected_2025": 102033,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "computer_engineering": {
+        "major": "计算机工程",
+        "avg_starting_salary": 93310,
+        "projected_2025": 95892,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "electrical_engineering": {
+        "major": "电子/通信工程",
+        "avg_starting_salary": 90526,
+        "projected_2025": 87513,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "data_analytics": {
+        "major": "数据分析",
+        "avg_starting_salary": 88713,
+        "projected_2025": 73438,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "chemical_engineering": {
+        "major": "化学工程",
+        "avg_starting_salary": 80549,
+        "projected_2025": 75980,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "aerospace_engineering": {
+        "major": "航空航天工程",
+        "avg_starting_salary": 79482,
+        "projected_2025": 78877,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "economics": {
+        "major": "经济学",
+        "avg_starting_salary": 77805,
+        "projected_2025": 74523,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "mathematics": {
+        "major": "数学",
+        "avg_starting_salary": 77019,
+        "projected_2025": 73307,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "mechanical_engineering": {
+        "major": "机械工程",
+        "avg_starting_salary": 76699,
+        "projected_2025": 75512,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "general_engineering": {
+        "major": "工程学(综合)",
+        "avg_starting_salary": 78731,
+        "projected_2025": 76736,
+        "currency": "USD",
+        "source": "NACE Winter 2025 Salary Survey"
+      },
+      "business": {
+        "major": "商科(综合)",
+        "avg_starting_salary": 68644,
+        "projected_2025": 65276,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "healthcare": {
+        "major": "医疗健康",
+        "avg_starting_salary": 63608,
+        "projected_2025": 62143,
+        "currency": "USD",
+        "source": "NACE Summer 2025 Salary Survey"
+      },
+      "social_sciences": {
+        "major": "社会科学",
+        "avg_starting_salary": 67316,
+        "projected_2025": 69828,
+        "currency": "USD",
+        "source": "NACE Winter 2025 Salary Survey"
+      },
+      "humanities": {
+        "major": "人文学科",
+        "avg_starting_salary": 68227,
+        "projected_2025": 65000,
+        "currency": "USD",
+        "source": "NACE Winter 2024 Salary Survey"
+      }
+    }
+  },
+  "china_specific_admission": {
+    "description": "中国学生申请美国顶尖大学的录取率估计 (2025-2026)",
+    "mit": {
+      "school": "MIT",
+      "china_acceptance_rate": 1.5,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "stanford": {
+      "school": "Stanford",
+      "china_acceptance_rate": 1.8,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "harvard": {
+      "school": "Harvard",
+      "china_acceptance_rate": 1.7,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "caltech": {
+      "school": "Caltech",
+      "china_acceptance_rate": 2.0,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "princeton": {
+      "school": "Princeton",
+      "china_acceptance_rate": 1.8,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "yale": {
+      "school": "Yale",
+      "china_acceptance_rate": 2.0,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "upenn": {
+      "school": "UPenn",
+      "china_acceptance_rate": 2.5,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "duke": {
+      "school": "Duke",
+      "china_acceptance_rate": 2.8,
+      "intl_competition": "很高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "columbia": {
+      "school": "Columbia",
+      "china_acceptance_rate": 2.5,
+      "intl_competition": "极高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "cornell": {
+      "school": "Cornell",
+      "china_acceptance_rate": 3.5,
+      "intl_competition": "很高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "brown": {
+      "school": "Brown",
+      "china_acceptance_rate": 2.8,
+      "intl_competition": "很高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "dartmouth": {
+      "school": "Dartmouth",
+      "china_acceptance_rate": 3.0,
+      "intl_competition": "很高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "uchicago": {
+      "school": "University of Chicago",
+      "china_acceptance_rate": 3.5,
+      "intl_competition": "很高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "carnegie_mellon": {
+      "school": "Carnegie Mellon",
+      "china_acceptance_rate": 5.0,
+      "intl_competition": "高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "uc_berkeley": {
+      "school": "UC Berkeley",
+      "china_acceptance_rate": 4.0,
+      "intl_competition": "高",
+      "source": "Oriel Admissions 2026 estimates"
+    },
+    "ucla": {
+      "school": "UCLA",
+      "china_acceptance_rate": 4.0,
+      "intl_competition": "高",
+      "source": "Oriel Admissions 2026 estimates"
+    }
+  },
+  "campus_safety": {
+    "description": "美国校园安全评级 (U.S. Department of Education 2024 / Niche 2026)",
+    "mit": {
+      "school": "MIT",
+      "crime_rate_per_1000": 5.0,
+      "violent_crime_rate": 1.5,
+      "property_crime_rate": 3.5,
+      "safety_grade": "B+",
+      "source": "U.S. Department of Education 2024"
+    },
+    "stanford": {
+      "school": "Stanford",
+      "crime_rate_per_1000": 16.6,
+      "violent_crime_rate": 4.7,
+      "property_crime_rate": 11.9,
+      "safety_grade": "C",
+      "source": "U.S. Department of Education 2024"
+    },
+    "harvard": {
+      "school": "Harvard",
+      "crime_rate_per_1000": 6.7,
+      "violent_crime_rate": 1.2,
+      "property_crime_rate": 5.5,
+      "safety_grade": "B",
+      "source": "U.S. Department of Education 2024"
+    },
+    "princeton": {
+      "school": "Princeton",
+      "crime_rate_per_1000": 5.7,
+      "violent_crime_rate": 1.0,
+      "property_crime_rate": 4.7,
+      "safety_grade": "B+",
+      "source": "U.S. Department of Education 2024"
+    },
+    "yale": {
+      "school": "Yale",
+      "crime_rate_per_1000": 10.7,
+      "violent_crime_rate": 5.7,
+      "property_crime_rate": 5.0,
+      "safety_grade": "C+",
+      "source": "U.S. Department of Education 2024"
+    },
+    "caltech": {
+      "school": "Caltech",
+      "crime_rate_per_1000": 3.5,
+      "violent_crime_rate": 0.8,
+      "property_crime_rate": 2.7,
+      "safety_grade": "A-",
+      "source": "U.S. Department of Education 2024 / Niche 2026"
+    },
+    "carnegie_mellon": {
+      "school": "Carnegie Mellon",
+      "crime_rate_per_1000": 3.0,
+      "violent_crime_rate": 0.6,
+      "property_crime_rate": 2.4,
+      "safety_grade": "A-",
+      "source": "U.S. Department of Education 2024"
+    },
+    "uc_berkeley": {
+      "school": "UC Berkeley",
+      "crime_rate_per_1000": 14.4,
+      "violent_crime_rate": 2.8,
+      "property_crime_rate": 11.6,
+      "safety_grade": "C",
+      "source": "U.S. Department of Education 2024"
+    },
+    "rice": {
+      "school": "Rice",
+      "crime_rate_per_1000": 12.6,
+      "violent_crime_rate": 2.3,
+      "property_crime_rate": 10.3,
+      "safety_grade": "C+",
+      "source": "U.S. Department of Education 2024"
+    },
+    "dartmouth": {
+      "school": "Dartmouth",
+      "crime_rate_per_1000": 11.9,
+      "violent_crime_rate": 5.5,
+      "property_crime_rate": 6.4,
+      "safety_grade": "C+",
+      "source": "U.S. Department of Education 2024"
+    },
+    "notre_dame": {
+      "school": "Notre Dame",
+      "crime_rate_per_1000": 11.8,
+      "violent_crime_rate": 1.1,
+      "property_crime_rate": 10.7,
+      "safety_grade": "C+",
+      "source": "U.S. Department of Education 2024"
+    }
+  },
+  "regional_summary": {
+    "description": "各地区留学概况对比 (2024-2025)",
+    "us": {
+      "region": "美国",
+      "avg_tuition_private": 62000,
+      "avg_tuition_public_outstate": 45000,
+      "avg_tuition_public_instate": 15000,
+      "currency": "USD",
+      "avg_graduate_starting_salary": 65677,
+      "employment_rate_range": "90-96%",
+      "international_student_pct": "10-30%",
+      "top_pros": [
+        "最高薪资水平",
+        "最强科研资源",
+        "最多顶尖公司",
+        "灵活选课制度"
+      ],
+      "top_cons": [
+        "学费最贵",
+        "生活成本高",
+        "签证政策不稳定",
+        "中国生竞争激烈"
+      ],
+      "source": "College Board 2024 / NACE 2025 / PayScale 2024"
+    },
+    "uk": {
+      "region": "英国",
+      "avg_tuition_intl": 35000,
+      "currency": "GBP",
+      "avg_graduate_starting_salary": 35000,
+      "employment_rate_range": "86-96%",
+      "international_student_pct": "25-45%",
+      "top_pros": [
+        "学制短(3年本科)",
+        "学术传统深厚",
+        "欧洲旅行便利",
+        "国际学生友好"
+      ],
+      "top_cons": [
+        "天气阴冷",
+        "伦敦生活成本高",
+        "毕业后留英较难",
+        "课程密度大"
+      ],
+      "source": "HESA 2024 / UKCISA 2024"
+    },
+    "canada": {
+      "region": "加拿大",
+      "avg_tuition_intl": 40000,
+      "currency": "CAD",
+      "avg_graduate_starting_salary": 60000,
+      "employment_rate_range": "87-90%",
+      "international_student_pct": "25-30%",
+      "top_pros": [
+        "移民政策友好",
+        "学费相对便宜",
+        "社会安全稳定",
+        "工签政策好"
+      ],
+      "top_cons": [
+        "顶尖学校较少",
+        "气候寒冷",
+        "部分城市生活成本高",
+        "就业市场小"
+      ],
+      "source": "Statistics Canada 2024 / CBIE 2024"
+    },
+    "australia": {
+      "region": "澳大利亚",
+      "avg_tuition_intl": 45000,
+      "currency": "AUD",
+      "avg_graduate_starting_salary": 75000,
+      "employment_rate_range": "82-88%",
+      "international_student_pct": "30-40%",
+      "top_pros": [
+        "气候宜人",
+        "生活质量高",
+        "移民政策相对友好",
+        "与亚洲时区接近"
+      ],
+      "top_cons": [
+        "部分学校中国学生过多",
+        "生活成本高",
+        "顶尖学校选择有限",
+        "距欧美较远"
+      ],
+      "source": "QILT GOS 2024 / Australian Education 2024"
+    },
+    "europe_continental": {
+      "region": "欧洲大陆(非英国)",
+      "avg_tuition_intl": 1500,
+      "currency": "EUR",
+      "avg_graduate_starting_salary": 50000,
+      "employment_rate_range": "85-95%",
+      "international_student_pct": "20-40%",
+      "top_pros": [
+        "学费极低(德国/挪威等免学费)",
+        "文化多元",
+        "申根签证便利",
+        "英语授课项目增多"
+      ],
+      "top_cons": [
+        "语言障碍",
+        "非英语国家就业难",
+        "学校知名度在国内较低",
+        "学制较长"
+      ],
+      "source": "EU Education 2024 / QS 2025"
+    }
+  }
+}

@@ -1,0 +1,1712 @@
+[
+  {
+    "name": "普林斯顿大学",
+    "name_en": "Princeton University",
+    "abbreviation": "Princeton",
+    "official_website": "https://www.princeton.edu",
+    "description": "普林斯顿大学成立于1746年，是美国第四古老的高等教育机构，也是常春藤盟校之一。学校位于新泽西州普林斯顿市，以其卓越的本科教育、强大的学术研究和美丽的校园闻名。普林斯顿没有医学院、法学院或商学院，专注于本科文理教育和博士研究。学校实行住宿学院制，师生比约1:5，提供高度个性化的教育体验。",
+    "ranking": {
+      "us_news": "1",
+      "qs": "22",
+      "the": "4"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（建议提交3-4门A-Level，成绩以A*和A为主）",
+      "sat": "SAT 1500-1570（中间50%范围）",
+      "act": "ACT 34-35",
+      "ielts": "7.0+（建议7.5+）",
+      "toefl": "100+（建议108+）",
+      "application_deadline": "SCEA: 11月1日; RD: 1月1日",
+      "acceptance_rate": "4.4%"
+    },
+    "popular_majors": [
+      "经济学",
+      "计算机科学",
+      "公共与国际事务",
+      "数学",
+      "物理学",
+      "历史学",
+      "政治学",
+      "分子生物学",
+      "心理学",
+      "工程学"
+    ],
+    "tuition": {
+      "amount": 65210,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 25408,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "普林斯顿",
+      "state": "新泽西州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校",
+      "Need-Blind录取政策（含国际生）",
+      "免贷款助学金政策",
+      "全美第一本科教育",
+      "家庭年收入25万美元以下免学费"
+    ],
+    "facilities": "校园占地600英亩，拥有200多栋建筑。图书馆系统包含超过700万册藏书。拥有先进的实验室、艺术博物馆、音乐厅、体育中心和学生活动中心。住宿学院系统为学生提供紧密的社区生活。",
+    "academic_resources": "拥有超过70位诺贝尔奖得主校友和教职员工。年度研究经费超过3亿美元。学生可以在本科阶段参与前沿研究，学校提供丰厚的暑期研究资助。学术部门覆盖人文、社会科学、自然科学和工程。"
+  },
+  {
+    "name": "麻省理工学院",
+    "name_en": "Massachusetts Institute of Technology",
+    "abbreviation": "MIT",
+    "official_website": "https://web.mit.edu",
+    "description": "麻省理工学院成立于1861年，位于马萨诸塞州剑桥市，是世界顶尖的理工科研究型大学。MIT在物理科学与工程学方面享有盛誉，同时在生命科学、经济学、管理学和人文社科领域也发展迅速。学校以实践性和创新精神著称，拥有世界一流的实验室和研究中心，培养了众多诺贝尔奖得主和科技企业家。",
+    "ranking": {
+      "us_news": "2",
+      "qs": "1",
+      "the": "2"
+    },
+    "admission_requirements": {
+      "a_level": "A*A*A-A*A*A*（要求A-Level数学，强烈推荐进阶数学和物理）",
+      "sat": "SAT 1520-1580（中间50%范围，数学要求780-800）",
+      "act": "ACT 35-36",
+      "ielts": "7.0+（建议7.5+）",
+      "toefl": "90+（建议100+）",
+      "application_deadline": "EA: 11月1日; RA: 1月6日",
+      "acceptance_rate": "4.5%"
+    },
+    "popular_majors": [
+      "计算机科学与工程",
+      "电气工程",
+      "机械工程",
+      "数学",
+      "物理学",
+      "化学工程",
+      "经济学",
+      "生物学",
+      "航空航天工程",
+      "材料科学"
+    ],
+    "tuition": {
+      "amount": 64310,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 25030,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "剑桥",
+      "state": "马萨诸塞州"
+    },
+    "type": "私立",
+    "features": [
+      "全球理工科第一学府",
+      "Need-Blind录取政策（含国际生）",
+      "免学费政策（家庭收入20万美元以下）",
+      "本科生研究机会丰富",
+      "UROP本科生研究项目"
+    ],
+    "facilities": "校园占地168英亩，拥有超过200栋建筑。图书馆系统包含超过500万册藏书和大量电子资源。拥有世界一流的实验室、Maker Space、纳米技术中心和超级计算机中心。体育设施包括游泳池、健身中心和运动场馆。",
+    "academic_resources": "年度研究经费超过10亿美元。拥有80多位诺贝尔奖得主。MIT媒体实验室、林肯实验室、人工智能实验室等世界知名研究中心。学校鼓励本科生从大一就参与研究，提供丰富的科研资源和资助。"
+  },
+  {
+    "name": "哈佛大学",
+    "name_en": "Harvard University",
+    "abbreviation": "Harvard",
+    "official_website": "https://www.harvard.edu",
+    "description": "哈佛大学成立于1636年，是美国最古老的高等教育机构，也是全球最知名的大学之一。位于马萨诸塞州剑桥市，哈佛大学由本科哈佛学院和多个研究生专业学院组成。学校拥有全球最大的大学图书馆系统，在人文、社科、法学、商学、医学和公共卫生等领域均处于世界领先地位。",
+    "ranking": {
+      "us_news": "3",
+      "qs": "4",
+      "the": "3"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（鼓励提交预测成绩，A*和A为主）",
+      "sat": "SAT 1480-1580（中间50%范围，2025-2026要求提交）",
+      "act": "ACT 33-36",
+      "ielts": "7.5+",
+      "toefl": "100+（建议108+）",
+      "application_deadline": "REA: 11月1日; RD: 1月1日",
+      "acceptance_rate": "3.4%"
+    },
+    "popular_majors": [
+      "经济学",
+      "计算机科学",
+      "政治学",
+      "历史学",
+      "心理学",
+      "生物学",
+      "英语文学",
+      "数学",
+      "物理学",
+      "社会学"
+    ],
+    "tuition": {
+      "amount": 59320,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 27606,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "剑桥",
+      "state": "马萨诸塞州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校",
+      "美国最古老大学",
+      "Need-Blind录取政策（含国际生）",
+      "家庭年收入20万美元以下免学费",
+      "全球最大大学图书馆系统"
+    ],
+    "facilities": "校园占地545英亩，拥有超过500栋建筑。图书馆系统包含超过2000万册藏书。拥有世界级博物馆、剧院、音乐厅和体育设施。本科住宿采用House System，为学生提供紧密的社区环境。",
+    "academic_resources": "拥有超过160位诺贝尔奖得主。年度研究经费超过15亿美元。拥有哈佛商学院、哈佛法学院、哈佛医学院等世界顶级专业学院。本科生可以参与跨学科研究，使用先进的科研设施。"
+  },
+  {
+    "name": "斯坦福大学",
+    "name_en": "Stanford University",
+    "abbreviation": "Stanford",
+    "official_website": "https://www.stanford.edu",
+    "description": "斯坦福大学成立于1885年，位于加利福尼亚州斯坦福市，紧邻硅谷。作为世界顶尖研究型大学，斯坦福在工程、计算机科学、商学、法学和医学等领域享有盛誉。学校以其创业精神著称，是众多知名科技企业的摇篮。校园占地超过8000英亩，是美国最大的大学校园之一。",
+    "ranking": {
+      "us_news": "4",
+      "qs": "6",
+      "the": "2"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（成绩以A*和A为主，需提交预测成绩）",
+      "sat": "SAT 1500-1580（中间50%范围，2025-2026要求提交）",
+      "act": "ACT 33-36",
+      "ielts": "7.0+",
+      "toefl": "89+（建议100+）",
+      "application_deadline": "REA: 11月1日; RD: 1月5日",
+      "acceptance_rate": "3.6%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "人类生物学",
+      "经济学",
+      "工程学",
+      "产品设计",
+      "数学",
+      "政治学",
+      "心理学",
+      "英语",
+      "历史"
+    ],
+    "tuition": {
+      "amount": 67731,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 33238,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "斯坦福",
+      "state": "加利福尼亚州"
+    },
+    "type": "私立",
+    "features": [
+      "硅谷心脏地带",
+      "创业精神发源地",
+      "REA限制性早申",
+      "跨学科教育先驱",
+      "家庭年收入15万美元以下免学费"
+    ],
+    "facilities": "校园占地8180英亩，是美国最大的大学校园之一。拥有超过700栋建筑和40多个学术部门。图书馆系统包含超过1200万册藏书。拥有先进的科研设施、艺术中心、体育场馆和学生活动中心。",
+    "academic_resources": "年度研究经费超过18亿美元。拥有超过80位诺贝尔奖得主。与硅谷科技企业紧密合作，为学生提供丰富的实习和就业机会。本科生可以参与前沿研究项目，学校提供大量科研资助。"
+  },
+  {
+    "name": "耶鲁大学",
+    "name_en": "Yale University",
+    "abbreviation": "Yale",
+    "official_website": "https://www.yale.edu",
+    "description": "耶鲁大学成立于1701年，位于康涅狄格州纽黑文市，是常春藤盟校之一。耶鲁以其卓越的文理教育、强大的戏剧学院和法学院闻名于世。学校推行住宿学院制度，为学生提供紧密的社区生活。耶鲁在人文、社科、生命科学和法学领域均处于世界领先地位，培养了众多美国总统和政要。",
+    "ranking": {
+      "us_news": "5",
+      "qs": "23",
+      "the": "10"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（鼓励提交至少3门A-Level成绩）",
+      "sat": "SAT 1480-1580（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "SCEA: 11月1日; RD: 1月2日",
+      "acceptance_rate": "4.6%"
+    },
+    "popular_majors": [
+      "经济学",
+      "政治学",
+      "历史学",
+      "英语文学",
+      "心理学",
+      "生物学",
+      "全球事务",
+      "化学",
+      "艺术史",
+      "数学"
+    ],
+    "tuition": {
+      "amount": 69900,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 24525,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "纽黑文",
+      "state": "康涅狄格州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校",
+      "SCEA单选早申",
+      "住宿学院制度开创者",
+      "戏剧和法学院全球顶尖",
+      "Need-Blind录取政策（含国际生）"
+    ],
+    "facilities": "校园占地373英亩，包含200多栋建筑。图书馆系统拥有超过1500万册藏书，是全球最大的大学图书馆之一。拥有世界一流的戏剧学院、美术馆、音乐厅和体育设施。14个住宿学院为学生提供紧密的社区环境。",
+    "academic_resources": "拥有超过60位诺贝尔奖得主。耶鲁法学院连续多年排名全美第一。耶鲁戏剧学院是常春藤盟校中唯一的戏剧学院。学校提供丰富的本科研究机会，每年资助大量学生参与国际研究和实习项目。"
+  },
+  {
+    "name": "宾夕法尼亚大学",
+    "name_en": "University of Pennsylvania",
+    "abbreviation": "Penn",
+    "official_website": "https://www.upenn.edu",
+    "description": "宾夕法尼亚大学成立于1740年，位于宾夕法尼亚州费城，是本杰明·富兰克林创办的大学，常春藤盟校之一。宾大以其沃顿商学院（全球顶尖商学院）、强大的跨学科教育和实用主义教育理念闻名。学校在商学、法学、医学、工程和社会科学等领域均处于世界领先地位。",
+    "ranking": {
+      "us_news": "10",
+      "qs": "11",
+      "the": "14"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，成绩以A*和A为主）",
+      "sat": "SAT 1500-1570（中间50%范围）",
+      "act": "ACT 34-36",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED: 11月1日; RD: 1月5日",
+      "acceptance_rate": "5.4%"
+    },
+    "popular_majors": [
+      "金融学",
+      "经济学",
+      "护理学",
+      "政治学",
+      "计算机科学",
+      "管理学",
+      "哲学",
+      "生物学",
+      "心理学",
+      "传播学"
+    ],
+    "tuition": {
+      "amount": 63204,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 31328,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "费城",
+      "state": "宾夕法尼亚州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校",
+      "沃顿商学院全球顶尖",
+      "ED早申绑定制",
+      "跨学科教育先驱",
+      "Need-Aware录取政策（国际生）"
+    ],
+    "facilities": "校园占地299英亩，位于费城市中心。拥有超过250栋建筑和广泛的绿地。图书馆系统包含超过700万册藏书。拥有先进的商学院大楼、工程实验室、医学院中心和体育设施。",
+    "academic_resources": "年度研究经费超过15亿美元。沃顿商学院是全球历史最悠久、声誉最高的商学院之一。学校鼓励跨学科学习，提供丰富的双学位项目。拥有超过30位诺贝尔奖得主和众多知名学者。"
+  },
+  {
+    "name": "加州理工学院",
+    "name_en": "California Institute of Technology",
+    "abbreviation": "Caltech",
+    "official_website": "https://www.caltech.edu",
+    "description": "加州理工学院成立于1891年，位于加利福尼亚州帕萨迪纳市，是世界顶尖的理工类研究型大学。Caltech规模极小但学术极强，学生教师比仅3:1。学校在物理学、化学、天文学、工程学和地球科学等领域处于世界领先地位。Caltech同时管理NASA喷气推进实验室（JPL）。",
+    "ranking": {
+      "us_news": "6",
+      "qs": "10",
+      "the": "1"
+    },
+    "admission_requirements": {
+      "a_level": "A*A*A-A*A*A*（要求A-Level数学和物理，强烈推荐化学）",
+      "sat": "SAT 1530-1580（中间50%范围，数学要求接近满分）",
+      "act": "ACT 35-36",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "REA: 11月1日; RD: 1月3日",
+      "acceptance_rate": "3.1%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "物理学",
+      "电气工程",
+      "机械工程",
+      "化学",
+      "数学",
+      "生物学",
+      "地球科学",
+      "航空航天工程",
+      "材料科学"
+    ],
+    "tuition": {
+      "amount": 65622,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 24290,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "帕萨迪纳",
+      "state": "加利福尼亚州"
+    },
+    "type": "私立",
+    "features": [
+      "全球理工科顶尖学府",
+      "师生比仅3:1",
+      "管理NASA喷气推进实验室",
+      "REA限制性早申",
+      "家庭年收入20万美元以下免学费"
+    ],
+    "facilities": "校园占地124英亩，拥有超过60栋研究建筑。图书馆系统包含超过80万册藏书。拥有世界一流的实验室、天文台、高性能计算中心和科研设施。学生宿舍环境优越，校园生活紧密温馨。",
+    "academic_resources": "年度研究经费超过4亿美元。拥有超过40位诺贝尔奖得主（在校师生比例全球最高）。管理NASA喷气推进实验室（JPL），为学生提供独一无二的航天科研机会。本科生可以从大一就参与前沿研究。"
+  },
+  {
+    "name": "杜克大学",
+    "name_en": "Duke University",
+    "abbreviation": "Duke",
+    "official_website": "https://www.duke.edu",
+    "description": "杜克大学成立于1838年，位于北卡罗来纳州达勒姆市，是美国顶尖的私立研究型大学。杜克以其强大的学术实力、优秀的体育项目和美丽的哥特式校园闻名。学校在医学、法学、商学、公共政策和工程学等领域均处于世界领先地位，拥有全美顶尖的医学院和医院。",
+    "ranking": {
+      "us_news": "6",
+      "qs": "61",
+      "the": "27"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，建议提交预测成绩）",
+      "sat": "SAT 1490-1570（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED: 11月4日; RD: 1月2日",
+      "acceptance_rate": "5.8%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "经济学",
+      "公共政策",
+      "生物学",
+      "心理学",
+      "工程学",
+      "政治学",
+      "护理学",
+      "英语",
+      "数学"
+    ],
+    "tuition": {
+      "amount": 73172,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 20144,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "达勒姆",
+      "state": "北卡罗来纳州"
+    },
+    "type": "私立",
+    "features": [
+      "ED早申绑定制",
+      "全美顶尖医学院",
+      "体育强校（蓝魔队）",
+      "哥特式建筑校园",
+      "Need-Blind录取政策（美国学生）"
+    ],
+    "facilities": "校园占地8690英亩，包含杜克森林，是美国最大的大学校园之一。拥有超过250栋建筑，建筑风格以哥特式为主。图书馆系统包含超过600万册藏书。拥有世界级的医学中心、体育设施和学生宿舍。",
+    "academic_resources": "年度研究经费超过12亿美元。杜克大学医学中心是美国顶尖的医疗机构之一。福库商学院和桑福德公共政策学院均排名全美前列。学校提供丰富的本科生研究机会和国际交流项目。"
+  },
+  {
+    "name": "布朗大学",
+    "name_en": "Brown University",
+    "abbreviation": "Brown",
+    "official_website": "https://www.brown.edu",
+    "description": "布朗大学成立于1764年，位于罗得岛州普罗维登斯市，是常春藤盟校之一。布朗以其独特的开放课程（Open Curriculum）闻名，学生可以自由选择课程而不受核心课程要求限制。学校在计算机科学、经济学、生物学、国际关系和文学等领域处于全美领先地位。布朗是全美最具创新精神的大学之一。",
+    "ranking": {
+      "us_news": "13",
+      "qs": "79",
+      "the": "58"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，鼓励广泛选课）",
+      "sat": "SAT 1500-1580（中间50%范围，2025-2026要求提交）",
+      "act": "ACT 34-36",
+      "ielts": "8.0+",
+      "toefl": "105+",
+      "application_deadline": "ED: 11月1日; RD: 1月3日",
+      "acceptance_rate": "5.2%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "经济学",
+      "生物学",
+      "国际关系",
+      "英语文学",
+      "政治学",
+      "神经科学",
+      "历史学",
+      "应用数学",
+      "公共卫生"
+    ],
+    "tuition": {
+      "amount": 71700,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 23790,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "普罗维登斯",
+      "state": "罗得岛州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校",
+      "开放课程体系（Open Curriculum）",
+      "ED早申绑定制",
+      "唯一的常春藤本科有独立工程学院",
+      "Need-Blind录取（含国际生）"
+    ],
+    "facilities": "校园占地143英亩，位于普罗维登斯市学院山。拥有超过230栋建筑。图书馆系统包含超过600万册藏书。拥有先进的科学图书馆、工程研究中心、艺术中心和体育设施。校园建筑融合了历史和现代风格。",
+    "academic_resources": "年度研究经费超过2亿美元。拥有10位诺贝尔奖得主。 Watson国际与公共事务研究所是顶尖的国际关系研究机构。布朗大学工程学院（School of Engineering）是常春藤盟校中唯一的独立本科工程学院。学校鼓励跨学科研究和创新学习。"
+  },
+  {
+    "name": "约翰霍普金斯大学",
+    "name_en": "Johns Hopkins University",
+    "abbreviation": "JHU",
+    "official_website": "https://www.jhu.edu",
+    "description": "约翰霍普金斯大学成立于1876年，位于马里兰州巴尔的摩市，是美国第一所研究型大学。JHU以其医学院和公共卫生学院闻名于世，在医学、公共卫生、国际关系、工程和音乐等领域处于世界领先地位。学校是美国大学协会（AAU）的创始成员之一。",
+    "ranking": {
+      "us_news": "6",
+      "qs": "32",
+      "the": "15"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（建议提交至少3门A-Level）",
+      "sat": "SAT 1510-1570（中间50%范围）",
+      "act": "ACT 34-36",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED1/ED2: 11月1日/1月2日; RD: 1月2日",
+      "acceptance_rate": "6.3%"
+    },
+    "popular_majors": [
+      "神经科学",
+      "生物医学工程",
+      "计算机科学",
+      "经济学",
+      "国际关系",
+      "公共卫生",
+      "化学",
+      "心理学",
+      "机械工程",
+      "英语"
+    ],
+    "tuition": {
+      "amount": 67170,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 21282,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "巴尔的摩",
+      "state": "马里兰州"
+    },
+    "type": "私立",
+    "features": [
+      "美国第一所研究型大学",
+      "全球顶尖医学院",
+      "布隆伯格公共卫生学院全球第一",
+      "ED1/ED2两轮早申",
+      "本科研究机会丰富"
+    ],
+    "facilities": "校园占地140英亩，分布在巴尔的摩市的霍姆伍德校区。图书馆系统包含超过380万册藏书。拥有先进的实验室、医疗模拟中心、音乐厅和体育设施。皮博迪音乐学院是全球顶尖的音乐学院之一。",
+    "academic_resources": "年度研究经费超过31亿美元，居全美大学之首。医学院和公共卫生学院长期排名全球前列。应用物理实验室（APL）是美国最大的大学附属研究中心之一。本科生可以从大一就参与前沿研究。"
+  },
+  {
+    "name": "西北大学",
+    "name_en": "Northwestern University",
+    "abbreviation": "Northwestern",
+    "official_website": "https://www.northwestern.edu",
+    "description": "西北大学成立于1851年，位于伊利诺伊州埃文斯顿市（紧邻芝加哥），是美国顶尖的私立研究型大学。西北大学以其强大的新闻学院、传媒学院、法学院和医学院闻名。学校在表演艺术、工程学、商学和社会科学等领域也有卓越表现，是美国大学协会的创始成员之一。",
+    "ranking": {
+      "us_news": "6",
+      "qs": "50",
+      "the": "28"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（鼓励提交预测成绩，A*和A为主）",
+      "sat": "SAT 1490-1570（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.5+",
+      "toefl": "100+",
+      "application_deadline": "ED: 11月1日; RD: 1月2日",
+      "acceptance_rate": "6.8%"
+    },
+    "popular_majors": [
+      "经济学",
+      "新闻学",
+      "心理学",
+      "生物学",
+      "政治学",
+      "戏剧",
+      "计算机科学",
+      "英语",
+      "历史学",
+      "化学"
+    ],
+    "tuition": {
+      "amount": 69375,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 23611,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "埃文斯顿",
+      "state": "伊利诺伊州"
+    },
+    "type": "私立",
+    "features": [
+      "新闻学院全美顶尖",
+      "紧邻芝加哥市",
+      "戏剧和音乐双学位项目",
+      "ED早申绑定制",
+      "凯洛格商学院全美顶尖"
+    ],
+    "facilities": "校园占地240英亩，位于密歇根湖畔，风景优美。图书馆系统包含超过800万册藏书。拥有世界级的表演艺术中心、新闻媒体实验室、工程研究中心和体育设施。学生可以便捷地利用芝加哥的文化和职业资源。",
+    "academic_resources": "年度研究经费超过9亿美元。梅迪尔新闻学院是全美最古老、最负盛名的新闻学院之一。凯洛格管理学院排名全美前列。学校提供丰富的跨学科研究和双学位项目，鼓励学生探索多个学术领域。"
+  },
+  {
+    "name": "哥伦比亚大学",
+    "name_en": "Columbia University",
+    "abbreviation": "Columbia",
+    "official_website": "https://www.columbia.edu",
+    "description": "哥伦比亚大学成立于1754年，位于纽约市曼哈顿，是常春藤盟校之一。哥大是美国第五古老的高等教育机构，在新闻学、法学、商学、国际关系、文学和工程等领域享有盛誉。学校地处纽约市中心，为学生提供了无与伦比的文化和职业资源。哥伦比亚大学由三个本科院校和多个研究生院组成。",
+    "ranking": {
+      "us_news": "13",
+      "qs": "34",
+      "the": "14"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，A*和A为主）",
+      "sat": "SAT 1480-1570（中间50%范围，2025-2026要求提交）",
+      "act": "ACT 33-35",
+      "ielts": "7.5+",
+      "toefl": "105+",
+      "application_deadline": "ED: 11月1日; RD: 1月1日",
+      "acceptance_rate": "3.9%"
+    },
+    "popular_majors": [
+      "经济学",
+      "计算机科学",
+      "政治学",
+      "历史学",
+      "英语文学",
+      "心理学",
+      "工程学",
+      "社会学",
+      "生物学",
+      "视觉艺术"
+    ],
+    "tuition": {
+      "amount": 70170,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 26090,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "纽约",
+      "state": "纽约州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校",
+      "纽约市中心位置",
+      "新闻学院全美顶尖",
+      "核心课程（Core Curriculum）",
+      "ED早申绑定制"
+    ],
+    "facilities": "校园占地36英亩，位于纽约曼哈顿晨边高地。图书馆系统包含超过1500万册藏书。拥有世界级的实验室、表演艺术中心、体育设施和学生活动中心。地处纽约市，学生可便捷使用城市各类资源。",
+    "academic_resources": "年度研究经费超过10亿美元。拥有超过100位诺贝尔奖得主。新闻学院研究生院是全美最顶尖的新闻学院。法学院和商学院均排名全美前列。本科生可以参与前沿研究，学校提供丰富的国际交流机会。"
+  },
+  {
+    "name": "康奈尔大学",
+    "name_en": "Cornell University",
+    "abbreviation": "Cornell",
+    "official_website": "https://www.cornell.edu",
+    "description": "康奈尔大学成立于1865年，位于纽约州伊萨卡市，是常春藤盟校中规模最大、学科最全的大学。康奈尔是唯一一所兼具私立和公立学院性质的常春藤盟校。学校在工程学、酒店管理、劳工关系、农业科学、建筑学和兽医学等领域处于世界领先地位。校园位于风景优美的 Finger Lakes 地区。",
+    "ranking": {
+      "us_news": "12",
+      "qs": "16",
+      "the": "20"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，工程学院要求数学和物理）",
+      "sat": "SAT 1470-1570（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED: 11月1日; RD: 1月2日",
+      "acceptance_rate": "7.9%"
+    },
+    "popular_majors": [
+      "工程学",
+      "计算机科学",
+      "生物科学",
+      "酒店管理",
+      "建筑学",
+      "农业科学",
+      "经济学",
+      "政治学",
+      "心理学",
+      "劳资关系"
+    ],
+    "tuition": {
+      "amount": 71266,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 25002,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "伊萨卡",
+      "state": "纽约州"
+    },
+    "type": "私立（部分学院接受州政府资助）",
+    "features": [
+      "常春藤盟校规模最大",
+      "唯一的公私合营常春藤",
+      "酒店管理学院全球顶尖",
+      "工程学院全美前十",
+      "录取率相对较高的常春藤"
+    ],
+    "facilities": "校园占地2300英亩，坐落在风景优美的五指湖区。拥有超过700栋建筑。图书馆系统包含超过800万册藏书。拥有世界一流的实验室、酒店管理学院大楼、农业研究中心和体育设施。",
+    "academic_resources": "年度研究经费超过10亿美元。拥有超过60位诺贝尔奖得主。酒店管理学院（Nolan School）是全球最顶尖的酒店管理学院。工程学院和计算机科学系均排名全美前列。学校鼓励本科生参与研究，提供丰富的科研机会。"
+  },
+  {
+    "name": "芝加哥大学",
+    "name_en": "University of Chicago",
+    "abbreviation": "UChicago",
+    "official_website": "https://www.uchicago.edu",
+    "description": "芝加哥大学成立于1890年，位于伊利诺伊州芝加哥市，是世界顶尖的私立研究型大学。芝大以其严格的学术训练、强调批判性思维的核心课程和经济学传统闻名。学校在经济学、法学、商学、物理学和社会科学等领域均处于世界领先地位，是众多诺贝尔奖得主的摇篮。",
+    "ranking": {
+      "us_news": "11",
+      "qs": "21",
+      "the": "13"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（成绩以A*和A为主，鼓励提交预测成绩）",
+      "sat": "SAT 1500-1580（中间50%范围）",
+      "act": "ACT 34-35",
+      "ielts": "7.0+（单项不低于7.0）",
+      "toefl": "100+",
+      "application_deadline": "ED1/ED2: 11月1日/1月2日; EA: 11月1日; RD: 1月2日",
+      "acceptance_rate": "5.4%"
+    },
+    "popular_majors": [
+      "经济学",
+      "数学",
+      "生物学",
+      "政治学",
+      "计算机科学",
+      "物理学",
+      "公共政策",
+      "历史学",
+      "英语",
+      "哲学"
+    ],
+    "tuition": {
+      "amount": 71325,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 26976,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "芝加哥",
+      "state": "伊利诺伊州"
+    },
+    "type": "私立",
+    "features": [
+      "经济学全球顶尖",
+      "核心课程体系（Core Curriculum）",
+      "ED/EA/RD多轮申请",
+      "以思想自由著称",
+      "100+位诺贝尔奖得主校友"
+    ],
+    "facilities": "校园占地217英亩，位于芝加哥市区海德公园。图书馆系统包含超过1200万册藏书。拥有先进的实验室、研究所、艺术中心和体育设施。校园建筑以哥特式风格为主，环境优美。",
+    "academic_resources": "年度研究经费超过5亿美元。拥有超过100位诺贝尔奖得主，经济学领域尤为突出。布斯商学院排名全美前列。芝加哥大学出版社是全球最大的大学出版社之一。本科生可以参与前沿跨学科研究。"
+  },
+  {
+    "name": "加州大学伯克利分校",
+    "name_en": "University of California, Berkeley",
+    "abbreviation": "UCB",
+    "official_website": "https://www.berkeley.edu",
+    "description": "加州大学伯克利分校成立于1868年，位于加利福尼亚州伯克利市，是美国最顶尖的公立研究型大学。伯克利在工程、计算机科学、经济学、自然科学和社会科学等领域均处于世界领先地位。学校以其自由开放的学术传统和活跃的校园文化闻名，是20世纪60年代学生运动的中心。",
+    "ranking": {
+      "us_news": "17",
+      "qs": "12",
+      "the": "8"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，A*和A为主）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "6.5+",
+      "toefl": "80+",
+      "application_deadline": "UC系统: 11月30日",
+      "acceptance_rate": "11.4%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "经济学",
+      "电气工程与计算机科学",
+      "政治学",
+      "环境科学",
+      "心理学",
+      "分子与细胞生物学",
+      "机械工程",
+      "数学",
+      "统计学"
+    ],
+    "tuition": {
+      "amount": 55080,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 28000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "伯克利",
+      "state": "加利福尼亚州"
+    },
+    "type": "公立",
+    "features": [
+      "全美顶尖公立大学",
+      "自由的学术传统",
+      "UC系统独立申请",
+      "计算机科学全美第一",
+      "110+位诺贝尔奖得主"
+    ],
+    "facilities": "校园占地1232英亩，拥有超过1000栋建筑。图书馆系统包含超过1300万册藏书，是美国最大的大学图书馆之一。拥有先进的实验室、研究中心、体育设施和学生活动中心。",
+    "academic_resources": "年度研究经费超过8亿美元。拥有超过110位诺贝尔奖得主。劳伦斯伯克利国家实验室是美国能源部下属的国家实验室。本科生可以参与前沿科研项目，学校提供丰富的学术资源和研究资助。"
+  },
+  {
+    "name": "加州大学洛杉矶分校",
+    "name_en": "University of California, Los Angeles",
+    "abbreviation": "UCLA",
+    "official_website": "https://www.ucla.edu",
+    "description": "加州大学洛杉矶分校成立于1919年，位于加利福尼亚州洛杉矶市，是美国最顶尖的公立研究型大学之一。UCLA在电影与电视、医学、工程、社会科学和艺术等领域均处于世界领先地位。学校拥有美丽的校园和活跃的艺术文化氛围，是加州大学系统中申请人数最多的校区。",
+    "ranking": {
+      "us_news": "15",
+      "qs": "42",
+      "the": "18"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "6.5+",
+      "toefl": "100+",
+      "application_deadline": "UC系统: 11月30日",
+      "acceptance_rate": "8.6%"
+    },
+    "popular_majors": [
+      "生物学",
+      "心理学",
+      "经济学",
+      "政治学",
+      "电影与电视",
+      "计算机科学",
+      "工程学",
+      "英语",
+      "历史学",
+      "社会学"
+    ],
+    "tuition": {
+      "amount": 53302,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 28000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "洛杉矶",
+      "state": "加利福尼亚州"
+    },
+    "type": "公立",
+    "features": [
+      "全美申请人数最多大学",
+      "电影与电视专业顶尖",
+      "NCAA体育强校",
+      "UC系统独立申请",
+      "优美的校园环境"
+    ],
+    "facilities": "校园占地419英亩，位于洛杉矶西部。图书馆系统包含超过1200万册藏书。拥有世界级的医学中心、表演艺术中心、体育场馆和学生活动中心。校园建筑以罗马复兴式为主，环境优雅。",
+    "academic_resources": "年度研究经费超过14亿美元。拥有15位诺贝尔奖得主。电影电视学院（TFT）是全球顶尖的电影学院之一。大卫格芬医学院是美国顶尖的医学院之一。本科生可以参与各类前沿研究项目。"
+  },
+  {
+    "name": "莱斯大学",
+    "name_en": "Rice University",
+    "abbreviation": "Rice",
+    "official_website": "https://www.rice.edu",
+    "description": "莱斯大学成立于1912年，位于德克萨斯州休斯敦市，是一所顶尖的私立研究型大学。莱斯以其卓越的科学和工程项目、紧密的社区氛围和相对较低的学费闻名。学校规模较小，师生比仅6:1，为学生提供了高度个性化的教育体验。莱斯在工程、自然科学、音乐和建筑学等领域处于领先地位。",
+    "ranking": {
+      "us_news": "17",
+      "qs": "141",
+      "the": "119"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，A*和A为主）",
+      "sat": "SAT 1490-1570（中间50%范围，推荐提交）",
+      "act": "ACT 34-36",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED: 11月1日; RD: 1月4日",
+      "acceptance_rate": "7.8%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "机械工程",
+      "经济学",
+      "生物化学",
+      "电气工程",
+      "运动机能学",
+      "心理学",
+      "管理学",
+      "建筑学",
+      "音乐"
+    ],
+    "tuition": {
+      "amount": 66540,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 21500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "休斯敦",
+      "state": "德克萨斯州"
+    },
+    "type": "私立",
+    "features": [
+      "师生比仅6:1",
+      "位于休斯敦市中心",
+      "ED早申绑定制",
+      "应用数学和计算机科学强校",
+      "Need-Blind录取政策（美国学生）"
+    ],
+    "facilities": "校园占地300英亩，被誉为美国最美丽的校园之一。拥有超过70栋建筑，建筑风格以拜占庭式为主。图书馆系统包含超过360万册藏书。拥有先进的实验室、音乐厅、体育设施和学生宿舍。",
+    "academic_resources": "年度研究经费超过1.5亿美元。拥有6位诺贝尔奖得主。谢普德音乐学院是美国顶尖的音乐学院之一。建筑学院排名全美前列。本科生研究参与率高，学校提供丰富的科研资助。"
+  },
+  {
+    "name": "达特茅斯学院",
+    "name_en": "Dartmouth College",
+    "abbreviation": "Dartmouth",
+    "official_website": "https://home.dartmouth.edu",
+    "description": "达特茅斯学院成立于1769年，位于新罕布什尔州汉诺威市，是常春藤盟校之一。达特茅斯是全美最小的常春藤盟校，以其紧密的社区氛围和卓越的本科教育闻名。学校采用学期制（Quarter System），在经济学、政治学、计算机科学和医学预科等领域均处于领先地位。塔克商学院是顶尖的MBA项目。",
+    "ranking": {
+      "us_news": "15",
+      "qs": "237",
+      "the": "123"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（建议提交至少3门A-Level成绩）",
+      "sat": "SAT 1500-1580（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED: 11月1日; RD: 1月2日",
+      "acceptance_rate": "6.0%"
+    },
+    "popular_majors": [
+      "经济学",
+      "政治学",
+      "计算机科学",
+      "工程学（与达特茅斯工程学院双学位）",
+      "生物学",
+      "历史学",
+      "心理学",
+      "英语",
+      "数学",
+      "环境科学"
+    ],
+    "tuition": {
+      "amount": 69207,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 22773,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "汉诺威",
+      "state": "新罕布什尔州"
+    },
+    "type": "私立",
+    "features": [
+      "常春藤盟校最小成员",
+      "紧密的社区氛围",
+      "D-Plan学期制",
+      "塔克商学院全球顶尖",
+      "ED早申绑定制"
+    ],
+    "facilities": "校园占地269英亩，位于康涅狄格河畔，环境优美。拥有超过160栋建筑。图书馆系统包含超过250万册藏书。拥有先进的实验室、艺术中心、体育设施和学生宿舍。户外运动设施丰富，适合滑雪、徒步等活动。",
+    "academic_resources": "年度研究经费超过3亿美元。拥有3位诺贝尔奖得主。塔克商学院是全球顶尖的商学院之一。盖塞尔医学院是美国顶尖的医学院之一。学校鼓励本科生参与研究，提供丰富的学术资源和海外学习项目。"
+  },
+  {
+    "name": "范德堡大学",
+    "name_en": "Vanderbilt University",
+    "abbreviation": "Vanderbilt",
+    "official_website": "https://www.vanderbilt.edu",
+    "description": "范德堡大学成立于1873年，位于田纳西州纳什维尔市，是美国顶尖的私立研究型大学。范德堡以其强大的医学、教育学、法学和工程项目闻名。学校校园被誉为全美最美丽的校园之一，拥有丰富的历史建筑和优美的园林景观。范德堡大学在人文、社会科学和自然科学领域也有卓越表现。",
+    "ranking": {
+      "us_news": "18",
+      "qs": "248",
+      "the": "90"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（鼓励提交预测成绩，至少3门A-Level）",
+      "sat": "SAT 1490-1570（中间50%范围）",
+      "act": "ACT 34-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "ED1/ED2: 11月1日/1月1日; RD: 1月1日",
+      "acceptance_rate": "6.3%"
+    },
+    "popular_majors": [
+      "经济学",
+      "计算机科学",
+      "人类与组织发展",
+      "政治学",
+      "神经科学",
+      "心理学",
+      "生物学",
+      "英语",
+      "数学",
+      "音乐教育"
+    ],
+    "tuition": {
+      "amount": 67934,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 23300,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "纳什维尔",
+      "state": "田纳西州"
+    },
+    "type": "私立",
+    "features": [
+      "全美最美校园之一",
+      "教育和人发展学院全美顶尖",
+      "皮博迪音乐学院",
+      "Need-Blind录取（美国学生）",
+      "ED1/ED2两轮早申"
+    ],
+    "facilities": "校园占地330英亩，被指定为国家植物园，拥有超过300种树木。拥有超过175栋建筑。图书馆系统包含超过800万册藏书。拥有先进的医学中心、教育研究中心、音乐学院大楼和体育设施。",
+    "academic_resources": "年度研究经费超过10亿美元。拥有6位诺贝尔奖得主。皮博迪教育学院是全美顶尖的教育学院之一。皮博迪音乐学院历史悠久。范德堡大学医学中心是田纳西州最大的学术医疗中心。"
+  },
+  {
+    "name": "圣母大学",
+    "name_en": "University of Notre Dame",
+    "abbreviation": "Notre Dame",
+    "official_website": "https://www.nd.edu",
+    "description": "圣母大学成立于1842年，位于印第安纳州圣母镇，是美国最顶尖的天主教研究型大学。圣母大学以其卓越的商学、法学、工程和人文教育闻名。学校在门多萨商学院、法学院和工程学院方面均处于全美领先地位。校园以金色圆顶主楼和哥特式建筑闻名，橄榄球队是全美最著名的大学橄榄球队之一。",
+    "ranking": {
+      "us_news": "18",
+      "qs": "316",
+      "the": "199"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level）",
+      "sat": "SAT 1460-1540（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "REA: 11月1日; RD: 1月1日",
+      "acceptance_rate": "11.9%"
+    },
+    "popular_majors": [
+      "金融学",
+      "会计学",
+      "经济学",
+      "机械工程",
+      "政治学",
+      "计算机科学",
+      "心理学",
+      "生物科学",
+      "化学工程",
+      "英语"
+    ],
+    "tuition": {
+      "amount": 67100,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 25000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "圣母镇",
+      "state": "印第安纳州"
+    },
+    "type": "私立（天主教）",
+    "features": [
+      "门多萨商学院全美顶尖",
+      "REA限制性早申",
+      "全美最著名的橄榄球队",
+      "校友网络极其强大",
+      "社区服务传统深厚"
+    ],
+    "facilities": "校园占地1250英亩，拥有超过200栋建筑，以哥特式建筑风格闻名。图书馆系统包含超过400万册藏书。拥有先进的商学院大楼、研究中心、体育场馆和学生宿舍。海斯伯格图书馆是美国最美的大学图书馆之一。",
+    "academic_resources": "年度研究经费超过2亿美元。拥有2位诺贝尔奖得主。门多萨商学院连续多年排名全美前十。法学院是美国最顶尖的法学院之一。学校鼓励本科生参与研究，提供丰富的海外学习机会。"
+  },
+  {
+    "name": "密歇根大学安娜堡分校",
+    "name_en": "University of Michigan - Ann Arbor",
+    "abbreviation": "UMich",
+    "official_website": "https://umich.edu",
+    "description": "密歇根大学安娜堡分校成立于1817年，位于密歇根州安娜堡市，是美国最顶尖的公立研究型大学之一。密歇根在工程、商学、医学、法学、信息科学和公共卫生等领域均处于世界领先地位。学校是美洲大学协会的创始成员之一，拥有丰富的学术资源和研究实力。",
+    "ranking": {
+      "us_news": "21",
+      "qs": "44",
+      "the": "22"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，A*和A为主）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "7.0+",
+      "toefl": "84+（建议100+）",
+      "application_deadline": "EA: 11月1日; RD: 2月1日",
+      "acceptance_rate": "20.2%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "经济学",
+      "心理学",
+      "工商管理学",
+      "机械工程",
+      "政治学",
+      "生物科学",
+      "电气工程",
+      "英语",
+      "历史学"
+    ],
+    "tuition": {
+      "amount": 63962,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 26500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "安娜堡",
+      "state": "密歇根州"
+    },
+    "type": "公立",
+    "features": [
+      "美国顶尖公立大学",
+      "工程学院全美前十",
+      "罗斯商学院顶尖",
+      "EA/RD两轮申请",
+      "体育强校（狼獾队）"
+    ],
+    "facilities": "校园占地3200英亩，拥有超过550栋建筑。图书馆系统包含超过1500万册藏书。拥有先进的工程研究中心、商学院大楼、医学中心、体育场馆和学生活动中心。安娜堡市连续多年被评为全美最宜居的大学城之一。",
+    "academic_resources": "年度研究经费超过17亿美元，居全美公立大学前列。拥有30多位诺贝尔奖得主。罗斯商学院和工程学院均排名全美前列。密歇根大学医学中心是美国顶尖的学术医疗中心之一。本科生研究机会丰富。"
+  },
+  {
+    "name": "北卡罗来纳大学教堂山分校",
+    "name_en": "University of North Carolina at Chapel Hill",
+    "abbreviation": "UNC",
+    "official_website": "https://www.unc.edu",
+    "description": "北卡罗来纳大学教堂山分校成立于1789年，位于北卡罗来纳州教堂山市，是美国历史最悠久的公立大学之一。UNC在新闻学、商学、公共卫生、医学和法学等领域均处于全美领先地位。学校以其优美的校园和活跃的体育文化闻名，是NCAA体育强校。UNC是北卡罗来纳大学系统的旗舰校区。",
+    "ranking": {
+      "us_news": "22",
+      "qs": "155",
+      "the": "72"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（至少3门A-Level）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "EA: 10月15日; RD: 1月15日",
+      "acceptance_rate": "18.4%"
+    },
+    "popular_majors": [
+      "生物学",
+      "心理学",
+      "新闻学",
+      "计算机科学",
+      "经济学",
+      "护理学",
+      "政治学",
+      "英语",
+      "运动科学",
+      "全球研究"
+    ],
+    "tuition": {
+      "amount": 41203,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 19500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "教堂山",
+      "state": "北卡罗来纳州"
+    },
+    "type": "公立",
+    "features": [
+      "美国最古老的公立大学",
+      "新闻与传媒学院全美顶尖",
+      "EA早申（10月15日）",
+      "NCAA体育强校",
+      "校园极其优美"
+    ],
+    "facilities": "校园占地729英亩，拥有超过250栋建筑。图书馆系统包含超过700万册藏书。拥有先进的新闻学院大楼、医学中心、体育场馆和学生活动中心。校园以柏树环绕的旧井（Old Well）闻名。",
+    "academic_resources": "年度研究经费超过11亿美元。拥有多位诺贝尔奖得主。胡斯曼新闻与传媒学院是全美最顶尖的新闻学院之一。UNC医院是美国顶尖的学术医疗中心之一。学校鼓励本科生参与研究，提供丰富的学术资源。"
+  },
+  {
+    "name": "卡内基梅隆大学",
+    "name_en": "Carnegie Mellon University",
+    "abbreviation": "CMU",
+    "official_website": "https://www.cmu.edu",
+    "description": "卡内基梅隆大学成立于1900年，位于宾夕法尼亚州匹兹堡市，是世界顶尖的私立研究型大学。CMU在计算机科学、人工智能、机器人学、戏剧、艺术和设计等领域处于世界绝对领先地位。学校由工业家安德鲁·卡内基创办，以其跨学科合作和创新精神闻名。",
+    "ranking": {
+      "us_news": "21",
+      "qs": "58",
+      "the": "24"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（至少3门A-Level，计算机专业要求数学A*）",
+      "sat": "SAT 1500-1580（中间50%范围）",
+      "act": "ACT 34-36",
+      "ielts": "7.5+",
+      "toefl": "102+（单项不低于25）",
+      "application_deadline": "ED1/ED2: 11月1日/1月3日; RD: 1月3日",
+      "acceptance_rate": "11.0%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "人工智能",
+      "电子与计算机工程",
+      "戏剧",
+      "设计",
+      "机械工程",
+      "信息系统",
+      "数学",
+      "生物科学",
+      "商业管理"
+    ],
+    "tuition": {
+      "amount": 67020,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 18000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "匹兹堡",
+      "state": "宾夕法尼亚州"
+    },
+    "type": "私立",
+    "features": [
+      "计算机科学全球顶尖",
+      "人工智能和机器人学先驱",
+      "戏剧学院全美顶尖",
+      "ED1/ED2两轮早申",
+      "跨学科合作文化"
+    ],
+    "facilities": "校园占地157英亩，位于匹兹堡市奥克兰区。图书馆系统包含超过500万册藏书。拥有世界一流的计算机科学大楼、机器人研究所、设计学院大楼和表演艺术中心。盖茨计算机科学大楼是全球最先进的计算机科学教学和研究设施之一。",
+    "academic_resources": "年度研究经费超过4亿美元。拥有20多位图灵奖得主，居全球大学之首。计算机科学学院是全球最大的计算机科学学院。机器人研究所是全球最大的机器人研究中心。学校鼓励本科生参与前沿研究项目。"
+  },
+  {
+    "name": "埃默里大学",
+    "name_en": "Emory University",
+    "abbreviation": "Emory",
+    "official_website": "https://www.emory.edu",
+    "description": "埃默里大学成立于1836年，位于佐治亚州亚特兰大市，是美国顶尖的私立研究型大学。埃默里以其强大的医学、法学、商学和公共卫生项目闻名。学校是美国大学协会成员之一，在人文、社会科学和自然科学领域也有卓越表现。埃默里大学与可口可乐公司有深厚的历史渊源。",
+    "ranking": {
+      "us_news": "24",
+      "qs": "196",
+      "the": "82"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（至少3门A-Level）",
+      "sat": "SAT 1450-1560（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "95+",
+      "application_deadline": "ED1/ED2: 11月1日/1月1日; RD: 1月1日",
+      "acceptance_rate": "13.1%"
+    },
+    "popular_majors": [
+      "工商管理",
+      "护理学",
+      "生物学",
+      "神经科学",
+      "经济学",
+      "心理学",
+      "政治学",
+      "英语",
+      "化学",
+      "数学"
+    ],
+    "tuition": {
+      "amount": 67080,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 18500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "亚特兰大",
+      "state": "佐治亚州"
+    },
+    "type": "私立",
+    "features": [
+      "ED1/ED2两轮早申",
+      "医学院和公共卫生学院全美顶尖",
+      "亚特兰大市中心位置",
+      "诺贝尔奖得主（卡特总统）",
+      "研究机会丰富"
+    ],
+    "facilities": "校园占地600英亩，位于亚特兰大市区东北部。图书馆系统包含超过400万册藏书。拥有先进的医学中心、法学院大楼、商学大楼和学生活动中心。校园环境优美，绿树成荫。",
+    "academic_resources": "年度研究经费超过8亿美元。拥有多位诺贝尔奖得主，包括前美国总统吉米·卡特。医学院和罗林斯公共卫生学院均排名全美前列。古兹维塔商学院是顶尖的商学院之一。学校提供丰富的本科生研究机会。"
+  },
+  {
+    "name": "弗吉尼亚大学",
+    "name_en": "University of Virginia",
+    "abbreviation": "UVA",
+    "official_website": "https://www.virginia.edu",
+    "description": "弗吉尼亚大学成立于1819年，位于弗吉尼亚州夏洛茨维尔市，是由托马斯·杰斐逊创办的美国顶尖公立研究型大学。UVA在商学、法学、医学和人文社科领域均处于全美领先地位。校园被联合国教科文组织列为世界文化遗产，以其独特的学术村（Academical Village）建筑风格闻名。",
+    "ranking": {
+      "us_news": "24",
+      "qs": "297",
+      "the": "140"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（至少3门A-Level）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "7.0+",
+      "toefl": "90+",
+      "application_deadline": "EA: 11月1日; RD: 1月5日",
+      "acceptance_rate": "18.7%"
+    },
+    "popular_majors": [
+      "经济学",
+      "商科",
+      "生物学",
+      "心理学",
+      "历史学",
+      "政治学",
+      "计算机科学",
+      "英语",
+      "国际关系",
+      "神经科学"
+    ],
+    "tuition": {
+      "amount": 55400,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 18500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "夏洛茨维尔",
+      "state": "弗吉尼亚州"
+    },
+    "type": "公立",
+    "features": [
+      "世界文化遗产校园",
+      "杰斐逊创办的大学",
+      "EA早申（11月1日）",
+      "荣誉体系（Honor System）",
+      "达顿商学院全美顶尖"
+    ],
+    "facilities": "校园占地1682英亩，被联合国教科文组织列为世界文化遗产。拥有超过500栋建筑。图书馆系统包含超过500万册藏书。拥有先进的商学院大楼、法律图书馆、医学中心和学生活动中心。校园以杰斐逊设计的学术村为中心。",
+    "academic_resources": "年度研究经费超过6亿美元。拥有多位诺贝尔奖得主。达顿商学院是全美顶尖的商学院之一。法学院排名全美前列。麦金太尔商学院是全美顶尖的本科商学院之一。学校提供丰富的本科生研究机会。"
+  },
+  {
+    "name": "圣路易斯华盛顿大学",
+    "name_en": "Washington University in St. Louis",
+    "abbreviation": "WashU",
+    "official_website": "https://www.wustl.edu",
+    "description": "圣路易斯华盛顿大学成立于1853年，位于密苏里州圣路易斯市，是美国顶尖的私立研究型大学。WashU在医学、法学、商学、建筑学和社会工作等领域均处于全美领先地位。学校以其美丽的校园和高质量的本科教育闻名。WashU是美国大学协会成员之一，拥有丰富的学术资源和研究实力。",
+    "ranking": {
+      "us_news": "21",
+      "qs": "171",
+      "the": "57"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-A*A*A（鼓励提交预测成绩）",
+      "sat": "SAT 1480-1570（中间50%范围）",
+      "act": "ACT 33-35",
+      "ielts": "7.0+",
+      "toefl": "90+",
+      "application_deadline": "ED1/ED2: 11月1日/1月2日; RD: 1月2日",
+      "acceptance_rate": "11.0%"
+    },
+    "popular_majors": [
+      "心理学",
+      "计算机科学",
+      "生物学",
+      "金融",
+      "机械工程",
+      "经济学",
+      "政治学",
+      "化学",
+      "英语",
+      "建筑学"
+    ],
+    "tuition": {
+      "amount": 68240,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 22500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "圣路易斯",
+      "state": "密苏里州"
+    },
+    "type": "私立",
+    "features": [
+      "ED1/ED2两轮早申",
+      "医学院全美顶尖",
+      "奥林商学院优秀",
+      "校园极其优美",
+      "Need-Blind录取（美国学生）"
+    ],
+    "facilities": "校园占地1693英亩，分布在圣路易斯市区和郊区。拥有超过150栋建筑。图书馆系统包含超过480万册藏书。拥有先进的医学中心、商学院大楼、建筑学院大楼和学生活动中心。校园以优美的园林景观闻名。",
+    "academic_resources": "年度研究经费超过8亿美元。拥有20多位诺贝尔奖得主。医学院是全美顶尖的医学院之一。奥林商学院排名全美前列。山姆福克斯设计与视觉艺术学院是全美顶尖的建筑学院之一。学校提供丰富的本科生研究机会。"
+  },
+  {
+    "name": "加州大学圣迭戈分校",
+    "name_en": "University of California, San Diego",
+    "abbreviation": "UCSD",
+    "official_website": "https://www.ucsd.edu",
+    "description": "加州大学圣迭戈分校成立于1960年，位于加利福尼亚州拉霍亚（La Jolla），是美国顶尖的公立研究型大学。UCSD在生命科学、工程、计算机科学、海洋学和经济学等领域处于世界领先地位。学校以其独特的住宿学院制、优美的海滨位置和强大的科研实力闻名。UCSD是加州大学系统中科研经费最多的校区之一。",
+    "ranking": {
+      "us_news": "29",
+      "qs": "72",
+      "the": "34"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（至少3门A-Level）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "6.5+",
+      "toefl": "85+",
+      "application_deadline": "UC系统: 11月30日",
+      "acceptance_rate": "24.0%"
+    },
+    "popular_majors": [
+      "生物学",
+      "计算机科学",
+      "经济学",
+      "生物工程",
+      "心理学",
+      "政治学",
+      "数学",
+      "化学",
+      "海洋学",
+      "电子工程"
+    ],
+    "tuition": {
+      "amount": 58107,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 22500,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "拉霍亚（圣迭戈）",
+      "state": "加利福尼亚州"
+    },
+    "type": "公立",
+    "features": [
+      "海滨校园位置",
+      "生物和海洋科学顶尖",
+      "独特的住宿学院制",
+      "科研经费丰富",
+      "UC系统申请"
+    ],
+    "facilities": "校园占地1800英亩，位于太平洋沿岸的拉霍亚，风景优美。图书馆系统包含超过700万册藏书。拥有世界一流的海洋学研究所、生物工程中心、超级计算机中心和图书馆。Geisel图书馆是校园的标志性建筑。",
+    "academic_resources": "年度研究经费超过14亿美元，居全美公立大学前列。拥有20多位诺贝尔奖得主。斯克利普斯海洋研究所是全球顶尖的海洋研究机构。雅各布斯工程学院排名全美前列。学校鼓励本科生参与前沿研究，提供丰富的科研资助。"
+  },
+  {
+    "name": "佛罗里达大学",
+    "name_en": "University of Florida",
+    "abbreviation": "UF",
+    "official_website": "https://www.ufl.edu",
+    "description": "佛罗里达大学成立于1853年，位于佛罗里达州盖恩斯维尔市，是美国顶尖的公立研究型大学。UF在工程、商学、法学、医学和农学等领域均处于全美领先地位。学校是佛罗里达州最古老和最大的大学，也是美国大学协会成员之一。UF以其丰富的学生生活和强大的体育项目闻名。",
+    "ranking": {
+      "us_news": "30",
+      "qs": "215",
+      "the": "132"
+    },
+    "admission_requirements": {
+      "a_level": "AAA-BBB（至少3门A-Level）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "6.0+",
+      "toefl": "80+",
+      "application_deadline": "RD: 11月1日",
+      "acceptance_rate": "23.0%"
+    },
+    "popular_majors": [
+      "生物学",
+      "心理学",
+      "金融学",
+      "市场营销",
+      "政治学",
+      "机械工程",
+      "会计学",
+      "传播学",
+      "体育管理",
+      "计算机科学"
+    ],
+    "tuition": {
+      "amount": 30900,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 16000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "盖恩斯维尔",
+      "state": "佛罗里达州"
+    },
+    "type": "公立",
+    "features": [
+      "佛罗里达州旗舰公立大学",
+      "性价比极高的公立名校",
+      "体育强校（鳄鱼队）",
+      "申请截止日期较早（11月1日）",
+      "AACSB认证商学院"
+    ],
+    "facilities": "校园占地2000英亩，拥有超过900栋建筑。图书馆系统包含超过600万册藏书。拥有先进的工程研究中心、商学院大楼、体育场馆和学生活动中心。学校拥有全美最大的大学体育场馆之一。",
+    "academic_resources": "年度研究经费超过10亿美元。拥有多位诺贝尔奖得主。沃灵顿商学院是AACSB认证的顶尖商学院。工程学院和农学院均排名全美前列。学校提供丰富的本科生研究机会和国际交流项目。"
+  },
+  {
+    "name": "南加州大学",
+    "name_en": "University of Southern California",
+    "abbreviation": "USC",
+    "official_website": "https://www.usc.edu",
+    "description": "南加州大学成立于1880年，位于加利福尼亚州洛杉矶市，是美国顶尖的私立研究型大学。USC在电影艺术、工程、商学、传播学、建筑学和公共政策等领域处于世界领先地位。学校地理位置优越，紧邻好莱坞，为电影和传媒专业的学生提供得天独厚的行业资源。USC的体育项目（特洛伊人队）也非常强大。",
+    "ranking": {
+      "us_news": "28",
+      "qs": "125",
+      "the": "72"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（至少3门A-Level）",
+      "sat": "SAT 1450-1550（中间50%范围）",
+      "act": "ACT 32-35",
+      "ielts": "7.0+",
+      "toefl": "100+",
+      "application_deadline": "EA: 11月1日; RD: 1月15日",
+      "acceptance_rate": "12.0%"
+    },
+    "popular_majors": [
+      "电影与电视制作",
+      "工商管理学",
+      "计算机科学",
+      "传播学",
+      "工程学",
+      "国际关系",
+      "建筑学",
+      "心理学",
+      "会计学",
+      "游戏设计"
+    ],
+    "tuition": {
+      "amount": 73260,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "living_cost": {
+      "amount": 25000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "洛杉矶",
+      "state": "加利福尼亚州"
+    },
+    "type": "私立",
+    "features": [
+      "电影艺术学院全球顶尖",
+      "紧邻好莱坞",
+      "EA早申（11月1日）",
+      "特洛伊人队体育强校",
+      "庞大的校友网络"
+    ],
+    "facilities": "校园占地226英亩，位于洛杉矶市中心。图书馆系统包含超过500万册藏书。拥有世界顶级的电影制作设备、工程实验室、表演艺术中心和体育设施。电影艺术学院拥有独立的电影制作场地和后期制作工作室。",
+    "academic_resources": "年度研究经费超过9亿美元。拥有多位诺贝尔奖得主。电影艺术学院（SCA）是全球顶尖的电影学院。马歇尔商学院和维特比工程学院均排名全美前列。学校与好莱坞和硅谷企业有紧密合作关系。"
+  },
+  {
+    "name": "德克萨斯大学奥斯汀分校",
+    "name_en": "University of Texas at Austin",
+    "abbreviation": "UT Austin",
+    "official_website": "https://www.utexas.edu",
+    "description": "德克萨斯大学奥斯汀分校成立于1883年，位于德克萨斯州奥斯汀市，是美国顶尖的公立研究型大学。UT Austin在工程、商学、法学、计算机科学和传媒等领域处于全美领先地位。学校是德克萨斯大学系统的旗舰校区，也是美国最大的大学之一。奥斯汀市被称为'硅丘'，拥有蓬勃发展的科技产业。",
+    "ranking": {
+      "us_news": "30",
+      "qs": "66",
+      "the": "50"
+    },
+    "admission_requirements": {
+      "a_level": "A*AA-AAB（至少3门A-Level）",
+      "sat": "SAT 可选提交（Test-optional）",
+      "act": "ACT 可选提交",
+      "ielts": "6.5+",
+      "toefl": "79+",
+      "application_deadline": "EA: 10月15日; RD: 12月1日",
+      "acceptance_rate": "31.0%"
+    },
+    "popular_majors": [
+      "计算机科学",
+      "工商管理学",
+      "石油工程",
+      "传媒学",
+      "生物学",
+      "心理学",
+      "电气工程",
+      "经济学",
+      "会计学",
+      "化学"
+    ],
+    "tuition": {
+      "amount": 48700,
+      "currency": "USD",
+      "period": "每年（州外学生）"
+    },
+    "living_cost": {
+      "amount": 18000,
+      "currency": "USD",
+      "period": "每年"
+    },
+    "location": {
+      "city": "奥斯汀",
+      "state": "德克萨斯州"
+    },
+    "type": "公立",
+    "features": [
+      "德克萨斯州旗舰公立大学",
+      "麦库姆斯商学院全美顶尖",
+      "石油工程全球第一",
+      "EA早申（10月15日）",
+      "位于'硅丘'科技中心"
+    ],
+    "facilities": "校园占地431英亩，位于奥斯汀市中心。图书馆系统包含超过1000万册藏书，是美国最大的大学图书馆之一。拥有先进的工程学院大楼、商学院大楼、超级计算机中心和体育场馆。奥斯汀市是美国增长最快的科技中心之一。",
+    "academic_resources": "年度研究经费超过8亿美元。拥有多位诺贝尔奖得主。麦库姆斯商学院是美国最大的商学院之一。科克雷尔工程学院排名全美前列。学校与德州仪器、戴尔、特斯拉等科技企业有紧密合作关系。"
+  }
+]

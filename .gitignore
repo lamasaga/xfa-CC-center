@@ -1,0 +1,26 @@
+# 敏感与本地数据
+doc/运营账号口令-本地留存.md
+.env
+.env.*
+**/.env
+**/.env.*
+
+# 依赖与构建产物
+**/node_modules/
+**/dist/
+app/study-dist/
+app/release/
+app/uploads/
+app/database.sqlite
+app/database.sqlite-*
+
+# 日志与临时包
+*.log
+*.tgz
+*.rar
+app-src.tgz
+
+# IDE / OS
+.cursor/
+.DS_Store
+Thumbs.db
