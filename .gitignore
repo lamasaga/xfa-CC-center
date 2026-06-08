@@ -24,3 +24,6 @@ app-src.tgz
 .cursor/
 .DS_Store
 Thumbs.db
+
+# 其他独立项目（非本仓库内容）
+animal-island-vue/

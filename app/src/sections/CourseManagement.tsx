@@ -9,6 +9,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { courseApi, type Course, type CourseUnit } from '@/services/api';
+import {
+  formatExamMonthLabel,
+  normalizeAllowedMonthsForForm,
+  STANDARD_EXAM_MONTHS,
+  STANDARD_EXAM_MONTHS_LABEL,
+} from '@/lib/examMonths';
 import { useAuth } from '@/contexts/AuthContext';
 import { useGrade } from '@/contexts/GradeContext';
 import { CourseDetail } from '@/sections/CourseDetail';
@@ -155,7 +161,7 @@ export function CourseManagement() {
       max_score: u.max_score,
       weight: u.weight,
       description: u.description || '',
-      allowed_months: (u.allowed_months as number[] | undefined) || [],
+      allowed_months: normalizeAllowedMonthsForForm(u.allowed_months as number[] | undefined),
     });
   };
 
@@ -364,8 +370,11 @@ export function CourseManagement() {
                       </TableCell>
                       <TableCell className="text-xs text-slate-600">
                         {Array.isArray(u.allowed_months) && u.allowed_months.length > 0
-                          ? [...u.allowed_months].sort().map(m => (m === 1 ? '1月' : m === 6 ? '6月' : '10月')).join(' / ')
-                          : '1月 / 6月 / 10月'}
+                          ? [...u.allowed_months]
+                              .sort((a, b) => a - b)
+                              .map((m) => formatExamMonthLabel(m))
+                              .join(' / ')
+                          : STANDARD_EXAM_MONTHS_LABEL}
                       </TableCell>
                       <TableCell>{u.max_score}</TableCell>
                       <TableCell>{u.weight}</TableCell>
@@ -404,11 +413,11 @@ export function CourseManagement() {
                 <div className="space-y-1"><Label className="text-xs">权重</Label>
                   <Input type="number" step="0.1" value={unitForm.weight} onChange={(e) => setUnitForm({ ...unitForm, weight: parseFloat(e.target.value) || 1 })} /></div>
                 <div className="space-y-1 col-span-2">
-                  <Label className="text-xs">可考季（不选则默认 1/6/10 月皆可）</Label>
+                  <Label className="text-xs">可考季（不选则默认 {STANDARD_EXAM_MONTHS_LABEL} 皆可）</Label>
                   <div className="flex items-center gap-3 text-xs text-slate-600">
-                    {[1, 6, 10].map((m) => {
+                    {[...STANDARD_EXAM_MONTHS].map((m) => {
                       const checked = unitForm.allowed_months.includes(m);
-                      const label = m === 1 ? '1月' : m === 6 ? '6月' : '10月';
+                      const label = formatExamMonthLabel(m);
                       return (
                         <label key={m} className="flex items-center gap-1 cursor-pointer select-none">
                           <input

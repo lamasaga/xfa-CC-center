@@ -12,6 +12,12 @@ import {
   type SessionPlanUnit,
 } from '@/services/api';
 import { useAuth } from '@/contexts/AuthContext';
+import {
+  formatExamMonthLabel,
+  normalizeExamMonth,
+  STANDARD_EXAM_MONTHS,
+  unitAllowsExamMonth,
+} from '@/lib/examMonths';
 import { toast } from 'sonner';
 import {
   Calendar,
@@ -179,15 +185,14 @@ export function ExamSessionPlanner({ studentId }: ExamSessionPlannerProps) {
     if (targetSessionId) {
       const targetSession = data.sessions.find(s => s.id === targetSessionId);
       const unit = course.units.find(u => u.unit_id === unitId);
-      if (targetSession && unit && Array.isArray(unit.allowed_months) && unit.allowed_months.length > 0) {
-        if (!unit.allowed_months.includes(targetSession.month)) {
-          const labels = unit.allowed_months
-            .sort()
-            .map(m => (m === 1 ? '1月' : m === 6 ? '6月' : '10月'))
-            .join(' / ');
-          toast.error(`该单元只能安排在 ${labels} 考季`);
-          return;
-        }
+      if (targetSession && unit && !unitAllowsExamMonth(unit.allowed_months, targetSession.month)) {
+        const labels = [...new Set((unit.allowed_months ?? []).map(normalizeExamMonth))]
+          .filter((m) => (STANDARD_EXAM_MONTHS as readonly number[]).includes(m))
+          .sort((a, b) => a - b)
+          .map((m) => formatExamMonthLabel(m))
+          .join(' / ');
+        toast.error(`该单元只能安排在 ${labels} 考季`);
+        return;
       }
     }
 

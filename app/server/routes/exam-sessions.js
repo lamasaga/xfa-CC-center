@@ -10,6 +10,7 @@ const {
 const {
   ensureExamSessionsForStudent,
   filterSessionsForStudent,
+  normalizeAllowedMonthsList,
 } = require('../utils/examSessionRange');
 
 const router = express.Router();
@@ -173,7 +174,7 @@ router.get(
           try {
             const parsed = JSON.parse(u.allowed_months);
             if (Array.isArray(parsed)) {
-              allowedMonths = parsed.map(Number).filter(n => [1, 6, 10].includes(n));
+              allowedMonths = normalizeAllowedMonthsList(parsed);
             }
           } catch {
             // ignore parse error

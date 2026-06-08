@@ -574,6 +574,65 @@ async function initDb() {
       console.warn('Seed teacher user:', e.message);
     }
 
+    try {
+      const { normalizeAllowedMonthsList } = require('./utils/examSessionRange');
+      const sixRows = db
+        .prepare('SELECT id, year, board FROM exam_sessions WHERE month = 6')
+        .all();
+      let merged = 0;
+      let renamed = 0;
+      const reassignPlans = db.prepare(
+        'UPDATE session_unit_plans SET exam_session_id = ? WHERE exam_session_id = ?'
+      );
+      const deleteSession = db.prepare('DELETE FROM exam_sessions WHERE id = ?');
+      const renameSession = db.prepare(
+        `UPDATE exam_sessions SET month = 5, label = REPLACE(label, '6月', '5月') WHERE id = ?`
+      );
+      for (const row of sixRows) {
+        const five = db
+          .prepare(
+            'SELECT id FROM exam_sessions WHERE year = ? AND month = 5 AND board = ? LIMIT 1'
+          )
+          .get(row.year, row.board);
+        if (five) {
+          reassignPlans.run(five.id, row.id);
+          deleteSession.run(row.id);
+          merged += 1;
+        } else {
+          renameSession.run(row.id);
+          renamed += 1;
+        }
+      }
+      if (merged > 0 || renamed > 0) {
+        console.log(
+          `✓ exam_sessions 6→5: merged ${merged}, renamed ${renamed}`
+        );
+      }
+      const unitRows = db
+        .prepare(
+          `SELECT id, allowed_months FROM course_units WHERE allowed_months IS NOT NULL AND allowed_months LIKE '%6%'`
+        )
+        .all();
+      const unitUpd = db.prepare('UPDATE course_units SET allowed_months = ? WHERE id = ?');
+      let unitChanged = 0;
+      for (const row of unitRows) {
+        try {
+          const parsed = JSON.parse(row.allowed_months);
+          if (!Array.isArray(parsed)) continue;
+          const next = normalizeAllowedMonthsList(parsed);
+          unitUpd.run(JSON.stringify(next), row.id);
+          unitChanged += 1;
+        } catch {
+          // ignore invalid JSON
+        }
+      }
+      if (unitChanged > 0) {
+        console.log(`✓ Migrated ${unitChanged} course_units allowed_months: 6 → 5`);
+      }
+    } catch (e) {
+      console.warn('Migration exam month 6→5:', e.message);
+    }
+
     return true;
   } catch (error) {
     console.error('Database initialization failed:', error.message);

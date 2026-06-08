@@ -547,7 +547,7 @@ export interface CourseUnit {
   weight: number;
   description: string;
   sort_order: number;
-  // 可用考季月份（如 [1,6] 表示只在1月/6月可考），可选
+  // 可用考季月份（如 [1,5] 表示只在1月/5月可考），可选
   allowed_months?: number[] | null;
 }
 
@@ -666,7 +666,7 @@ export interface SessionPlanUnit {
     exam_date: string;
   } | null;
   needs_resit: boolean;
-  // 当前单元允许的考试月份（如 [6] 表示仅6月可以考试）
+  // 当前单元允许的考试月份（如 [5] 表示仅5月可以考试）
   allowed_months?: number[] | null;
 }
 

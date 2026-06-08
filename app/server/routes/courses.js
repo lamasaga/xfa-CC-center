@@ -3,6 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const { dbAsync, getDb } = require('../db');
 const { authenticateToken, canModify } = require('../middleware/auth');
 const { courseVisibleForStudent } = require('../utils/gradeMatch');
+const { normalizeAllowedMonthsList } = require('../utils/examSessionRange');
 
 const router = express.Router();
 
@@ -324,7 +325,7 @@ router.get('/:id/units', authenticateToken, assertCourseEnrolledOrStaff, async (
         try {
           const parsed = JSON.parse(u.allowed_months);
           if (Array.isArray(parsed)) {
-            allowed_months = parsed.map(Number).filter(n => [1, 6, 10].includes(n));
+            allowed_months = normalizeAllowedMonthsList(parsed);
           }
         } catch {
           allowed_months = null;
@@ -358,7 +359,7 @@ router.post('/:id/units', authenticateToken, canModify, async (req, res) => {
       description: description || '',
       sort_order: sort_order || 0,
       allowed_months: Array.isArray(allowed_months) && allowed_months.length > 0
-        ? JSON.stringify(allowed_months.map(Number).filter(n => [1, 6, 10].includes(n)))
+        ? JSON.stringify(normalizeAllowedMonthsList(allowed_months))
         : null,
       created_at: new Date().toISOString(),
     };
@@ -382,7 +383,7 @@ router.put('/:id/units/:unitId', authenticateToken, canModify, async (req, res) 
         } else if (f === 'allowed_months') {
           const months = Array.isArray(req.body[f]) ? req.body[f] : [];
           updates[f] = months.length > 0
-            ? JSON.stringify(months.map(Number).filter(n => [1, 6, 10].includes(n)))
+            ? JSON.stringify(normalizeAllowedMonthsList(months))
             : null;
         } else {
           updates[f] = req.body[f];
