@@ -6,7 +6,7 @@ interface AuthContextType {
   isAuthenticated: boolean;
   isLoading: boolean;
   login: (username: string, password: string) => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
   /** 当前用户角色是否为其中之一 */
   hasPermission: (...roles: string[]) => boolean;
   /** 教务 / 指导老师 / 管理员：可维护成绩、任务、选课、学生申请院校等（学生只读） */
@@ -27,22 +27,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 检查本地存储的token
+  // 每次启动都向服务端确认会话；Cookie 为主，本地 token 仅兼容升级前会话。
   useEffect(() => {
     const checkAuth = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const userData = await authApi.getMe();
-          if (userData.role === 'student' && userData.student_id) {
-            localStorage.setItem('lastViewedStudentId', userData.student_id);
-          }
-          setUser(userData);
-        } catch (error) {
-          console.error('Token validation failed:', error);
+      try {
+        const userData = await authApi.getMe();
+        if (userData.role === 'student' && userData.student_id) {
+          localStorage.setItem('lastViewedStudentId', userData.student_id);
+        }
+        if ((userData as User & { auth_mode?: string }).auth_mode === 'session') {
           localStorage.removeItem('token');
           localStorage.removeItem('user');
         }
+        setUser(userData);
+      } catch (error) {
+        console.info('No active session:', error);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
       }
       setIsLoading(false);
     };
@@ -52,15 +53,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = useCallback(async (username: string, password: string) => {
     const response = await authApi.login(username, password);
-    localStorage.setItem('token', response.token);
-    localStorage.setItem('user', JSON.stringify(response.user));
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     if (response.user.role === 'student' && response.user.student_id) {
       localStorage.setItem('lastViewedStudentId', response.user.student_id);
     }
     setUser(response.user);
   }, []);
 
-  const logout = useCallback(() => {
+  const logout = useCallback(async () => {
+    try {
+      await authApi.logout();
+    } catch {
+      // 即使服务端会话已失效，也要完成本地退出。
+    }
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     setUser(null);
@@ -105,6 +111,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// Provider 与配套 hook 保持同一文件，避免在本次会话升级中扩大跨文件改动。
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined) {

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { Routes, Route, Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -10,12 +10,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { StudentList } from '@/sections/StudentList';
-import { StudentDetail } from '@/sections/StudentDetail';
-import { GradeOverview } from '@/sections/GradeOverview';
-import { CourseManagement } from '@/sections/CourseManagement';
-import { UniversityLibrary } from '@/sections/UniversityLibrary';
-import { CenterWorkbench } from '@/sections/CenterWorkbench';
 import { GradeProvider, useGrade } from '@/contexts/GradeContext';
 import {
   COHORT_NAV_VISIBLE,
@@ -23,16 +17,10 @@ import {
   getCohortNavDefaultWindowStart,
   parseEnrollmentYearFromGrade,
 } from '@/lib/cohortLabels';
-import Dashboard from './Dashboard';
-import ProfilePage from '@/pages/ProfilePage';
-import SettingsPage from '@/pages/SettingsPage';
-import AdminAccountsPage from '@/pages/AdminAccountsPage';
-import TranscriptPrintView from '@/pages/TranscriptPrintView';
 import {
   LayoutDashboard,
   Users,
   BookOpen,
-  School,
   Library,
   ChevronDown,
   ChevronLeft,
@@ -43,9 +31,33 @@ import {
   Calendar,
   NotebookPen,
   Shield,
+  BookMarked,
+  CalendarRange,
+  ClipboardList,
+  ShieldCheck,
+  UserRoundCheck,
   type LucideIcon,
 } from 'lucide-react';
 import { openStudyExploreWindow } from '@/lib/studyExploreUrl';
+
+const Dashboard = lazy(() => import('./Dashboard'));
+const ProfilePage = lazy(() => import('@/pages/ProfilePage'));
+const SettingsPage = lazy(() => import('@/pages/SettingsPage'));
+const AdminAccountsPage = lazy(() => import('@/pages/AdminAccountsPage'));
+const TranscriptPrintView = lazy(() => import('@/pages/TranscriptPrintView'));
+const SchoolOverviewPage = lazy(() => import('@/pages/SchoolOverviewPage'));
+const CurriculumLibraryPage = lazy(() => import('@/pages/CurriculumLibraryPage'));
+const CoursePlanningPage = lazy(() => import('@/pages/CoursePlanningPage'));
+const CourseSelectionPage = lazy(() => import('@/pages/CourseSelectionPage'));
+const SchedulingPage = lazy(() => import('@/pages/SchedulingPage'));
+const AcademicRecordsPage = lazy(() => import('@/pages/AcademicRecordsPage'));
+const SecurityAuditPage = lazy(() => import('@/pages/SecurityAuditPage'));
+const StudentList = lazy(() => import('@/sections/StudentList').then((module) => ({ default: module.StudentList })));
+const StudentDetail = lazy(() => import('@/sections/StudentDetail').then((module) => ({ default: module.StudentDetail })));
+const GradeOverview = lazy(() => import('@/sections/GradeOverview').then((module) => ({ default: module.GradeOverview })));
+const CourseManagement = lazy(() => import('@/sections/CourseManagement').then((module) => ({ default: module.CourseManagement })));
+const UniversityLibrary = lazy(() => import('@/sections/UniversityLibrary').then((module) => ({ default: module.UniversityLibrary })));
+const CenterWorkbench = lazy(() => import('@/sections/CenterWorkbench').then((module) => ({ default: module.CenterWorkbench })));
 
 type MainNavItem = {
   name: string;
@@ -110,7 +122,14 @@ function isStudentTranscriptPath(pathname: string) {
   return /^\/students\/[^/]+\/transcript\/?$/.test(pathname);
 }
 
-function navItemClass(active: boolean) {
+function navItemClass(active: boolean, sidebar = false) {
+  if (sidebar) {
+    return `flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors ${
+      active
+        ? 'bg-sidebar-primary text-sidebar-primary-foreground'
+        : 'text-sidebar-foreground/75 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground'
+    }`;
+  }
   return `flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
     active
       ? 'bg-primary/10 text-primary'
@@ -119,7 +138,7 @@ function navItemClass(active: boolean) {
 }
 
 function MainLayoutInner() {
-  const { user, logout, hasPermission, canEditUniversityCatalog } = useAuth();
+  const { user, logout, hasPermission } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const isStudent = user?.role === 'student';
@@ -177,36 +196,40 @@ function MainLayoutInner() {
     };
     if (isStudent && ownStudentId) {
       return [
-        { name: '升学仪表盘', href: `/student/${ownStudentId}`, icon: LayoutDashboard },
+        { name: '我的总览', href: `/student/${ownStudentId}`, icon: LayoutDashboard },
+        { name: '选课', href: '/selection', icon: ClipboardList },
+        { name: '我的课表', href: '/scheduling', icon: CalendarRange },
         { name: '学业档案', href: `/students/${ownStudentId}`, icon: Users },
-        { name: '成绩', href: `/students/${ownStudentId}?tab=grades`, icon: NotebookPen },
+        { name: '考试与成绩', href: `/students/${ownStudentId}?tab=sessions`, icon: NotebookPen },
         studyExploreItem,
       ];
     }
     if (isTeacher) {
       return [
-        { name: '仪表盘', href: '/', icon: LayoutDashboard },
-        { name: '学生管理', href: '/students', icon: Users },
-        { name: '成绩查看', href: studentContextHref('grades', contextStudentId), icon: NotebookPen },
-        { name: '考季规划', href: studentContextHref('sessions', contextStudentId), icon: Calendar },
-        { name: '年级概览', href: '/grade', icon: School },
+        { name: '学校总览', href: '/', icon: LayoutDashboard },
+        { name: '学生', href: '/students', icon: Users },
+        { name: '学段档案', href: '/academic-records', icon: UserRoundCheck },
+        { name: '课程与大纲', href: '/curriculum', icon: BookMarked },
+        { name: '选课', href: '/selection', icon: ClipboardList },
+        { name: '我的课表', href: '/scheduling', icon: CalendarRange },
+        { name: '考试与成绩', href: studentContextHref('sessions', contextStudentId), icon: Calendar },
         studyExploreItem,
       ];
     }
     const items: MainNavItem[] = [
-      { name: '仪表盘', href: '/', icon: LayoutDashboard },
-      { name: '学生管理', href: '/students', icon: Users },
-      { name: '成绩管理', href: studentContextHref('grades', contextStudentId), icon: NotebookPen },
-      { name: '考季规划', href: studentContextHref('sessions', contextStudentId), icon: Calendar },
-      { name: '年级概览', href: '/grade', icon: School },
-      { name: '课程管理', href: '/courses', icon: BookOpen },
+      { name: '学校总览', href: '/', icon: LayoutDashboard },
+      { name: '学生', href: '/students', icon: Users },
+      { name: '学段档案', href: '/academic-records', icon: UserRoundCheck },
+      { name: '课程与大纲', href: '/curriculum', icon: BookMarked },
+      { name: '选课', href: '/selection', icon: ClipboardList },
+      { name: '开课与教学班', href: '/course-planning', icon: BookOpen },
+      { name: '排课', href: '/scheduling', icon: CalendarRange },
+      { name: '考试与成绩', href: studentContextHref('sessions', contextStudentId), icon: Calendar },
       studyExploreItem,
     ];
-    if (canEditUniversityCatalog) {
-      items.push({ name: '维护', href: '/universities', icon: Shield });
-    }
+    if (user?.role === 'admin') items.push({ name: '权限与审计', href: '/security', icon: ShieldCheck });
     return items;
-  }, [isStudent, isTeacher, ownStudentId, canEditUniversityCatalog, contextStudentId]);
+  }, [isStudent, isTeacher, ownStudentId, contextStudentId, user?.role]);
 
   if (isStudent && !ownStudentId) {
     return (
@@ -242,6 +265,10 @@ function MainLayoutInner() {
       p === '/courses' ||
       p === '/universities' ||
       p === '/settings' ||
+      p === '/academic-records' ||
+      p === '/curriculum' ||
+      p === '/course-planning' ||
+      p === '/security' ||
       p.startsWith('/admin/') ||
       p.startsWith('/courses/')
     ) {
@@ -257,232 +284,101 @@ function MainLayoutInner() {
       p === '/universities' ||
       p === '/workbench' ||
       p === '/settings' ||
+      p === '/course-planning' ||
+      p === '/security' ||
       p.startsWith('/admin/')
     ) {
       return <Navigate to="/students" replace />;
     }
   }
 
+  const routeContent = (
+    <Suspense fallback={<div className="flex min-h-64 items-center justify-center text-sm text-muted-foreground">正在加载工作区…</div>}>
+    <Routes>
+      <Route path="/" element={isStudent && ownStudentId ? <Navigate to={`/student/${ownStudentId}`} replace /> : <SchoolOverviewPage />} />
+      <Route path="/workbench" element={<CenterWorkbench />} />
+      <Route path="/students" element={<StudentList />} />
+      <Route path="/students/:id" element={<StudentDetail />} />
+      <Route path="/students/:id/transcript" element={<TranscriptPrintView />} />
+      <Route path="/academic-records" element={<AcademicRecordsPage />} />
+      <Route path="/curriculum" element={<CurriculumLibraryPage />} />
+      <Route path="/selection" element={<CourseSelectionPage />} />
+      <Route path="/course-planning" element={<CoursePlanningPage />} />
+      <Route path="/scheduling" element={<SchedulingPage />} />
+      <Route path="/security" element={user?.role === 'admin' ? <SecurityAuditPage /> : <Navigate to="/" replace />} />
+      <Route path="/grade" element={<GradeOverview grade={activeGrade} />} />
+      <Route path="/courses/:courseId" element={<CourseManagement />} />
+      <Route path="/courses" element={<CourseManagement />} />
+      <Route path="/universities" element={<UniversityLibrary />} />
+      <Route path="/student/:id" element={<Dashboard />} />
+      <Route path="/profile" element={<ProfilePage />} />
+      <Route path="/settings" element={<SettingsPage />} />
+      <Route path="/admin/accounts" element={user?.role === 'admin' ? <AdminAccountsPage /> : <Navigate to={isStudent && ownStudentId ? `/student/${ownStudentId}` : '/'} replace />} />
+    </Routes>
+    </Suspense>
+  );
+
+  if (hideAppChrome) {
+    return <main className="min-h-screen bg-background">{routeContent}</main>;
+  }
+
+  const accountMenu = (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" className="flex items-center gap-2 rounded-lg">
+          <div className="flex size-8 items-center justify-center rounded-full bg-muted ring-1 ring-border/60"><User className="size-4 text-muted-foreground" /></div>
+          <div className="hidden text-left sm:block"><p className="text-sm font-medium">{user?.name}</p><p className="text-xs text-muted-foreground">{roleDisplayLabel(user?.role)}</p></div>
+          <ChevronDown className="size-4 text-muted-foreground" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-56">
+        <DropdownMenuLabel>我的账号</DropdownMenuLabel><DropdownMenuSeparator />
+        <DropdownMenuItem onClick={() => navigate('/profile')}><User />个人资料</DropdownMenuItem>
+        {hasPermission('admin') && <DropdownMenuItem onClick={() => navigate('/admin/accounts')}><Shield />账号与权限</DropdownMenuItem>}
+        {hasPermission('admin') && <DropdownMenuItem onClick={() => navigate('/settings')}><Settings />系统设置</DropdownMenuItem>}
+        <DropdownMenuSeparator /><DropdownMenuItem className="text-destructive" onClick={() => void logout()}><LogOut />退出登录</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* 成绩单打印页不挂载顶栏，避免打印/PDF 带出管理员身份与主导航 */}
-      {!hideAppChrome && (
-      <header className="sticky top-0 z-50 border-b border-border/80 bg-card/90 backdrop-blur-md shadow-sm shadow-black/[0.04]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[3.25rem]">
-            <div className="flex items-center gap-8">
-              {/* Logo */}
-              <Link to="/" className="flex items-center gap-3 group">
-                <img
-                  src={`${import.meta.env.BASE_URL}school-logo.png`}
-                  alt="北京新学道"
-                  width={40}
-                  height={40}
-                  className="h-9 w-9 sm:h-10 sm:w-10 shrink-0 rounded-full object-contain bg-white ring-1 ring-border/70 shadow-sm transition-transform group-hover:scale-[1.02]"
-                />
-                <div className="flex flex-col leading-tight">
-                  <span className="font-serif text-lg font-semibold tracking-tight text-foreground">
-                    XFA升学指导中心
-                  </span>
-                  <span className="text-[10px] text-muted-foreground font-sans font-medium">
-                    学生综合管理系统
-                  </span>
-                </div>
-              </Link>
+    <div className="flex min-h-screen bg-background">
+      <aside className="sticky top-0 hidden h-screen w-64 shrink-0 flex-col border-r border-sidebar-border bg-sidebar lg:flex">
+        <Link to="/" className="flex h-20 items-center gap-3 border-b border-sidebar-border px-5">
+          <img src={`${import.meta.env.BASE_URL}school-logo.png`} alt="北京新学道" width={42} height={42} className="size-11 rounded-full bg-white object-contain ring-1 ring-sidebar-border" />
+          <div className="flex min-w-0 flex-col gap-0.5 leading-tight"><span className="truncate text-base font-semibold text-sidebar-foreground">XFA IG–A Level</span><span className="text-xs text-sidebar-foreground/60">学习与学校管理</span></div>
+        </Link>
+        <nav className="thin-scrollbar flex flex-1 flex-col gap-1 overflow-y-auto p-3">
+          {navigation.map((item) => {
+            if (item.openStudyExplore) return <button key={item.name} type="button" onClick={openStudyExploreWindow} className={navItemClass(false, true)}><item.icon className="size-4 shrink-0" />{item.name}</button>;
+            const href = item.href || '/';
+            return <Link key={item.name} to={href} className={navItemClass(isMainNavActive(href, location.pathname, location.search), true)}><item.icon className="size-4 shrink-0" />{item.name}</Link>;
+          })}
+        </nav>
+        <div className="border-t border-sidebar-border p-4"><div className="flex items-center gap-3"><div className="flex size-9 items-center justify-center rounded-full bg-sidebar-accent text-sidebar-accent-foreground"><User className="size-4" /></div><div className="min-w-0"><p className="truncate text-sm font-medium text-sidebar-foreground">{user?.name}</p><p className="text-xs text-sidebar-foreground/60">{roleDisplayLabel(user?.role)}</p></div></div></div>
+      </aside>
 
-              {/* 主导航 */}
-              <nav className="hidden md:flex items-center gap-0.5">
-                {navigation.map((item) => {
-                  if (item.openStudyExplore) {
-                    return (
-                      <button
-                        key={item.name}
-                        type="button"
-                        onClick={openStudyExploreWindow}
-                        className={navItemClass(false)}
-                      >
-                        <item.icon className="h-4 w-4 shrink-0 opacity-90" />
-                        {item.name}
-                      </button>
-                    );
-                  }
-                  const href = item.href ?? '/';
-                  const isActive = isMainNavActive(href, location.pathname, location.search);
-                  return (
-                    <Link key={item.name} to={href} className={navItemClass(isActive)}>
-                      <item.icon className="h-4 w-4 shrink-0 opacity-90" />
-                      {item.name}
-                    </Link>
-                  );
-                })}
-              </nav>
-            </div>
-
-            {/* 右侧：用户菜单 */}
-            <div className="flex items-center gap-4">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="flex items-center gap-2 rounded-lg">
-                    <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center ring-1 ring-border/60">
-                      <User className="h-4 w-4 text-muted-foreground" />
-                    </div>
-                    <div className="text-left hidden sm:block">
-                      <p className="text-sm font-medium text-foreground">{user?.name}</p>
-                      <p className="text-xs text-muted-foreground">{roleDisplayLabel(user?.role)}</p>
-                    </div>
-                    <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
-                  <DropdownMenuLabel>我的账号</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem
-                    className="flex items-center gap-2"
-                    onClick={() => navigate('/profile')}
-                  >
-                    <User className="h-4 w-4" />
-                    个人资料
-                  </DropdownMenuItem>
-                  {hasPermission('admin') && (
-                    <DropdownMenuItem
-                      className="flex items-center gap-2"
-                      onClick={() => navigate('/admin/accounts')}
-                    >
-                      <Shield className="h-4 w-4" />
-                      账号与权限
-                    </DropdownMenuItem>
-                  )}
-                  {hasPermission('admin') && (
-                    <DropdownMenuItem
-                      className="flex items-center gap-2"
-                      onClick={() => navigate('/settings')}
-                    >
-                      <Settings className="h-4 w-4" />
-                      系统设置
-                    </DropdownMenuItem>
-                  )}
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem 
-                    className="flex items-center gap-2 text-red-600"
-                    onClick={logout}
-                  >
-                    <LogOut className="h-4 w-4" />
-                    退出登录
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <header className="sticky top-0 z-40 border-b bg-card/95 backdrop-blur">
+          <div className="flex h-16 items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
+            <Link to="/" className="flex items-center gap-3 lg:hidden"><img src={`${import.meta.env.BASE_URL}school-logo.png`} alt="北京新学道" width={36} height={36} className="size-9 rounded-full object-contain" /><div className="flex flex-col leading-tight"><span className="text-sm font-semibold">XFA IG–A Level</span><span className="text-[10px] text-muted-foreground">学习与学校管理</span></div></Link>
+            <div className="hidden flex-col lg:flex"><span className="text-sm font-medium">XFA升学指导中心</span><span className="text-xs text-muted-foreground">教学、考试与升学数据仅供校内使用</span></div>
+            {accountMenu}
           </div>
-        </div>
-      </header>
-      )}
+          <nav className="thin-scrollbar flex gap-1 overflow-x-auto border-t px-3 py-2 lg:hidden">
+            {navigation.map((item) => item.openStudyExplore ? <button key={item.name} type="button" onClick={openStudyExploreWindow} className={navItemClass(false)}><item.icon className="size-4 shrink-0" />{item.name}</button> : <Link key={item.name} to={item.href || '/'} className={`${navItemClass(isMainNavActive(item.href || '/', location.pathname, location.search))} shrink-0`}><item.icon className="size-4 shrink-0" />{item.name}</Link>)}
+          </nav>
+        </header>
 
-      {/* 子导航（年级选择）：教务/管理员；学生仅查看本人数据，不显示届别条 */}
-      {!isStudent &&
-        (location.pathname === '/' ||
-        location.pathname === '/grade' ||
-        /^\/student\/[^/]+\/?$/.test(location.pathname)) && (
-        <div className="bg-muted/40 border-b border-border/70">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center gap-3 sm:gap-4 min-h-11 py-1.5">
-              <span className="text-sm text-muted-foreground shrink-0">
-                入学届
-                <span className="hidden sm:inline text-muted-foreground/80 font-normal">
-                  （{String(anchorCalendarYear).slice(-2)} 年届起）
-                </span>
-              </span>
-              <div className="flex flex-1 items-center justify-center sm:justify-start gap-1 min-w-0">
-                {showCohortScroll && (
-                <button
-                  type="button"
-                  aria-label="上一组届别"
-                  disabled={!canScrollCohortLeft}
-                  onClick={() => setCohortWindowStart((s) => Math.max(0, s - 1))}
-                  className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/80 bg-card text-foreground shadow-sm transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-35"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                )}
-                <div
-                  role="group"
-                  aria-label="入学届选择"
-                  className="flex flex-1 sm:flex-initial items-center justify-center gap-1 sm:gap-1.5 min-w-0 rounded-xl border border-border/60 bg-card/80 px-1.5 py-1 shadow-sm shadow-black/[0.03]"
-                >
-                  {visibleCohortGrades.map((grade) => (
-                    <button
-                      key={grade}
-                      type="button"
-                      onClick={() => setActiveGrade(grade)}
-                      className={`min-w-[3.25rem] px-3 py-1.5 rounded-lg text-sm font-semibold tabular-nums transition-colors ${
-                        activeGrade === grade
-                          ? 'bg-primary text-primary-foreground shadow-sm'
-                          : 'text-muted-foreground hover:bg-muted hover:text-foreground'
-                      }`}
-                    >
-                      {formatCohortDisplay(grade)}
-                    </button>
-                  ))}
-                </div>
-                {showCohortScroll && (
-                <button
-                  type="button"
-                  aria-label="下一组届别"
-                  disabled={!canScrollCohortRight}
-                  onClick={() =>
-                    setCohortWindowStart((s) => Math.min(cohortNavMaxStart, s + 1))
-                  }
-                  className="shrink-0 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border/80 bg-card text-foreground shadow-sm transition-colors hover:bg-muted disabled:pointer-events-none disabled:opacity-35"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-                )}
-              </div>
-            </div>
+        {!isStudent && (location.pathname === '/grade' || /^\/student\/[^/]+\/?$/.test(location.pathname)) && (
+          <div className="border-b bg-muted/30 px-4 py-2 sm:px-6 lg:px-8">
+            <div className="flex items-center gap-3"><span className="shrink-0 text-sm text-muted-foreground">入学届</span>{showCohortScroll && <button type="button" aria-label="上一组届别" disabled={!canScrollCohortLeft} onClick={() => setCohortWindowStart((value) => Math.max(0, value - 1))} className="flex size-8 items-center justify-center rounded-md border bg-card disabled:opacity-40"><ChevronLeft className="size-4" /></button>}<div role="group" aria-label="入学届选择" className="flex min-w-0 gap-1 overflow-x-auto">{visibleCohortGrades.map((grade) => <button key={grade} type="button" onClick={() => setActiveGrade(grade)} className={`rounded-md px-3 py-1.5 text-sm font-medium ${activeGrade === grade ? 'bg-primary text-primary-foreground' : 'bg-card text-muted-foreground hover:text-foreground'}`}>{formatCohortDisplay(grade)}</button>)}</div>{showCohortScroll && <button type="button" aria-label="下一组届别" disabled={!canScrollCohortRight} onClick={() => setCohortWindowStart((value) => Math.min(cohortNavMaxStart, value + 1))} className="flex size-8 items-center justify-center rounded-md border bg-card disabled:opacity-40"><ChevronRight className="size-4" /></button>}</div>
           </div>
-        </div>
-      )}
+        )}
 
-      {/* 主内容区 */}
-      <main className="max-w-7xl mx-auto w-full flex-1 px-4 sm:px-6 lg:px-8 py-6">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/workbench" element={<CenterWorkbench />} />
-          <Route path="/students" element={<StudentList />} />
-          <Route path="/students/:id" element={<StudentDetail />} />
-          <Route path="/students/:id/transcript" element={<TranscriptPrintView />} />
-          <Route path="/grade" element={<GradeOverview grade={activeGrade} />} />
-          <Route path="/courses/:courseId" element={<CourseManagement />} />
-          <Route path="/courses" element={<CourseManagement />} />
-          <Route path="/universities" element={<UniversityLibrary />} />
-          <Route path="/student/:id" element={<Dashboard />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route
-            path="/admin/accounts"
-            element={
-              user?.role === 'admin' ? (
-                <AdminAccountsPage />
-              ) : (
-                <Navigate
-                  to={user?.role === 'student' && ownStudentId ? `/student/${ownStudentId}` : '/'}
-                  replace
-                />
-              )
-            }
-          />
-        </Routes>
-      </main>
-
-      {!hideAppChrome && (
-      <footer className="mt-auto border-t border-border/70 bg-card/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
-          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between text-xs text-muted-foreground">
-            <p>XFA升学指导中心 · 学生综合管理系统 v2.0</p>
-            <p className="text-muted-foreground/80">教学与升学数据仅供校内使用</p>
-          </div>
-        </div>
-      </footer>
-      )}
+        <main className="mx-auto w-full max-w-[1600px] flex-1 px-4 py-6 sm:px-6 lg:px-8">{routeContent}</main>
+        <footer className="border-t px-4 py-3 text-xs text-muted-foreground sm:px-6 lg:px-8"><div className="mx-auto flex w-full max-w-[1600px] flex-col gap-1 sm:flex-row sm:justify-between"><p>XFA IG–A Level 学习与学校管理</p><p>教学与升学数据仅供校内使用</p></div></footer>
+      </div>
     </div>
   );
 }

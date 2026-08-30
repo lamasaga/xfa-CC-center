@@ -5,8 +5,18 @@ const API_BASE_URL =
     ? `${window.location.origin}/api`
     : 'http://localhost:3001/api');
 
-// 获取存储的token
+// 仅用于兼容升级前已登录的旧会话；新登录使用 HttpOnly 会话 Cookie。
 const getToken = () => localStorage.getItem('token');
+
+function getCookie(name: string): string | null {
+  if (typeof document === 'undefined') return null;
+  const prefix = `${name}=`;
+  for (const part of document.cookie.split(';')) {
+    const value = part.trim();
+    if (value.startsWith(prefix)) return decodeURIComponent(value.slice(prefix.length));
+  }
+  return null;
+}
 
 // 通用请求函数
 async function request<T>(
@@ -24,20 +34,27 @@ async function request<T>(
   if (token) {
     headers['Authorization'] = `Bearer ${token}`;
   }
+  const method = String(options.method || 'GET').toUpperCase();
+  if (!['GET', 'HEAD', 'OPTIONS'].includes(method)) {
+    const csrf = getCookie('xfa_csrf');
+    if (csrf) headers['X-CSRF-Token'] = csrf;
+  }
 
   const response = await fetch(url, {
     ...options,
     headers,
+    credentials: 'include',
   });
 
   if (!response.ok) {
     if (response.status === 401) {
       const isLoginRequest = endpoint.startsWith("/auth/login");
       const isChangePasswordRequest = endpoint.startsWith("/auth/change-password");
+      const isSessionCheck = endpoint.startsWith("/auth/me");
       const error = await response.json().catch(() => ({
         error: isLoginRequest ? "Invalid credentials" : "Unauthorized",
       }));
-      if (!isLoginRequest && !isChangePasswordRequest) {
+      if (!isLoginRequest && !isChangePasswordRequest && !isSessionCheck) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         window.location.href = "/login";
@@ -77,9 +94,11 @@ export const api = {
 // 认证相关
 export const authApi = {
   login: (username: string, password: string) => 
-    api.post<{ token: string; user: User }>('/auth/login', { username, password }),
+    api.post<{ token?: string; session_expires_at: string; user: User }>('/auth/login', { username, password }),
   
   getMe: () => api.get<User>('/auth/me'),
+
+  logout: () => api.post<{ message: string }>('/auth/logout'),
   
   changePassword: (currentPassword: string, newPassword: string) =>
     api.post('/auth/change-password', { currentPassword, newPassword }),
@@ -129,7 +148,9 @@ export const studentApi = {
     const headers: Record<string, string> = {};
     const token = getToken();
     if (token) headers.Authorization = `Bearer ${token}`;
-    const response = await fetch(url, { method: 'POST', headers, body: form });
+    const csrf = getCookie('xfa_csrf');
+    if (csrf) headers['X-CSRF-Token'] = csrf;
+    const response = await fetch(url, { method: 'POST', headers, body: form, credentials: 'include' });
     if (!response.ok) {
       const err = await response.json().catch(() => ({ error: '上传失败' }));
       const msg = (err as { error?: string }).error || `HTTP ${response.status}`;
@@ -315,6 +336,8 @@ export interface User {
   role: 'admin' | 'staff' | 'supervisor' | 'teacher' | 'student';
   /** 学生账号绑定的 students.id */
   student_id?: string | null;
+  permissions?: string[];
+  auth_mode?: 'session' | 'legacy_bearer' | 'unknown';
   created_at: string;
   password_is_hashed?: boolean;
   password_hint?: string;
@@ -536,6 +559,290 @@ export interface CourseStudent {
     final: CourseFinalScoreSummary;
   };
 }
+
+export interface AcademicYear {
+  id: string;
+  name: string;
+  starts_on: string;
+  ends_on: string;
+  status: 'planning' | 'active' | 'closed';
+}
+
+export interface StudentAcademicRecord {
+  id: string;
+  student_id: string;
+  academic_year_id: string;
+  academic_year_name?: string;
+  school_grade: 9 | 10 | 11 | 12;
+  qualification_stage: 'IGCSE' | 'AS' | 'A_LEVEL';
+  homeroom?: string | null;
+  status: 'planned' | 'active' | 'completed' | 'withdrawn';
+  notes?: string | null;
+}
+
+export interface AcademicOverview {
+  academic_year: AcademicYear | null;
+  grade_stages: Array<{ school_grade: number; qualification_stage: string; student_count: number }>;
+  pending_requests: number;
+  offering_count: number;
+  teaching_group_count: number;
+  published_schedule: { id: string; name: string; published_at: string } | null;
+  verified_source_count: number;
+}
+
+export interface OfficialSource {
+  id: string;
+  publisher: string;
+  source_type: string;
+  title: string;
+  url: string;
+  published_on?: string | null;
+  checked_at: string;
+  access_level: 'public' | 'centre_only';
+  status: 'draft' | 'verified' | 'superseded' | 'withdrawn';
+  notes?: string | null;
+}
+
+export interface CurriculumSpec {
+  id: string;
+  board: string;
+  qualification_level: 'IG' | 'INTERNATIONAL_GCSE' | 'IAS' | 'AS' | 'IAL' | 'A_LEVEL';
+  subject_code: string;
+  subject_name: string;
+  school_display_name?: string | null;
+  version_label: string;
+  grading_scale?: string | null;
+  assessment_model: 'linear' | 'modular' | 'staged' | 'subject_specific';
+  source_id?: string | null;
+  source_title?: string | null;
+  source_url?: string | null;
+  source_status?: string | null;
+  status: 'draft' | 'active' | 'expired';
+  components?: Array<Record<string, unknown>>;
+}
+
+export interface CourseOffering {
+  id: string;
+  academic_year_id: string;
+  academic_year_name?: string;
+  curriculum_spec_id?: string | null;
+  legacy_course_id?: string | null;
+  name: string;
+  school_grade: 9 | 10 | 11 | 12;
+  qualification_stage: 'IGCSE' | 'AS' | 'A_LEVEL';
+  term: string;
+  course_kind: 'required' | 'elective';
+  weekly_periods: number;
+  max_students: number;
+  status: 'draft' | 'open' | 'closed' | 'archived';
+  prerequisites?: string | null;
+  board?: string | null;
+  subject_code?: string | null;
+  version_label?: string | null;
+  request_count?: number;
+  teaching_group_count?: number;
+}
+
+export interface CourseRequestChoice {
+  id: string;
+  offering_id: string;
+  offering_name: string;
+  preference: number;
+  choice_group: string;
+  status: 'requested' | 'approved' | 'waitlisted' | 'rejected';
+  school_grade: number;
+  qualification_stage: string;
+  weekly_periods: number;
+  max_students: number;
+  board?: string | null;
+  subject_code?: string | null;
+  assigned_group_id?: string | null;
+  assigned_group_code?: string | null;
+}
+
+export interface CourseRequest {
+  id: string;
+  student_id: string;
+  student_name?: string;
+  english_name?: string;
+  academic_year_id: string;
+  academic_year_name?: string;
+  status: 'draft' | 'submitted' | 'teacher_review' | 'school_review' | 'approved' | 'returned' | 'withdrawn';
+  submitted_at?: string | null;
+  review_notes?: string | null;
+  choices: CourseRequestChoice[];
+}
+
+export interface TeachingGroup {
+  id: string;
+  offering_id: string;
+  offering_name: string;
+  code: string;
+  name: string;
+  capacity: number;
+  weekly_periods: number;
+  consecutive_periods: number;
+  school_grade: number;
+  qualification_stage: string;
+  academic_year_id: string;
+  student_count: number;
+  teacher_names?: string | null;
+}
+
+export interface ScheduleVersion {
+  id: string;
+  academic_year_id: string;
+  name: string;
+  status: 'draft' | 'validated' | 'published' | 'archived';
+  based_on_id?: string | null;
+  creator_name?: string;
+  publisher_name?: string | null;
+  published_at?: string | null;
+  notes?: string | null;
+  lesson_count?: number;
+  locked_count?: number;
+}
+
+export interface TimeSlot {
+  id: string;
+  academic_year_id: string;
+  weekday: number;
+  period_no: number;
+  starts_at: string;
+  ends_at: string;
+  label: string;
+  is_teaching: 0 | 1;
+}
+
+export interface Room {
+  id: string;
+  code: string;
+  name: string;
+  capacity: number;
+  room_type: string;
+  campus?: string | null;
+  status: 'active' | 'inactive';
+}
+
+export interface TeacherAvailability {
+  id: string;
+  teacher_user_id: string;
+  time_slot_id: string;
+  availability: 'available' | 'preferred' | 'unavailable';
+  reason?: string | null;
+  weekday: number;
+  period_no: number;
+  label: string;
+  starts_at: string;
+  ends_at: string;
+}
+
+export interface ScheduledLesson {
+  id: string;
+  schedule_version_id: string;
+  teaching_group_id: string;
+  time_slot_id: string;
+  room_id: string;
+  teacher_user_id: string;
+  is_locked: 0 | 1;
+  source: 'manual' | 'generated';
+  weekday: number;
+  period_no: number;
+  time_label: string;
+  starts_at?: string;
+  ends_at?: string;
+  group_code: string;
+  group_name: string;
+  offering_name: string;
+  school_grade: number;
+  qualification_stage: string;
+  teacher_name: string;
+  room_code?: string | null;
+  room_name?: string | null;
+  student_count?: number;
+}
+
+export interface ScheduleConflictReport {
+  hard_conflict_count: number;
+  missing_period_count: number;
+  can_publish: boolean;
+  student_conflicts: Array<Record<string, unknown>>;
+  unavailable_teachers: Array<Record<string, unknown>>;
+  groups_without_teachers: Array<Record<string, unknown>>;
+  rooms_over_capacity: Array<Record<string, unknown>>;
+  missing_periods: Array<{ teaching_group_id: string; code: string; name: string; weekly_periods: number; scheduled_periods: number; missing_periods: number }>;
+}
+
+export const academicApi = {
+  getOverview: (academicYearId?: string) =>
+    api.get<AcademicOverview>(`/academic/overview${buildQuery({ academic_year_id: academicYearId })}`),
+  getYears: () => api.get<AcademicYear[]>('/academic/academic-years'),
+  getStudentRecords: (studentId: string) => api.get<StudentAcademicRecord[]>(`/academic/student-records/${studentId}`),
+  getStudentRecordRoster: (academicYearId: string) => api.get<Array<StudentAcademicRecord & { name: string; english_name?: string; enrollment_cohort: string; student_status: string }>>(`/academic/student-records${buildQuery({ academic_year_id: academicYearId })}`),
+  saveStudentRecord: (studentId: string, data: Omit<StudentAcademicRecord, 'id' | 'student_id'>) =>
+    api.put<StudentAcademicRecord>(`/academic/student-records/${studentId}`, data),
+  getSources: () => api.get<OfficialSource[]>('/academic/official-sources'),
+  createSource: (data: Omit<OfficialSource, 'id'>) => api.post<OfficialSource>('/academic/official-sources', data),
+  getSpecs: () => api.get<CurriculumSpec[]>('/academic/curriculum-specs'),
+  createSpec: (data: Omit<CurriculumSpec, 'id' | 'components'>) => api.post<CurriculumSpec>('/academic/curriculum-specs', data),
+  getOfferings: (params?: { academic_year_id?: string; school_grade?: string }) =>
+    api.get<CourseOffering[]>(`/academic/offerings${buildQuery(params)}`),
+  createOffering: (data: {
+    academic_year_id: string; curriculum_spec_id?: string | null; legacy_course_id?: string | null;
+    name: string; school_grade: number; qualification_stage: 'IGCSE' | 'AS' | 'A_LEVEL';
+    term: string; course_kind: 'required' | 'elective'; weekly_periods: number; max_students: number;
+    request_open_at?: string | null; request_close_at?: string | null; status: 'draft' | 'open' | 'closed' | 'archived';
+    prerequisites?: string | null; notes?: string | null;
+  }) => api.post<CourseOffering>('/academic/offerings', data),
+  getRequests: (params?: { academic_year_id?: string; student_id?: string; status?: string }) =>
+    api.get<CourseRequest[]>(`/academic/course-requests${buildQuery(params)}`),
+  saveRequest: (studentId: string, data: { academic_year_id: string; choices: Array<{ offering_id: string; preference: number; choice_group: string; reason?: string }> }) =>
+    api.put<{ id: string; status: string }>(`/academic/course-requests/${studentId}`, data),
+  submitRequest: (requestId: string) => api.post<{ id: string; status: string }>(`/academic/course-requests/${requestId}/submit`),
+  reviewRequest: (requestId: string, data: { status: string; review_notes?: string; choices?: Array<{ id: string; status: string }> }) =>
+    api.post<CourseRequest>(`/academic/course-requests/${requestId}/review`, data),
+  getGroups: (academicYearId?: string) =>
+    api.get<TeachingGroup[]>(`/academic/teaching-groups${buildQuery({ academic_year_id: academicYearId })}`),
+  createGroup: (data: { offering_id: string; code: string; name: string; capacity: number; weekly_periods: number; consecutive_periods: number; teacher_user_ids: string[] }) =>
+    api.post<TeachingGroup>('/academic/teaching-groups', data),
+  getTeachers: () => api.get<User[]>('/academic/teachers'),
+  allocateStudent: (groupId: string, data: { student_id: string; source_request_id?: string }) =>
+    api.post(`/academic/teaching-groups/${groupId}/students`, data),
+  getAuditEvents: () => api.get<Array<Record<string, unknown>>>('/academic/audit-events'),
+};
+
+export const schedulingApi = {
+  getRooms: () => api.get<Room[]>('/scheduling/rooms'),
+  createRoom: (data: Omit<Room, 'id' | 'status'> & { features?: string }) => api.post<Room>('/scheduling/rooms', data),
+  getTimeSlots: (academicYearId: string) => api.get<TimeSlot[]>(`/scheduling/time-slots${buildQuery({ academic_year_id: academicYearId })}`),
+  bootstrapTimeSlots: (academicYearId: string) => api.post<{ affected: number }>('/scheduling/time-slots/bootstrap', {
+    academic_year_id: academicYearId,
+    weekdays: [1, 2, 3, 4, 5],
+    periods: [
+      { period_no: 1, starts_at: '08:00', ends_at: '08:45', label: '第1节' },
+      { period_no: 2, starts_at: '08:55', ends_at: '09:40', label: '第2节' },
+      { period_no: 3, starts_at: '10:00', ends_at: '10:45', label: '第3节' },
+      { period_no: 4, starts_at: '10:55', ends_at: '11:40', label: '第4节' },
+      { period_no: 5, starts_at: '13:00', ends_at: '13:45', label: '第5节' },
+      { period_no: 6, starts_at: '13:55', ends_at: '14:40', label: '第6节' },
+      { period_no: 7, starts_at: '14:50', ends_at: '15:35', label: '第7节' },
+      { period_no: 8, starts_at: '15:45', ends_at: '16:30', label: '第8节' },
+    ],
+  }),
+  getAvailability: (teacherUserId?: string) =>
+    api.get<TeacherAvailability[]>(`/scheduling/availability${buildQuery({ teacher_user_id: teacherUserId })}`),
+  saveAvailability: (entries: Array<{ time_slot_id: string; availability: 'available' | 'preferred' | 'unavailable'; reason?: string | null }>, teacherUserId?: string) =>
+    api.put<{ teacher_user_id: string; updated: number }>('/scheduling/availability', { teacher_user_id: teacherUserId, entries }),
+  getVersions: (academicYearId: string) => api.get<ScheduleVersion[]>(`/scheduling/versions${buildQuery({ academic_year_id: academicYearId })}`),
+  createVersion: (data: { academic_year_id: string; name: string; based_on_id?: string; notes?: string }) => api.post<ScheduleVersion>('/scheduling/versions', data),
+  getGrid: (versionId: string) => api.get<{ version: ScheduleVersion; lessons: ScheduledLesson[]; report: ScheduleConflictReport }>(`/scheduling/versions/${versionId}/grid`),
+  generate: (versionId: string) => api.post<{ generated_count: number; unplaced: Array<Record<string, unknown>>; report: ScheduleConflictReport }>(`/scheduling/versions/${versionId}/generate`),
+  getConflicts: (versionId: string) => api.get<ScheduleConflictReport>(`/scheduling/versions/${versionId}/conflicts`),
+  publish: (versionId: string) => api.post<ScheduleVersion>(`/scheduling/versions/${versionId}/publish`),
+  getPublishedMine: (academicYearId: string) => api.get<{ version: ScheduleVersion | null; lessons: ScheduledLesson[] }>(`/scheduling/published/me${buildQuery({ academic_year_id: academicYearId })}`),
+  updateLesson: (versionId: string, lessonId: string, data: { teaching_group_id: string; time_slot_id: string; room_id: string; teacher_user_id: string; is_locked: boolean }) =>
+    api.put<ScheduledLesson>(`/scheduling/versions/${versionId}/lessons/${lessonId}`, data),
+};
 
 export interface CourseScoreSummary {
   score: number | null;

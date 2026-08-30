@@ -4,14 +4,14 @@
 
 @layer base {
   :root {
-    /* 纸感暖白背景 + 学院蓝绿主色，偏教育机构气质 */
-    --background: 40 33% 98%;
+    /* 学校行政工具：纯净白底、深海军蓝信息层级、低饱和青绿动作色 */
+    --background: 210 20% 99%;
     --foreground: 222 47% 11%;
     --card: 0 0% 100%;
     --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
-    --primary: 201 55% 38%;
+    --primary: 184 72% 30%;
     --primary-foreground: 210 40% 98%;
     --secondary: 210 25% 96%;
     --secondary-foreground: 222 47% 18%;
@@ -23,15 +23,15 @@
     --destructive-foreground: 0 0% 98%;
     --border: 214 32% 90%;
     --input: 214 32% 90%;
-    --ring: 201 50% 42%;
-    --radius: 0.75rem;
-    --sidebar-background: 40 25% 97%;
-    --sidebar-foreground: 222 30% 22%;
-    --sidebar-primary: 201 55% 38%;
+    --ring: 184 65% 34%;
+    --radius: 0.625rem;
+    --sidebar-background: 215 68% 17%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 184 66% 34%;
     --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 210 25% 94%;
-    --sidebar-accent-foreground: 222 47% 18%;
-    --sidebar-border: 214 28% 88%;
+    --sidebar-accent: 215 52% 24%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 215 42% 27%;
     --sidebar-ring: 201 50% 42%;
   }
 

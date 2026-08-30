@@ -14,8 +14,13 @@ const studentRoutes = require('./routes/students');
 const courseRoutes = require('./routes/courses');
 const universityRoutes = require('./routes/universities');
 const examSessionRoutes = require('./routes/exam-sessions');
+const academicRoutes = require('./routes/academic');
+const schedulingRoutes = require('./routes/scheduling');
+const { csrfProtection } = require('./security/session');
 
 const app = express();
+// 生产服务只监听回环地址并由本机 Nginx 转发；仅信任回环代理提供的客户端 IP/协议。
+app.set('trust proxy', 'loopback');
 const PORT = Number.parseInt(String(process.env.PORT || '3001'), 10) || 3001;
 const HOST =
   process.env.HOST ||
@@ -31,6 +36,10 @@ function securityHeaders(req, res, next) {
   res.setHeader('Referrer-Policy', 'no-referrer');
   res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=()');
   res.setHeader('Cross-Origin-Resource-Policy', 'same-site');
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; connect-src 'self' https://*.sentry.io"
+  );
   next();
 }
 
@@ -85,6 +94,7 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(httpLog());
+app.use('/api', csrfProtection);
 
 // 同域部署：生产环境默认不需要 CORS。
 // 若未来前端单独部署，可通过 CORS_ORIGIN 配置白名单（逗号分隔）。
@@ -123,7 +133,8 @@ if (corsAllowList.length > 0) {
         return cb(null, false);
       },
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'X-CSRF-Token', 'X-Request-Id'],
+      credentials: true,
     })
   );
 }
@@ -140,6 +151,8 @@ app.use('/api/students', studentRoutes);
 app.use('/api/courses', courseRoutes);
 app.use('/api/universities', universityRoutes);
 app.use('/api/exam-sessions', examSessionRoutes);
+app.use('/api/academic', academicRoutes);
+app.use('/api/scheduling', schedulingRoutes);
 
 // 未匹配的 /api 请求返回 JSON 404，避免误落到 SPA 的 index.html（前端曾把 HTML 当 JSON 解析）
 app.use('/api', (req, res) => {
@@ -190,8 +203,7 @@ app.use((err, req, res, next) => {
 // 初始化数据库并启动服务器（供 Electron await；命令行见文件末尾）
 async function startServer() {
   // Fail-fast: 确保生产环境 JWT_SECRET 合规
-  // eslint-disable-next-line no-unused-vars
-  const _jwtSecret = getJwtSecret();
+  getJwtSecret();
   await initDb();
   console.log('✓ Database connected\n');
 

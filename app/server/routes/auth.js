@@ -7,6 +7,13 @@ const {
   normalizeRole,
 } = require('../middleware/auth');
 const { defaultStudentInitialPassword } = require('../config');
+const {
+  createSession,
+  revokeSession,
+  revokeUserSessions,
+  clearSessionCookies,
+} = require('../security/session');
+const { ROLE_PERMISSIONS } = require('../security/permissions');
 
 const router = express.Router();
 
@@ -93,8 +100,12 @@ router.post('/login', async (req, res) => {
     }
 
     const roleOut = normalizeRole(user.role);
+    const session = createSession(user, req, res);
+    res.setHeader('Cache-Control', 'no-store');
     res.json({
-      token,
+      // 旧客户端兼容窗口：生产前端不再保存此值；后续确认全部客户端更新后可移除。
+      token: process.env.NODE_ENV === 'production' ? undefined : token,
+      session_expires_at: session.expiresAt,
       user: {
         id: String(user.id),
         username: String(user.username),
@@ -114,6 +125,13 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.post('/logout', authenticateToken, async (req, res) => {
+  revokeSession(req);
+  clearSessionCookies(res);
+  res.setHeader('Cache-Control', 'no-store');
+  res.json({ message: 'Logged out' });
+});
+
 // 获取当前用户信息
 router.get('/me', authenticateToken, async (req, res) => {
   try {
@@ -124,7 +142,14 @@ router.get('/me', authenticateToken, async (req, res) => {
     }
 
     const { password, ...safeUser } = user;
-    res.json(safeUser);
+    res.setHeader('Cache-Control', 'no-store');
+    const normalizedRole = normalizeRole(safeUser.role);
+    res.json({
+      ...safeUser,
+      role: normalizedRole,
+      permissions: ROLE_PERMISSIONS[normalizedRole] || [],
+      auth_mode: req.authMode || 'unknown',
+    });
   } catch (error) {
     console.error('Get user error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -171,6 +196,9 @@ router.post('/change-password', authenticateToken, async (req, res) => {
       password: hashedPassword,
       updated_at: new Date().toISOString(),
     });
+
+    // 密码变更后撤销同账号的其它会话；当前会话保留，避免保存后立即丢失反馈。
+    revokeUserSessions(req.user.id, req.sessionId || null);
 
     res.json({ message: '密码已更新' });
   } catch (error) {
@@ -286,6 +314,7 @@ router.post('/users/:id/reset-password', authenticateToken, async (req, res) => 
       password: hashedPassword,
       updated_at: new Date().toISOString(),
     });
+    revokeUserSessions(id);
 
     res.json({ message: 'Password reset', username: target.username });
   } catch (error) {
@@ -308,7 +337,7 @@ router.post('/users', authenticateToken, async (req, res) => {
     }
 
     let role = normalizeRole(roleRaw || 'staff');
-    if (!['admin', 'staff', 'supervisor', 'student'].includes(role)) {
+    if (!['admin', 'staff', 'supervisor', 'teacher', 'student'].includes(role)) {
       return res.status(400).json({ error: 'Invalid role' });
     }
 

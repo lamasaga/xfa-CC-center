@@ -461,6 +461,155 @@ describe('API smoke', () => {
     assert.strictEqual(db.prepare('SELECT country, language_requirement FROM target_universities WHERE id = ?').get(universityId).country, 'UCL');
   });
 
+  test('cookie session requires CSRF for writes and can be revoked', async () => {
+    const agent = request.agent(app);
+    const login = await agent
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: 'admin123' })
+      .expect(200);
+    assert.ok(login.headers['set-cookie'].some((value) => value.startsWith('xfa_session=')));
+    const csrfCookie = login.headers['set-cookie'].find((value) => value.startsWith('xfa_csrf='));
+    assert.ok(csrfCookie);
+    const csrf = decodeURIComponent(csrfCookie.split(';')[0].slice('xfa_csrf='.length));
+
+    const me = await agent.get('/api/auth/me').expect(200);
+    assert.strictEqual(me.body.auth_mode, 'session');
+    assert.ok(Array.isArray(me.body.permissions));
+
+    await agent.post('/api/auth/logout').expect(403);
+    await agent.post('/api/auth/logout').set('X-CSRF-Token', csrf).expect(200);
+    await agent.get('/api/auth/me').expect(401);
+  });
+
+  test('IG selection to teaching group to published timetable workflow enforces publish gate', async () => {
+    const { getDb } = require('../db.js');
+    const db = getDb();
+    const login = await request(app)
+      .post('/api/auth/login')
+      .send({ username: 'admin', password: 'admin123' })
+      .expect(200);
+    const auth = { Authorization: `Bearer ${login.body.token}` };
+    const teacher = db.prepare("SELECT id FROM users WHERE role = 'teacher' LIMIT 1").get();
+    assert.ok(teacher);
+    const studentId = 'test-ig-integration-student';
+    db.prepare("INSERT INTO students (id, name, grade, status) VALUES (?, ?, ?, 'active')")
+      .run(studentId, 'IG Integration Student', '2026级');
+
+    await request(app)
+      .put(`/api/academic/student-records/${studentId}`)
+      .set(auth)
+      .send({ academic_year_id: 'ay-2026-2027', school_grade: 9, qualification_stage: 'IGCSE', homeroom: 'G9-1', status: 'active' })
+      .expect(200);
+
+    const spec = await request(app)
+      .post('/api/academic/curriculum-specs')
+      .set(auth)
+      .send({
+        board: 'Cambridge International',
+        qualification_level: 'IG',
+        subject_code: '0580',
+        subject_name: 'Mathematics',
+        version_label: 'test verified version',
+        grading_scale: 'A*–G',
+        assessment_model: 'subject_specific',
+        source_id: 'source-cambridge-igcse',
+        status: 'active',
+      })
+      .expect(201);
+    const offering = await request(app)
+      .post('/api/academic/offerings')
+      .set(auth)
+      .send({
+        academic_year_id: 'ay-2026-2027',
+        curriculum_spec_id: spec.body.id,
+        name: 'IGCSE Mathematics',
+        school_grade: 9,
+        qualification_stage: 'IGCSE',
+        term: 'full_year',
+        course_kind: 'required',
+        weekly_periods: 4,
+        max_students: 24,
+        status: 'open',
+      })
+      .expect(201);
+    const savedRequest = await request(app)
+      .put(`/api/academic/course-requests/${studentId}`)
+      .set(auth)
+      .send({ academic_year_id: 'ay-2026-2027', choices: [{ offering_id: offering.body.id, preference: 1, choice_group: 'required-math' }] })
+      .expect(200);
+    await request(app)
+      .post(`/api/academic/course-requests/${savedRequest.body.id}/submit`)
+      .set(auth)
+      .expect(200);
+    const requests = await request(app)
+      .get(`/api/academic/course-requests?student_id=${studentId}`)
+      .set(auth)
+      .expect(200);
+    await request(app)
+      .post(`/api/academic/course-requests/${savedRequest.body.id}/review`)
+      .set(auth)
+      .send({ status: 'approved', review_notes: 'test approval', choices: [{ id: requests.body[0].choices[0].id, status: 'approved' }] })
+      .expect(200);
+
+    const group = await request(app)
+      .post('/api/academic/teaching-groups')
+      .set(auth)
+      .send({ offering_id: offering.body.id, code: 'G9-MATH-1', name: 'G9 Mathematics 1', capacity: 24, weekly_periods: 4, consecutive_periods: 1, teacher_user_ids: [teacher.id] })
+      .expect(201);
+    await request(app)
+      .post(`/api/academic/teaching-groups/${group.body.id}/students`)
+      .set(auth)
+      .send({ student_id: studentId, source_request_id: savedRequest.body.id })
+      .expect(201);
+    await request(app)
+      .post('/api/scheduling/rooms')
+      .set(auth)
+      .send({ code: 'TEST-A201', name: 'Test Classroom', capacity: 30, room_type: 'classroom' })
+      .expect(201);
+    await request(app)
+      .post('/api/scheduling/time-slots/bootstrap')
+      .set(auth)
+      .send({
+        academic_year_id: 'ay-2026-2027', weekdays: [1, 2, 3, 4, 5],
+        periods: [
+          { period_no: 1, starts_at: '08:00', ends_at: '08:45', label: '第1节' },
+          { period_no: 2, starts_at: '08:55', ends_at: '09:40', label: '第2节' },
+        ],
+      })
+      .expect(201);
+    const version = await request(app)
+      .post('/api/scheduling/versions')
+      .set(auth)
+      .send({ academic_year_id: 'ay-2026-2027', name: 'IG integration test schedule' })
+      .expect(201);
+    const beforeGenerate = await request(app)
+      .get(`/api/scheduling/versions/${version.body.id}/conflicts`)
+      .set(auth)
+      .expect(200);
+    assert.strictEqual(beforeGenerate.body.can_publish, false);
+    await request(app)
+      .post(`/api/scheduling/versions/${version.body.id}/publish`)
+      .set(auth)
+      .expect(409);
+    const generated = await request(app)
+      .post(`/api/scheduling/versions/${version.body.id}/generate`)
+      .set(auth)
+      .expect(200);
+    assert.strictEqual(generated.body.generated_count, 4);
+    assert.strictEqual(generated.body.report.can_publish, true);
+    await request(app)
+      .post(`/api/scheduling/versions/${version.body.id}/publish`)
+      .set(auth)
+      .expect(200);
+    const published = await request(app)
+      .get('/api/scheduling/published/me?academic_year_id=ay-2026-2027')
+      .set(auth)
+      .expect(200);
+    assert.strictEqual(published.body.version.status, 'published');
+    assert.strictEqual(published.body.lessons.length, 4);
+    assert.ok(db.prepare("SELECT COUNT(*) AS count FROM audit_events WHERE entity_type = 'schedule_version'").get().count >= 2);
+  });
+
   test('GET unknown API returns JSON 404', async () => {
     const res = await request(app).get('/api/no-such-route-ever').expect(404);
     assert.strictEqual(res.body.error, 'API route not found');

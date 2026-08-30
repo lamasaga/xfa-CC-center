@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const { jwt: jwtConfig } = require('../config');
 const { getDb } = require('../db');
+const { findSession } = require('../security/session');
+const { requirePermission } = require('../security/permissions');
 
 const JWT_SECRET = jwtConfig.secret;
 
@@ -32,8 +34,31 @@ const generateToken = (user) => {
  * 校验 JWT 后从数据库加载用户，保证角色 / student_id 与库一致，避免旧 token 绕过。
  */
 const authenticateToken = (req, res, next) => {
+  const session = findSession(req);
+  if (session) {
+    const role = normalizeRole(session.role);
+    req.authMode = 'session';
+    req.sessionId = session.session_id;
+    req.user = {
+      id: session.id,
+      username: session.username,
+      role,
+      name: session.name,
+      email: session.email || null,
+      student_id: session.student_id || null,
+    };
+    if (role === 'student' && !req.user.student_id) {
+      return res.status(403).json({ error: '学生账号未绑定学生档案，请联系管理员' });
+    }
+    return next();
+  }
+
   const authHeader = req.headers.authorization;
   const token = authHeader && authHeader.split(' ')[1];
+
+  if (process.env.NODE_ENV === 'production' && process.env.ALLOW_LEGACY_BEARER !== 'true') {
+    return res.status(401).json({ error: 'Session cookie required' });
+  }
 
   if (!token) {
     return res.status(401).json({ error: 'Access token required' });
@@ -60,6 +85,7 @@ const authenticateToken = (req, res, next) => {
       email: row.email || null,
       student_id: row.student_id || null,
     };
+    req.authMode = 'legacy_bearer';
 
     if (role === 'student' && !req.user.student_id) {
       return res.status(403).json({
@@ -154,4 +180,5 @@ module.exports = {
   assertOwnStudentParam,
   normalizeRole,
   JWT_SECRET,
+  requirePermission,
 };

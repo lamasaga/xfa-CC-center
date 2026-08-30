@@ -1,6 +1,7 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 const fs = require('fs');
+const { runMigrations } = require('./run-migrations');
 
 // SQLite 数据库文件路径
 const DB_PATH = process.env.SQLITE_PATH || path.join(__dirname, '../database.sqlite');
@@ -354,6 +355,9 @@ async function initDb() {
       }
       console.log('✓ Default users seeded');
     }
+
+    // 显式、可追踪的增量迁移。每个文件只执行一次，并在同一事务中记录版本。
+    runMigrations(db);
 
     // ---- lightweight migrations (non-destructive) ----
     // Ensure course_units.allowed_months exists (used by exam session planner restrictions)

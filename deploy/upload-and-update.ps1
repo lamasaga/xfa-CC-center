@@ -69,9 +69,25 @@ if (-not (Test-Path -LiteralPath $StudyBuild)) {
 
 Write-Host "==> 同步 study-app/dist -> $StudyDist"
 if (Test-Path -LiteralPath $StudyDist) {
+    $resolvedStudyDist = (Resolve-Path -LiteralPath $StudyDist).Path
+    $resolvedLocalApp = (Resolve-Path -LiteralPath $LocalApp).Path
+    if (-not $resolvedStudyDist.StartsWith($resolvedLocalApp + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) {
+        Write-Error "拒绝删除工作区之外的目录: $resolvedStudyDist"
+    }
     Remove-Item -LiteralPath $StudyDist -Recurse -Force
 }
 Copy-Item -Path $StudyBuild -Destination $StudyDist -Recurse
+
+Write-Host "==> 验证主站 API 与生产构建"
+Push-Location $LocalApp
+try {
+    npm ci
+    npm run test:api
+    npm run build
+}
+finally {
+    Pop-Location
+}
 
 $TarName = "alevelinfo-deploy.tgz"
 $TarPath = Join-Path $env:TEMP $TarName
@@ -115,7 +131,8 @@ scp.exe @SshScpArgs -o StrictHostKeyChecking=accept-new $LocalScript "${User}@${
 
 Write-Host "==> 在服务器执行更新（会 stop → 解压 → npm → start）"
 # Windows PowerShell 5.1：源码里若出现未被正确配对的 "，会把 && 误解析为语句分隔符；用单引号拼接避免 && 出现在双引号字面量中
-$remoteCmd = 'chmod +x /tmp/alevelinfo-remote-update.sh && APP=' + $RemoteAppPath + ' TAR=' + $RemoteTar + ' SERVICE_NAME=' + $ServiceName + ' bash /tmp/alevelinfo-remote-update.sh'
+$releaseId = Get-Date -Format "yyyyMMdd-HHmmss"
+$remoteCmd = 'chmod +x /tmp/alevelinfo-remote-update.sh && APP=' + $RemoteAppPath + ' TAR=' + $RemoteTar + ' SERVICE_NAME=' + $ServiceName + ' RELEASE_ID=' + $releaseId + ' bash /tmp/alevelinfo-remote-update.sh'
 # 远端 bash -lc 用单引号包住整段命令，避免本地再嵌套双引号转义
 $sshResult = 0
 ssh.exe @SshScpArgs "${User}@${Server}" "bash -lc '$remoteCmd'"
