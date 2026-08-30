@@ -30,6 +30,20 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+function Assert-NativeSuccess {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $Action,
+
+        [Parameter(Mandatory = $true)]
+        [int] $ExitCode
+    )
+
+    if ($ExitCode -ne 0) {
+        throw "$Action 失败（退出码 $ExitCode）"
+    }
+}
+
 $SshScpArgs = @()
 if (-not [string]::IsNullOrWhiteSpace($IdentityFile)) {
     if (-not (Test-Path -LiteralPath $IdentityFile)) {
@@ -56,7 +70,9 @@ Write-Host "==> 构建院校探索站: $StudyApp"
 Push-Location $StudyApp
 try {
     npm ci
+    Assert-NativeSuccess "study-app 依赖安装" $LASTEXITCODE
     npm run build
+    Assert-NativeSuccess "study-app 生产构建" $LASTEXITCODE
 }
 finally {
     Pop-Location
@@ -82,8 +98,11 @@ Write-Host "==> 验证主站 API 与生产构建"
 Push-Location $LocalApp
 try {
     npm ci
+    Assert-NativeSuccess "主站依赖安装" $LASTEXITCODE
     npm run test:api
+    Assert-NativeSuccess "主站 API 测试" $LASTEXITCODE
     npm run build
+    Assert-NativeSuccess "主站生产构建" $LASTEXITCODE
 }
 finally {
     Pop-Location
@@ -108,6 +127,7 @@ try {
         --exclude=.env.* `
         --exclude=.git `
         .
+    Assert-NativeSuccess "创建部署压缩包" $LASTEXITCODE
 }
 finally {
     Pop-Location
@@ -127,7 +147,9 @@ if (-not (Test-Path -LiteralPath $LocalScript)) {
 
 Write-Host "==> 上传压缩包与脚本 -> ${User}@${Server}"
 scp.exe @SshScpArgs -o StrictHostKeyChecking=accept-new $TarPath "${User}@${Server}:${RemoteTar}"
+Assert-NativeSuccess "上传部署压缩包" $LASTEXITCODE
 scp.exe @SshScpArgs -o StrictHostKeyChecking=accept-new $LocalScript "${User}@${Server}:${RemoteScript}"
+Assert-NativeSuccess "上传远程更新脚本" $LASTEXITCODE
 
 Write-Host "==> 在服务器执行更新（会 stop → 解压 → npm → start）"
 # Windows PowerShell 5.1：源码里若出现未被正确配对的 "，会把 && 误解析为语句分隔符；用单引号拼接避免 && 出现在双引号字面量中
