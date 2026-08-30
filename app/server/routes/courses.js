@@ -4,6 +4,12 @@ const { dbAsync, getDb } = require('../db');
 const { authenticateToken, canModify } = require('../middleware/auth');
 const { courseVisibleForStudent } = require('../utils/gradeMatch');
 const { normalizeAllowedMonthsList } = require('../utils/examSessionRange');
+const { getFlexibleUnitRule } = require('../utils/courseUnits');
+const {
+  percentageFor,
+  selectBestActualExamUnits,
+  roundOneDecimal,
+} = require('../utils/actualExamScores');
 
 const router = express.Router();
 
@@ -19,6 +25,58 @@ function assertCourseEnrolledOrStaff(req, res, next) {
     return res.status(403).json({ error: '无权查看该课程' });
   }
   next();
+}
+
+function scoreDateKey(unitGrade) {
+  return String(unitGrade?.exam_date || unitGrade?.created_at || '');
+}
+
+// 课程详情是读取接口：保留 student_courses 中的旧汇总字段，同时从 unit_grades
+// 派生可展示的成绩，避免导入的历史单元成绩因未回填旧字段而在页面中消失。
+function buildScoreSummary(unitGrades, courseUnits = []) {
+  const summarizeRecent = (examType) => {
+    const rows = unitGrades
+      .filter((row) => row.exam_type === examType && percentageFor(row) !== null)
+      .sort((a, b) => scoreDateKey(b).localeCompare(scoreDateKey(a)))
+      .slice(0, 2);
+    if (rows.length === 0) return { score: null, grade: null, count: 0 };
+    const score = rows.reduce((sum, row) => sum + percentageFor(row), 0) / rows.length;
+    const grades = [...new Set(rows.map((row) => String(row.grade || '').trim()).filter(Boolean))];
+    return {
+      score: roundOneDecimal(score),
+      grade: grades.length === 1 ? grades[0] : null,
+      count: rows.length,
+    };
+  };
+
+  // 实考/重考同一单元只取最好一次，防止重考被重复计入平均值。
+  const finalRows = selectBestActualExamUnits(unitGrades, courseUnits);
+  const finalGrades = [...new Set(finalRows.map(({ row }) => String(row.grade || '').trim()).filter(Boolean))];
+  const finalScore = finalRows.length
+    ? roundOneDecimal(finalRows.reduce((sum, { percentage }) => sum + percentage, 0) / finalRows.length)
+    : null;
+  const finalUnits = finalRows
+    .map(({ row, percentage }) => ({
+      unit_code: row.unit_code || '',
+      unit_name: row.unit_name || '',
+      score: Number(row.score),
+      max_score: Number(row.max_score),
+      percentage: roundOneDecimal(percentage),
+      exam_type: row.exam_type,
+      exam_date: row.exam_date || null,
+    }))
+    .sort((a, b) => a.unit_code.localeCompare(b.unit_code, undefined, { numeric: true }));
+
+  return {
+    internal: summarizeRecent('internal'),
+    mock: summarizeRecent('mock'),
+    final: {
+      score: finalScore,
+      grade: finalGrades.length === 1 ? finalGrades[0] : null,
+      count: finalRows.length,
+      units: finalUnits,
+    },
+  };
 }
 
 router.get('/', authenticateToken, async (req, res) => {
@@ -63,6 +121,7 @@ router.get('/:id/detail', authenticateToken, assertCourseEnrolledOrStaff, async 
 
     // 获取所有学生（学生账号仅返回本人行）
     let enrollments = await dbAsync.findAll('student_courses', { course_id: id });
+    const courseUnits = await dbAsync.findAll('course_units', { course_id: id });
     if (req.user.role === 'student') {
       enrollments = enrollments.filter((e) => e.student_id === req.user.student_id);
     }
@@ -72,6 +131,7 @@ router.get('/:id/detail', authenticateToken, assertCourseEnrolledOrStaff, async 
           const student = await dbAsync.findById('students', sc.student_id);
           if (!student) return null;
           const unitGrades = await dbAsync.findAll('unit_grades', { student_course_id: sc.id });
+          const score_summary = buildScoreSummary(unitGrades, courseUnits);
           return {
             ...sc,
             student_id: student.id,
@@ -79,15 +139,23 @@ router.get('/:id/detail', authenticateToken, assertCourseEnrolledOrStaff, async 
             english_name: student.english_name,
             grade: student.grade,
             unitGrades,
+            score_summary,
           };
         })
       )
     ).filter(Boolean);
 
     // 统计
-    const internalScores = students.map(s => s.internal_score).filter(Boolean);
-    const mockScores = students.map(s => s.mock_score).filter(Boolean);
-    const finalScores = students.map(s => s.final_score).filter(Boolean);
+    // 单元成绩优先；旧汇总字段仅作为历史兼容回退。
+    const scoreFor = (student, type) => {
+      const derived = student.score_summary?.[type]?.score;
+      if (typeof derived === 'number') return derived;
+      const legacy = Number(student[`${type}_score`]);
+      return Number.isFinite(legacy) && legacy > 0 ? legacy : null;
+    };
+    const internalScores = students.map((s) => scoreFor(s, 'internal')).filter((score) => score !== null);
+    const mockScores = students.map((s) => scoreFor(s, 'mock')).filter((score) => score !== null);
+    const finalScores = students.map((s) => scoreFor(s, 'final')).filter((score) => score !== null);
 
     const stats = {
       total_students: students.length,
@@ -95,7 +163,10 @@ router.get('/:id/detail', authenticateToken, assertCourseEnrolledOrStaff, async 
       avg_mock: mockScores.length ? mockScores.reduce((a, b) => a + b, 0) / mockScores.length : 0,
       avg_final: finalScores.length ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0,
       max_internal: internalScores.length ? Math.max(...internalScores) : 0,
-      min_internal: internalScores.length ? Math.min(...internalScores) : 0
+      min_internal: internalScores.length ? Math.min(...internalScores) : 0,
+      max_final: finalScores.length ? Math.max(...finalScores) : 0,
+      min_final: finalScores.length ? Math.min(...finalScores) : 0,
+      students_with_final: finalScores.length,
     };
 
     // 等级分布
@@ -204,8 +275,17 @@ router.post('/:id/enroll', authenticateToken, canModify, async (req, res) => {
 
     // 检查是否已选课
     const existing = await dbAsync.findAll('student_courses', { course_id: id, student_id });
-    if (existing.length > 0) {
+    const activeEnrollment = existing.find((row) => row.status !== 'dropped');
+    if (activeEnrollment) {
       return res.status(400).json({ error: 'Student already enrolled' });
+    }
+    const droppedEnrollment = existing.find((row) => row.status === 'dropped');
+    if (droppedEnrollment) {
+      const restored = await dbAsync.update('student_courses', droppedEnrollment.id, {
+        status: 'enrolled',
+        updated_at: new Date().toISOString(),
+      });
+      return res.json({ ...restored, restored: true });
     }
 
     const enrollment = {
@@ -227,6 +307,27 @@ router.post('/:id/enroll', authenticateToken, canModify, async (req, res) => {
     res.status(201).json(enrollment);
   } catch (error) {
     console.error('Enroll student error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// 从学生当前课程列表移除：保留选课、单元成绩与考季计划，便于历史追溯和重新加入。
+router.delete('/:id/enroll/:studentId', authenticateToken, canModify, async (req, res) => {
+  try {
+    const enrollments = await dbAsync.findAll('student_courses', {
+      course_id: req.params.id,
+      student_id: req.params.studentId,
+    });
+    const enrollment = enrollments.find((row) => row.status !== 'dropped');
+    if (!enrollment) return res.status(404).json({ error: 'Student is not actively enrolled in this course' });
+
+    const updated = await dbAsync.update('student_courses', enrollment.id, {
+      status: 'dropped',
+      updated_at: new Date().toISOString(),
+    });
+    res.json({ ...updated, message: 'Course removed from active student view; historical records retained' });
+  } catch (error) {
+    console.error('Remove student course error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -276,13 +377,21 @@ router.post('/:id/unit-grades/:studentId', authenticateToken, canModify, async (
 
     const studentCourseId = enrollments[0].id;
 
+    const numericScore = Number(score);
+    const numericMaxScore = Number(max_score);
+    if (!Number.isFinite(numericScore) || numericScore < 0) {
+      return res.status(400).json({ error: '得分必须为 0 或正数' });
+    }
+    if (!Number.isFinite(numericMaxScore) || numericMaxScore <= 0) {
+      return res.status(400).json({ error: '满分必须大于 0' });
+    }
     const unitGrade = {
       id: uuidv4(),
       student_course_id: studentCourseId,
       unit_name: unit_name || '',
       unit_code: unit_code || '',
-      score: score || 0,
-      max_score: max_score || 100,
+      score: numericScore,
+      max_score: numericMaxScore,
       grade: grade || '',
       exam_date: exam_date || null,
       exam_type: exam_type || 'internal',
@@ -293,6 +402,37 @@ router.post('/:id/unit-grades/:studentId', authenticateToken, canModify, async (
     res.status(201).json(unitGrade);
   } catch (error) {
     console.error('Add unit grade error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// 修改单元成绩；保留记录 ID，避免影响与该学生选课相关的历史关联。
+router.put('/unit-grades/:unitGradeId', authenticateToken, canModify, async (req, res) => {
+  try {
+    const existing = await dbAsync.findById('unit_grades', req.params.unitGradeId);
+    if (!existing) return res.status(404).json({ error: 'Unit grade not found' });
+
+    const allowed = ['unit_name', 'unit_code', 'score', 'max_score', 'grade', 'exam_date', 'exam_type'];
+    const updates = {};
+    for (const field of allowed) {
+      if (req.body[field] !== undefined) updates[field] = req.body[field];
+    }
+    if (updates.score !== undefined) {
+      const score = Number(updates.score);
+      if (!Number.isFinite(score) || score < 0) return res.status(400).json({ error: '得分必须为 0 或正数' });
+      updates.score = score;
+    }
+    if (updates.max_score !== undefined) {
+      const maxScore = Number(updates.max_score);
+      if (!Number.isFinite(maxScore) || maxScore <= 0) return res.status(400).json({ error: '满分必须大于 0' });
+      updates.max_score = maxScore;
+    }
+    if (Object.keys(updates).length === 0) return res.status(400).json({ error: 'No valid fields' });
+
+    const updated = await dbAsync.update('unit_grades', existing.id, updates);
+    res.json(updated);
+  } catch (error) {
+    console.error('Update unit grade error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -343,7 +483,7 @@ router.get('/:id/units', authenticateToken, assertCourseEnrolledOrStaff, async (
 // 添加课程单元
 router.post('/:id/units', authenticateToken, canModify, async (req, res) => {
   try {
-    const { unit_code, unit_name, is_advanced, max_score, weight, description, sort_order, allowed_months } = req.body;
+    const { unit_code, unit_name, is_advanced, is_required, max_score, weight, description, sort_order, allowed_months } = req.body;
     if (!unit_code || !unit_name) return res.status(400).json({ error: 'unit_code and unit_name required' });
 
     const course = await dbAsync.findById('courses', req.params.id);
@@ -354,6 +494,8 @@ router.post('/:id/units', authenticateToken, canModify, async (req, res) => {
       course_id: req.params.id,
       unit_code, unit_name,
       is_advanced: is_advanced ? 1 : 0,
+      // 数学/进阶数学的计分组合由学生的成绩与考季计划决定，不能用单个单元的可选标记代替。
+      is_required: getFlexibleUnitRule(course) ? 1 : (is_required === false || is_required === 0 ? 0 : 1),
       max_score: max_score || 100,
       weight: weight || 1.0,
       description: description || '',
@@ -374,12 +516,15 @@ router.post('/:id/units', authenticateToken, canModify, async (req, res) => {
 // 更新课程单元
 router.put('/:id/units/:unitId', authenticateToken, canModify, async (req, res) => {
   try {
-    const allowed = ['unit_code', 'unit_name', 'is_advanced', 'max_score', 'weight', 'description', 'sort_order', 'allowed_months'];
+    const allowed = ['unit_code', 'unit_name', 'is_advanced', 'is_required', 'max_score', 'weight', 'description', 'sort_order', 'allowed_months'];
     const updates = {};
     for (const f of allowed) {
       if (req.body[f] !== undefined) {
         if (f === 'is_advanced') {
           updates[f] = req.body[f] ? 1 : 0;
+        } else if (f === 'is_required') {
+          const course = await dbAsync.findById('courses', req.params.id);
+          updates[f] = getFlexibleUnitRule(course) ? 1 : (req.body[f] === false || req.body[f] === 0 ? 0 : 1);
         } else if (f === 'allowed_months') {
           const months = Array.isArray(req.body[f]) ? req.body[f] : [];
           updates[f] = months.length > 0
@@ -435,8 +580,8 @@ router.post('/clone-grade', authenticateToken, canModify, async (req, res) => {
       const srcUnitsStmt = db.prepare('SELECT * FROM course_units WHERE course_id = ? ORDER BY sort_order ASC');
       const dstUnitsStmt = db.prepare('SELECT * FROM course_units WHERE course_id = ?');
       const insertUnit = db.prepare(
-        `INSERT INTO course_units (id, course_id, unit_code, unit_name, is_advanced, max_score, weight, description, sort_order, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+        `INSERT INTO course_units (id, course_id, unit_code, unit_name, is_advanced, is_required, max_score, weight, description, sort_order, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
       );
 
       let createdCourses = 0;
@@ -482,6 +627,7 @@ router.post('/clone-grade', authenticateToken, canModify, async (req, res) => {
             u.unit_code,
             u.unit_name,
             u.is_advanced ? 1 : 0,
+            u.is_required === 0 || u.is_required === false ? 0 : 1,
             u.max_score || 100,
             u.weight || 1.0,
             u.description || '',

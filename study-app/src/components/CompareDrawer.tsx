@@ -2,6 +2,11 @@ import { useState, useMemo, useCallback } from 'react';
 import { useCompare } from '@/context/CompareContext';
 import { useData } from '@/context/DataContext';
 import type { University } from '@/context/DataContext';
+import {
+  getDifficultyColor,
+  getDifficultyFullLabel,
+  getDifficultySortValue,
+} from '@/lib/admissionDifficulty';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   X,
@@ -402,19 +407,10 @@ function AdmissionTab({
   unis: University[];
   colWidth: number;
 }) {
-  /* Find best (lowest) acceptance rate */
-  const parseRate = (v: unknown): number => {
-    if (typeof v === 'number') return v;
-    if (typeof v === 'string') {
-      const m = v.match(/[\d.]+/);
-      return m ? parseFloat(m[0]) : Infinity;
-    }
-    return Infinity;
-  };
-  const acceptanceRates = unis
-    .map((u) => parseRate(u.admission?.acceptance_rate))
-    .filter((v) => v !== Infinity);
-  const lowestAcceptance = acceptanceRates.length > 0 ? Math.min(...acceptanceRates) : undefined;
+  const difficultyValues = unis
+    .map((u) => getDifficultySortValue(u))
+    .filter((v) => v < 99);
+  const hardestTier = difficultyValues.length > 0 ? Math.min(...difficultyValues) : undefined;
 
   return (
     <div>
@@ -439,30 +435,15 @@ function AdmissionTab({
           </Cell>
         ))}
       </Row>
-      <Row label="录取率">
+      <Row label="录取难度">
         {unis.map((u) => {
-          const rateRaw = u.admission?.acceptance_rate;
-          const rateNum = parseRate(rateRaw);
-          const rateStr = typeof rateRaw === 'string' ? rateRaw : typeof rateRaw === 'number' ? `${rateRaw}%` : undefined;
-          const isHardest = rateNum !== Infinity && rateNum === lowestAcceptance && unis.length > 1;
+          const tierValue = getDifficultySortValue(u);
+          const label = getDifficultyFullLabel(u);
+          const isHardest = tierValue < 99 && tierValue === hardestTier && unis.length > 1;
           return (
-            <Cell key={u.id} width={colWidth} best={isHardest} muted={rateNum === Infinity}>
-              {rateStr !== undefined ? (
-                <div className="flex items-center gap-2">
-                  <div
-                    className="w-16 h-1.5 rounded-full overflow-hidden flex-shrink-0"
-                    style={{ backgroundColor: '#F0EBE3' }}
-                  >
-                    <div
-                      className="h-full rounded-full"
-                      style={{
-                        width: `${Math.min(rateNum * 2, 100)}%`,
-                        backgroundColor: isHardest ? '#8B2332' : '#4A7C6F',
-                      }}
-                    />
-                  </div>
-                  <span>{rateStr}</span>
-                </div>
+            <Cell key={u.id} width={colWidth} best={isHardest} muted={tierValue >= 99}>
+              {tierValue < 99 ? (
+                <span style={{ color: getDifficultyColor(u) }}>{label}</span>
               ) : (
                 '-'
               )}

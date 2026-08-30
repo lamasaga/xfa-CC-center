@@ -117,6 +117,7 @@ export function ExamSessionPlanner({ studentId }: ExamSessionPlannerProps) {
     const plans = localPlans.get(course.student_course_id) || [];
 
     if (sessionId === null) {
+      if (course.historical) return [];
       const assignedUnitIds = new Set(
         plans
           .filter((p) => validSessionIds.has(p.exam_session_id))
@@ -331,6 +332,7 @@ export function ExamSessionPlanner({ studentId }: ExamSessionPlannerProps) {
 
   const sessions = data.sessions;
   const courses = data.courses;
+  const historicalCourses = courses.filter((course) => course.historical);
   const isSessionPast = (s: ExamSession) => {
     const d = new Date(s.year, s.month - 1, 28);
     return d < new Date();
@@ -413,8 +415,49 @@ export function ExamSessionPlanner({ studentId }: ExamSessionPlannerProps) {
         </Card>
       ) : (
         <>
+          {historicalCourses.length > 0 && (
+            <Card className="border-slate-200 bg-slate-50/70">
+              <CardHeader className="pb-2">
+                <CardTitle className="text-sm font-medium text-slate-500">已移除课程的历史保留</CardTitle>
+                <p className="text-xs text-slate-400">这些课程已不计入当前首页与仪表盘；成绩及已安排考季仅供查看，不能移动或修改。</p>
+              </CardHeader>
+              <CardContent className="space-y-2">
+                {historicalCourses.map((course) => {
+                  const plans = localPlans.get(course.student_course_id) || [];
+                  const gradeUnits = course.units.filter((unit) => unit.best_grade);
+                  return (
+                    <div key={course.student_course_id} className="rounded-md border border-slate-200 bg-white/70 px-3 py-2 text-xs text-slate-500">
+                      <div className="font-medium text-slate-600">{course.course_name} <span className="font-normal">· {course.board}</span></div>
+                      <div className="mt-1 flex flex-wrap gap-1.5">
+                        {gradeUnits.map((unit) => (
+                          <Badge key={unit.unit_id} variant="outline" className="border-slate-200 text-slate-500">
+                            {unit.unit_code}：{unit.best_grade?.score}/{unit.max_score}{unit.best_grade?.grade ? ` · ${unit.best_grade.grade}` : ''}
+                          </Badge>
+                        ))}
+                        {plans.map((plan) => {
+                          const unit = course.units.find((item) => item.unit_id === plan.course_unit_id);
+                          const session = sessions.find((item) => item.id === plan.exam_session_id);
+                          return (
+                            <Badge key={plan.id} variant="outline" className="border-slate-200 text-slate-400">
+                              已排 {unit?.unit_code || '单元'} · {session?.label || '历史考季'}
+                            </Badge>
+                          );
+                        })}
+                        {gradeUnits.length === 0 && plans.length === 0 && <span>无可展示的历史记录</span>}
+                      </div>
+                    </div>
+                  );
+                })}
+              </CardContent>
+            </Card>
+          )}
           {/* Kanban board */}
           <div className="space-y-2">
+            {courses.some((course) => course.unit_selection?.mode === 'flexible') && (
+              <div className="rounded-md border border-primary/20 bg-primary/5 px-3 py-2 text-xs text-primary">
+                数学/进阶数学按六个有效单元完成。候选单元均可拖入考季；已有成绩或已安排考季的候选单元会自动视为该学生的实际选考组合。
+              </div>
+            )}
             {/* 上方考季泳道：单独横向滚动（不影响下方备选池） */}
             <div className="overflow-x-auto pb-3">
               <div
@@ -471,7 +514,7 @@ export function ExamSessionPlanner({ studentId }: ExamSessionPlannerProps) {
                       sessionId={null}
                       color={color}
                       isPast={false}
-                      canEdit={canEdit}
+                      canEdit={canEdit && !course.historical}
                       onDragStart={handleDragStart}
                       onDragEnd={handleDragEnd}
                       onTogglePlanType={togglePlanType}
@@ -568,8 +611,9 @@ export function ExamSessionPlanner({ studentId }: ExamSessionPlannerProps) {
                 return (
                   <div key={course.student_course_id} className="flex items-center gap-4">
                     <div className="w-36 flex-shrink-0">
-                      <span className={`text-sm font-medium ${color.text}`}>{course.course_name}</span>
+                      <span className={`text-sm font-medium ${course.historical ? 'text-slate-400' : color.text}`}>{course.course_name}</span>
                       <span className="text-xs text-slate-400 ml-1">({course.board})</span>
+                      {course.historical && <Badge variant="outline" className="ml-1 text-[10px] text-slate-400">历史保留</Badge>}
                     </div>
                     <div className="flex-1">
                       <div className="h-2 w-full rounded-full bg-slate-100 overflow-hidden flex">
@@ -703,7 +747,7 @@ function KanbanColumn({
                 sessionId={sessionId}
                 color={color}
                 isPast={isPast}
-                canEdit={canEdit}
+                canEdit={canEdit && !item.course.historical}
                 onDragStart={onDragStart}
                 onDragEnd={onDragEnd}
                 onTogglePlanType={onTogglePlanType}

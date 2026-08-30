@@ -1,0 +1,638 @@
+{
+  "mit": {
+    "name": "麻省理工学院",
+    "name_en": "Massachusetts Institute of Technology",
+    "status": "success",
+    "filename": "mit.jpg"
+  },
+  "harvard": {
+    "name": "哈佛大学",
+    "name_en": "Harvard University",
+    "status": "success",
+    "filename": "harvard.jpg"
+  },
+  "stanford": {
+    "name": "斯坦福大学",
+    "name_en": "Stanford University",
+    "status": "success",
+    "filename": "stanford.jpg"
+  },
+  "caltech": {
+    "name": "加州理工学院",
+    "name_en": "California Institute of Technology",
+    "status": "success",
+    "filename": "caltech.jpg"
+  },
+  "upenn": {
+    "name": "宾夕法尼亚大学",
+    "name_en": "University of Pennsylvania",
+    "status": "success",
+    "filename": "upenn.jpg"
+  },
+  "uc_berkeley": {
+    "name": "加州大学伯克利分校",
+    "name_en": "University of California, Berkeley",
+    "status": "success",
+    "filename": "uc_berkeley.jpg"
+  },
+  "cornell": {
+    "name": "康奈尔大学",
+    "name_en": "Cornell University",
+    "status": "success",
+    "filename": "cornell.jpg"
+  },
+  "uchicago": {
+    "name": "芝加哥大学",
+    "name_en": "University of Chicago",
+    "status": "success",
+    "filename": "uchicago.jpg"
+  },
+  "princeton": {
+    "name": "普林斯顿大学",
+    "name_en": "Princeton University",
+    "status": "success",
+    "filename": "princeton.jpg"
+  },
+  "yale": {
+    "name": "耶鲁大学",
+    "name_en": "Yale University",
+    "status": "success",
+    "filename": "yale.jpg"
+  },
+  "jhu": {
+    "name": "约翰霍普金斯大学",
+    "name_en": "Johns Hopkins University",
+    "status": "success",
+    "filename": "jhu.jpg"
+  },
+  "columbia": {
+    "name": "哥伦比亚大学",
+    "name_en": "Columbia University",
+    "status": "success",
+    "filename": "columbia.jpg"
+  },
+  "ucla": {
+    "name": "加州大学洛杉矶分校",
+    "name_en": "University of California, Los Angeles",
+    "status": "success",
+    "filename": "ucla.jpg"
+  },
+  "michigan_ann_arbor": {
+    "name": "密歇根大学安娜堡分校",
+    "name_en": "University of Michigan - Ann Arbor",
+    "status": "success",
+    "filename": "michigan_ann_arbor.jpg"
+  },
+  "northwestern": {
+    "name": "西北大学",
+    "name_en": "Northwestern University",
+    "status": "success",
+    "filename": "northwestern.jpg"
+  },
+  "cmu": {
+    "name": "卡内基梅隆大学",
+    "name_en": "Carnegie Mellon University",
+    "status": "success",
+    "filename": "cmu.jpg"
+  },
+  "duke": {
+    "name": "杜克大学",
+    "name_en": "Duke University",
+    "status": "success",
+    "filename": "duke.jpg"
+  },
+  "ut_austin": {
+    "name": "德克萨斯大学奥斯汀分校",
+    "name_en": "University of Texas at Austin",
+    "status": "success",
+    "filename": "ut_austin.jpg"
+  },
+  "ucsd": {
+    "name": "加州大学圣迭戈分校",
+    "name_en": "University of California, San Diego",
+    "status": "success",
+    "filename": "ucsd.jpg"
+  },
+  "brown": {
+    "name": "布朗大学",
+    "name_en": "Brown University",
+    "status": "success",
+    "filename": "brown.jpg"
+  },
+  "usc": {
+    "name": "南加州大学",
+    "name_en": "University of Southern California",
+    "status": "success",
+    "filename": "usc.jpg"
+  },
+  "rice": {
+    "name": "莱斯大学",
+    "name_en": "Rice University",
+    "status": "success",
+    "filename": "rice.jpg"
+  },
+  "unc_chapel_hill": {
+    "name": "北卡罗来纳大学教堂山分校",
+    "name_en": "University of North Carolina at Chapel Hill",
+    "status": "success",
+    "filename": "unc_chapel_hill.jpg"
+  },
+  "washu": {
+    "name": "圣路易斯华盛顿大学",
+    "name_en": "Washington University in St. Louis",
+    "status": "success",
+    "filename": "washu.jpg"
+  },
+  "emory": {
+    "name": "埃默里大学",
+    "name_en": "Emory University",
+    "status": "success",
+    "filename": "emory.jpg"
+  },
+  "uflorida": {
+    "name": "佛罗里达大学",
+    "name_en": "University of Florida",
+    "status": "success",
+    "filename": "uflorida.jpg"
+  },
+  "dartmouth": {
+    "name": "达特茅斯学院",
+    "name_en": "Dartmouth College",
+    "status": "success",
+    "filename": "dartmouth.jpg"
+  },
+  "vanderbilt": {
+    "name": "范德堡大学",
+    "name_en": "Vanderbilt University",
+    "status": "success",
+    "filename": "vanderbilt.jpg"
+  },
+  "uva": {
+    "name": "弗吉尼亚大学",
+    "name_en": "University of Virginia",
+    "status": "success",
+    "filename": "uva.jpg"
+  },
+  "notre_dame": {
+    "name": "圣母大学",
+    "name_en": "University of Notre Dame",
+    "status": "success",
+    "filename": "notre_dame.jpg"
+  },
+  "imperial": {
+    "name": "帝国理工学院",
+    "name_en": "Imperial College London",
+    "status": "success",
+    "filename": "imperial.jpg"
+  },
+  "oxford": {
+    "name": "牛津大学",
+    "name_en": "University of Oxford",
+    "status": "success",
+    "filename": "oxford.jpg"
+  },
+  "cambridge": {
+    "name": "剑桥大学",
+    "name_en": "University of Cambridge",
+    "status": "success",
+    "filename": "cambridge.jpg"
+  },
+  "ucl": {
+    "name": "伦敦大学学院",
+    "name_en": "University College London",
+    "status": "success",
+    "filename": "ucl.jpg"
+  },
+  "edinburgh": {
+    "name": "爱丁堡大学",
+    "name_en": "University of Edinburgh",
+    "status": "success",
+    "filename": "edinburgh.jpg"
+  },
+  "manchester": {
+    "name": "曼彻斯特大学",
+    "name_en": "University of Manchester",
+    "status": "success",
+    "filename": "manchester.jpg"
+  },
+  "kcl": {
+    "name": "伦敦国王学院",
+    "name_en": "King's College London",
+    "status": "success",
+    "filename": "kcl.jpg"
+  },
+  "lse": {
+    "name": "伦敦政治经济学院",
+    "name_en": "London School of Economics and Political Science",
+    "status": "success",
+    "filename": "lse.jpg"
+  },
+  "bristol": {
+    "name": "布里斯托大学",
+    "name_en": "University of Bristol",
+    "status": "success",
+    "filename": "bristol.jpg"
+  },
+  "warwick": {
+    "name": "华威大学",
+    "name_en": "University of Warwick",
+    "status": "success",
+    "filename": "warwick.jpg"
+  },
+  "glasgow": {
+    "name": "格拉斯哥大学",
+    "name_en": "University of Glasgow",
+    "status": "success",
+    "filename": "glasgow.jpg"
+  },
+  "birmingham": {
+    "name": "伯明翰大学",
+    "name_en": "University of Birmingham",
+    "status": "success",
+    "filename": "birmingham.jpg"
+  },
+  "southampton": {
+    "name": "南安普顿大学",
+    "name_en": "University of Southampton",
+    "status": "success",
+    "filename": "southampton.jpg"
+  },
+  "leeds": {
+    "name": "利兹大学",
+    "name_en": "University of Leeds",
+    "status": "success",
+    "filename": "leeds.jpg"
+  },
+  "durham": {
+    "name": "杜伦大学",
+    "name_en": "Durham University",
+    "status": "success",
+    "filename": "durham.jpg"
+  },
+  "sheffield": {
+    "name": "谢菲尔德大学",
+    "name_en": "University of Sheffield",
+    "status": "success",
+    "filename": "sheffield.jpg"
+  },
+  "nottingham": {
+    "name": "诺丁汉大学",
+    "name_en": "University of Nottingham",
+    "status": "success",
+    "filename": "nottingham.jpg"
+  },
+  "qmul": {
+    "name": "伦敦玛丽女王大学",
+    "name_en": "Queen Mary University of London",
+    "status": "success",
+    "filename": "qmul.jpg"
+  },
+  "newcastle": {
+    "name": "纽卡斯尔大学",
+    "name_en": "Newcastle University",
+    "status": "success",
+    "filename": "newcastle.jpg"
+  },
+  "lancaster": {
+    "name": "兰卡斯特大学",
+    "name_en": "Lancaster University",
+    "status": "success",
+    "filename": "lancaster.jpg"
+  },
+  "mcgill": {
+    "name": "麦吉尔大学",
+    "name_en": "McGill University",
+    "status": "success",
+    "filename": "mcgill.jpg"
+  },
+  "uoft": {
+    "name": "多伦多大学",
+    "name_en": "University of Toronto",
+    "status": "success",
+    "filename": "uoft.jpg"
+  },
+  "ubc": {
+    "name": "不列颠哥伦比亚大学",
+    "name_en": "University of British Columbia",
+    "status": "success",
+    "filename": "ubc.jpg"
+  },
+  "ualberta": {
+    "name": "阿尔伯塔大学",
+    "name_en": "University of Alberta",
+    "status": "success",
+    "filename": "ualberta.jpg"
+  },
+  "mcmaster": {
+    "name": "麦克马斯特大学",
+    "name_en": "McMaster University",
+    "status": "success",
+    "filename": "mcmaster.jpg"
+  },
+  "unimelb": {
+    "name": "墨尔本大学",
+    "name_en": "University of Melbourne",
+    "status": "success",
+    "filename": "unimelb.jpg"
+  },
+  "unsw": {
+    "name": "新南威尔士大学",
+    "name_en": "University of New South Wales",
+    "status": "success",
+    "filename": "unsw.jpg"
+  },
+  "usyd": {
+    "name": "悉尼大学",
+    "name_en": "University of Sydney",
+    "status": "success",
+    "filename": "usyd.jpg"
+  },
+  "anu": {
+    "name": "澳大利亚国立大学",
+    "name_en": "Australian National University",
+    "status": "success",
+    "filename": "anu.jpg"
+  },
+  "monash": {
+    "name": "莫纳什大学",
+    "name_en": "Monash University",
+    "status": "success",
+    "filename": "monash.jpg"
+  },
+  "uq": {
+    "name": "昆士兰大学",
+    "name_en": "University of Queensland",
+    "status": "success",
+    "filename": "uq.jpg"
+  },
+  "uwa": {
+    "name": "西澳大学",
+    "name_en": "University of Western Australia",
+    "status": "success",
+    "filename": "uwa.jpg"
+  },
+  "adelaide": {
+    "name": "阿德莱德大学",
+    "name_en": "University of Adelaide",
+    "status": "success",
+    "filename": "adelaide.jpg"
+  },
+  "uts": {
+    "name": "悉尼科技大学",
+    "name_en": "University of Technology Sydney",
+    "status": "success",
+    "filename": "uts.jpg"
+  },
+  "macquarie": {
+    "name": "麦考瑞大学",
+    "name_en": "Macquarie University",
+    "status": "success",
+    "filename": "macquarie.jpg"
+  },
+  "hku": {
+    "name": "香港大学",
+    "name_en": "University of Hong Kong",
+    "status": "success",
+    "filename": "hku.jpg"
+  },
+  "cuhk": {
+    "name": "香港中文大学",
+    "name_en": "Chinese University of Hong Kong",
+    "status": "success",
+    "filename": "cuhk.jpg"
+  },
+  "hkust": {
+    "name": "香港科技大学",
+    "name_en": "Hong Kong University of Science and Technology",
+    "status": "success",
+    "filename": "hkust.jpg"
+  },
+  "cityu_hk": {
+    "name": "香港城市大学",
+    "name_en": "City University of Hong Kong",
+    "status": "success",
+    "filename": "cityu_hk.jpg"
+  },
+  "nus": {
+    "name": "新加坡国立大学",
+    "name_en": "National University of Singapore",
+    "status": "success",
+    "filename": "nus.jpg"
+  },
+  "ntu": {
+    "name": "南洋理工大学",
+    "name_en": "Nanyang Technological University",
+    "status": "success",
+    "filename": "ntu.jpg"
+  },
+  "eth_zurich": {
+    "name": "苏黎世联邦理工学院",
+    "name_en": "ETH Zurich",
+    "status": "success",
+    "filename": "eth_zurich.jpg"
+  },
+  "epfl": {
+    "name": "洛桑联邦理工学院",
+    "name_en": "EPFL",
+    "status": "success",
+    "filename": "epfl.jpg"
+  },
+  "psl": {
+    "name": "巴黎文理研究大学",
+    "name_en": "Paris Sciences et Lettres (PSL)",
+    "status": "success",
+    "filename": "psl.jpg"
+  },
+  "tum": {
+    "name": "慕尼黑工业大学",
+    "name_en": "Technical University of Munich",
+    "status": "success",
+    "filename": "tum.jpg"
+  },
+  "uva_nl": {
+    "name": "阿姆斯特丹大学",
+    "name_en": "University of Amsterdam",
+    "status": "success",
+    "filename": "uva_nl.jpg"
+  },
+  "tudelft": {
+    "name": "代尔夫特理工大学",
+    "name_en": "Delft University of Technology",
+    "status": "success",
+    "filename": "tudelft.jpg"
+  },
+  "kuleuven": {
+    "name": "鲁汶大学",
+    "name_en": "KU Leuven",
+    "status": "success",
+    "filename": "kuleuven.jpg"
+  },
+  "sorbonne": {
+    "name": "索邦大学",
+    "name_en": "Sorbonne University",
+    "status": "success",
+    "filename": "sorbonne.jpg"
+  },
+  "paris_saclay": {
+    "name": "巴黎萨克雷大学",
+    "name_en": "Université Paris-Saclay",
+    "status": "success",
+    "filename": "paris_saclay.jpg"
+  },
+  "kth": {
+    "name": "瑞典皇家理工学院",
+    "name_en": "KTH Royal Institute of Technology",
+    "status": "success",
+    "filename": "kth.jpg"
+  },
+  "heidelberg": {
+    "name": "海德堡大学",
+    "name_en": "Heidelberg University",
+    "status": "success",
+    "filename": "heidelberg.jpg"
+  },
+  "lund": {
+    "name": "隆德大学",
+    "name_en": "Lund University",
+    "status": "success",
+    "filename": "lund.jpg"
+  },
+  "tcd": {
+    "name": "圣三一学院",
+    "name_en": "Trinity College Dublin",
+    "status": "success",
+    "filename": "tcd.jpg"
+  },
+  "copenhagen": {
+    "name": "哥本哈根大学",
+    "name_en": "University of Copenhagen",
+    "status": "success",
+    "filename": "copenhagen.jpg"
+  },
+  "polimi": {
+    "name": "米兰理工大学",
+    "name_en": "Politecnico di Milano",
+    "status": "success",
+    "filename": "polimi.jpg"
+  },
+  "helsinki": {
+    "name": "赫尔辛基大学",
+    "name_en": "University of Helsinki",
+    "status": "success",
+    "filename": "helsinki.jpg"
+  },
+  "oslo": {
+    "name": "奥斯陆大学",
+    "name_en": "University of Oslo",
+    "status": "success",
+    "filename": "oslo.jpg"
+  },
+  "vienna": {
+    "name": "维也纳大学",
+    "name_en": "University of Vienna",
+    "status": "success",
+    "filename": "vienna.jpg"
+  },
+  "barcelona": {
+    "name": "巴塞罗那大学",
+    "name_en": "University of Barcelona",
+    "status": "success",
+    "filename": "barcelona.jpg"
+  },
+  "uam": {
+    "name": "马德里自治大学",
+    "name_en": "Autonomous University of Madrid",
+    "status": "success",
+    "filename": "uam.jpg"
+  },
+  "artcenter": {
+    "name": "艺术中心设计学院",
+    "name_en": "ArtCenter College of Design",
+    "status": "success",
+    "filename": "artcenter.jpg"
+  },
+  "udk_berlin": {
+    "name": "柏林艺术大学",
+    "name_en": "Berlin University of the Arts (UdK Berlin)",
+    "status": "success",
+    "filename": "udk_berlin.jpg"
+  },
+  "csm": {
+    "name": "中央圣马丁艺术与设计学院",
+    "name_en": "Central Saint Martins (UAL)",
+    "status": "success",
+    "filename": "csm.jpg"
+  },
+  "chelsea_arts": {
+    "name": "切尔西艺术学院",
+    "name_en": "Chelsea College of Arts (UAL)",
+    "status": "success",
+    "filename": "chelsea_arts.jpg"
+  },
+  "dae": {
+    "name": "埃因霍温设计学院",
+    "name_en": "Design Academy Eindhoven",
+    "status": "success",
+    "filename": "dae.jpg"
+  },
+  "esmod": {
+    "name": "法国时尚学院",
+    "name_en": "ESMOD Paris",
+    "status": "success",
+    "filename": "esmod.jpg"
+  },
+  "gsa": {
+    "name": "格拉斯哥艺术学院",
+    "name_en": "Glasgow School of Art",
+    "status": "success",
+    "filename": "gsa.jpg"
+  },
+  "parsons": {
+    "name": "帕森斯设计学院",
+    "name_en": "Parsons School of Design",
+    "status": "success",
+    "filename": "parsons.jpg"
+  },
+  "polimoda": {
+    "name": "柏丽慕达时装学院",
+    "name_en": "Polimoda",
+    "status": "success",
+    "filename": "polimoda.jpg"
+  },
+  "pratt": {
+    "name": "普瑞特艺术学院",
+    "name_en": "Pratt Institute",
+    "status": "success",
+    "filename": "pratt.jpg"
+  },
+  "risd": {
+    "name": "罗德岛设计学院",
+    "name_en": "Rhode Island School of Design (RISD)",
+    "status": "success",
+    "filename": "risd.jpg"
+  },
+  "antwerp_arts": {
+    "name": "安特卫普皇家艺术学院",
+    "name_en": "Royal Academy of Fine Arts Antwerp",
+    "status": "success",
+    "filename": "antwerp_arts.jpg"
+  },
+  "rca": {
+    "name": "皇家艺术学院",
+    "name_en": "Royal College of Art (RCA)",
+    "status": "success",
+    "filename": "rca.jpg"
+  },
+  "cooper_union": {
+    "name": "库伯联盟学院",
+    "name_en": "The Cooper Union",
+    "status": "success",
+    "filename": "cooper_union.jpg"
+  },
+  "ensba": {
+    "name": "巴黎国立高等美术学院",
+    "name_en": "École nationale supérieure des Beaux-Arts de Paris (ENSBA)",
+    "status": "success",
+    "filename": "ensba.jpg"
+  }
+}

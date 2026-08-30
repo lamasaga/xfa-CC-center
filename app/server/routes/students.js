@@ -22,10 +22,35 @@ const {
   courseVisibleForStudent,
   normalizeGradeToCanonical,
 } = require('../utils/gradeMatch');
+const {
+  normalizeUniversityRow,
+  normalizeProgramRow,
+} = require('../utils/universityData');
+const { selectActiveCourseUnits } = require('../utils/courseUnits');
+const {
+  selectBestActualExamUnits,
+  weightedActualExamAverage,
+  roundOneDecimal,
+} = require('../utils/actualExamScores');
 
 const router = express.Router();
 
 const uploadsStudentsDir = path.join(__dirname, '../../uploads/students');
+
+// 成绩字段可能来自 SQLite 数字、旧数据中的数字字符串或空值。
+// 不使用 filter(Boolean)，避免把真实的 0 分当成“没有成绩”。
+function toFiniteScore(value) {
+  if (value === null || value === undefined) return null;
+  if (typeof value === 'string' && value.trim() === '') return null;
+  const score = Number(value);
+  return Number.isFinite(score) ? score : null;
+}
+
+function collectScores(rows, field) {
+  return rows
+    .map((row) => toFiniteScore(row[field]))
+    .filter((score) => score !== null);
+}
 
 function ensureUploadsStudentsDir() {
   fs.mkdirSync(uploadsStudentsDir, { recursive: true });
@@ -153,24 +178,66 @@ router.get('/grade-overview/:grade', authenticateToken, requireNotStudent, async
     students = students.filter((s) => studentMatchesGradeFilter(s, grade));
     const studentIds = students.map(s => s.id);
 
-    // 课程统计：含 ALL 及同届课程
-    const allCoursesRaw = await dbAsync.findAll('courses');
+    // 课程统计只使用该年级学生的实际考试单元成绩。
+    // 同一单元的首考/补考取高分，再先计算每名学生的加权单元平均，最后求年级均值，
+    // 避免“已考单元更多的学生”在课程平均中被重复加权。
+    const studentIdSet = new Set(studentIds);
+    const [allCoursesRaw, allEnrollments, allCourseUnits, allUnitGrades] = await Promise.all([
+      dbAsync.findAll('courses'),
+      dbAsync.findAll('student_courses'),
+      dbAsync.findAll('course_units'),
+      dbAsync.findAll('unit_grades'),
+    ]);
     const allCourses = allCoursesRaw.filter((c) => courseVisibleForStudent(c.grade_level, grade));
-    const courseStats = await Promise.all(
-      allCourses.map(async (course) => {
-        const enrollments = await dbAsync.findAll('student_courses', { course_id: course.id });
-        const scores = enrollments.map(e => e.internal_score).filter(Boolean);
-        const mocks = enrollments.map(e => e.mock_score).filter(Boolean);
-        
-        return {
-          name: course.name,
-          board: course.board,
-          student_count: enrollments.length,
-          avg_internal: scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : 0,
-          avg_mock: mocks.length ? mocks.reduce((a, b) => a + b, 0) / mocks.length : 0
-        };
-      })
-    );
+    const enrollmentsByCourse = new Map();
+    const unitGradesByEnrollment = new Map();
+    const unitsByCourse = new Map();
+
+    for (const enrollment of allEnrollments) {
+      if (!studentIdSet.has(enrollment.student_id) || enrollment.status === 'dropped') continue;
+      const rows = enrollmentsByCourse.get(enrollment.course_id) || [];
+      rows.push(enrollment);
+      enrollmentsByCourse.set(enrollment.course_id, rows);
+    }
+    for (const unitGrade of allUnitGrades) {
+      const rows = unitGradesByEnrollment.get(unitGrade.student_course_id) || [];
+      rows.push(unitGrade);
+      unitGradesByEnrollment.set(unitGrade.student_course_id, rows);
+    }
+    for (const unit of allCourseUnits) {
+      const rows = unitsByCourse.get(unit.course_id) || [];
+      rows.push(unit);
+      unitsByCourse.set(unit.course_id, rows);
+    }
+
+    const courseStats = allCourses.map((course) => {
+      const enrollments = enrollmentsByCourse.get(course.id) || [];
+      const courseUnits = unitsByCourse.get(course.id) || [];
+      const studentActualAverages = [];
+      let actualExamUnitCount = 0;
+
+      for (const enrollment of enrollments) {
+        const bestUnits = selectBestActualExamUnits(
+          unitGradesByEnrollment.get(enrollment.id) || [],
+          courseUnits
+        );
+        const average = weightedActualExamAverage(bestUnits);
+        if (average === null) continue;
+        studentActualAverages.push(average);
+        actualExamUnitCount += bestUnits.length;
+      }
+
+      return {
+        name: course.name,
+        board: course.board,
+        student_count: enrollments.length,
+        actual_exam_avg: studentActualAverages.length
+          ? roundOneDecimal(studentActualAverages.reduce((sum, score) => sum + score, 0) / studentActualAverages.length)
+          : null,
+        actual_exam_student_count: studentActualAverages.length,
+        actual_exam_unit_count: actualExamUnitCount,
+      };
+    });
 
     // 大学申请统计
     const allStudentUnis = await dbAsync.findAll('student_universities');
@@ -185,12 +252,12 @@ router.get('/grade-overview/:grade', authenticateToken, requireNotStudent, async
     // 语言成绩统计
     const allLangScores = await dbAsync.findAll('language_scores', { is_best_score: 1 });
     const studentLangScores = allLangScores.filter(ls => studentIds.includes(ls.student_id));
-    
-    const ieltsScores = studentLangScores.map(ls => ls.overall_score).filter(Boolean);
+    const ieltsRows = studentLangScores.filter((ls) => ls.test_type === 'IELTS');
+    const ieltsScores = collectScores(ieltsRows, 'overall_score');
     const languageStats = {
-      avg_ielts: ieltsScores.length ? ieltsScores.reduce((a, b) => a + b, 0) / ieltsScores.length : 0,
-      max_ielts: ieltsScores.length ? Math.max(...ieltsScores) : 0,
-      has_ielts: studentLangScores.length
+      avg_ielts: ieltsScores.length ? ieltsScores.reduce((a, b) => a + b, 0) / ieltsScores.length : null,
+      max_ielts: ieltsScores.length ? Math.max(...ieltsScores) : null,
+      has_ielts: ieltsRows.length
     };
 
     res.json({
@@ -346,7 +413,8 @@ router.get('/:id/dashboard', authenticateToken, assertOwnStudentParam('id'), asy
     student.advisor_name = advisor ? advisor.name : null;
 
     // 获取课程和成绩
-    const studentCourses = await dbAsync.findAll('student_courses', { student_id: id });
+    const studentCourses = (await dbAsync.findAll('student_courses', { student_id: id }))
+      .filter((course) => course.status !== 'dropped');
     const courses = await Promise.all(
       studentCourses.map(async (sc) => {
         const course = await dbAsync.findById('courses', sc.course_id);
@@ -384,6 +452,7 @@ router.get('/:id/dashboard', authenticateToken, assertOwnStudentParam('id'), asy
         return fallback;
       }
     };
+    const sensitiveNames = (await dbAsync.findAll('students')).flatMap((row) => [row.name, row.english_name]);
     const targetUniversities = await Promise.all(
       studentUnis.map(async (su) => {
         const uni = await dbAsync.findById('target_universities', su.university_id);
@@ -391,15 +460,17 @@ router.get('/:id/dashboard', authenticateToken, assertOwnStudentParam('id'), asy
         if (su.program_id) {
           programRow = await dbAsync.findById('university_programs', su.program_id);
         }
+        const normalizedUni = uni ? normalizeUniversityRow(uni, sensitiveNames) : null;
+        const normalizedProgram = programRow ? normalizeProgramRow(programRow, sensitiveNames) : null;
         return {
           ...su,
-          ...uni,
+          ...(normalizedUni || {}),
           student_university_id: su.id,
-          university_record_id: uni.id,
+          university_record_id: uni ? uni.id : null,
           matching_prefs: parseJsonCol(su.matching_prefs, null),
           offer_detail: parseJsonCol(su.offer_detail, null),
-          program_name: programRow ? programRow.program_name : null,
-          program: programRow,
+          program_name: normalizedProgram ? normalizedProgram.program_name : null,
+          program: normalizedProgram,
         };
       })
     );
@@ -491,26 +562,32 @@ router.get('/:id/alevel-predictions', authenticateToken, assertOwnStudentParam('
       // 校内课程不参与标化推算与匹配
       if (String(course.board || '').trim() === 'Internal') continue;
 
-      const [courseUnits, unitGrades] = await Promise.all([
+      const [courseUnits, unitGrades, plans] = await Promise.all([
         dbAsync.findAll('course_units', { course_id: sc.course_id }),
         dbAsync.findAll('unit_grades', { student_course_id: sc.id }),
+        dbAsync.findAll('session_unit_plans', { student_course_id: sc.id }),
       ]);
       courseUnits.sort((a, b) => (a.sort_order || 0) - (b.sort_order || 0));
+      const activeCourseUnits = selectActiveCourseUnits(courseUnits, unitGrades, plans, course);
 
-      // 取“实考/重考”里每个单元的最好得分率（若没有，则视为未考）
+      // 同一单元的实考/重考只取最高有效得分率；重考成绩因此会覆盖较低的原实考成绩。
       const bestPctByUnitCode = {};
       for (const g of unitGrades) {
-        if (!g.unit_code) continue;
         if (g.exam_type !== 'final' && g.exam_type !== 'retake') continue;
-        const denom = g.max_score || 100;
-        if (!denom) continue;
-        const pct = Math.max(0, Math.min(1, (g.score || 0) / denom));
-        const key = String(g.unit_code).trim().toLowerCase();
-        bestPctByUnitCode[key] = Math.max(bestPctByUnitCode[key] || 0, pct);
+        const score = toFiniteScore(g.score);
+        const denom = toFiniteScore(g.max_score) ?? 100;
+        if (score === null || denom <= 0) continue;
+        const unitKey = g.unit_code || g.unit_name;
+        if (!unitKey) continue;
+        const pct = Math.max(0, Math.min(1, score / denom));
+        const key = String(unitKey).trim().toLowerCase();
+        if (bestPctByUnitCode[key] == null || pct > bestPctByUnitCode[key]) {
+          bestPctByUnitCode[key] = pct;
+        }
       }
 
-      const units = courseUnits.map(u => {
-        const key = String(u.unit_code || '').trim().toLowerCase();
+      const units = activeCourseUnits.map(u => {
+        const key = String(u.unit_code || u.unit_name || '').trim().toLowerCase();
         const exam_pct = key && bestPctByUnitCode[key] != null ? bestPctByUnitCode[key] : null;
         return {
           unit_code: u.unit_code,
@@ -521,8 +598,43 @@ router.get('/:id/alevel-predictions', authenticateToken, assertOwnStudentParam('
         };
       });
 
-      // 没有单元配置时：无法推算（返回空）
+      // EPQ 等单一项目在历史数据中可能没有 course_units 配置。
+      // 此时以已有实考/重考记录补出只读单元，既不写库也不丢失已取得的等级。
+      if (!units.length) {
+        const bestRowsByUnit = new Map();
+        for (const grade of unitGrades) {
+          if (grade.exam_type !== 'final' && grade.exam_type !== 'retake') continue;
+          const score = toFiniteScore(grade.score);
+          const maxScore = toFiniteScore(grade.max_score);
+          const key = String(grade.unit_code || grade.unit_name || '').trim().toLowerCase();
+          if (!key || score === null || maxScore === null || maxScore <= 0) continue;
+          const pct = Math.max(0, Math.min(1, score / maxScore));
+          const current = bestRowsByUnit.get(key);
+          if (!current || pct > current.pct) bestRowsByUnit.set(key, { grade, pct });
+        }
+        for (const { grade, pct } of bestRowsByUnit.values()) {
+          units.push({
+            unit_code: grade.unit_code || grade.unit_name || '',
+            max_score: toFiniteScore(grade.max_score) || 100,
+            weight: 1,
+            is_advanced: false,
+            exam_pct: pct,
+          });
+        }
+      }
+
+      // 没有配置、也没有实考记录时无法推算。
       if (!units.length) continue;
+
+      const inferredFinalGrades = [...new Set(
+        unitGrades
+          .filter((grade) => grade.exam_type === 'final' || grade.exam_type === 'retake')
+          .map((grade) => String(grade.grade || '').trim().toUpperCase())
+          .filter((grade) => ['A*', 'A', 'B', 'C', 'D', 'E', 'U', 'X'].includes(grade))
+      )];
+      const inferredConfirmedGrade = activeCourseUnits.length === 0 && inferredFinalGrades.length === 1
+        ? inferredFinalGrades[0]
+        : null;
 
       results.push(
         predictCourseFromUnits({
@@ -530,6 +642,9 @@ router.get('/:id/alevel-predictions', authenticateToken, assertOwnStudentParam('
           course_name: course.name,
           board: course.board,
           student_course_id: sc.id,
+          confirmed_grade: sc.final_grade || inferredConfirmedGrade,
+          // 旧汇总字段的默认 0 不能覆盖从单元成绩推导出的 EPQ 实际得分。
+          confirmed_score: sc.final_grade ? sc.final_score : null,
           units,
         })
       );
@@ -1021,13 +1136,14 @@ async function getStudentStats(studentId) {
     const courses = await dbAsync.findAll('student_courses', { student_id: studentId });
     stats.courseCount = courses.length;
     
-    const scores = courses.map(c => c.internal_score).filter(Boolean);
+    const scores = collectScores(courses, 'internal_score');
     stats.avgInternalScore = scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : 0;
 
     // 语言成绩
     const langScores = await dbAsync.findAll('language_scores', { student_id: studentId, is_best_score: 1 });
+    const ieltsScores = langScores.filter((score) => score.test_type === 'IELTS');
     stats.hasLanguageScore = langScores.length > 0;
-    stats.bestIelts = langScores[0]?.overall_score;
+    stats.bestIelts = ieltsScores[0]?.overall_score ?? null;
 
     // 大学申请
     const unis = await dbAsync.findAll('student_universities', { student_id: studentId });

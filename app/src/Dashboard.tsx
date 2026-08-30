@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { AlertCircle } from 'lucide-react';
 import { useGrade } from '@/contexts/GradeContext';
 import { useAuth } from '@/contexts/AuthContext';
+import { getFlexibleUnitRule, isFlexibleUnitCode } from '@/lib/flexibleUnits';
 
 /** 供学生详情「美本需求」等与仪表盘一致的学生数据转换 */
 export function transformDashboardData(apiData: StudentDashboardType, predictions?: AlevelPredictionsResponse | null) {
@@ -76,32 +77,35 @@ export function transformDashboardData(apiData: StudentDashboardType, prediction
         examType: (u.exam_type || 'final') as 'internal' | 'mock' | 'final' | 'retake',
       }));
 
-      const finalUnits = allUnits.filter(u => u.examType === 'final');
-      const retakeUnits = allUnits.filter(u => u.examType === 'retake');
       const internalUnits = allUnits
         .filter(u => u.examType === 'internal')
         .sort((a, b) => (b.date || '').localeCompare(a.date || ''));
       const recentInternals = internalUnits.slice(0, 2);
 
       const courseUnits = Array.isArray((course as any).courseUnits) ? ((course as any).courseUnits as any[]) : [];
-      const configuredUnits = courseUnits
-        .map((u) => ({
-          unit_code: String(u.unit_code || '').trim(),
-          unit_name: String(u.unit_name || '').trim(),
-          max_score: typeof u.max_score === 'number' && u.max_score > 0 ? u.max_score : 100,
-          is_advanced: !!u.is_advanced,
-          sort_order: typeof u.sort_order === 'number' ? u.sort_order : 0,
-        }))
-        .sort((a, b) => a.sort_order - b.sort_order);
-
+      const flexibleUnitRule = getFlexibleUnitRule(course.subject_code);
       const matchUnit = (cfg: { unit_code: string; unit_name: string }, g: { unit: string }) => {
         const key = (g.unit || '').trim();
         if (!key) return false;
         if (cfg.unit_code && key.toLowerCase() === cfg.unit_code.toLowerCase()) return true;
         if (cfg.unit_name && key.toLowerCase() === cfg.unit_name.toLowerCase()) return true;
-        if (cfg.unit_code && cfg.unit_name && (key.toLowerCase() === cfg.unit_code.toLowerCase() || key.toLowerCase() === cfg.unit_name.toLowerCase())) return true;
         return false;
       };
+      const configuredUnits = courseUnits
+        .map((u) => ({
+          unit_code: String(u.unit_code || '').trim(),
+          unit_name: String(u.unit_name || '').trim(),
+          max_score: typeof u.max_score === 'number' && u.max_score > 0 ? u.max_score : 100,
+          weight: typeof u.weight === 'number' && u.weight > 0 ? u.weight : 1,
+          is_advanced: !!u.is_advanced,
+          is_required: u.is_required !== 0 && u.is_required !== false,
+          sort_order: typeof u.sort_order === 'number' ? u.sort_order : 0,
+        }))
+        // 组合型数学课程的候选池始终完整保留；实际六单元组合由后端预测接口识别。
+        .filter((u) => flexibleUnitRule
+          ? isFlexibleUnitCode(course.subject_code, u.unit_code)
+          : (u.is_required || allUnits.some((g) => matchUnit(u, g))))
+        .sort((a, b) => a.sort_order - b.sort_order);
 
       const bestPctForCfg = (cfg: { unit_code: string; unit_name: string }) => {
         const matches = allUnits.filter((g) => matchUnit(cfg, g));
@@ -117,22 +121,39 @@ export function transformDashboardData(apiData: StudentDashboardType, prediction
         return Math.max(0, Math.min(1, best));
       };
 
-      const overallDenom = configuredUnits.reduce((s, u) => s + u.max_score, 0);
-      const overallNumer = configuredUnits.reduce((s, u) => s + bestPctForCfg(u) * u.max_score, 0);
+      const bestFinalLikeByUnit = new Map<string, (typeof allUnits)[number]>();
+      allUnits
+        .filter((u) => u.examType === 'final' || u.examType === 'retake')
+        .forEach((unit) => {
+          const key = String(unit.unit || '').trim().toLowerCase();
+          if (!key) return;
+          const pct = unit.maxScore > 0 ? unit.score / unit.maxScore : 0;
+          const previous = bestFinalLikeByUnit.get(key);
+          const previousPct = previous && previous.maxScore > 0 ? previous.score / previous.maxScore : -1;
+          if (!previous || pct > previousPct || (pct === previousPct && unit.date > previous.date)) {
+            bestFinalLikeByUnit.set(key, unit);
+          }
+        });
+      const bestFinalLikeUnits = [...bestFinalLikeByUnit.values()]
+        .filter((unit) => !flexibleUnitRule || isFlexibleUnitCode(course.subject_code, unit.unit));
+
+      const overallDenom = configuredUnits.reduce((s, u) => s + u.max_score * u.weight, 0);
+      const overallNumer = configuredUnits.reduce((s, u) => s + bestPctForCfg(u) * u.max_score * u.weight, 0);
       const computedFinalScore = overallDenom > 0 ? Math.round((overallNumer / overallDenom) * 100) : null;
 
       const advUnits = configuredUnits.filter((u) => u.is_advanced);
-      const advDenom = advUnits.reduce((s, u) => s + u.max_score, 0);
-      const advNumer = advUnits.reduce((s, u) => s + bestPctForCfg(u) * u.max_score, 0);
+      const advDenom = advUnits.reduce((s, u) => s + u.max_score * u.weight, 0);
+      const advNumer = advUnits.reduce((s, u) => s + bestPctForCfg(u) * u.max_score * u.weight, 0);
       const computedAdvancedPct = advDenom > 0 ? Math.round((advNumer / advDenom) * 100) : null;
 
-      const computedAlevelGrade: 'A*' | 'A' | null =
+      const computedAlevelGrade: 'A*' | 'A' | 'B' | 'C' | 'D' | 'E' | 'U' | null =
         computedFinalScore != null && computedFinalScore >= 80
           ? (computedAdvancedPct != null && computedAdvancedPct >= 90 ? 'A*' : 'A')
           : null;
 
       const pred = predByStudentCourseId.get(course.id);
-      const hasAnyFinalLike = pred ? pred.observed_units > 0 : false;
+      const hasAnyFinalLike = pred ? pred.observed_units > 0 || pred.is_finalized === true : false;
+      const predictionFinalized = pred?.is_finalized === true;
       const predictedFinalPct = pred && hasAnyFinalLike ? pred.predicted_pct : null;
       const predictedFinalGrade = pred && hasAnyFinalLike ? pred.predicted_grade : null;
       const predictedConfidence = pred && hasAnyFinalLike ? pred.confidence : null;
@@ -147,7 +168,7 @@ export function transformDashboardData(apiData: StudentDashboardType, prediction
       return {
         name: course.course_name || course.subject_code || 'Course',
         board: normalizeBoard(course.board),
-        predictedGrade: course.internal_grade,
+        predictedGrade: predictionFinalized && predictedFinalGrade ? undefined : course.internal_grade,
         internalScore: course.internal_score || undefined,
         internalGrade: course.internal_grade || undefined,
         mockScore: course.mock_score || undefined,
@@ -158,15 +179,18 @@ export function transformDashboardData(apiData: StudentDashboardType, prediction
         computedFinalScore: predictedFinalPct != null ? Math.round(predictedFinalPct) : computedFinalScore,
         computedInternalAvg,
         computedAdvancedPct: pred && hasAnyFinalLike && pred.predicted_advanced_pct != null ? Math.round(pred.predicted_advanced_pct) : computedAdvancedPct,
-        computedAlevelGrade: predictedFinalGrade === 'A*' || predictedFinalGrade === 'A' ? predictedFinalGrade : computedAlevelGrade,
+        computedAlevelGrade: predictionFinalized && predictedFinalGrade ? predictedFinalGrade : computedAlevelGrade,
         predictedFinalPct,
         predictedFinalGrade,
         predictedConfidence,
         predictedProbabilities,
-        totalConfiguredUnits: configuredUnits.length || undefined,
-        finishedFinalUnits: finalUnits.length + retakeUnits.length,
-        needsRetake: finalUnits.some(u => u.grade && ['D', 'E', 'U'].includes(u.grade)),
-        retakeUnits: finalUnits
+        predictionFinalized,
+        totalConfiguredUnits: flexibleUnitRule?.totalUnits || configuredUnits.length || undefined,
+        finishedFinalUnits: flexibleUnitRule
+          ? Math.min(bestFinalLikeUnits.length, flexibleUnitRule.totalUnits)
+          : bestFinalLikeUnits.length,
+        needsRetake: bestFinalLikeUnits.some(u => u.grade && ['D', 'E', 'U'].includes(u.grade)),
+        retakeUnits: bestFinalLikeUnits
           .filter(u => u.grade && ['D', 'E', 'U'].includes(u.grade))
           .map(u => u.unit),
       };

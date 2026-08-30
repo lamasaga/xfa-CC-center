@@ -129,7 +129,7 @@
     "admission_requirements": {
       "a_level": "A*A*A-AAA（多数STEM课程要求A*A*A，数学通常要求A*）",
       "ielts": "总分7.0，小分不低于6.5（Standard 6.5/6.0, Higher 7.0/6.5）",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "非常重要，需突出STEM学科能力和热情",
       "interview": "部分课程需要面试或在线评估",
       "acceptance_rate": "约14.7%"
@@ -187,7 +187,7 @@
     "admission_requirements": {
       "a_level": "A*A*A-ABB（多数课程AAA-AAB）",
       "ielts": "总分6.5-8.0（课程分级：Level 1 6.5/6.0至Level 5 8.0/8.0）",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "非常重要",
       "interview": "部分课程需要面试",
       "acceptance_rate": "约30%"
@@ -245,7 +245,7 @@
     "admission_requirements": {
       "a_level": "A*AA-AAA（多数课程要求AAA）",
       "ielts": "总分7.0，小分不低于7.0（写作需7.0）",
-      "ucas_deadline": "2026年1月14日",
+      "ucas_deadline": "2026年1月13日",
       "personal_statement": "极其重要，需展现对社会科学的深刻思考",
       "interview": "通常不需要面试",
       "acceptance_rate": "约9%"
@@ -303,7 +303,7 @@
     "admission_requirements": {
       "a_level": "AAA-AAB（医学和工程课程要求更高）",
       "ielts": "总分6.5，小分不低于5.5（多数课程）；部分课程要求7.0",
-      "ucas_deadline": "2026年1月14日（医学/兽医：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学/兽医：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约47%"
@@ -361,7 +361,7 @@
     "admission_requirements": {
       "a_level": "AAA-ABB（视课程而定）",
       "ielts": "总分6.0-7.0，小分不低于5.5-6.5（课程分级）",
-      "ucas_deadline": "2026年1月14日",
+      "ucas_deadline": "2026年1月13日",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约56%"
@@ -419,7 +419,7 @@
     "admission_requirements": {
       "a_level": "A*AA-ABB（多数课程AAB-AAA）",
       "ielts": "总分7.0，小分不低于6.5（多数课程）",
-      "ucas_deadline": "2026年1月14日（医学/牙医：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学/牙医：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约13%"
@@ -477,7 +477,7 @@
     "admission_requirements": {
       "a_level": "A*AA-ABB（多数课程AAA-AAB）",
       "ielts": "总分6.0-7.5（视课程而定，小分不低于5.5-7.0）",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约67%"
@@ -535,7 +535,7 @@
     "admission_requirements": {
       "a_level": "A*AA-ABB（多数课程AAB-AAA）",
       "ielts": "总分6.0-7.0（小分不低于5.5-6.5）",
-      "ucas_deadline": "2026年1月14日",
+      "ucas_deadline": "2026年1月13日",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约14%"
@@ -593,7 +593,7 @@
     "admission_requirements": {
       "a_level": "AAA-ABB（视课程而定）",
       "ielts": "总分6.5，小分不低于6.0（多数课程）",
-      "ucas_deadline": "2026年1月14日（医学/兽医：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学/兽医：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约84%"
@@ -651,7 +651,7 @@
     "admission_requirements": {
       "a_level": "A*AA-ABB（视课程而定）",
       "ielts": "总分6.0-6.5（小分不低于5.5-6.0）",
-      "ucas_deadline": "2026年1月14日",
+      "ucas_deadline": "2026年1月13日",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约70%"
@@ -709,7 +709,7 @@
     "admission_requirements": {
       "a_level": "A*AA-AAB（视课程而定）",
       "ielts": "总分6.5，小分不低于6.0（多数课程）",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约41%"
@@ -767,7 +767,7 @@
     "admission_requirements": {
       "a_level": "AAA-ABB（视课程而定）",
       "ielts": "总分6.0-6.5（小分不低于5.5-6.0）",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约13.5%"
@@ -825,7 +825,7 @@
     "admission_requirements": {
       "a_level": "AAA-ABB（视课程而定）",
       "ielts": "总分6.0，小分不低于5.5（多数课程）；部分要求6.5",
-      "ucas_deadline": "2026年1月14日",
+      "ucas_deadline": "2026年1月13日",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约72%"
@@ -883,7 +883,7 @@
     "admission_requirements": {
       "a_level": "AAA-BBB（视课程而定）",
       "ielts": "总分6.0-6.5，小分不低于5.5-6.0",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约76%"
@@ -941,7 +941,7 @@
     "admission_requirements": {
       "a_level": "AAA-BBB（视课程而定）",
       "ielts": "总分6.0-7.0，小分不低于5.5-6.0",
-      "ucas_deadline": "2026年1月14日（医学/兽医：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学/兽医：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约80%"
@@ -999,7 +999,7 @@
     "admission_requirements": {
       "a_level": "AAA-BBB（视课程而定）",
       "ielts": "总分6.5-7.0，小分不低于6.0-6.5（写作通常要求6.5+）",
-      "ucas_deadline": "2026年1月14日（医学/牙医：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学/牙医：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约64%"
@@ -1057,7 +1057,7 @@
     "admission_requirements": {
       "a_level": "AAB-ABB（视课程而定）",
       "ielts": "总分6.5，小分不低于5.5-6.0",
-      "ucas_deadline": "2026年1月14日",
+      "ucas_deadline": "2026年1月13日",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约18.7%"
@@ -1115,7 +1115,7 @@
     "admission_requirements": {
       "a_level": "AAA-BBB（视课程而定）",
       "ielts": "总分6.5，小分不低于5.5-6.0",
-      "ucas_deadline": "2026年1月14日（医学：2025年10月15日）",
+      "ucas_deadline": "2026年1月13日（医学：2025年10月15日）",
       "personal_statement": "重要",
       "interview": "部分课程需要",
       "acceptance_rate": "约73%"

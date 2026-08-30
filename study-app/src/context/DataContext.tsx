@@ -31,6 +31,7 @@ export interface University {
   };
   majors: string[];
   is_art_school: boolean;
+  admission_difficulty?: number;
   location?: {
     lat?: number;
     lng?: number;
@@ -81,20 +82,33 @@ export function DataProvider({ children }: { children: ReactNode }) {
       setLoading(true);
       setError(null);
 
-      const [uniRes, tpRes] = await Promise.all([
+      const [uniRes, tpRes, imgRes] = await Promise.all([
         fetch('./universities_data.json'),
         fetch('./third_party_summary.json'),
+        fetch('./university-images/mapping.json'),
       ]);
 
       if (!uniRes.ok) throw new Error(`Failed to load universities: ${uniRes.status}`);
       if (!tpRes.ok) throw new Error(`Failed to load third party data: ${tpRes.status}`);
 
-      const [uniData, tpData] = await Promise.all([
+      const [uniData, tpData, imgMapping] = await Promise.all([
         uniRes.json(),
         tpRes.json(),
+        imgRes.ok ? imgRes.json() : Promise.resolve({}),
       ]);
 
-      setUniversities(Array.isArray(uniData) ? uniData : uniData.universities || []);
+      const rawUniversities = Array.isArray(uniData) ? uniData : uniData.universities || [];
+
+      // Merge image paths from mapping
+      const universitiesWithImages = rawUniversities.map((u: Record<string, unknown>) => {
+        const entry = imgMapping[u.id as string];
+        if (entry?.filename) {
+          return { ...u, image: `./university-images/${entry.filename}` };
+        }
+        return u;
+      });
+
+      setUniversities(universitiesWithImages);
       setThirdParty(tpData);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Unknown error loading data');

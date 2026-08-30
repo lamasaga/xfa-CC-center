@@ -58,7 +58,7 @@ function UniversityMatchSection({
     
     const requiredGrades: string[] = (uni.requirements.aLevel || '').match(/[A-D][*]?/g) || [];
     const hasAStar = data.aLevelSubjects.some(s => {
-      const grade = s.finalGrade || s.mockGrade || s.predictedGrade;
+      const grade = s.computedAlevelGrade || s.finalGrade || s.mockGrade || s.predictedGrade;
       return grade === 'A*';
     });
     if (requiredGrades.includes('A*') && !hasAStar) {

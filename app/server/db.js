@@ -364,6 +364,84 @@ async function initDb() {
         db.exec('ALTER TABLE course_units ADD COLUMN allowed_months TEXT');
         console.log('✓ Migrated: added course_units.allowed_months');
       }
+      const hasRequiredFlag = cols.some(c => c.name === 'is_required');
+      if (!hasRequiredFlag) {
+        db.exec('ALTER TABLE course_units ADD COLUMN is_required INTEGER DEFAULT 1');
+        console.log('✓ Migrated: added course_units.is_required');
+      }
+
+      // IAL Mathematics / Further Mathematics 采用“固定单元 + 候选单元任选”的六单元结构。
+      // 选择逻辑由学生已有成绩和考季计划识别，不能把 D1 这一个单元静态标为可选。
+      // 以下仅补全、修正未被任何成绩/计划引用的课程配置，绝不修改成绩或考季记录。
+      const { v4: uuidv4 } = require('uuid');
+      const flexibleCourses = db.prepare(
+        `SELECT id, subject_code FROM courses
+         WHERE upper(trim(subject_code)) IN ('IAL-MATH', 'IAL-FM', 'IAL-FMATH')`
+      ).all();
+      const getUnit = db.prepare(
+        'SELECT * FROM course_units WHERE course_id = ? AND upper(trim(unit_code)) = ? LIMIT 1'
+      );
+      const insertUnit = db.prepare(
+        `INSERT INTO course_units
+           (id, course_id, unit_code, unit_name, is_advanced, is_required, max_score, weight, description, sort_order)
+         VALUES (?, ?, ?, ?, 0, 1, 100, 1, '', ?)`
+      );
+      const hasUnitReference = db.prepare(
+        `SELECT 1
+         WHERE EXISTS (
+           SELECT 1 FROM session_unit_plans p
+           JOIN student_courses sc ON sc.id = p.student_course_id
+           WHERE sc.course_id = ? AND p.course_unit_id = ?
+         )
+         OR EXISTS (
+           SELECT 1 FROM unit_grades ug
+           JOIN student_courses sc ON sc.id = ug.student_course_id
+           WHERE sc.course_id = ? AND upper(trim(COALESCE(ug.unit_code, ''))) = ?
+         )`
+      );
+
+      for (const course of flexibleCourses) {
+        const code = String(course.subject_code || '').trim().toUpperCase();
+        db.prepare('UPDATE course_units SET is_required = 1 WHERE course_id = ? AND is_required <> 1').run(course.id);
+
+        if (code === 'IAL-MATH' && !getUnit.get(course.id, 'D1')) {
+          const nextOrder = db.prepare('SELECT COALESCE(MAX(sort_order), -1) + 1 AS next_order FROM course_units WHERE course_id = ?').get(course.id);
+          insertUnit.run(uuidv4(), course.id, 'D1', 'Decision Mathematics 1', nextOrder.next_order);
+          console.log('✓ Migrated: added IAL Mathematics D1 as a candidate unit');
+        }
+
+        if (code === 'IAL-FM' || code === 'IAL-FMATH') {
+          const replacements = [
+            { from: 'S3', to: 'M1', name: 'Mechanics 1' },
+            { from: 'M3', to: 'S1', name: 'Statistics 1' },
+          ];
+          for (const replacement of replacements) {
+            const source = getUnit.get(course.id, replacement.from);
+            const target = getUnit.get(course.id, replacement.to);
+            if (source && !target) {
+              const referenced = hasUnitReference.get(course.id, source.id, course.id, replacement.from);
+              if (!referenced) {
+                db.prepare('UPDATE course_units SET unit_code = ?, unit_name = ?, is_required = 1 WHERE id = ?')
+                  .run(replacement.to, replacement.name, source.id);
+                console.log(`✓ Migrated: corrected IAL Further Mathematics ${replacement.from} to ${replacement.to}`);
+              } else {
+                console.warn(`Skipped IAL Further Mathematics ${replacement.from} correction because it has historical references`);
+              }
+            }
+          }
+
+          for (const missing of [
+            { code: 'M1', name: 'Mechanics 1' },
+            { code: 'S1', name: 'Statistics 1' },
+          ]) {
+            if (!getUnit.get(course.id, missing.code)) {
+              const nextOrder = db.prepare('SELECT COALESCE(MAX(sort_order), -1) + 1 AS next_order FROM course_units WHERE course_id = ?').get(course.id);
+              insertUnit.run(uuidv4(), course.id, missing.code, missing.name, nextOrder.next_order);
+              console.log(`✓ Migrated: added IAL Further Mathematics ${missing.code} candidate unit`);
+            }
+          }
+        }
+      }
     } catch (e) {
       // ignore if table missing in early init scenarios
     }
@@ -631,6 +709,73 @@ async function initDb() {
       }
     } catch (e) {
       console.warn('Migration exam month 6→5:', e.message);
+    }
+
+    // 考季与单元计划的防重复保护：使用触发器而非重建表，兼容已有数据库中的历史重复记录。
+    try {
+      db.exec(`
+        CREATE INDEX IF NOT EXISTS idx_exam_sessions_identity
+          ON exam_sessions(year, month, board);
+        CREATE INDEX IF NOT EXISTS idx_session_unit_plans_identity
+          ON session_unit_plans(student_course_id, course_unit_id, exam_session_id, plan_type);
+
+        CREATE TRIGGER IF NOT EXISTS trg_exam_sessions_unique_identity_insert
+        BEFORE INSERT ON exam_sessions
+        WHEN EXISTS (
+          SELECT 1 FROM exam_sessions
+          WHERE year = NEW.year
+            AND (CASE WHEN month = 6 THEN 5 ELSE month END) = (CASE WHEN NEW.month = 6 THEN 5 ELSE NEW.month END)
+            AND COALESCE(board, 'Edexcel') = COALESCE(NEW.board, 'Edexcel')
+        )
+        BEGIN
+          SELECT RAISE(ABORT, 'duplicate exam session');
+        END;
+
+        CREATE TRIGGER IF NOT EXISTS trg_exam_sessions_unique_identity_update
+        BEFORE UPDATE OF year, month, board ON exam_sessions
+        WHEN EXISTS (
+          SELECT 1 FROM exam_sessions
+          WHERE id <> NEW.id
+            AND year = NEW.year
+            AND (CASE WHEN month = 6 THEN 5 ELSE month END) = (CASE WHEN NEW.month = 6 THEN 5 ELSE NEW.month END)
+            AND COALESCE(board, 'Edexcel') = COALESCE(NEW.board, 'Edexcel')
+        )
+        BEGIN
+          SELECT RAISE(ABORT, 'duplicate exam session');
+        END;
+
+        CREATE TRIGGER IF NOT EXISTS trg_session_unit_plans_unique_identity_insert
+        BEFORE INSERT ON session_unit_plans
+        WHEN NEW.status <> 'cancelled' AND EXISTS (
+          SELECT 1 FROM session_unit_plans
+          WHERE student_course_id = NEW.student_course_id
+            AND course_unit_id = NEW.course_unit_id
+            AND exam_session_id = NEW.exam_session_id
+            AND plan_type = NEW.plan_type
+            AND status <> 'cancelled'
+        )
+        BEGIN
+          SELECT RAISE(ABORT, 'duplicate session unit plan');
+        END;
+
+        CREATE TRIGGER IF NOT EXISTS trg_session_unit_plans_unique_identity_update
+        BEFORE UPDATE OF student_course_id, course_unit_id, exam_session_id, plan_type, status ON session_unit_plans
+        WHEN NEW.status <> 'cancelled' AND EXISTS (
+          SELECT 1 FROM session_unit_plans
+          WHERE id <> NEW.id
+            AND student_course_id = NEW.student_course_id
+            AND course_unit_id = NEW.course_unit_id
+            AND exam_session_id = NEW.exam_session_id
+            AND plan_type = NEW.plan_type
+            AND status <> 'cancelled'
+        )
+        BEGIN
+          SELECT RAISE(ABORT, 'duplicate session unit plan');
+        END;
+      `);
+      console.log('✓ Added non-destructive exam session duplicate guards');
+    } catch (e) {
+      console.warn('Migration exam session duplicate guards:', e.message);
     }
 
     return true;

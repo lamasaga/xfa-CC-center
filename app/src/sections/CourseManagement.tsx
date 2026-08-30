@@ -19,6 +19,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useGrade } from '@/contexts/GradeContext';
 import { CourseDetail } from '@/sections/CourseDetail';
 import { Plus, ArrowLeft, Settings, Trash2, Edit2 } from 'lucide-react';
+import { getFlexibleUnitRule } from '@/lib/flexibleUnits';
 
 const BOARDS = ['Edexcel', 'CIE', 'AQA', 'OCR', 'WJEC', 'LRN', 'Internal'] as const;
 
@@ -57,12 +58,14 @@ export function CourseManagement() {
     unit_code: '',
     unit_name: '',
     is_advanced: false,
+    is_required: true,
     max_score: 100,
     weight: 1.0,
     description: '',
     allowed_months: [] as number[],
   });
   const [editingUnitId, setEditingUnitId] = useState<string | null>(null);
+  const flexibleUnitRule = getFlexibleUnitRule(courses.find((course) => course.id === unitsCourseId)?.subject_code);
 
   const fetchCourses = async () => {
     try { setIsLoading(true); setCourses(await courseApi.getAll()); }
@@ -133,7 +136,7 @@ export function CourseManagement() {
     setUnitsCourseId(courseId);
     setUnitsCourseNm(courseName);
     setEditingUnitId(null);
-    setUnitForm({ unit_code: '', unit_name: '', is_advanced: false, max_score: 100, weight: 1.0, description: '', allowed_months: [] });
+    setUnitForm({ unit_code: '', unit_name: '', is_advanced: false, is_required: true, max_score: 100, weight: 1.0, description: '', allowed_months: [] });
     try { setUnits(await courseApi.getUnits(courseId)); } catch { setUnits([]); }
     setShowUnitsDialog(true);
   };
@@ -147,7 +150,7 @@ export function CourseManagement() {
         await courseApi.addUnit(unitsCourseId, { ...unitForm, sort_order: units.length });
       }
       setUnits(await courseApi.getUnits(unitsCourseId));
-      setUnitForm({ unit_code: '', unit_name: '', is_advanced: false, max_score: 100, weight: 1.0, description: '', allowed_months: [] });
+      setUnitForm({ unit_code: '', unit_name: '', is_advanced: false, is_required: true, max_score: 100, weight: 1.0, description: '', allowed_months: [] });
       setEditingUnitId(null);
     } catch (err) { alert(err instanceof Error ? err.message : '操作失败'); }
   };
@@ -158,6 +161,7 @@ export function CourseManagement() {
       unit_code: u.unit_code,
       unit_name: u.unit_name,
       is_advanced: !!u.is_advanced,
+      is_required: u.is_required !== 0 && u.is_required !== false,
       max_score: u.max_score,
       weight: u.weight,
       description: u.description || '',
@@ -344,7 +348,11 @@ export function CourseManagement() {
         <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto" key={unitsCourseId || 'units'}>
           <DialogHeader>
             <DialogTitle>单元配置 - {unitsCourseNm}</DialogTitle>
-            <DialogDescription>A-Level 考试按单元进行，每个单元独立计分。在此配置课程的考试单元结构。</DialogDescription>
+            <DialogDescription>
+              {flexibleUnitRule
+                ? `本课程按六个有效单元计分：固定 ${flexibleUnitRule.coreUnitCodes.join('、')}，再从 ${flexibleUnitRule.choiceUnitCodes.join('、')} 中任选 ${flexibleUnitRule.choiceCount} 门。学生已录入的成绩或考季计划自动识别实际组合。`
+                : 'A-Level 考试按单元进行，每个单元独立计分。在此配置课程的考试单元结构。'}
+            </DialogDescription>
           </DialogHeader>
           <div className="space-y-4 py-4">
             {units.length > 0 && (
@@ -366,7 +374,14 @@ export function CourseManagement() {
                       <TableCell className="font-mono">{u.unit_code}</TableCell>
                       <TableCell>{u.unit_name}</TableCell>
                       <TableCell>
-                        {u.is_advanced ? <Badge variant="secondary">高阶</Badge> : <span className="text-xs text-slate-400">—</span>}
+                        <div className="flex gap-1">
+                          {flexibleUnitRule
+                            ? <Badge variant="outline" className="text-primary border-primary/30">组合候选</Badge>
+                            : (u.is_required === 0 || u.is_required === false
+                            ? <Badge variant="outline" className="text-amber-700 border-amber-200">可选</Badge>
+                            : <Badge variant="outline" className="text-slate-600">必修</Badge>)}
+                          {u.is_advanced && <Badge variant="secondary">高阶</Badge>}
+                        </div>
                       </TableCell>
                       <TableCell className="text-xs text-slate-600">
                         {Array.isArray(u.allowed_months) && u.allowed_months.length > 0
@@ -407,6 +422,24 @@ export function CourseManagement() {
                       <SelectItem value="advanced">高阶单元（用于 A*）</SelectItem>
                     </SelectContent>
                   </Select>
+                </div>
+                <div className="space-y-1"><Label className="text-xs">计分范围</Label>
+                  {flexibleUnitRule ? (
+                    <div className="h-9 rounded-md border bg-muted/40 px-3 flex items-center text-xs text-muted-foreground">
+                      按学生实际组合自动计分
+                    </div>
+                  ) : (
+                    <Select
+                      value={unitForm.is_required ? 'required' : 'optional'}
+                      onValueChange={(v) => setUnitForm({ ...unitForm, is_required: v === 'required' })}
+                    >
+                      <SelectTrigger><SelectValue /></SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="required">必修/计分单元</SelectItem>
+                        <SelectItem value="optional">可选单元（实际选考才计入）</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
                 </div>
                 <div className="space-y-1"><Label className="text-xs">满分</Label>
                   <Input type="number" value={unitForm.max_score} onChange={(e) => setUnitForm({ ...unitForm, max_score: parseInt(e.target.value) || 100 })} /></div>
@@ -451,7 +484,7 @@ export function CourseManagement() {
                     variant="outline"
                     onClick={() => {
                       setEditingUnitId(null);
-                      setUnitForm({ unit_code: '', unit_name: '', is_advanced: false, max_score: 100, weight: 1.0, description: '', allowed_months: [] });
+                      setUnitForm({ unit_code: '', unit_name: '', is_advanced: false, is_required: true, max_score: 100, weight: 1.0, description: '', allowed_months: [] });
                     }}
                   >
                     取消编辑

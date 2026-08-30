@@ -24,7 +24,7 @@ export function KeyMetricsPanel({ data }: KeyMetricsPanelProps) {
     avg: s.unitGrades.length > 0
       ? s.unitGrades.reduce((a, b) => a + (b.score || 0), 0) / s.unitGrades.length
       : 0,
-    predicted: s.predictedGrade || 'N/A',
+    predicted: s.computedAlevelGrade || s.predictedFinalGrade || s.predictedGrade || 'N/A',
     needsRetake: s.needsRetake,
   }));
   const overallAcademic = subjectScores.length > 0

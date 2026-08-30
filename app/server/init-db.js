@@ -247,6 +247,7 @@ CREATE TABLE IF NOT EXISTS course_units (
     is_advanced INTEGER DEFAULT 0, -- 是否高阶单元（用于 A* 判定）
     max_score INTEGER DEFAULT 100,
     weight REAL DEFAULT 1.0,
+    is_required INTEGER DEFAULT 1, -- 是否为该课程的必考/计分单元；0 表示可选单元
     description TEXT,
     sort_order INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -300,6 +301,61 @@ CREATE INDEX IF NOT EXISTS idx_exam_sessions_year_month ON exam_sessions(year, m
 CREATE INDEX IF NOT EXISTS idx_session_unit_plans_student_course ON session_unit_plans(student_course_id);
 CREATE INDEX IF NOT EXISTS idx_session_unit_plans_session ON session_unit_plans(exam_session_id);
 CREATE INDEX IF NOT EXISTS idx_session_unit_plans_unit ON session_unit_plans(course_unit_id);
+
+-- 只阻止未来新增/修改重复数据，不清理已有历史记录，便于旧库平滑升级
+CREATE TRIGGER IF NOT EXISTS trg_exam_sessions_unique_identity_insert
+BEFORE INSERT ON exam_sessions
+WHEN EXISTS (
+  SELECT 1 FROM exam_sessions
+  WHERE year = NEW.year
+    AND (CASE WHEN month = 6 THEN 5 ELSE month END) = (CASE WHEN NEW.month = 6 THEN 5 ELSE NEW.month END)
+    AND COALESCE(board, 'Edexcel') = COALESCE(NEW.board, 'Edexcel')
+)
+BEGIN
+  SELECT RAISE(ABORT, 'duplicate exam session');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_exam_sessions_unique_identity_update
+BEFORE UPDATE OF year, month, board ON exam_sessions
+WHEN EXISTS (
+  SELECT 1 FROM exam_sessions
+  WHERE id <> NEW.id
+    AND year = NEW.year
+    AND (CASE WHEN month = 6 THEN 5 ELSE month END) = (CASE WHEN NEW.month = 6 THEN 5 ELSE NEW.month END)
+    AND COALESCE(board, 'Edexcel') = COALESCE(NEW.board, 'Edexcel')
+)
+BEGIN
+  SELECT RAISE(ABORT, 'duplicate exam session');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_session_unit_plans_unique_identity_insert
+BEFORE INSERT ON session_unit_plans
+WHEN NEW.status <> 'cancelled' AND EXISTS (
+  SELECT 1 FROM session_unit_plans
+  WHERE student_course_id = NEW.student_course_id
+    AND course_unit_id = NEW.course_unit_id
+    AND exam_session_id = NEW.exam_session_id
+    AND plan_type = NEW.plan_type
+    AND status <> 'cancelled'
+)
+BEGIN
+  SELECT RAISE(ABORT, 'duplicate session unit plan');
+END;
+
+CREATE TRIGGER IF NOT EXISTS trg_session_unit_plans_unique_identity_update
+BEFORE UPDATE OF student_course_id, course_unit_id, exam_session_id, plan_type, status ON session_unit_plans
+WHEN NEW.status <> 'cancelled' AND EXISTS (
+  SELECT 1 FROM session_unit_plans
+  WHERE id <> NEW.id
+    AND student_course_id = NEW.student_course_id
+    AND course_unit_id = NEW.course_unit_id
+    AND exam_session_id = NEW.exam_session_id
+    AND plan_type = NEW.plan_type
+    AND status <> 'cancelled'
+)
+BEGIN
+  SELECT RAISE(ABORT, 'duplicate session unit plan');
+END;
 `;
 
 function initDatabase() {

@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 import type { StudentDashboardData } from '@/types/student';
+import { ConfirmedGradeBadge } from '@/components/ConfirmedGradeBadge';
 import { resolveLanguageForMatch, pickBestLanguageForType } from '@/lib/languageScores';
 import {
   pickRelevantSubjects,
@@ -338,11 +339,13 @@ export function CompetencyAnalysis({ data, focusUniversityId }: CompetencyAnalys
                             {t.grade} {Math.round(t.p * 100)}%
                           </span>
                         ))}
-                        {finalLikeCount > 0 && (
-                          <span className="text-[10px] text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+                        {subject.predictionFinalized ? (
+                          <ConfirmedGradeBadge />
+                        ) : finalLikeCount > 0 ? (
+                          <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-[10px] text-emerald-700">
                             推算
                           </span>
-                        )}
+                        ) : null}
                       </div>
                       {conf != null && (
                         <span className="text-[10px] text-slate-500 tabular-nums">
@@ -475,6 +478,7 @@ function SubjectDetail({ subject }: { subject: StudentDashboardData['aLevelSubje
         <div className="flex items-center gap-2">
           <span className="font-medium text-slate-900">{subject.name}</span>
           <Badge variant="secondary" className="text-xs">{subject.board}</Badge>
+          {subject.predictionFinalized && <ConfirmedGradeBadge />}
           {subject.computedAlevelGrade && (
             <Badge className={subject.computedAlevelGrade === 'A*' ? 'bg-purple-100 text-purple-700 border-0 text-xs' : 'bg-green-100 text-green-700 border-0 text-xs'}>
               当前 {subject.computedAlevelGrade}

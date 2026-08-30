@@ -56,6 +56,7 @@ export function CoreMetricsPanel({ data }: CoreMetricsPanelProps) {
 
   const calculateAcademicStatus = () => {
     const grades = data.aLevelSubjects.map(s => {
+      if (s.computedAlevelGrade) return s.computedAlevelGrade;
       if (s.finalGrade) return s.finalGrade;
       if (s.mockGrade) return s.mockGrade;
       return s.predictedGrade || 'N/A';

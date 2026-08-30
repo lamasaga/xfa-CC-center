@@ -103,13 +103,18 @@ async function ensureExamSessionsForStudent(
     );
     if (existing.length > 0) continue;
 
-    await dbAsync.create('exam_sessions', {
-      id: uuidv4(),
-      year,
-      month,
-      label: `${year}年${MONTH_LABELS[month]}`,
-      board,
-    });
+    try {
+      await dbAsync.create('exam_sessions', {
+        id: uuidv4(),
+        year,
+        month,
+        label: `${year}年${MONTH_LABELS[month]}`,
+        board,
+      });
+    } catch (error) {
+      // 并发生成时另一请求可能刚刚创建同一考季；触发器拒绝重复后视为已完成。
+      if (!String(error?.message || '').includes('duplicate exam session')) throw error;
+    }
   }
 }
 

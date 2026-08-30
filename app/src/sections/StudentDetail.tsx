@@ -19,6 +19,7 @@ import { useGrade } from '@/contexts/GradeContext';
 import { ArrowLeft, Plus, Trash2, Edit2, Save, X, BookOpen, Languages, School, ClipboardList, CheckCircle2, ChevronDown, ChevronUp, Calendar, Download, Flag } from 'lucide-react';
 import { ExamSessionPlanner } from '@/sections/ExamSessionPlanner';
 import { UsRequirementsPanel } from '@/sections/UsRequirementsPanel';
+import { getFlexibleUnitRule, isFlexibleUnitCode } from '@/lib/flexibleUnits';
 import {
   buildCohortSelectOptions,
   formatCohortDisplay,
@@ -165,6 +166,7 @@ export function StudentDetail() {
   const [courseUnitsMap, setCourseUnitsMap] = useState<Record<string, CourseUnit[]>>({});
   const [showUnitGradeDialog, setShowUnitGradeDialog] = useState(false);
   const [unitGradeCourseId, setUnitGradeCourseId] = useState('');
+  const [editingUnitGradeId, setEditingUnitGradeId] = useState<string | null>(null);
   const [unitGradeForm, setUnitGradeForm] = useState({
     unit_code: '', unit_name: '', score: 0, max_score: 100, grade: '', exam_date: '',
     exam_type: 'final' as 'internal' | 'final' | 'retake' | 'mock',
@@ -289,6 +291,14 @@ export function StudentDetail() {
       setShowEnrollDialog(false);
       fetchStudentData();
     } catch (err) { alert(err instanceof Error ? err.message : '选课失败'); }
+  };
+
+  const handleRemoveCourse = async (courseId: string, courseName: string) => {
+    if (!confirm(`确定从当前成绩管理中移除“${courseName}”吗？\n\n不会删除任何单元成绩或考季计划；已有历史会在考季规划中以灰色只读形式保留。`)) return;
+    try {
+      await courseApi.removeStudent(courseId, id!);
+      fetchStudentData();
+    } catch (err) { alert(err instanceof Error ? err.message : '移除课程失败'); }
   };
 
   // === 语言成绩 ===
@@ -540,6 +550,7 @@ export function StudentDetail() {
   };
 
   const handleOpenUnitGradeAdd = (courseId: string, examType: string = 'final') => {
+    setEditingUnitGradeId(null);
     setUnitGradeCourseId(courseId);
     const units = courseUnitsMap[courseId] || [];
     const normalized = normalizeExamType(examType);
@@ -552,6 +563,21 @@ export function StudentDetail() {
       max_score: normalized === 'final' ? (units[0]?.max_score || 100) : 100,
       grade: '', exam_date: new Date().toISOString().slice(0, 10),
       exam_type: initialType as any,
+    });
+    setShowUnitGradeDialog(true);
+  };
+
+  const handleOpenUnitGradeEdit = (courseId: string, unit: any) => {
+    setEditingUnitGradeId(unit.id);
+    setUnitGradeCourseId(courseId);
+    setUnitGradeForm({
+      unit_code: unit.unit_code || '',
+      unit_name: unit.unit_name || '',
+      score: Number(unit.score ?? 0),
+      max_score: Number(unit.max_score ?? 100),
+      grade: unit.grade || '',
+      exam_date: unit.exam_date || '',
+      exam_type: unit.exam_type === 'retake' ? 'retake' : (unit.exam_type === 'final' ? 'final' : 'internal'),
     });
     setShowUnitGradeDialog(true);
   };
@@ -573,11 +599,14 @@ export function StudentDetail() {
       return;
     }
     try {
-      await courseApi.addUnitGrade(unitGradeCourseId, id!, {
+      const payload = {
         ...unitGradeForm,
         exam_type: isFinalLike(unitGradeForm.exam_type) ? unitGradeForm.exam_type : 'internal',
-      });
+      };
+      if (editingUnitGradeId) await courseApi.updateUnitGrade(editingUnitGradeId, payload);
+      else await courseApi.addUnitGrade(unitGradeCourseId, id!, payload);
       setShowUnitGradeDialog(false);
+      setEditingUnitGradeId(null);
       fetchStudentData();
     } catch (err) { alert(err instanceof Error ? err.message : '保存单元成绩失败'); }
   };
@@ -908,7 +937,24 @@ export function StudentDetail() {
                   const isExpanded = expandedCourses.has(course.course_id);
                   const configuredUnits = courseUnitsMap[course.course_id] || [];
                   const allUnits = course.unitGrades || [];
-                  const finalUnits = allUnits.filter((u: any) => normalizeExamType(u.exam_type) === 'final');
+                  const flexibleUnitRule = getFlexibleUnitRule(course.subject_code);
+                  const bestFinalByUnit = new Map<string, any>();
+                  allUnits
+                    .filter((u: any) => u.exam_type === 'final' || u.exam_type === 'retake')
+                    .forEach((u: any) => {
+                      const key = String(u.unit_code || u.unit_name || '').trim().toLowerCase();
+                      if (!key) return;
+                      const pct = Number(u.max_score) > 0 ? Number(u.score || 0) / Number(u.max_score) : 0;
+                      const previous = bestFinalByUnit.get(key);
+                      const previousPct = previous && Number(previous.max_score) > 0
+                        ? Number(previous.score || 0) / Number(previous.max_score)
+                        : -1;
+                      if (!previous || pct > previousPct || (pct === previousPct && String(u.exam_date || '') > String(previous.exam_date || ''))) {
+                        bestFinalByUnit.set(key, u);
+                      }
+                    });
+                  const finalUnits = [...bestFinalByUnit.values()]
+                    .filter((u: any) => !flexibleUnitRule || isFlexibleUnitCode(course.subject_code, u.unit_code || u.unit_name));
                   const internalUnits = allUnits
                     .filter((u: any) => normalizeExamType(u.exam_type) === 'internal')
                     .sort((a: any, b: any) => (b.exam_date || '').localeCompare(a.exam_date || ''));
@@ -917,8 +963,10 @@ export function StudentDetail() {
                   const computedFinalScore = finalUnits.length > 0
                     ? Math.round(finalUnits.reduce((sum: number, u: any) => sum + (u.score || 0), 0) / finalUnits.reduce((sum: number, u: any) => sum + (u.max_score || 100), 0) * 100)
                     : null;
-                  const totalFinalUnits = configuredUnits.length || finalUnits.length;
-                  const finishedFinalUnits = finalUnits.length;
+                  const totalFinalUnits = flexibleUnitRule?.totalUnits || configuredUnits.length || finalUnits.length;
+                  const finishedFinalUnits = flexibleUnitRule
+                    ? Math.min(finalUnits.length, flexibleUnitRule.totalUnits)
+                    : finalUnits.length;
 
                   const internalAvg = recentInternals.length > 0
                     ? Math.round(recentInternals.reduce((sum: number, u: any) => sum + ((u.score / (u.max_score || 100)) * 100), 0) / recentInternals.length)
@@ -932,10 +980,24 @@ export function StudentDetail() {
                             <h4 className="font-semibold">{course.course_name || '未知课程'}</h4>
                             <p className="text-sm text-slate-500">{course.board} {course.subject_code && `· ${course.subject_code}`}</p>
                           </div>
-                          <Button variant="ghost" size="sm" onClick={() => toggleCourseExpand(course.course_id)}>
-                            {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-                            <span className="ml-1 text-xs">详情</span>
-                          </Button>
+                          <div className="flex items-center gap-1">
+                            {canEdit && (
+                              <Button
+                                variant="ghost"
+                                size="sm"
+                                className="text-slate-400 hover:text-red-600"
+                                title="移除课程（保留成绩与考季历史）"
+                                onClick={() => handleRemoveCourse(course.course_id, course.course_name || '该课程')}
+                              >
+                                <Trash2 className="h-4 w-4" />
+                                <span className="ml-1 text-xs">移除</span>
+                              </Button>
+                            )}
+                            <Button variant="ghost" size="sm" onClick={() => toggleCourseExpand(course.course_id)}>
+                              {isExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                              <span className="ml-1 text-xs">详情</span>
+                            </Button>
+                          </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
                           <div className="bg-primary/10 rounded-lg p-3">
@@ -1034,9 +1096,10 @@ export function StudentDetail() {
                                       {unit.exam_date && <span className="text-xs text-slate-400">{unit.exam_date}</span>}
                                     </div>
                                     {canEdit && (
-                                      <Button variant="ghost" size="sm" className="text-red-500 h-7 w-7 p-0" onClick={() => handleDeleteUnitGrade(unit.id)}>
-                                        <Trash2 className="h-3.5 w-3.5" />
-                                      </Button>
+                                      <div className="flex items-center gap-1">
+                                        <Button variant="ghost" size="sm" className="h-7 w-7 p-0" title="修改成绩" onClick={() => handleOpenUnitGradeEdit(course.course_id, unit)}><Edit2 className="h-3.5 w-3.5" /></Button>
+                                        <Button variant="ghost" size="sm" className="text-red-500 h-7 w-7 p-0" title="删除成绩" onClick={() => handleDeleteUnitGrade(unit.id)}><Trash2 className="h-3.5 w-3.5" /></Button>
+                                      </div>
                                     )}
                                   </div>
                                 ))}
@@ -1086,9 +1149,10 @@ export function StudentDetail() {
                                       {idx < 2 && <Badge className="text-[10px] bg-primary/15 text-primary border-0">计入均分</Badge>}
                                     </div>
                                     {canEdit && (
-                                      <Button variant="ghost" size="sm" className="text-red-500 h-7 w-7 p-0" onClick={() => handleDeleteUnitGrade(unit.id)}>
-                                        <Trash2 className="h-3.5 w-3.5" />
-                                      </Button>
+                                      <div className="flex items-center gap-1">
+                                        <Button variant="ghost" size="sm" className="h-7 w-7 p-0" title="修改成绩" onClick={() => handleOpenUnitGradeEdit(course.course_id, unit)}><Edit2 className="h-3.5 w-3.5" /></Button>
+                                        <Button variant="ghost" size="sm" className="text-red-500 h-7 w-7 p-0" title="删除成绩" onClick={() => handleDeleteUnitGrade(unit.id)}><Trash2 className="h-3.5 w-3.5" /></Button>
+                                      </div>
                                     )}
                                   </div>
                                 ))}
@@ -1124,9 +1188,10 @@ export function StudentDetail() {
                                         {unit.exam_date && <span className="text-xs text-slate-400">{unit.exam_date}</span>}
                                       </div>
                                       {canEdit && (
-                                        <Button variant="ghost" size="sm" className="text-red-500 h-7 w-7 p-0" onClick={() => handleDeleteUnitGrade(unit.id)}>
-                                          <Trash2 className="h-3.5 w-3.5" />
-                                        </Button>
+                                        <div className="flex items-center gap-1">
+                                          <Button variant="ghost" size="sm" className="h-7 w-7 p-0" title="修改成绩" onClick={() => handleOpenUnitGradeEdit(course.course_id, unit)}><Edit2 className="h-3.5 w-3.5" /></Button>
+                                          <Button variant="ghost" size="sm" className="text-red-500 h-7 w-7 p-0" title="删除成绩" onClick={() => handleDeleteUnitGrade(unit.id)}><Trash2 className="h-3.5 w-3.5" /></Button>
+                                        </div>
                                       )}
                                     </div>
                                   ))}
@@ -1682,14 +1747,17 @@ export function StudentDetail() {
         </DialogContent>
       </Dialog>
 
-      {/* ===== 添加单元成绩弹窗 ===== */}
-      <Dialog open={showUnitGradeDialog} onOpenChange={setShowUnitGradeDialog}>
+      {/* ===== 添加 / 修改单元成绩弹窗 ===== */}
+      <Dialog open={showUnitGradeDialog} onOpenChange={(open) => {
+        setShowUnitGradeDialog(open);
+        if (!open) setEditingUnitGradeId(null);
+      }}>
         <DialogContent className="sm:max-w-3xl">
           <DialogHeader>
             <DialogTitle>
-              添加{isFinalLike(unitGradeForm.exam_type) ? '实考' : '校内'}成绩
+              {editingUnitGradeId ? '修改' : '添加'}{isFinalLike(unitGradeForm.exam_type) ? '实考' : '校内'}成绩
             </DialogTitle>
-            <DialogDescription>为该课程添加一条考试成绩记录</DialogDescription>
+            <DialogDescription>{editingUnitGradeId ? '修改这条考试成绩记录' : '为该课程添加一条考试成绩记录'}</DialogDescription>
           </DialogHeader>
           <div className="py-4 space-y-5">
             <div className="grid gap-5 md:grid-cols-[240px_1fr]">
@@ -1804,7 +1872,16 @@ export function StudentDetail() {
             <div className="grid gap-4 md:grid-cols-3">
               <div className="space-y-2">
                 <Label>得分 *</Label>
-                <Input type="number" value={unitGradeForm.score || ''} onChange={(e) => setUnitGradeForm({ ...unitGradeForm, score: parseInt(e.target.value) || 0 })} />
+                <Input
+                  type="number"
+                  min="0"
+                  value={unitGradeForm.score}
+                  onChange={(e) => {
+                    const next = e.target.value;
+                    setUnitGradeForm({ ...unitGradeForm, score: next === '' ? 0 : Number(next) });
+                  }}
+                />
+                <p className="text-xs text-slate-400">可录入 0 分；缺考请在等级中选择 X。</p>
               </div>
               <div className="space-y-2">
                 <Label>满分</Label>
@@ -1815,7 +1892,7 @@ export function StudentDetail() {
                 <Select value={unitGradeForm.grade || 'none'} onValueChange={(v) => setUnitGradeForm({ ...unitGradeForm, grade: v === 'none' ? '' : v })}>
                   <SelectTrigger><SelectValue placeholder="等级" /></SelectTrigger>
                   <SelectContent>
-                    {['none', 'A*', 'A', 'B', 'C', 'D', 'E', 'U'].map(g => (
+                    {['none', 'A*', 'A', 'B', 'C', 'D', 'E', 'U', 'X'].map(g => (
                       <SelectItem key={g} value={g}>{g === 'none' ? '无' : g}</SelectItem>
                     ))}
                   </SelectContent>

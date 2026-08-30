@@ -66,10 +66,11 @@ export default function Footer() {
 
           <div>
             <h4 className="text-xs font-medium uppercase tracking-wider text-muted-foreground mb-4">
-              说明
+              申请难度天梯
             </h4>
-            <p className="text-sm text-muted-foreground">数据仅供教育参考</p>
-            <p className="text-sm text-muted-foreground mt-1">雷达图匹配数据请在主站「院校库维护」中维护</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              我们将全球院校按申请难度划分为五个等级，从「爬藤难度」到「稳健申请」，每个等级对应明确的学术成绩、语言能力、竞赛经历、课外活动及面试要求。通过天梯，你可以快速定位目标院校所处的难度档位，了解不同层级的真实申请门槛，从而制定更清晰的升学规划与备考策略。
+            </p>
           </div>
         </div>
 

@@ -77,6 +77,16 @@ function migrate() {
       run: () => {
         db.exec('ALTER TABLE course_units ADD COLUMN allowed_months TEXT');
       }
+    },
+    {
+      name: 'Add required flag to course_units',
+      check: () => {
+        const cols = db.prepare("PRAGMA table_info(course_units)").all();
+        return cols.some(c => c.name === 'is_required');
+      },
+      run: () => {
+        db.exec('ALTER TABLE course_units ADD COLUMN is_required INTEGER DEFAULT 1');
+      }
     }
   ];
 
@@ -88,6 +98,47 @@ function migrate() {
       console.log(`  [OK]   ${m.name}`);
     }
   }
+
+  // 不重建已有表，使用触发器阻止后续重复考季/重复单元计划。
+  db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_exam_sessions_identity ON exam_sessions(year, month, board);
+    CREATE INDEX IF NOT EXISTS idx_session_unit_plans_identity ON session_unit_plans(student_course_id, course_unit_id, exam_session_id, plan_type);
+    CREATE TRIGGER IF NOT EXISTS trg_exam_sessions_unique_identity_insert
+    BEFORE INSERT ON exam_sessions
+    WHEN EXISTS (
+      SELECT 1 FROM exam_sessions
+      WHERE year = NEW.year
+        AND (CASE WHEN month = 6 THEN 5 ELSE month END) = (CASE WHEN NEW.month = 6 THEN 5 ELSE NEW.month END)
+        AND COALESCE(board, 'Edexcel') = COALESCE(NEW.board, 'Edexcel')
+    )
+    BEGIN SELECT RAISE(ABORT, 'duplicate exam session'); END;
+    CREATE TRIGGER IF NOT EXISTS trg_exam_sessions_unique_identity_update
+    BEFORE UPDATE OF year, month, board ON exam_sessions
+    WHEN EXISTS (
+      SELECT 1 FROM exam_sessions
+      WHERE id <> NEW.id
+        AND year = NEW.year
+        AND (CASE WHEN month = 6 THEN 5 ELSE month END) = (CASE WHEN NEW.month = 6 THEN 5 ELSE NEW.month END)
+        AND COALESCE(board, 'Edexcel') = COALESCE(NEW.board, 'Edexcel')
+    )
+    BEGIN SELECT RAISE(ABORT, 'duplicate exam session'); END;
+    CREATE TRIGGER IF NOT EXISTS trg_session_unit_plans_unique_identity_insert
+    BEFORE INSERT ON session_unit_plans
+    WHEN NEW.status <> 'cancelled' AND EXISTS (
+      SELECT 1 FROM session_unit_plans
+      WHERE student_course_id = NEW.student_course_id AND course_unit_id = NEW.course_unit_id
+        AND exam_session_id = NEW.exam_session_id AND plan_type = NEW.plan_type AND status <> 'cancelled'
+    )
+    BEGIN SELECT RAISE(ABORT, 'duplicate session unit plan'); END;
+    CREATE TRIGGER IF NOT EXISTS trg_session_unit_plans_unique_identity_update
+    BEFORE UPDATE OF student_course_id, course_unit_id, exam_session_id, plan_type, status ON session_unit_plans
+    WHEN NEW.status <> 'cancelled' AND EXISTS (
+      SELECT 1 FROM session_unit_plans
+      WHERE id <> NEW.id AND student_course_id = NEW.student_course_id AND course_unit_id = NEW.course_unit_id
+        AND exam_session_id = NEW.exam_session_id AND plan_type = NEW.plan_type AND status <> 'cancelled'
+    )
+    BEGIN SELECT RAISE(ABORT, 'duplicate session unit plan'); END;
+  `);
 
   db.close();
   console.log('\nMigration completed.');

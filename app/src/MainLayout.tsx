@@ -80,8 +80,13 @@ export default function MainLayout() {
   );
 }
 
-function studentContextHref(tab: string) {
-  const sid = localStorage.getItem('lastViewedStudentId');
+function studentIdFromPath(pathname: string) {
+  const match = pathname.match(/^\/students?\/([^/]+)/);
+  return match?.[1] || '';
+}
+
+function studentContextHref(tab: string, contextStudentId?: string) {
+  const sid = contextStudentId || localStorage.getItem('lastViewedStudentId');
   return sid ? `/students/${sid}?tab=${encodeURIComponent(tab)}` : '/students';
 }
 
@@ -122,6 +127,9 @@ function MainLayoutInner() {
   const ownStudentId = user?.student_id || '';
   const { activeGrade, setActiveGrade, availableGrades } = useGrade();
   const hideAppChrome = isStudentTranscriptPath(location.pathname);
+  // 当前学生详情路由是最可靠的上下文；只有列表/总览页才回退到最近查看的学生。
+  const routeStudentId = studentIdFromPath(location.pathname);
+  const contextStudentId = routeStudentId || localStorage.getItem('lastViewedStudentId') || '';
 
   const sortedGrades = useMemo(
     () =>
@@ -179,8 +187,8 @@ function MainLayoutInner() {
       return [
         { name: '仪表盘', href: '/', icon: LayoutDashboard },
         { name: '学生管理', href: '/students', icon: Users },
-        { name: '成绩查看', href: studentContextHref('grades'), icon: NotebookPen },
-        { name: '考季规划', href: studentContextHref('sessions'), icon: Calendar },
+        { name: '成绩查看', href: studentContextHref('grades', contextStudentId), icon: NotebookPen },
+        { name: '考季规划', href: studentContextHref('sessions', contextStudentId), icon: Calendar },
         { name: '年级概览', href: '/grade', icon: School },
         studyExploreItem,
       ];
@@ -188,8 +196,8 @@ function MainLayoutInner() {
     const items: MainNavItem[] = [
       { name: '仪表盘', href: '/', icon: LayoutDashboard },
       { name: '学生管理', href: '/students', icon: Users },
-      { name: '成绩管理', href: studentContextHref('grades'), icon: NotebookPen },
-      { name: '考季规划', href: studentContextHref('sessions'), icon: Calendar },
+      { name: '成绩管理', href: studentContextHref('grades', contextStudentId), icon: NotebookPen },
+      { name: '考季规划', href: studentContextHref('sessions', contextStudentId), icon: Calendar },
       { name: '年级概览', href: '/grade', icon: School },
       { name: '课程管理', href: '/courses', icon: BookOpen },
       studyExploreItem,
@@ -198,7 +206,7 @@ function MainLayoutInner() {
       items.push({ name: '维护', href: '/universities', icon: Shield });
     }
     return items;
-  }, [isStudent, isTeacher, ownStudentId, canEditUniversityCatalog]);
+  }, [isStudent, isTeacher, ownStudentId, canEditUniversityCatalog, contextStudentId]);
 
   if (isStudent && !ownStudentId) {
     return (

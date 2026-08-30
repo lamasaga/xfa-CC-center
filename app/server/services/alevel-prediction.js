@@ -45,6 +45,28 @@ function gradeThresholdPct(grade) {
   }
 }
 
+function gradeFromPercentages(totalPct, advancedPct, hasAdvancedUnits) {
+  if (totalPct >= 0.8 && hasAdvancedUnits && advancedPct >= 0.9) return 'A*';
+  if (totalPct >= 0.8) return 'A';
+  if (totalPct >= 0.7) return 'B';
+  if (totalPct >= 0.6) return 'C';
+  if (totalPct >= 0.5) return 'D';
+  if (totalPct >= 0.4) return 'E';
+  return 'U';
+}
+
+function oneHotProbabilities(grade) {
+  return {
+    'A*': grade === 'A*' ? 1 : 0,
+    A: grade === 'A' ? 1 : 0,
+    B: grade === 'B' ? 1 : 0,
+    C: grade === 'C' ? 1 : 0,
+    D: grade === 'D' ? 1 : 0,
+    E: grade === 'E' ? 1 : 0,
+    U: grade === 'U' ? 1 : 0,
+  };
+}
+
 /**
  * 以“保守”的方式预测最终成绩分布。
  *
@@ -61,6 +83,8 @@ function predictCourseFromUnits(input) {
     board,
     student_course_id,
     units, // [{unit_code, max_score, weight, is_advanced, exam_pct|null}]
+    confirmed_grade,
+    confirmed_score,
     options,
   } = input;
 
@@ -105,18 +129,104 @@ function predictCourseFromUnits(input) {
   );
 
   const advUnits = units.filter(u => !!u.is_advanced);
+  const advScoreMax = advUnits.reduce((s, u) => s + (u.max_score * (u.weight || 1)), 0);
   const advObserved = advUnits.filter(u => u.exam_pct != null);
   const advObservedWeight = advObserved.reduce((s, u) => s + (u.max_score * (u.weight || 1)), 0);
   const advObservedMean = advObservedWeight > 0
     ? advObserved.reduce((s, u) => s + u.exam_pct * u.max_score * (u.weight || 1), 0) / advObservedWeight
     : null;
 
+  const normalizedConfirmedGrade = String(confirmed_grade || '').trim().toUpperCase();
+  const confirmedGrades = new Set(['A*', 'A', 'B', 'C', 'D', 'E', 'U']);
+  if (confirmedGrades.has(normalizedConfirmedGrade)) {
+    // null / 空值表示“只有确定等级，未录课程汇总分”，不能被 Number(null) 误当作 0 分。
+    const hasConfirmedScore = confirmed_score !== null && confirmed_score !== undefined && String(confirmed_score).trim() !== '';
+    const numericConfirmedScore = hasConfirmedScore ? Number(confirmed_score) : null;
+    const confirmedPct = numericConfirmedScore !== null && Number.isFinite(numericConfirmedScore) && numericConfirmedScore >= 0 && numericConfirmedScore <= 100
+      ? numericConfirmedScore / 100
+      : null;
+    const displayPct = confirmedPct ?? (observedWeight > 0 ? observedMean : null);
+
+    return {
+      course_id,
+      course_name,
+      board,
+      student_course_id,
+      coverage: Math.round(coverage * 1000) / 1000,
+      confidence: 1,
+      observed_units: observed.length,
+      total_units: units.length,
+      predicted_pct: displayPct != null ? Math.round(displayPct * 1000) / 10 : null,
+      predicted_total_score: displayPct != null ? Math.round(displayPct * totalWeight) : null,
+      max_total_score: Math.round(totalWeight),
+      predicted_advanced_pct: advObservedMean != null ? Math.round(advObservedMean * 1000) / 10 : null,
+      predicted_grade: normalizedConfirmedGrade,
+      probabilities: oneHotProbabilities(normalizedConfirmedGrade),
+      is_finalized: true,
+      prediction_basis: 'confirmed',
+      debug: {
+        observed_mean_pct: Math.round(observedMean * 1000) / 10,
+        observed_sd_pct: Math.round(observedSd * 1000) / 10,
+        base_mean_pct: displayPct != null ? Math.round(displayPct * 1000) / 10 : null,
+        sigma_pct: 0,
+        adv_observed_mean_pct: advObservedMean != null ? Math.round(advObservedMean * 1000) / 10 : null,
+        discount_rate_pct: 0,
+        prob_a_star_joint: normalizedConfirmedGrade === 'A*' ? 1 : 0,
+        a_star_caution_factor: 1,
+      },
+    };
+  }
+
+  // 所有配置单元均已有实考或重考成绩时，结果已经确定，不再使用随机预测。
+  const isFinalized = units.length > 0 && missing.length === 0;
+  if (isFinalized) {
+    const finalizedPct = totalWeight > 0
+      ? observed.reduce((s, u) => s + u.exam_pct * u.max_score * (u.weight || 1), 0) / totalWeight
+      : 0;
+    const finalizedAdvancedPct = advScoreMax > 0
+      ? advObserved.reduce((s, u) => s + u.exam_pct * u.max_score * (u.weight || 1), 0) / advScoreMax
+      : null;
+    const finalizedGrade = gradeFromPercentages(
+      finalizedPct,
+      finalizedAdvancedPct || 0,
+      advScoreMax > 0
+    );
+
+    return {
+      course_id,
+      course_name,
+      board,
+      student_course_id,
+      coverage: 1,
+      confidence: 1,
+      observed_units: observed.length,
+      total_units: units.length,
+      predicted_pct: Math.round(finalizedPct * 1000) / 10,
+      predicted_total_score: Math.round(finalizedPct * totalWeight),
+      max_total_score: Math.round(totalWeight),
+      predicted_advanced_pct: finalizedAdvancedPct != null ? Math.round(finalizedAdvancedPct * 1000) / 10 : null,
+      predicted_grade: finalizedGrade,
+      probabilities: oneHotProbabilities(finalizedGrade),
+      is_finalized: true,
+      prediction_basis: 'confirmed',
+      debug: {
+        observed_mean_pct: Math.round(finalizedPct * 1000) / 10,
+        observed_sd_pct: Math.round(observedSd * 1000) / 10,
+        base_mean_pct: Math.round(finalizedPct * 1000) / 10,
+        sigma_pct: 0,
+        adv_observed_mean_pct: advObservedMean != null ? Math.round(advObservedMean * 1000) / 10 : null,
+        discount_rate_pct: 0,
+        prob_a_star_joint: finalizedGrade === 'A*' ? 1 : 0,
+        a_star_caution_factor: 1,
+      },
+    };
+  }
+
   // Monte Carlo
   const totals = [];
   const totalsPct = [];
   const totalsAdvPct = [];
   const totalScoreMax = totalWeight;
-  const advScoreMax = advUnits.reduce((s, u) => s + (u.max_score * (u.weight || 1)), 0);
 
   for (let i = 0; i < cfg.samples; i++) {
     let totalScore = 0;
@@ -164,7 +274,7 @@ function predictCourseFromUnits(input) {
   const probabilities = {
     'A*': probAStar,
     // A：总分>=80% 但未满足 A* 联合条件
-    'A': clamp(probGE(gradeThresholdPct('A')) - probAStarJoint, 0, 1),
+    'A': clamp(probGE(gradeThresholdPct('A')) - probAStar, 0, 1),
     'B': clamp(probGE(gradeThresholdPct('B')) - probGE(gradeThresholdPct('A')), 0, 1),
     'C': clamp(probGE(gradeThresholdPct('C')) - probGE(gradeThresholdPct('B')), 0, 1),
     'D': clamp(probGE(gradeThresholdPct('D')) - probGE(gradeThresholdPct('C')), 0, 1),
@@ -210,6 +320,8 @@ function predictCourseFromUnits(input) {
     predicted_advanced_pct: predAdvPct != null ? Math.round(predAdvPct * 1000) / 10 : null,
     predicted_grade: primaryGrade,
     probabilities,
+    is_finalized: false,
+    prediction_basis: 'estimate',
     debug: {
       observed_mean_pct: Math.round(observedMean * 1000) / 10,
       observed_sd_pct: Math.round(observedSd * 1000) / 10,
@@ -226,4 +338,3 @@ function predictCourseFromUnits(input) {
 module.exports = {
   predictCourseFromUnits,
 };
-

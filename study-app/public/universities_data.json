@@ -91,7 +91,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "tier": "爬藤难度",
+      "admission_difficulty": 1
     },
     {
       "id": "harvard",
@@ -161,7 +164,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "tier": "爬藤难度",
+      "admission_difficulty": 1
     },
     {
       "id": "stanford",
@@ -231,7 +237,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "tier": "爬藤难度",
+      "admission_difficulty": 1
     },
     {
       "id": "caltech",
@@ -301,7 +310,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "upenn",
@@ -371,7 +383,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "uc_berkeley",
@@ -441,7 +456,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "cornell",
@@ -511,7 +529,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "uchicago",
@@ -581,7 +602,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "princeton",
@@ -651,7 +675,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "yale",
@@ -721,7 +748,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "jhu",
@@ -791,7 +821,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "columbia",
@@ -861,7 +894,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "ucla",
@@ -931,7 +967,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "michigan_ann_arbor",
@@ -1001,7 +1040,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "northwestern",
@@ -1071,7 +1113,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "cmu",
@@ -1141,7 +1186,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "duke",
@@ -1211,7 +1259,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "ut_austin",
@@ -1281,7 +1332,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "ucsd",
@@ -1351,7 +1405,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "brown",
@@ -1421,7 +1478,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "usc",
@@ -1491,7 +1551,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "rice",
@@ -1561,7 +1624,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "unc_chapel_hill",
@@ -1631,7 +1697,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "washu",
@@ -1701,7 +1770,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "emory",
@@ -1771,7 +1843,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "uflorida",
@@ -1841,7 +1916,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "dartmouth",
@@ -1911,7 +1989,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "admission_difficulty": 1,
+      "tier": "爬藤难度"
     },
     {
       "id": "vanderbilt",
@@ -1981,7 +2062,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "uva",
@@ -2051,7 +2135,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "notre_dame",
@@ -2121,7 +2208,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "imperial",
@@ -2190,7 +2280,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "tier": "顶级挑战",
+      "admission_difficulty": 2
     },
     {
       "id": "oxford",
@@ -2259,7 +2352,10 @@
       "collegiate_system": true,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "tier": "爬藤难度",
+      "admission_difficulty": 1
     },
     {
       "id": "cambridge",
@@ -2328,7 +2424,10 @@
       "collegiate_system": true,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "爬藤难度",
+      "tier": "爬藤难度",
+      "admission_difficulty": 1
     },
     {
       "id": "ucl",
@@ -2397,7 +2496,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "edinburgh",
@@ -2466,7 +2568,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "manchester",
@@ -2535,7 +2640,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "kcl",
@@ -2604,7 +2712,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "lse",
@@ -2673,7 +2784,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "bristol",
@@ -2742,7 +2856,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "warwick",
@@ -2811,7 +2928,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "glasgow",
@@ -2880,7 +3000,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "birmingham",
@@ -2949,7 +3072,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "southampton",
@@ -3018,7 +3144,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "leeds",
@@ -3087,7 +3216,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "durham",
@@ -3156,7 +3288,10 @@
       "collegiate_system": true,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "sheffield",
@@ -3225,7 +3360,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "nottingham",
@@ -3294,7 +3432,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "qmul",
@@ -3363,7 +3504,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "newcastle",
@@ -3432,7 +3576,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "lancaster",
@@ -3501,7 +3648,10 @@
       "collegiate_system": true,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "mcgill",
@@ -3569,7 +3719,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请最长3年PGWP。蒙特利尔是加拿大第二大都市和法语区经济中心，提供丰富的就业和移民机会。魁北克省有独立的移民政策（PEQ）。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "uoft",
@@ -3636,7 +3789,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请最长3年的毕业后工签（PGWP）。多伦多大学属于DLI指定院校，毕业生可通过加拿大经验类移民（CEC）申请永久居民身份。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "ubc",
@@ -3704,7 +3860,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请最长3年的PGWP。温哥华是加拿大科技中心之一，提供丰富的就业机会，毕业生可通过省提名计划（BC PNP）申请移民。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "ualberta",
@@ -3772,7 +3931,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请最长3年PGWP。阿尔伯塔省经济增长迅速，提供丰富的就业和移民机会，省提名计划（AINP）对毕业生友好。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "mcmaster",
@@ -3839,7 +4001,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请最长3年PGWP。汉密尔顿靠近多伦多，就业机会丰富，可通过安大略省省提名计划（OINP）申请移民。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "unimelb",
@@ -3907,7 +4072,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485临时毕业生签证（Post-Study Work Stream），学士学位获2年工签（2024年7月后新规）。墨尔本作为澳洲文化首都，提供丰富就业机会。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "unsw",
@@ -3975,7 +4143,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。UNSW与众多企业有合作关系，毕业生就业率高。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "usyd",
@@ -4043,7 +4214,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。悉尼作为澳洲最大城市和经济中心，提供广泛的就业和移民机会。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "anu",
@@ -4111,7 +4285,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。堪培拉作为首都，政府部门和研究机构提供丰富的实习和就业机会。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "monash",
@@ -4179,7 +4356,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。莫纳什毕业生就业率较高，可通过维多利亚州担保申请移民。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "uq",
@@ -4247,7 +4427,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。布里斯班作为2032年奥运会举办城市，提供丰富的就业和基础设施发展机会。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "uwa",
@@ -4315,7 +4498,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。西澳州对技术移民需求大，州担保政策友好。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "adelaide",
@@ -4383,7 +4569,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，阿德莱德属于偏远地区，可获得额外1-2年工签延长。南澳州担保政策对毕业生非常友好。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "uts",
@@ -4451,7 +4640,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。UTS与众多企业有合作，毕业生就业率高。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "macquarie",
@@ -4519,7 +4711,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请485签证，学士学位获2年工签。麦考瑞公园商务区提供丰富的实习和就业机会。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "hku",
@@ -4587,7 +4782,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请IANG签证（非本地毕业生留港/回港就业安排），可在港无条件居留24个月寻找工作。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "cuhk",
@@ -4655,7 +4853,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请IANG签证，可在港无条件居留24个月寻找工作。CUHK与内地联系紧密，也提供大湾区就业机会。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "hkust",
@@ -4723,7 +4924,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请IANG签证，可在港无条件居留24个月。HKUST与科技公司合作紧密，毕业生就业率极高。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "cityu_hk",
@@ -4791,7 +4995,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请IANG签证，可在港无条件居留24个月寻找工作。CityU毕业生在商界和创意产业就业率高。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "nus",
@@ -4859,7 +5066,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请长期社交访问准证（LTVP）最长12个月寻找工作。获得雇主offer后可申请就业准证（EP）。新加坡欢迎国际人才，就业率高。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "ntu",
@@ -4927,7 +5137,10 @@
       "collegiate_system": false,
       "work_visa_policy": "毕业后可申请LTVP最长12个月寻找工作。NTU与众多企业有合作，毕业生就业率高。新加坡对STEM专业人才需求大，移民政策友好。",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "eth_zurich",
@@ -4992,7 +5205,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "epfl",
@@ -5056,7 +5272,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "psl",
@@ -5121,7 +5340,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "tum",
@@ -5186,7 +5408,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "uva_nl",
@@ -5250,7 +5475,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "tudelft",
@@ -5314,7 +5542,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "kuleuven",
@@ -5379,7 +5610,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "sorbonne",
@@ -5444,7 +5678,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "paris_saclay",
@@ -5509,7 +5746,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "kth",
@@ -5573,7 +5813,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "heidelberg",
@@ -5638,7 +5881,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "lund",
@@ -5703,7 +5949,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "tcd",
@@ -5768,7 +6017,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "copenhagen",
@@ -5833,7 +6085,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "polimi",
@@ -5898,7 +6153,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "helsinki",
@@ -5963,7 +6221,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "oslo",
@@ -6028,7 +6289,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "vienna",
@@ -6093,7 +6357,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "barcelona",
@@ -6158,7 +6425,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "uam",
@@ -6223,7 +6493,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": false,
-      "portfolio_tips": ""
+      "portfolio_tips": "",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "artcenter",
@@ -6288,7 +6561,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "交通工具设计作品集需展示手绘汽车草图、透视基础和marker渲染技巧。产品设计需展示完整的设计过程：从调研、概念草图到最终方案。手绘能力是关键"
+      "portfolio_tips": "交通工具设计作品集需展示手绘汽车草图、透视基础和marker渲染技巧。产品设计需展示完整的设计过程：从调研、概念草图到最终方案。手绘能力是关键",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "udk_berlin",
@@ -6352,7 +6628,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集需通过预选获得入学考试资格。入学考试通常在6月线上举行，包含实际创作任务和面试。建议提前准备德语能力"
+      "portfolio_tips": "作品集需通过预选获得入学考试资格。入学考试通常在6月线上举行，包含实际创作任务和面试。建议提前准备德语能力",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "csm",
@@ -6417,7 +6696,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集必须包含Fashion Art journal展示设计过程。强调创意发展过程，不仅仅是最终成品。展示对时尚行业的理解和个人创意视角"
+      "portfolio_tips": "作品集必须包含Fashion Art journal展示设计过程。强调创意发展过程，不仅仅是最终成品。展示对时尚行业的理解和个人创意视角",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "chelsea_arts",
@@ -6480,7 +6762,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应展示调研能力、概念发展过程和最终成品。强调个人创意视角和对当代艺术的兴趣。包含多种媒介的实验作品"
+      "portfolio_tips": "作品集应展示调研能力、概念发展过程和最终成品。强调个人创意视角和对当代艺术的兴趣。包含多种媒介的实验作品",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "dae",
@@ -6544,7 +6829,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应展示实验精神和批判性设计思维。强调概念发展和创作过程。展示对材料、形式和功能的创新思考"
+      "portfolio_tips": "作品集应展示实验精神和批判性设计思维。强调概念发展和创作过程。展示对材料、形式和功能的创新思考",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "esmod",
@@ -6607,7 +6895,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "本科第一年申请不需作品集，但需完成学校指定的创作任务（制作moodboard和指定创意作品）。动机和创意潜力比技术技能更重要。研究生需提交高质量作品集"
+      "portfolio_tips": "本科第一年申请不需作品集，但需完成学校指定的创作任务（制作moodboard和指定创意作品）。动机和创意潜力比技术技能更重要。研究生需提交高质量作品集",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "gsa",
@@ -6671,7 +6962,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应展示大胆的创新精神和实验态度。强调个人创意发展过程。专业展示和高质量图片至关重要"
+      "portfolio_tips": "作品集应展示大胆的创新精神和实验态度。强调个人创意发展过程。专业展示和高质量图片至关重要",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "parsons",
@@ -6736,7 +7030,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "Parsons Challenge是必需的独特创作任务，展示对主题的创造性思考。作品集应展示原创性、概念深度和过程思考"
+      "portfolio_tips": "Parsons Challenge是必需的独特创作任务，展示对主题的创造性思考。作品集应展示原创性、概念深度和过程思考",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "polimoda",
@@ -6800,7 +7097,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应展示对时尚的热情和创意潜力。包含设计草图、灵感板、材料实验和任何相关的创意作品。强调个人风格和对时尚产业的理解"
+      "portfolio_tips": "作品集应展示对时尚的热情和创意潜力。包含设计草图、灵感板、材料实验和任何相关的创意作品。强调个人风格和对时尚产业的理解",
+      "difficulty": "稳健申请",
+      "admission_difficulty": 5,
+      "tier": "稳健申请"
     },
     {
       "id": "pratt",
@@ -6865,7 +7165,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应展示直接观察素描能力，包含多种媒介的作品。强调创作过程和概念发展。质量和多样性并重"
+      "portfolio_tips": "作品集应展示直接观察素描能力，包含多种媒介的作品。强调创作过程和概念发展。质量和多样性并重",
+      "difficulty": "大众情人校",
+      "admission_difficulty": 4,
+      "tier": "大众情人校"
     },
     {
       "id": "risd",
@@ -6930,7 +7233,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应展示创意探索和概念深度，避免临摹、同人作品或超风格化卡通。强调从直接观察中创作的作品。展示多种媒介的实验，但质量重于数量"
+      "portfolio_tips": "作品集应展示创意探索和概念深度，避免临摹、同人作品或超风格化卡通。强调从直接观察中创作的作品。展示多种媒介的实验，但质量重于数量",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "antwerp_arts",
@@ -6993,7 +7299,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集需通过预选获得入学考试资格。入学考试包含为期3天的实际创作任务和绘画测试。时尚专业必须线下参加入学考试"
+      "portfolio_tips": "作品集需通过预选获得入学考试资格。入学考试包含为期3天的实际创作任务和绘画测试。时尚专业必须线下参加入学考试",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "rca",
@@ -7058,7 +7367,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集应精炼且具代表性（最多15页）。强调作品的当代语境定位。包含portfolio statement说明创作理念和关注点。视频（2分钟）是展示个人魅力和艺术视野的重要机会"
+      "portfolio_tips": "作品集应精炼且具代表性（最多15页）。强调作品的当代语境定位。包含portfolio statement说明创作理念和关注点。视频（2分钟）是展示个人魅力和艺术视野的重要机会",
+      "difficulty": "激烈竞争",
+      "admission_difficulty": 3,
+      "tier": "激烈竞争"
     },
     {
       "id": "cooper_union",
@@ -7122,7 +7434,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "Home Test是库伯联盟独特的命题创作测试，考察创意解决问题的能力。作品集应展示原创思维和概念深度，避免陈词滥调"
+      "portfolio_tips": "Home Test是库伯联盟独特的命题创作测试，考察创意解决问题的能力。作品集应展示原创思维和概念深度，避免陈词滥调",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     },
     {
       "id": "ensba",
@@ -7186,7 +7501,10 @@
       "collegiate_system": false,
       "work_visa_policy": "",
       "is_art_school": true,
-      "portfolio_tips": "作品集需展示活跃的当代艺术实践。强调个人艺术语言和创作理念。理论课程为法语授课，建议具备基础法语能力"
+      "portfolio_tips": "作品集需展示活跃的当代艺术实践。强调个人艺术语言和创作理念。理论课程为法语授课，建议具备基础法语能力",
+      "difficulty": "顶级挑战",
+      "admission_difficulty": 2,
+      "tier": "顶级挑战"
     }
   ]
 }

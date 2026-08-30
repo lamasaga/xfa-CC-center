@@ -11,7 +11,11 @@ const {
   ensureExamSessionsForStudent,
   filterSessionsForStudent,
   normalizeAllowedMonthsList,
+  normalizeExamMonth,
+  isExamSessionInStudentRange,
+  STANDARD_EXAM_MONTHS,
 } = require('../utils/examSessionRange');
+const { getStudentUnitSelection } = require('../utils/courseUnits');
 
 const router = express.Router();
 
@@ -23,6 +27,93 @@ async function ensureSessionsForStudent(enrollmentYear, studyDuration, boardName
     dbAsync,
     uuidv4
   );
+}
+
+const VALID_PLAN_TYPES = new Set(['first_sit', 'resit']);
+const VALID_PLAN_STATUSES = new Set(['planned', 'registered', 'completed', 'cancelled']);
+
+function numericScore(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+function pickBestGrade(grades) {
+  return grades
+    .filter((grade) => grade.exam_type === 'final' || grade.exam_type === 'retake')
+    .map((grade) => {
+      const score = numericScore(grade.score);
+      const maxScore = numericScore(grade.max_score) || 100;
+      return maxScore > 0 && score !== null
+        ? { grade, percentage: score / maxScore }
+        : null;
+    })
+    .filter(Boolean)
+    .sort((a, b) =>
+      b.percentage - a.percentage ||
+      Number(b.grade.exam_type === 'retake') - Number(a.grade.exam_type === 'retake') ||
+      String(b.grade.exam_date || b.grade.created_at || '').localeCompare(String(a.grade.exam_date || a.grade.created_at || ''))
+    )[0]?.grade || null;
+}
+
+function gradeMatchesUnit(grade, unit) {
+  const gradeCode = String(grade.unit_code || '').trim().toLowerCase();
+  const unitCode = String(unit.unit_code || '').trim().toLowerCase();
+  if (gradeCode && unitCode) return gradeCode === unitCode;
+  return String(grade.unit_name || '').trim().toLowerCase() === String(unit.unit_name || '').trim().toLowerCase();
+}
+
+async function getPlanTarget(studentId, studentCourseId, courseUnitId, examSessionId) {
+  const student = await dbAsync.findById('students', studentId);
+  if (!student) return { error: 'Student not found', status: 404 };
+
+  const studentCourse = await dbAsync.findById('student_courses', studentCourseId);
+  if (!studentCourse || studentCourse.student_id !== studentId || studentCourse.status === 'dropped') {
+    return { error: '选课记录不匹配', status: 400 };
+  }
+
+  const course = await dbAsync.findById('courses', studentCourse.course_id);
+  const unit = await dbAsync.findById('course_units', courseUnitId);
+  const session = await dbAsync.findById('exam_sessions', examSessionId);
+  if (!course || !unit || unit.course_id !== studentCourse.course_id) {
+    return { error: '课程单元不属于该选课', status: 400 };
+  }
+  if (!session) return { error: '考季不存在', status: 400 };
+
+  const board = String(course.board || '').trim().toLowerCase();
+  const sessionBoard = String(session.board || '').trim().toLowerCase();
+  if (board && sessionBoard && board !== sessionBoard) {
+    return { error: '考季考试局与课程不匹配', status: 400 };
+  }
+
+  const enrollmentYear = student.enrollment_year || new Date().getFullYear();
+  const studyDuration = student.study_duration || 2;
+  if (!isExamSessionInStudentRange(session, enrollmentYear, studyDuration)) {
+    return { error: '考季不在学生学制范围内', status: 400 };
+  }
+
+  let allowedMonths = [];
+  if (unit.allowed_months) {
+    try { allowedMonths = normalizeAllowedMonthsList(JSON.parse(unit.allowed_months)); } catch { /* invalid legacy value: do not block */ }
+  }
+  if (allowedMonths.length > 0 && !allowedMonths.includes(normalizeExamMonth(session.month))) {
+    return { error: '该课程单元不允许安排在此考季', status: 400 };
+  }
+
+  return { student, studentCourse, course, unit, session };
+}
+
+async function assertPlanUnique({ studentCourseId, courseUnitId, examSessionId, planType, excludeId = null }) {
+  const rows = await dbAsync.query(
+    `SELECT id FROM session_unit_plans
+     WHERE student_course_id = ? AND course_unit_id = ? AND exam_session_id = ?
+       AND plan_type = ? AND status <> 'cancelled'${excludeId ? ' AND id <> ?' : ''}
+     LIMIT 1`,
+    excludeId
+      ? [studentCourseId, courseUnitId, examSessionId, planType, excludeId]
+      : [studentCourseId, courseUnitId, examSessionId, planType]
+  );
+  return rows.length === 0;
 }
 
 // ========== 考季 CRUD ==========
@@ -51,10 +142,15 @@ router.post('/', authenticateToken, requireNotStudent, canModifyExamSessions, as
     if (!year || !month || !label) {
       return res.status(400).json({ error: '年份、月份和标签为必填项' });
     }
+    const normalizedMonth = normalizeExamMonth(month);
+    if (!STANDARD_EXAM_MONTHS.includes(normalizedMonth)) {
+      return res.status(400).json({ error: '考季月份仅支持 1、5、10 月' });
+    }
 
     const existing = await dbAsync.query(
-      'SELECT id FROM exam_sessions WHERE year = ? AND month = ? AND board = ?',
-      [year, month, board || 'Edexcel']
+      `SELECT id FROM exam_sessions
+       WHERE year = ? AND (CASE WHEN month = 6 THEN 5 ELSE month END) = ? AND board = ?`,
+      [year, normalizedMonth, board || 'Edexcel']
     );
     if (existing.length > 0) {
       return res.status(400).json({ error: '该考季已存在' });
@@ -63,7 +159,7 @@ router.post('/', authenticateToken, requireNotStudent, canModifyExamSessions, as
     const session = await dbAsync.create('exam_sessions', {
       id: uuidv4(),
       year,
-      month,
+      month: normalizedMonth,
       label,
       board: board || 'Edexcel',
       registration_deadline: registration_deadline || null,
@@ -73,6 +169,9 @@ router.post('/', authenticateToken, requireNotStudent, canModifyExamSessions, as
     res.status(201).json(session);
   } catch (error) {
     console.error('Create exam session error:', error);
+    if (String(error?.message || '').includes('duplicate exam session')) {
+      return res.status(409).json({ error: '该考季已存在' });
+    }
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -134,8 +233,6 @@ router.get(
     const studyDuration = student.study_duration || 2;
     const enrollmentYear = student.enrollment_year || new Date().getFullYear();
 
-    await ensureSessionsForStudent(enrollmentYear, studyDuration, 'Edexcel');
-
     const allSessions = await dbAsync.findAll('exam_sessions');
     const sessions = filterSessionsForStudent(allSessions, enrollmentYear, studyDuration);
 
@@ -144,30 +241,32 @@ router.get(
     const courses = [];
 
     for (const sc of studentCourses) {
-      if (sc.status === 'dropped') continue;
-
       const course = await dbAsync.findById('courses', sc.course_id);
       if (!course) continue;
 
       // 获取课程单元配置
-      const units = await dbAsync.findAll('course_units', { course_id: sc.course_id });
-      units.sort((a, b) => a.sort_order - b.sort_order);
+      const allUnits = await dbAsync.findAll('course_units', { course_id: sc.course_id });
 
       // 获取已有成绩
       const unitGrades = await dbAsync.findAll('unit_grades', { student_course_id: sc.id });
 
       // 获取已有的考季分配
-      const plans = await dbAsync.findAll('session_unit_plans', { student_course_id: sc.id });
+      const plans = (await dbAsync.findAll('session_unit_plans', { student_course_id: sc.id }))
+        .filter((plan) => plan.status !== 'cancelled');
+      const historical = sc.status === 'dropped';
+      // 已移除但没有任何成绩或考季证据的课程无需占用历史规划视图。
+      if (historical && unitGrades.length === 0 && plans.length === 0) continue;
+      const unitSelection = getStudentUnitSelection(course, allUnits, unitGrades, plans);
+      const units = unitSelection.planningUnits;
+      units.sort((a, b) => a.sort_order - b.sort_order);
 
       const unitsWithGrades = units.map(u => {
-        const grades = unitGrades.filter(g => g.unit_code === u.unit_code);
-        const finalGrade = grades.find(g => g.exam_type === 'final');
-        const retakeGrade = grades.find(g => g.exam_type === 'retake');
-        const bestGrade = retakeGrade || finalGrade;
+        const grades = unitGrades.filter((g) => gradeMatchesUnit(g, u));
+        const bestGrade = pickBestGrade(grades);
 
-        const needsResit = finalGrade &&
-          finalGrade.grade &&
-          ['D', 'E', 'U'].includes(finalGrade.grade);
+        const needsResit = bestGrade &&
+          bestGrade.grade &&
+          ['D', 'E', 'U'].includes(bestGrade.grade);
 
         let allowedMonths = null;
         if (u.allowed_months) {
@@ -203,6 +302,12 @@ router.get(
         course_name: course.name,
         subject_code: course.subject_code,
         board: course.board,
+        historical,
+        unit_selection: unitSelection.rule ? {
+          mode: 'flexible',
+          target_units: unitSelection.targetUnitCount,
+          selected_unit_ids: unitSelection.selectedUnits.map((unit) => unit.id),
+        } : null,
         units: unitsWithGrades,
         plans: plans.map(p => ({
           id: p.id,
@@ -242,10 +347,14 @@ router.post('/student/:studentId/plans', authenticateToken, canModifyExamSession
       return res.status(400).json({ error: '缺少必要参数' });
     }
 
-    // 验证学生选课归属
-    const sc = await dbAsync.findById('student_courses', student_course_id);
-    if (!sc || sc.student_id !== studentId) {
-      return res.status(400).json({ error: '选课记录不匹配' });
+    const resolvedPlanType = plan_type || 'first_sit';
+    if (!VALID_PLAN_TYPES.has(resolvedPlanType)) {
+      return res.status(400).json({ error: '无效的计划类型' });
+    }
+    const target = await getPlanTarget(studentId, student_course_id, course_unit_id, exam_session_id);
+    if (target.error) return res.status(target.status).json({ error: target.error });
+    if (!(await assertPlanUnique({ studentCourseId: student_course_id, courseUnitId: course_unit_id, examSessionId: exam_session_id, planType: resolvedPlanType }))) {
+      return res.status(409).json({ error: '该单元在此考季已有相同计划' });
     }
 
     const plan = await dbAsync.create('session_unit_plans', {
@@ -253,7 +362,7 @@ router.post('/student/:studentId/plans', authenticateToken, canModifyExamSession
       student_course_id,
       course_unit_id,
       exam_session_id,
-      plan_type: plan_type || 'first_sit',
+      plan_type: resolvedPlanType,
       status: 'planned',
       notes: notes || null,
     });
@@ -268,8 +377,32 @@ router.post('/student/:studentId/plans', authenticateToken, canModifyExamSession
 // 更新分配
 router.put('/student/:studentId/plans/:planId', authenticateToken, canModifyExamSessions, async (req, res) => {
   try {
-    const { planId } = req.params;
+    const { studentId, planId } = req.params;
     const { exam_session_id, plan_type, status, notes } = req.body;
+
+    const existing = await dbAsync.findById('session_unit_plans', planId);
+    if (!existing) return res.status(404).json({ error: 'Plan not found' });
+    const owner = await dbAsync.findById('student_courses', existing.student_course_id);
+    if (!owner || owner.student_id !== studentId) {
+      return res.status(404).json({ error: 'Plan not found' });
+    }
+    const targetSessionId = exam_session_id !== undefined ? exam_session_id : existing.exam_session_id;
+    const targetPlanType = plan_type !== undefined ? plan_type : existing.plan_type;
+    const targetStatus = status !== undefined ? status : existing.status;
+    if (!VALID_PLAN_TYPES.has(targetPlanType) || !VALID_PLAN_STATUSES.has(targetStatus)) {
+      return res.status(400).json({ error: '无效的计划类型或状态' });
+    }
+    const target = await getPlanTarget(studentId, existing.student_course_id, existing.course_unit_id, targetSessionId);
+    if (target.error) return res.status(target.status).json({ error: target.error });
+    if (targetStatus !== 'cancelled' && !(await assertPlanUnique({
+      studentCourseId: existing.student_course_id,
+      courseUnitId: existing.course_unit_id,
+      examSessionId: targetSessionId,
+      planType: targetPlanType,
+      excludeId: planId,
+    }))) {
+      return res.status(409).json({ error: '该单元在此考季已有相同计划' });
+    }
 
     const updateData = { updated_at: new Date().toISOString() };
     if (exam_session_id !== undefined) updateData.exam_session_id = exam_session_id;
@@ -290,6 +423,12 @@ router.put('/student/:studentId/plans/:planId', authenticateToken, canModifyExam
 // 删除分配
 router.delete('/student/:studentId/plans/:planId', authenticateToken, canModifyExamSessions, async (req, res) => {
   try {
+    const existing = await dbAsync.findById('session_unit_plans', req.params.planId);
+    if (!existing) return res.status(404).json({ error: 'Plan not found' });
+    const owner = await dbAsync.findById('student_courses', existing.student_course_id);
+    if (!owner || owner.student_id !== req.params.studentId) {
+      return res.status(404).json({ error: 'Plan not found' });
+    }
     await dbAsync.delete('session_unit_plans', req.params.planId);
     res.status(204).send();
   } catch (error) {
@@ -306,6 +445,66 @@ router.post('/student/:studentId/plans/batch', authenticateToken, canModifyExamS
 
     if (!Array.isArray(plans)) {
       return res.status(400).json({ error: 'plans must be an array' });
+    }
+
+    // 先在事务外完成归属和业务校验，避免批量接口通过 plan.id 越权修改别的学生。
+    const seenKeys = new Set();
+    for (const plan of plans) {
+      if (!plan || typeof plan !== 'object') {
+        return res.status(400).json({ error: 'plans contains invalid item' });
+      }
+      if (plan.id) {
+        const existing = await dbAsync.findById('session_unit_plans', plan.id);
+        if (!existing) return res.status(404).json({ error: 'Plan not found' });
+        const owner = await dbAsync.findById('student_courses', existing.student_course_id);
+        if (!owner || owner.student_id !== studentId) {
+          return res.status(404).json({ error: 'Plan not found' });
+        }
+        if (plan._delete) continue;
+
+        const targetSessionId = plan.exam_session_id !== undefined ? plan.exam_session_id : existing.exam_session_id;
+        const targetPlanType = plan.plan_type !== undefined ? plan.plan_type : existing.plan_type;
+        const targetStatus = plan.status !== undefined ? plan.status : existing.status;
+        if (!VALID_PLAN_TYPES.has(targetPlanType) || !VALID_PLAN_STATUSES.has(targetStatus)) {
+          return res.status(400).json({ error: '无效的计划类型或状态' });
+        }
+        const target = await getPlanTarget(studentId, existing.student_course_id, existing.course_unit_id, targetSessionId);
+        if (target.error) return res.status(target.status).json({ error: target.error });
+        if (targetStatus !== 'cancelled') {
+          if (!(await assertPlanUnique({
+            studentCourseId: existing.student_course_id,
+            courseUnitId: existing.course_unit_id,
+            examSessionId: targetSessionId,
+            planType: targetPlanType,
+            excludeId: existing.id,
+          }))) return res.status(409).json({ error: '该单元在此考季已有相同计划' });
+          const key = `${existing.student_course_id}|${existing.course_unit_id}|${targetSessionId}|${targetPlanType}`;
+          if (seenKeys.has(key)) return res.status(409).json({ error: '批量数据中存在重复计划' });
+          seenKeys.add(key);
+        }
+      } else {
+        if (!plan.student_course_id || !plan.course_unit_id || !plan.exam_session_id) {
+          return res.status(400).json({ error: '新计划缺少必要参数' });
+        }
+        const targetPlanType = plan.plan_type || 'first_sit';
+        const targetStatus = plan.status || 'planned';
+        if (!VALID_PLAN_TYPES.has(targetPlanType) || !VALID_PLAN_STATUSES.has(targetStatus)) {
+          return res.status(400).json({ error: '无效的计划类型或状态' });
+        }
+        const target = await getPlanTarget(studentId, plan.student_course_id, plan.course_unit_id, plan.exam_session_id);
+        if (target.error) return res.status(target.status).json({ error: target.error });
+        if (targetStatus !== 'cancelled') {
+          if (!(await assertPlanUnique({
+            studentCourseId: plan.student_course_id,
+            courseUnitId: plan.course_unit_id,
+            examSessionId: plan.exam_session_id,
+            planType: targetPlanType,
+          }))) return res.status(409).json({ error: '该单元在此考季已有相同计划' });
+          const key = `${plan.student_course_id}|${plan.course_unit_id}|${plan.exam_session_id}|${targetPlanType}`;
+          if (seenKeys.has(key)) return res.status(409).json({ error: '批量数据中存在重复计划' });
+          seenKeys.add(key);
+        }
+      }
     }
 
     const db = getDb();
@@ -354,6 +553,9 @@ router.post('/student/:studentId/plans/batch', authenticateToken, canModifyExamS
     res.json({ results });
   } catch (error) {
     console.error('Batch update session plans error:', error);
+    if (String(error?.message || '').includes('duplicate session unit plan')) {
+      return res.status(409).json({ error: '该单元在此考季已有相同计划' });
+    }
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -372,8 +574,6 @@ router.get(
 
     const studyDuration = student.study_duration || 2;
     const enrollmentYear = student.enrollment_year || new Date().getFullYear();
-
-    await ensureSessionsForStudent(enrollmentYear, studyDuration, 'Edexcel');
 
     const allSessions = await dbAsync.findAll('exam_sessions');
     const sessions = filterSessionsForStudent(allSessions, enrollmentYear, studyDuration);
@@ -404,20 +604,27 @@ router.get(
       const course = await dbAsync.findById('courses', sc.course_id);
       if (!course) continue;
 
-      const units = await dbAsync.findAll('course_units', { course_id: sc.course_id });
-      const plans = await dbAsync.findAll('session_unit_plans', { student_course_id: sc.id });
+      const allUnits = await dbAsync.findAll('course_units', { course_id: sc.course_id });
+      const plans = (await dbAsync.findAll('session_unit_plans', { student_course_id: sc.id }))
+        .filter((plan) => plan.status !== 'cancelled');
       const unitGrades = await dbAsync.findAll('unit_grades', { student_course_id: sc.id });
+      const unitSelection = getStudentUnitSelection(course, allUnits, unitGrades, plans);
+      const units = unitSelection.planningUnits;
 
       let resitCount = 0;
-      for (const u of units) {
-        const finalGrade = unitGrades.find(g => g.unit_code === u.unit_code && g.exam_type === 'final');
-        if (finalGrade && finalGrade.grade && ['D', 'E', 'U'].includes(finalGrade.grade)) {
+      const selectedUnitIds = new Set(unitSelection.selectedUnits.map((unit) => unit.id));
+      const unitsNeedingPlans = unitSelection.rule
+        ? units.filter((unit) => selectedUnitIds.has(unit.id) || unitSelection.rule.coreUnitCodes.includes(String(unit.unit_code || '').trim().toUpperCase()))
+        : units;
+      for (const u of unitsNeedingPlans) {
+        const bestGrade = pickBestGrade(unitGrades.filter((g) => gradeMatchesUnit(g, u)));
+        if (bestGrade && bestGrade.grade && ['D', 'E', 'U'].includes(bestGrade.grade)) {
           resitCount++;
         }
       }
 
       const plannedUnits = new Set(plans.map(p => p.course_unit_id));
-      for (const u of units) {
+      for (const u of unitsNeedingPlans) {
         if (!plannedUnits.has(u.id)) {
           unplannedUnits.push({
             student_course_id: sc.id,
@@ -427,8 +634,8 @@ router.get(
             unit_code: u.unit_code,
             unit_name: u.unit_name,
           });
-          const finalGrade = unitGrades.find(g => g.unit_code === u.unit_code && g.exam_type === 'final');
-          if (finalGrade && finalGrade.grade && ['D', 'E', 'U'].includes(finalGrade.grade)) {
+          const bestGrade = pickBestGrade(unitGrades.filter((g) => gradeMatchesUnit(g, u)));
+          if (bestGrade && bestGrade.grade && ['D', 'E', 'U'].includes(bestGrade.grade)) {
             resitUnplannedUnits.push({
               student_course_id: sc.id,
               course_id: sc.course_id,
@@ -436,7 +643,7 @@ router.get(
               unit_id: u.id,
               unit_code: u.unit_code,
               unit_name: u.unit_name,
-              final_grade: finalGrade.grade,
+              final_grade: bestGrade.grade,
             });
           }
         }
@@ -445,8 +652,8 @@ router.get(
       coursesSummary.push({
         course_name: course.name,
         board: course.board,
-        total_units: units.length,
-        planned_units: plannedUnits.size,
+        total_units: unitSelection.targetUnitCount,
+        planned_units: Math.min(plannedUnits.size, unitSelection.targetUnitCount),
         completed_units: plans.filter(p => p.status === 'completed').length,
         resit_needed: resitCount,
       });

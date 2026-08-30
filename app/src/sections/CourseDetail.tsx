@@ -25,28 +25,55 @@ function studentGradeLabel(s: EnrolledStudent) {
   return s.grade?.trim() || '未设置年级';
 }
 
+function getFinalScore(student: EnrolledStudent): number | null {
+  const derived = student.score_summary?.final?.score;
+  if (typeof derived === 'number') return derived;
+  const legacy = student.final_score;
+  return typeof legacy === 'number' && legacy >= 0 ? legacy : null;
+}
+
+function formatScore(score: number | null) {
+  return score === null ? '--' : Number.isInteger(score) ? String(score) : score.toFixed(1);
+}
+
 function computeStats(students: EnrolledStudent[]) {
-  const internalScores = students.map((s) => s.internal_score).filter(Boolean) as number[];
-  const mockScores = students.map((s) => s.mock_score).filter(Boolean) as number[];
-  const finalScores = students.map((s) => s.final_score).filter(Boolean) as number[];
+  const finalScores = students.map(getFinalScore).filter((score): score is number => score !== null);
   return {
     total_students: students.length,
-    avg_internal: internalScores.length ? internalScores.reduce((a, b) => a + b, 0) / internalScores.length : 0,
-    avg_mock: mockScores.length ? mockScores.reduce((a, b) => a + b, 0) / mockScores.length : 0,
     avg_final: finalScores.length ? finalScores.reduce((a, b) => a + b, 0) / finalScores.length : 0,
-    max_internal: internalScores.length ? Math.max(...internalScores) : 0,
-    min_internal: internalScores.length ? Math.min(...internalScores) : 0,
+    max_final: finalScores.length ? Math.max(...finalScores) : 0,
+    min_final: finalScores.length ? Math.min(...finalScores) : 0,
+    students_with_final: finalScores.length,
   };
 }
 
-function computeGradeDistribution(students: EnrolledStudent[]) {
-  const gradeCounts: Record<string, number> = {};
-  students.forEach((s) => {
-    if (s.internal_grade) {
-      gradeCounts[s.internal_grade] = (gradeCounts[s.internal_grade] || 0) + 1;
-    }
-  });
-  return Object.entries(gradeCounts).map(([grade, count]) => ({ grade, count }));
+function FinalUnitScoreList({ student }: { student: EnrolledStudent }) {
+  const units = student.score_summary?.final?.units || [];
+  if (units.length > 0) {
+    return (
+      <div className="flex min-w-[18rem] flex-wrap gap-1.5">
+        {units.map((unit) => (
+          <span
+            key={`${unit.unit_code}-${unit.exam_date || ''}`}
+            className="inline-flex items-baseline gap-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-xs text-slate-700"
+            title={`${unit.unit_name || unit.unit_code}：${unit.score}/${unit.max_score}${unit.exam_type === 'retake' ? '（补考最佳）' : ''}`}
+          >
+            <span className="font-medium">{unit.unit_code || unit.unit_name}</span>
+            <span className="tabular-nums font-semibold text-slate-900">{formatScore(unit.score)}</span>
+            <span className="text-slate-400">/{formatScore(unit.max_score)}</span>
+            {unit.exam_type === 'retake' && <span className="text-emerald-700">补考最佳</span>}
+          </span>
+        ))}
+      </div>
+    );
+  }
+
+  const legacyFinalScore = getFinalScore(student);
+  return legacyFinalScore === null ? (
+    <span className="text-slate-400">暂无实考单元成绩</span>
+  ) : (
+    <span className="text-xs text-slate-500">已登记实考均分 {formatScore(legacyFinalScore)}（暂无单元明细）</span>
+  );
 }
 
 export function CourseDetail({ courseId }: CourseDetailProps) {
@@ -77,14 +104,13 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
     }
   }, [courseId]);
 
-  const { filteredStudents, gradeOptions, stats, gradeDistribution, groupedForTable, gradeKeysOrdered } =
+  const { filteredStudents, gradeOptions, stats, groupedForTable, gradeKeysOrdered } =
     useMemo(() => {
       if (!data) {
         return {
           filteredStudents: [] as EnrolledStudent[],
           gradeOptions: [] as string[],
           stats: null as ReturnType<typeof computeStats> | null,
-          gradeDistribution: [] as { grade: string; count: number }[],
           groupedForTable: {} as Record<string, EnrolledStudent[]>,
           gradeKeysOrdered: [] as string[],
         };
@@ -111,7 +137,6 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
         filteredStudents: filtered,
         gradeOptions,
         stats: computeStats(filtered),
-        gradeDistribution: computeGradeDistribution(filtered),
         groupedForTable,
         gradeKeysOrdered,
       };
@@ -135,25 +160,6 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
 
   const { course } = data;
   const totalEnrolled = data.students.length;
-
-  const getGradeColor = (grade: string) => {
-    switch (grade) {
-      case 'A*':
-        return 'bg-purple-100 text-purple-700';
-      case 'A':
-        return 'bg-green-100 text-green-700';
-      case 'B':
-        return 'bg-primary/15 text-primary';
-      case 'C':
-        return 'bg-yellow-100 text-yellow-700';
-      case 'D':
-        return 'bg-orange-100 text-orange-700';
-      case 'E':
-        return 'bg-red-100 text-red-700';
-      default:
-        return 'bg-slate-100 text-slate-700';
-    }
-  };
 
   return (
     <div className="space-y-6">
@@ -201,7 +207,7 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
           </Select>
         </div>
         <p className="text-xs text-muted-foreground sm:pb-2">
-          统计卡片与等级分布随筛选更新；课程本身不按届别拆分。
+          仅展示实际考试单元成绩；同一单元有补考时自动保留较高的一次。
         </p>
       </div>
 
@@ -210,9 +216,9 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">校内均分</p>
+                <p className="text-sm text-slate-500">实考均分</p>
                 <p className="text-2xl font-bold text-slate-900">
-                  {stats.avg_internal ? stats.avg_internal.toFixed(1) : '--'}
+                  {stats.students_with_final ? stats.avg_final.toFixed(1) : '--'}
                 </p>
               </div>
               <div className="w-10 h-10 bg-primary/15 rounded-lg flex items-center justify-center">
@@ -226,24 +232,10 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">模考均分</p>
-                <p className="text-2xl font-bold text-slate-900">
-                  {stats.avg_mock ? stats.avg_mock.toFixed(1) : '--'}
+                <p className="text-sm text-slate-500">最高实考均分</p>
+                <p className="text-2xl font-bold text-green-600">
+                  {stats.students_with_final ? stats.max_final.toFixed(1) : '--'}
                 </p>
-              </div>
-              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                <Target className="h-5 w-5 text-purple-600" />
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        <Card className="border-0 shadow-sm">
-          <CardContent className="p-4">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm text-slate-500">最高分</p>
-                <p className="text-2xl font-bold text-green-600">{stats.max_internal || '--'}</p>
               </div>
               <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                 <TrendingUp className="h-5 w-5 text-green-600" />
@@ -256,8 +248,10 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-slate-500">最低分</p>
-                <p className="text-2xl font-bold text-orange-600">{stats.min_internal || '--'}</p>
+                <p className="text-sm text-slate-500">最低实考均分</p>
+                <p className="text-2xl font-bold text-orange-600">
+                  {stats.students_with_final ? stats.min_final.toFixed(1) : '--'}
+                </p>
               </div>
               <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                 <Award className="h-5 w-5 text-orange-600" />
@@ -265,32 +259,21 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
             </div>
           </CardContent>
         </Card>
-      </div>
 
-      {gradeDistribution.length > 0 && (
-        <Card className="border border-slate-200 shadow-sm">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base font-semibold">成绩等级分布（当前筛选）</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-end gap-4 h-32">
-              {gradeDistribution.map((item, idx) => {
-                const maxCount = Math.max(...gradeDistribution.map((g) => g.count));
-                const height = maxCount > 0 ? (item.count / maxCount) * 100 : 0;
-                return (
-                  <div key={idx} className="flex-1 flex flex-col items-center gap-2">
-                    <div className="text-sm font-medium">{item.count}</div>
-                    <div className="w-full bg-primary rounded-t" style={{ height: `${height}%` }} />
-                    <div className={`px-2 py-1 rounded text-xs font-medium ${getGradeColor(item.grade)}`}>
-                      {item.grade}
-                    </div>
-                  </div>
-                );
-              })}
+        <Card className="border-0 shadow-sm">
+          <CardContent className="p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm text-slate-500">已录入实考</p>
+                <p className="text-2xl font-bold text-slate-900">{stats.students_with_final}</p>
+              </div>
+              <div className="w-10 h-10 bg-primary/15 rounded-lg flex items-center justify-center">
+                <Target className="h-5 w-5 text-primary" />
+              </div>
             </div>
           </CardContent>
         </Card>
-      )}
+      </div>
 
       <Card className="border border-slate-200 shadow-sm">
         <CardHeader className="pb-3">
@@ -307,17 +290,15 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
                 <TableRow>
                   <TableHead>学生姓名</TableHead>
                   <TableHead>年级</TableHead>
-                  <TableHead>校内成绩</TableHead>
-                  <TableHead>校内分数</TableHead>
-                  <TableHead>模考成绩</TableHead>
-                  <TableHead>实考成绩</TableHead>
+                  <TableHead className="min-w-[22rem]">实考单元成绩（取最好一次）</TableHead>
+                  <TableHead>实考均分</TableHead>
                   <TableHead>状态</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
                 {filteredStudents.length === 0 ? (
                   <TableRow>
-                    <TableCell colSpan={7} className="text-center text-slate-400 py-8">
+                    <TableCell colSpan={5} className="text-center text-slate-400 py-8">
                       {totalEnrolled === 0 ? '暂无学生选课' : '该年级下暂无学生'}
                     </TableCell>
                   </TableRow>
@@ -325,7 +306,7 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
                   gradeKeysOrdered.map((g) => (
                     <Fragment key={g}>
                       <TableRow>
-                        <TableCell colSpan={7} className="bg-slate-50 text-slate-700 font-medium">
+                        <TableCell colSpan={5} className="bg-slate-50 text-slate-700 font-medium">
                           {g}（{groupedForTable[g].length}）
                         </TableCell>
                       </TableRow>
@@ -338,27 +319,9 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
                             </div>
                           </TableCell>
                           <TableCell>{student.grade || '—'}</TableCell>
-                          <TableCell>
-                            {student.internal_grade ? (
-                              <Badge className={getGradeColor(student.internal_grade)}>{student.internal_grade}</Badge>
-                            ) : (
-                              <span className="text-slate-400">--</span>
-                            )}
-                          </TableCell>
-                          <TableCell>{student.internal_score || '--'}</TableCell>
-                          <TableCell>
-                            {student.mock_grade ? (
-                              <Badge className={getGradeColor(student.mock_grade)}>{student.mock_grade}</Badge>
-                            ) : (
-                              <span className="text-slate-400">--</span>
-                            )}
-                          </TableCell>
-                          <TableCell>
-                            {student.final_grade ? (
-                              <Badge className={getGradeColor(student.final_grade)}>{student.final_grade}</Badge>
-                            ) : (
-                              <span className="text-slate-400">--</span>
-                            )}
+                          <TableCell><FinalUnitScoreList student={student} /></TableCell>
+                          <TableCell className="font-medium tabular-nums">
+                            {getFinalScore(student) === null ? '--' : `${formatScore(getFinalScore(student))} 分`}
                           </TableCell>
                           <TableCell>
                             <Badge variant="outline" className="text-xs">
@@ -383,27 +346,9 @@ export function CourseDetail({ courseId }: CourseDetailProps) {
                         </div>
                       </TableCell>
                       <TableCell>{student.grade || '—'}</TableCell>
-                      <TableCell>
-                        {student.internal_grade ? (
-                          <Badge className={getGradeColor(student.internal_grade)}>{student.internal_grade}</Badge>
-                        ) : (
-                          <span className="text-slate-400">--</span>
-                        )}
-                      </TableCell>
-                      <TableCell>{student.internal_score || '--'}</TableCell>
-                      <TableCell>
-                        {student.mock_grade ? (
-                          <Badge className={getGradeColor(student.mock_grade)}>{student.mock_grade}</Badge>
-                        ) : (
-                          <span className="text-slate-400">--</span>
-                        )}
-                      </TableCell>
-                      <TableCell>
-                        {student.final_grade ? (
-                          <Badge className={getGradeColor(student.final_grade)}>{student.final_grade}</Badge>
-                        ) : (
-                          <span className="text-slate-400">--</span>
-                        )}
+                      <TableCell><FinalUnitScoreList student={student} /></TableCell>
+                      <TableCell className="font-medium tabular-nums">
+                        {getFinalScore(student) === null ? '--' : `${formatScore(getFinalScore(student))} 分`}
                       </TableCell>
                       <TableCell>
                         <Badge variant="outline" className="text-xs">

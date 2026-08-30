@@ -120,7 +120,7 @@ export function StudentHeader({
     }
     const readiness = Math.round(academic * 0.5 + language * 0.3 + application * 0.2) || 0;
 
-    const grades = d.aLevelSubjects.map(s => s.finalGrade || s.mockGrade || s.predictedGrade || 'N/A');
+    const grades = d.aLevelSubjects.map(s => s.computedAlevelGrade || s.finalGrade || s.mockGrade || s.predictedGrade || 'N/A');
     const hasAStar = grades.some(g => g === 'A*');
     const hasA = grades.some(g => g === 'A');
     const academicRange = hasAStar ? 'A*-A' : hasA ? 'A-B' : grades.every(g => g === 'N/A') ? '--' : 'B-C';

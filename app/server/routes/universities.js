@@ -6,6 +6,14 @@ const {
   canModify,
   canManageUniversityCatalog,
 } = require('../middleware/auth');
+const {
+  normalizeCountry,
+  normalizeDate,
+  normalizeLanguageRequirement,
+  normalizeUniversityRow: normalizeUniversityData,
+  normalizeProgramRow: normalizeProgramData,
+  dedupePrograms,
+} = require('../utils/universityData');
 
 const router = express.Router();
 
@@ -29,26 +37,33 @@ function normalizeSubjectRequirements(v) {
     .filter(Boolean);
 }
 
-function normalizeUniversityRow(u) {
+function formatUniversityRow(u, sensitiveNames = []) {
+  const normalized = normalizeUniversityData(u, sensitiveNames);
   return {
-    ...u,
-    subject_requirements: normalizeSubjectRequirements(u.subject_requirements),
-    application_systems: safeJsonParse(u.application_systems, null),
-    rounds_supported: safeJsonParse(u.rounds_supported, null),
-    costs: safeJsonParse(u.costs, null),
-    requirements_struct: safeJsonParse(u.requirements_struct, null),
+    ...normalized,
+    subject_requirements: normalizeSubjectRequirements(normalized.subject_requirements),
+    application_systems: safeJsonParse(normalized.application_systems, null),
+    rounds_supported: safeJsonParse(normalized.rounds_supported, null),
+    costs: safeJsonParse(normalized.costs, null),
+    requirements_struct: safeJsonParse(normalized.requirements_struct, null),
   };
 }
 
-function normalizeProgramRow(p) {
+function formatProgramRow(p, sensitiveNames = []) {
+  const normalized = normalizeProgramData(p, sensitiveNames);
   return {
-    ...p,
-    requirements_struct: safeJsonParse(p.requirements_struct, null),
-    alevel_required_grades: safeJsonParse(p.alevel_required_grades, null),
-    subject_requirements_struct: safeJsonParse(p.subject_requirements_struct, null),
-    extra_exams: safeJsonParse(p.extra_exams, null),
-    language_component_mins: safeJsonParse(p.language_component_mins, null),
+    ...normalized,
+    requirements_struct: safeJsonParse(normalized.requirements_struct, null),
+    alevel_required_grades: safeJsonParse(normalized.alevel_required_grades, null),
+    subject_requirements_struct: safeJsonParse(normalized.subject_requirements_struct, null),
+    extra_exams: safeJsonParse(normalized.extra_exams, null),
+    language_component_mins: safeJsonParse(normalized.language_component_mins, null),
   };
+}
+
+async function getSensitiveNames() {
+  const students = await dbAsync.findAll('students');
+  return students.flatMap((student) => [student.name, student.english_name]);
 }
 
 // 获取所有目标院校
@@ -56,20 +71,25 @@ router.get('/', authenticateToken, async (req, res) => {
   try {
     const { country, search } = req.query;
     let universities = await dbAsync.findAll('target_universities');
+    const sensitiveNames = await getSensitiveNames();
+    const normalizedCountry = country ? normalizeCountry(country) : null;
     
-    if (country) {
-      universities = universities.filter(u => u.country === country);
+    if (country && !normalizedCountry) {
+      return res.status(400).json({ error: '国家/地区不在支持范围内' });
+    }
+    if (normalizedCountry) {
+      universities = universities.filter(u => normalizeCountry(u.country) === normalizedCountry);
     }
     
     if (search) {
       const searchLower = search.toLowerCase();
-      universities = universities.filter(u => 
-        u.name.toLowerCase().includes(searchLower) ||
-        u.course_name?.toLowerCase().includes(searchLower)
+      universities = universities.filter(u =>
+        String(u.name || '').toLowerCase().includes(searchLower) ||
+        String(u.course_name || '').toLowerCase().includes(searchLower)
       );
     }
     
-    res.json(universities.map(normalizeUniversityRow));
+    res.json(universities.map((u) => formatUniversityRow(u, sensitiveNames)));
   } catch (error) {
     console.error('Get universities error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -81,7 +101,7 @@ router.get('/:id', authenticateToken, async (req, res) => {
   try {
     const uni = await dbAsync.findById('target_universities', req.params.id);
     if (!uni) return res.status(404).json({ error: 'Not found' });
-    res.json(normalizeUniversityRow(uni));
+    res.json(formatUniversityRow(uni, await getSensitiveNames()));
   } catch (error) {
     console.error('Get university error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -100,18 +120,19 @@ router.post('/', authenticateToken, canManageUniversityCatalog, async (req, res)
       application_deadline, notes,
     } = req.body;
     
-    if (!name || !country) {
+    const normalizedCountry = normalizeCountry(country);
+    if (!name || !normalizedCountry) {
       return res.status(400).json({ error: 'Name and country required' });
     }
 
     const university = {
       id: uuidv4(),
       name,
-      country,
+      country: normalizedCountry,
       ranking: ranking || null,
       course_name: course_name || '',
       a_level_requirement: a_level_requirement || '',
-      language_requirement: language_requirement || '',
+      language_requirement: normalizeLanguageRequirement(language_requirement),
       subject_requirements: Array.isArray(subject_requirements) ? JSON.stringify(subject_requirements) : (subject_requirements || ''),
       degree_level: degree_level || null,
       edu_system: edu_system || null,
@@ -123,13 +144,13 @@ router.post('/', authenticateToken, canManageUniversityCatalog, async (req, res)
       location_text: location_text || null,
       campus_size_text: campus_size_text || null,
       requirements_struct: requirements_struct ? JSON.stringify(requirements_struct) : null,
-      application_deadline: application_deadline || null,
+      application_deadline: normalizeDate(application_deadline),
       notes: notes || '',
       created_at: new Date().toISOString()
     };
 
     await dbAsync.create('target_universities', university);
-    res.status(201).json(normalizeUniversityRow(university));
+    res.status(201).json(formatUniversityRow(university, await getSensitiveNames()));
   } catch (error) {
     console.error('Create university error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -152,7 +173,15 @@ router.put('/:id', authenticateToken, canManageUniversityCatalog, async (req, re
     const updates = {};
     for (const field of allowedFields) {
       if (req.body[field] !== undefined) {
-        if (field === 'subject_requirements') {
+        if (field === 'country') {
+          const normalizedCountry = normalizeCountry(req.body[field]);
+          if (!normalizedCountry) return res.status(400).json({ error: '国家/地区不在支持范围内' });
+          updates[field] = normalizedCountry;
+        } else if (field === 'language_requirement') {
+          updates[field] = normalizeLanguageRequirement(req.body[field]);
+        } else if (field === 'application_deadline') {
+          updates[field] = normalizeDate(req.body[field]);
+        } else if (field === 'subject_requirements') {
           updates[field] = Array.isArray(req.body[field]) ? JSON.stringify(req.body[field]) : req.body[field];
         } else if (field === 'application_systems' || field === 'rounds_supported') {
           updates[field] = Array.isArray(req.body[field]) ? JSON.stringify(req.body[field]) : (req.body[field] ? JSON.stringify(req.body[field]) : null);
@@ -175,7 +204,7 @@ router.put('/:id', authenticateToken, canManageUniversityCatalog, async (req, re
       return res.status(404).json({ error: 'University not found' });
     }
 
-    res.json(normalizeUniversityRow(university));
+    res.json(formatUniversityRow(university, await getSensitiveNames()));
   } catch (error) {
     console.error('Update university error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -203,7 +232,8 @@ router.delete('/:id', authenticateToken, canManageUniversityCatalog, async (req,
 router.get('/:id/programs', authenticateToken, async (req, res) => {
   try {
     const programs = await dbAsync.findAll('university_programs', { university_id: req.params.id });
-    res.json(programs.map(normalizeProgramRow));
+    const sensitiveNames = await getSensitiveNames();
+    res.json(dedupePrograms(programs.map((p) => formatProgramRow(p, sensitiveNames))));
   } catch (error) {
     console.error('Get programs error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -240,7 +270,7 @@ router.post('/:id/programs', authenticateToken, canManageUniversityCatalog, asyn
       university_id: req.params.id,
       program_name, department: department || '',
       a_level_requirement: a_level_requirement || '',
-      language_requirement: language_requirement || '',
+      language_requirement: normalizeLanguageRequirement(language_requirement),
       subject_requirements: subject_requirements || '',
       requirements_struct: requirements_struct ? JSON.stringify(requirements_struct) : null,
       alevel_required_grades: Array.isArray(alevel_required_grades) ? JSON.stringify(alevel_required_grades) : null,
@@ -253,14 +283,14 @@ router.post('/:id/programs', authenticateToken, canManageUniversityCatalog, asyn
       us_prerequisites_text: us_prerequisites_text || null,
       portfolio_required: portfolio_required ? 1 : 0,
       portfolio_notes: portfolio_notes || null,
-      application_deadline: application_deadline || null,
+      application_deadline: normalizeDate(application_deadline),
       tuition_fee: tuition_fee || '',
       duration: duration || '',
       notes: notes || '',
       created_at: new Date().toISOString(),
     };
     await dbAsync.create('university_programs', program);
-    res.status(201).json(normalizeProgramRow(program));
+    res.status(201).json(formatProgramRow(program, await getSensitiveNames()));
   } catch (error) {
     console.error('Add program error:', error);
     res.status(500).json({ error: 'Server error' });
@@ -297,13 +327,15 @@ router.put('/:id/programs/:programId', authenticateToken, canManageUniversityCat
       else if (f === 'subject_requirements_struct') updates[f] = req.body[f] ? JSON.stringify(req.body[f]) : null;
       else if (f === 'language_component_mins') updates[f] = req.body[f] ? JSON.stringify(req.body[f]) : null;
       else if (f === 'portfolio_required') updates[f] = req.body[f] ? 1 : 0;
+      else if (f === 'language_requirement') updates[f] = normalizeLanguageRequirement(req.body[f]);
+      else if (f === 'application_deadline') updates[f] = normalizeDate(req.body[f]);
       else updates[f] = req.body[f];
     }
     if (Object.keys(updates).length === 0) return res.status(400).json({ error: 'No valid fields' });
 
     const updated = await dbAsync.update('university_programs', req.params.programId, updates);
     if (!updated) return res.status(404).json({ error: 'Program not found' });
-    res.json(normalizeProgramRow(updated));
+    res.json(formatProgramRow(updated, await getSensitiveNames()));
   } catch (error) {
     console.error('Update program error:', error);
     res.status(500).json({ error: 'Server error' });

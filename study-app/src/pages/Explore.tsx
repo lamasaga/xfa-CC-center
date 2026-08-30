@@ -12,6 +12,13 @@ import {
   SlidersHorizontal,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import {
+  getDifficultyColor,
+  getDifficultyLabel,
+  getDifficultySortValue,
+  DIFFICULTY_TIERS,
+  type AdmissionDifficultyTier,
+} from '@/lib/admissionDifficulty';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -22,7 +29,7 @@ type SortOption =
   | 'qs_desc'
   | 'tuition_asc'
   | 'tuition_desc'
-  | 'acceptance_asc'
+  | 'difficulty_asc'
   | 'name_asc';
 
 // Use index signature to access fields beyond base University type
@@ -47,6 +54,7 @@ interface UniRecord {
   living_cost?: Record<string, unknown>;
   official_website?: string;
   portfolio_tips?: string;
+  admission_difficulty?: number;
   [key: string]: unknown;
 }
 
@@ -77,7 +85,7 @@ const SORT_OPTIONS: { key: SortOption; label: string }[] = [
   { key: 'qs_desc', label: 'QS排名 ↓' },
   { key: 'tuition_asc', label: '学费 ↑' },
   { key: 'tuition_desc', label: '学费 ↓' },
-  { key: 'acceptance_asc', label: '录取率 ↑' },
+  { key: 'difficulty_asc', label: '录取难度 ↑' },
   { key: 'name_asc', label: '学校名称 A-Z' },
 ];
 
@@ -96,15 +104,6 @@ const REGION_COLORS: Record<string, string> = {
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-function parseAcceptanceRate(rate: unknown): number {
-  if (typeof rate === 'number') return rate;
-  if (typeof rate === 'string') {
-    const match = rate.match(/[\d.]+/);
-    return match ? parseFloat(match[0]) : 999;
-  }
-  return 999;
-}
-
 function formatCurrency(
   amount: unknown,
   currency: unknown
@@ -119,6 +118,197 @@ function formatCurrency(
   if (c === 'AUD') return `A$${amt.toLocaleString()}`;
   if (c === 'CHF') return `CHF ${amt.toLocaleString()}`;
   return `${amt.toLocaleString()} ${c}`;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Difficulty Ladder (Sidebar)                                        */
+/* ------------------------------------------------------------------ */
+
+function DifficultyLadder({
+  activeTier,
+  onSelectTier,
+  universityCountByTier,
+}: {
+  activeTier: AdmissionDifficultyTier | null;
+  onSelectTier: (tier: AdmissionDifficultyTier | null) => void;
+  universityCountByTier: Record<number, number>;
+}) {
+  const [hoveredTier, setHoveredTier] = useState<AdmissionDifficultyTier | null>(null);
+  const tiers = [1, 2, 3, 4, 5] as AdmissionDifficultyTier[];
+
+  return (
+    <div
+      className="hidden xl:flex flex-col h-fit sticky top-6"
+      style={{ width: 280 }}
+    >
+      <h3
+        className="text-[17px] font-medium mb-4 flex items-center gap-2"
+        style={{ color: '#2C2420' }}
+      >
+        <span
+          className="inline-block w-1 h-4 rounded-full"
+          style={{ backgroundColor: '#C8A45C' }}
+        />
+        留学申请难度天梯
+      </h3>
+
+      <div className="flex flex-col gap-2">
+        {tiers.map((tierNum, idx) => {
+          const info = DIFFICULTY_TIERS[tierNum];
+          const isActive = activeTier === tierNum;
+          const isHovered = hoveredTier === tierNum;
+          const count = universityCountByTier[tierNum] ?? 0;
+          // Pyramid width: tier 1 (hardest) narrowest, tier 5 widest
+          const widthPercent = 60 + idx * 10;
+
+          return (
+            <div
+              key={tierNum}
+              className="relative flex flex-col items-center z-[60]"
+              onMouseEnter={() => setHoveredTier(tierNum)}
+              onMouseLeave={() => setHoveredTier(null)}
+            >
+              {/* Main tier bar */}
+              <motion.button
+                type="button"
+                onClick={() => onSelectTier(isActive ? null : tierNum)}
+                className="relative overflow-hidden rounded-lg text-left transition-all duration-200"
+                style={{
+                  width: `${widthPercent}%`,
+                  backgroundColor: isActive
+                    ? info.color
+                    : isHovered
+                      ? `${info.color}18`
+                      : '#F5F0E8',
+                  border: `2px solid ${isActive ? info.color : isHovered ? info.color : '#E8E2D9'}`,
+                  color: isActive ? '#FFFFFF' : info.color,
+                  padding: '10px 14px',
+                  cursor: 'pointer',
+                }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className="text-[13px] font-mono w-6 h-6 rounded-full flex items-center justify-center"
+                      style={{
+                        backgroundColor: isActive ? 'rgba(255,255,255,0.2)' : `${info.color}15`,
+                        color: isActive ? '#FFFFFF' : info.color,
+                      }}
+                    >
+                      {tierNum}
+                    </span>
+                    <span className="text-[15px] font-medium">{info.shortLabel}</span>
+                  </div>
+                  <span
+                    className="text-[13px] px-2 py-0.5 rounded-full"
+                    style={{
+                      backgroundColor: isActive ? 'rgba(255,255,255,0.15)' : `${info.color}10`,
+                    }}
+                  >
+                    {count} 所
+                  </span>
+                </div>
+
+                {/* Mini progress bar showing relative count */}
+                <div className="mt-2 h-1 rounded-full overflow-hidden" style={{ backgroundColor: isActive ? 'rgba(255,255,255,0.15)' : '#E8E2D9' }}>
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{ backgroundColor: isActive ? '#FFFFFF' : info.color }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${Math.min((count / 28) * 100, 100)}%` }}
+                    transition={{ duration: 0.5, delay: idx * 0.05 }}
+                  />
+                </div>
+              </motion.button>
+
+              {/* Expanded detail panel on hover (left side) */}
+              <AnimatePresence>
+                {isHovered && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 8 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-0 right-full z-50 mr-2 rounded-lg shadow-xl overflow-hidden"
+                    style={{
+                      backgroundColor: '#FFFFFF',
+                      border: `1px solid ${info.color}30`,
+                      width: 260,
+                    }}
+                  >
+                    <div className="p-4 space-y-3">
+                      <div
+                        className="text-[13px] font-medium px-2 py-1 rounded"
+                        style={{ backgroundColor: `${info.color}10`, color: info.color }}
+                      >
+                        {info.fullLabel}
+                      </div>
+                      <div className="space-y-2">
+                        <DetailRow label="A-Level" value={info.aLevel} />
+                        <DetailRow label="语言" value={info.language} />
+                        <DetailRow label="附加考试" value={info.additionalExams} />
+                        <DetailRow label="竞赛/学术" value={info.competitions} />
+                        <DetailRow label="课外活动" value={info.extracurriculars} />
+                        <DetailRow label="面试" value={info.interview} />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onSelectTier(isActive ? null : tierNum);
+                        }}
+                        className="w-full text-center text-[13px] py-2 rounded transition-colors"
+                        style={{
+                          backgroundColor: isActive ? info.color : `${info.color}10`,
+                          color: isActive ? '#FFFFFF' : info.color,
+                        }}
+                      >
+                        {isActive ? '取消筛选' : `查看该等级 ${count} 所院校`}
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Reset button */}
+      {activeTier && (
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          onClick={() => onSelectTier(null)}
+          className="mt-3 text-[14px] text-center py-2 rounded-lg transition-colors"
+          style={{ color: '#6B6560', backgroundColor: '#F0EBE3' }}
+        >
+          显示全部院校
+        </motion.button>
+      )}
+    </div>
+  );
+}
+
+function DetailRow({
+  label,
+  value,
+}: {
+  label: string;
+  value: string;
+}) {
+  return (
+    <div className="flex gap-2">
+      <span className="text-[12px] shrink-0 mt-0.5" style={{ color: '#6B6560', minWidth: 48 }}>
+        {label}
+      </span>
+      <span className="text-[13px] leading-snug" style={{ color: '#2C2420' }}>
+        {value}
+      </span>
+    </div>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -143,23 +333,20 @@ function UniversityCard({
 
   const adm = university.admission || {};
   const aLevel = typeof adm.a_level === 'string' ? adm.a_level : '--';
-  const acceptanceRate = typeof adm.acceptance_rate === 'string'
-    ? adm.acceptance_rate
-    : typeof adm.acceptance_rate === 'number'
-      ? `${adm.acceptance_rate}%`
-      : '--';
+  const difficultyLabel = getDifficultyLabel(university);
+  const difficultyColor = getDifficultyColor(university);
 
   return (
     <motion.div
-      layout
-      initial={{ opacity: 0, y: 40 }}
+      layout="position"
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
+      exit={{ opacity: 0, scale: 0.92 }}
       transition={{
-        duration: 0.5,
-        delay: Math.min(index * 0.04, 1.5),
-        ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-        layout: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+        duration: 0.22,
+        delay: Math.min(index * 0.012, 0.18),
+        ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number],
+        layout: { duration: 0.22, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] },
       }}
       className="group cursor-pointer"
       onClick={() => onClick(university.id)}
@@ -193,24 +380,42 @@ function UniversityCard({
         >
           {/* Region color strip at top */}
           <div
-            className="absolute top-0 left-0 right-0"
+            className="absolute top-0 left-0 right-0 z-20"
             style={{
               height: '4px',
               backgroundColor: university.is_art_school ? '#8B2332' : regionColor,
             }}
           />
 
-          {/* Diagonal lines pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: `repeating-linear-gradient(45deg, #2C2420 0, #2C2420 1px, transparent 0, transparent 50%)`,
-              backgroundSize: '20px 20px',
-            }}
-          />
+          {/* School photo */}
+          {university.image ? (
+            <>
+              <img
+                src={university.image as string}
+                alt={university.name}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[350ms] group-hover:scale-105"
+                onError={(e) => {
+                  // On error, hide the img and show the abbreviation fallback
+                  (e.target as HTMLImageElement).style.display = 'none';
+                  const fallback = (e.target as HTMLImageElement).parentElement?.querySelector('.uni-card-fallback');
+                  if (fallback) (fallback as HTMLElement).style.display = 'flex';
+                }}
+              />
+              {/* Refined gradient overlay */}
+              <div
+                className="absolute inset-0 z-[5] pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 82%, rgba(255,255,255,0.55) 92%, rgba(255,255,255,0.95) 100%)',
+                }}
+              />
+            </>
+          ) : null}
 
-          {/* Abbreviation watermark */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          {/* Abbreviation fallback (hidden by default when image exists) */}
+          <div
+            className="uni-card-fallback absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+            style={{ display: university.image ? 'none' : 'flex' }}
+          >
             <span
               className="font-mono text-[72px] font-normal"
               style={{ color: '#2C2420', opacity: 0.08 }}
@@ -226,7 +431,7 @@ function UniversityCard({
               onToggleBookmark(university.id);
             }}
             className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
-            style={{ backgroundColor: 'rgba(10,10,10,0.7)' }}
+            style={{ backgroundColor: 'rgba(10,10,10,0.6)' }}
             aria-label={isBookmarked ? '取消收藏' : '收藏'}
           >
             <motion.div
@@ -237,21 +442,12 @@ function UniversityCard({
                 size={18}
                 className="transition-colors"
                 style={{
-                  color: isBookmarked ? '#8B2332' : '#6B6560',
+                  color: isBookmarked ? '#8B2332' : '#FFFFFF',
                   fill: isBookmarked ? '#8B2332' : 'none',
                 }}
               />
             </motion.div>
           </button>
-
-          {/* Hover scale on image */}
-          <div
-            className="absolute inset-0 transition-transform group-hover:scale-105"
-            style={{
-              transitionDuration: '350ms',
-              background: `linear-gradient(to bottom, transparent 60%, #FFFFFF 100%)`,
-            }}
-          />
         </div>
 
         {/* Content area */}
@@ -312,10 +508,14 @@ function UniversityCard({
             </div>
             <div>
               <p className="text-[11px] mb-0.5" style={{ color: '#6B6560' }}>
-                录取率
+                录取难度
               </p>
-              <p className="text-[13px] truncate" style={{ color: '#2C2420' }}>
-                {acceptanceRate}
+              <p
+                className="text-[13px] truncate font-medium"
+                style={{ color: difficultyColor }}
+                title={difficultyLabel}
+              >
+                {difficultyLabel}
               </p>
             </div>
             <div>
@@ -382,6 +582,7 @@ export default function Explore() {
   const [selectedUniversityId, setSelectedUniversityId] = useState<string | null>(null);
   const [showSortDropdown, setShowSortDropdown] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [selectedDifficultyTier, setSelectedDifficultyTier] = useState<AdmissionDifficultyTier | null>(null);
   const sortRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -446,7 +647,20 @@ export default function Explore() {
     setPortfolioOnly(false);
     setSearchQuery('');
     setDebouncedSearch('');
+    setSelectedDifficultyTier(null);
   }, []);
+
+  /* Count universities by difficulty tier (based on all universities) */
+  const universityCountByTier = useMemo(() => {
+    const counts: Record<number, number> = {};
+    (universities as UniRecord[]).forEach((u) => {
+      const tier = u.admission_difficulty;
+      if (tier) {
+        counts[tier] = (counts[tier] || 0) + 1;
+      }
+    });
+    return counts;
+  }, [universities]);
 
   const activeFilterCount = useMemo(() => {
     let count = 0;
@@ -454,8 +668,9 @@ export default function Explore() {
     if (selectedSchoolType !== 'all') count += 1;
     if (portfolioOnly) count += 1;
     if (debouncedSearch) count += 1;
+    if (selectedDifficultyTier) count += 1;
     return count;
-  }, [selectedRegions, selectedSchoolType, portfolioOnly, debouncedSearch]);
+  }, [selectedRegions, selectedSchoolType, portfolioOnly, debouncedSearch, selectedDifficultyTier]);
 
   /* -------------------- Filtering & Sorting -------------------- */
 
@@ -479,6 +694,11 @@ export default function Explore() {
       // Portfolio filter
       if (portfolioOnly) {
         final = final.filter((u) => u.admission?.portfolio_required === true);
+      }
+
+      // Difficulty tier filter
+      if (selectedDifficultyTier) {
+        final = final.filter((u) => u.admission_difficulty === selectedDifficultyTier);
       }
 
       // Search
@@ -505,9 +725,8 @@ export default function Explore() {
             return ((a.tuition?.amount as number) ?? 0) - ((b.tuition?.amount as number) ?? 0);
           case 'tuition_desc':
             return ((b.tuition?.amount as number) ?? 0) - ((a.tuition?.amount as number) ?? 0);
-          case 'acceptance_asc':
-            return parseAcceptanceRate(a.admission?.acceptance_rate) -
-              parseAcceptanceRate(b.admission?.acceptance_rate);
+          case 'difficulty_asc':
+            return getDifficultySortValue(a) - getDifficultySortValue(b);
           case 'name_asc':
             return (a.name || '').localeCompare(b.name || '', 'zh');
           default:
@@ -529,6 +748,10 @@ export default function Explore() {
 
     if (portfolioOnly) {
       result = result.filter((u) => u.admission?.portfolio_required === true);
+    }
+
+    if (selectedDifficultyTier) {
+      result = result.filter((u) => u.admission_difficulty === selectedDifficultyTier);
     }
 
     if (debouncedSearch.trim()) {
@@ -553,9 +776,8 @@ export default function Explore() {
           return ((a.tuition?.amount as number) ?? 0) - ((b.tuition?.amount as number) ?? 0);
         case 'tuition_desc':
           return ((b.tuition?.amount as number) ?? 0) - ((a.tuition?.amount as number) ?? 0);
-        case 'acceptance_asc':
-          return parseAcceptanceRate(a.admission?.acceptance_rate) -
-            parseAcceptanceRate(b.admission?.acceptance_rate);
+        case 'difficulty_asc':
+          return getDifficultySortValue(a) - getDifficultySortValue(b);
         case 'name_asc':
           return (a.name || '').localeCompare(b.name || '', 'zh');
         default:
@@ -564,7 +786,7 @@ export default function Explore() {
     });
 
     return result;
-  }, [universities, selectedRegions, selectedSchoolType, portfolioOnly, debouncedSearch, sortBy]);
+  }, [universities, selectedRegions, selectedSchoolType, portfolioOnly, debouncedSearch, sortBy, selectedDifficultyTier]);
 
   /* -------------------- Render -------------------- */
 
@@ -822,46 +1044,58 @@ export default function Explore() {
         </p>
       </div>
 
-      {/* ====== University Grid ====== */}
+      {/* ====== Main Content: University Grid + Difficulty Ladder ====== */}
       <div className="px-4 sm:px-6 lg:px-8 py-6">
-        {filteredUniversities.length === 0 ? (
-          /* Empty state */
-          <div className="flex flex-col items-center justify-center py-32">
-            <SearchX size={48} style={{ color: '#6B6560' }} />
-            <h3
-              className="text-[22px] font-medium mt-4"
-              style={{ color: '#6B6560' }}
-            >
-              没有找到匹配的院校
-            </h3>
-            <p className="text-[15px] mt-2" style={{ color: '#6B6560' }}>
-              尝试调整筛选条件
-            </p>
-            <button
-              onClick={clearAllFilters}
-              className="text-sm mt-4 text-primary transition-colors hover:underline"
-            >
-              清除所有筛选
-            </button>
+        <div className="flex gap-6">
+          {/* Left: University Grid */}
+          <div className="flex-1 min-w-0">
+            {filteredUniversities.length === 0 ? (
+              /* Empty state */
+              <div className="flex flex-col items-center justify-center py-32">
+                <SearchX size={48} style={{ color: '#6B6560' }} />
+                <h3
+                  className="text-[22px] font-medium mt-4"
+                  style={{ color: '#6B6560' }}
+                >
+                  没有找到匹配的院校
+                </h3>
+                <p className="text-[15px] mt-2" style={{ color: '#6B6560' }}>
+                  尝试调整筛选条件
+                </p>
+                <button
+                  onClick={clearAllFilters}
+                  className="text-sm mt-4 text-primary transition-colors hover:underline"
+                >
+                  清除所有筛选
+                </button>
+              </div>
+            ) : (
+              <motion.div
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+              >
+                <AnimatePresence mode="popLayout">
+                  {filteredUniversities.map((u, i) => (
+                    <UniversityCard
+                      key={u.id}
+                      university={u}
+                      isBookmarked={bookmarks.has(u.id)}
+                      onToggleBookmark={toggleBookmark}
+                      onClick={setSelectedUniversityId}
+                      index={i}
+                    />
+                  ))}
+                </AnimatePresence>
+              </motion.div>
+            )}
           </div>
-        ) : (
-          <motion.div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
-            <AnimatePresence>
-              {filteredUniversities.map((u, i) => (
-                <UniversityCard
-                  key={u.id}
-                  university={u}
-                  isBookmarked={bookmarks.has(u.id)}
-                  onToggleBookmark={toggleBookmark}
-                  onClick={setSelectedUniversityId}
-                  index={i}
-                />
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        )}
+
+          {/* Right: Difficulty Ladder Sidebar */}
+          <DifficultyLadder
+            activeTier={selectedDifficultyTier}
+            onSelectTier={setSelectedDifficultyTier}
+            universityCountByTier={universityCountByTier}
+          />
+        </div>
 
         {/* Bottom spacer */}
         <div className="h-8" />

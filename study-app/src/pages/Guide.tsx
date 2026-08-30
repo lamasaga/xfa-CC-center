@@ -40,8 +40,8 @@ const REGIONS: RegionInfo[] = [
     count: 30,
     aLevelRole: '重要但非唯一。顶尖大学（HYPSM）要求A*A*A-A*A*A*，配合SAT/ACT',
     applicationSystem: 'Common App / Coalition / UC系统（独立）',
-    keyDeadlines: 'EA/ED 11月1日, RD 1月1-5日',
-    specialRequirements: ['推荐信2-3封', '活动列表', '文书（多篇）', '面试（部分）'],
+    keyDeadlines: '10月1日-4月1日',
+    specialRequirements: ['推荐信2-3封', '活动列表', '文书（多篇）', '面试（部分）', '较高的语言成绩', 'SAT成绩', '强制实考'],
     acceptanceRate: '3-7%（顶尖），7-15%（中上）',
     aLevelRequirements: 'A*A*A-A*AA（视学校而定）',
     advantages: ['最高薪资水平', '最强科研资源', '最多顶尖公司', '灵活选课制度'],
@@ -55,7 +55,7 @@ const REGIONS: RegionInfo[] = [
     count: 20,
     aLevelRole: '核心录取依据。通过UCAS系统申请，A-Level预测成绩和最终成绩决定录取',
     applicationSystem: 'UCAS（最多5个选择）',
-    keyDeadlines: '10月15日（牛剑/医学）, 1月31日（大部分）',
+    keyDeadlines: '10月15日 牛剑/医学  1月13日（其余多数学校或专业）',
     specialRequirements: ['个人陈述1篇', '推荐信1封', '入学考试（MAT, STEP, TSA, LNAT等）'],
     acceptanceRate: '6-20%（视学校和专业）',
     aLevelRequirements: 'A*A*A-AAA（视专业而定）',
@@ -116,7 +116,7 @@ const REGIONS: RegionInfo[] = [
     aLevelRole: '核心录取依据。港大、港中文等高度认可A-Level',
     applicationSystem: '各校独立（JUPAS local, Non-JUPAS international）',
     keyDeadlines: '11月-1月（早轮）, 1-3月（主轮）',
-    specialRequirements: ['面试（部分专业）', '语言成绩'],
+    specialRequirements: ['面试（部分专业）', '语言成绩', '较高ALEVEL分数', '阶段性AS成绩', '偏好实考'],
     acceptanceRate: '10-25%',
     aLevelRequirements: 'AAA-A*A*A',
     advantages: ['离家近', '费用相对较低', '亚洲金融中心', '就业机会好'],
@@ -131,7 +131,7 @@ const REGIONS: RegionInfo[] = [
     aLevelRole: 'NUS和NTU均高度认可A-Level成绩',
     applicationSystem: '各校独立在线申请',
     keyDeadlines: '10月-3月',
-    specialRequirements: ['面试', '部分专业需要入学测试'],
+    specialRequirements: ['面试', '部分专业需要入学测试', '较高ALEVEL分数', '强制实考'],
     acceptanceRate: '10-20%',
     aLevelRequirements: 'AAA-A*A*A*',
     advantages: ['亚洲顶尖教育', '英语环境', '就业前景好', '地理位置优越'],
@@ -193,7 +193,7 @@ const STRATEGY_CARDS: { icon: LucideIcon; title: string; content: string; color:
   {
     icon: Target,
     title: '冲刺校与保底校搭配',
-    content: '建议按 2:3:2 比例选择冲刺校（录取率<10%）、匹配校（10-30%）、保底校（>30%），分散风险。每个地区至少申请1所保底校。',
+    content: '建议按 2:3:2 比例搭配院校：约 2 所爬藤难度或顶级挑战、3 所激烈竞争或大众情人校、2 所稳健申请或基本保底，分散风险。',
     color: '#C8A45C',
   },
   {
@@ -794,8 +794,8 @@ export default function Guide() {
               <ul className="space-y-2">
                 {[
                   '大部分奖学金截止日期与申请截止日期一致或更早',
-                  '英国Chevening奖学金通常提前1年申请（8月开放）',
-                  '美国部分学校Need-Blind政策自动考虑奖学金，无需额外申请',
+                  '美国部分学校 Need-Blind 政策自动考虑奖学金，无需额外申请',
+                  '申请前确认奖学金是否面向本科生开放，避免误申研究生项目',
                 ].map((tip, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm" style={{ color: '#6B6560', lineHeight: 1.6 }}>
                     <span className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: '#D4943A' }} />

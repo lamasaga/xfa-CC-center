@@ -190,12 +190,15 @@ export interface AlevelCoursePrediction {
   confidence: number; // 0-1
   observed_units: number;
   total_units: number;
-  predicted_pct: number; // 0-100
-  predicted_total_score: number;
+  predicted_pct: number | null; // 0-100
+  predicted_total_score: number | null;
   max_total_score: number;
   predicted_advanced_pct: number | null; // 0-100
   predicted_grade: 'A*' | 'A' | 'B' | 'C' | 'D' | 'E' | 'U';
   probabilities: Record<string, number>;
+  /** 所有配置单元均已有实考/重考成绩时为 true，此时等级不会再随机预测。 */
+  is_finalized?: boolean;
+  prediction_basis?: 'confirmed' | 'estimate';
 }
 
 export interface AlevelPredictionsResponse {
@@ -221,12 +224,18 @@ export const courseApi = {
   
   enrollStudent: (courseId: string, studentId: string) =>
     api.post(`/courses/${courseId}/enroll`, { student_id: studentId }),
+
+  removeStudent: (courseId: string, studentId: string) =>
+    api.delete(`/courses/${courseId}/enroll/${studentId}`),
   
   updateGrades: (courseId: string, studentId: string, grades: Partial<StudentCourse>) =>
     api.put(`/courses/${courseId}/grades/${studentId}`, grades),
   
   addUnitGrade: (courseId: string, studentId: string, unitGrade: Partial<UnitGrade>) =>
     api.post(`/courses/${courseId}/unit-grades/${studentId}`, unitGrade),
+
+  updateUnitGrade: (unitGradeId: string, unitGrade: Partial<UnitGrade>) =>
+    api.put<UnitGrade>(`/courses/unit-grades/${unitGradeId}`, unitGrade),
 
   deleteUnitGrade: (unitGradeId: string) =>
     api.delete(`/courses/unit-grades/${unitGradeId}`),
@@ -521,6 +530,30 @@ export interface CourseStudent {
   final_score: number;
   status: string;
   unitGrades: UnitGrade[];
+  score_summary?: {
+    internal: CourseScoreSummary;
+    mock: CourseScoreSummary;
+    final: CourseFinalScoreSummary;
+  };
+}
+
+export interface CourseScoreSummary {
+  score: number | null;
+  grade: string | null;
+  count: number;
+}
+
+export interface CourseFinalScoreSummary extends CourseScoreSummary {
+  /** 每个单元仅保留最高的实考/补考记录，供课程详情直接展示。 */
+  units: Array<{
+    unit_code: string;
+    unit_name: string;
+    score: number;
+    max_score: number;
+    percentage: number;
+    exam_type: 'final' | 'retake';
+    exam_date: string | null;
+  }>;
 }
 
 export interface CourseDetail {
@@ -533,6 +566,9 @@ export interface CourseDetail {
     avg_final: number;
     max_internal: number;
     min_internal: number;
+    max_final: number;
+    min_final: number;
+    students_with_final: number;
   };
   gradeDistribution: { grade: string; count: number }[];
 }
@@ -543,6 +579,7 @@ export interface CourseUnit {
   unit_code: string;
   unit_name: string;
   is_advanced?: boolean | 0 | 1;
+  is_required?: boolean | 0 | 1;
   max_score: number;
   weight: number;
   description: string;
@@ -593,8 +630,10 @@ export interface GradeOverview {
     name: string;
     board: string;
     student_count: number;
-    avg_internal: number;
-    avg_mock: number;
+    /** 先按学生计算实考/补考最佳单元的加权平均，再计算本年级课程均值。 */
+    actual_exam_avg: number | null;
+    actual_exam_student_count: number;
+    actual_exam_unit_count: number;
   }[];
   universityStats: {
     applying_count: number;
@@ -602,8 +641,8 @@ export interface GradeOverview {
     submitted_count: number;
   };
   languageStats: {
-    avg_ielts: number;
-    max_ielts: number;
+    avg_ielts: number | null;
+    max_ielts: number | null;
     has_ielts: number;
   };
 }
@@ -676,6 +715,13 @@ export interface SessionPlanCourse {
   course_name: string;
   subject_code: string;
   board: string;
+  /** 已移除的选课只保留历史成绩和考季安排，不允许再编辑。 */
+  historical?: boolean;
+  unit_selection?: {
+    mode: 'flexible';
+    target_units: number;
+    selected_unit_ids: string[];
+  } | null;
   units: SessionPlanUnit[];
   plans: SessionUnitPlan[];
 }

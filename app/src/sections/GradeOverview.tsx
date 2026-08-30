@@ -15,6 +15,12 @@ interface GradeOverviewProps {
   grade: string;
 }
 
+function formatScore(value: number | null | undefined) {
+  return value === null || value === undefined || !Number.isFinite(value)
+    ? '--'
+    : value.toFixed(1);
+}
+
 export function GradeOverview({ grade }: GradeOverviewProps) {
   const [data, setData] = useState<GradeOverviewType | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -90,7 +96,7 @@ export function GradeOverview({ grade }: GradeOverviewProps) {
               <div>
                 <p className="text-sm text-slate-500">平均雅思</p>
                 <p className="text-3xl font-bold text-slate-900">
-                  {data.languageStats?.avg_ielts ? data.languageStats.avg_ielts.toFixed(1) : '--'}
+                  {formatScore(data.languageStats?.avg_ielts)}
                 </p>
               </div>
               <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -124,7 +130,7 @@ export function GradeOverview({ grade }: GradeOverviewProps) {
           <CardHeader className="pb-3">
             <CardTitle className="text-base font-semibold flex items-center gap-2">
               <BookOpen className="h-4 w-4 text-primary" />
-              课程成绩概览
+              课程实考概览
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -140,15 +146,17 @@ export function GradeOverview({ grade }: GradeOverviewProps) {
                   </div>
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <span className="text-slate-500">校内均分:</span>
-                      <span className="ml-2 font-medium">
-                        {course.avg_internal ? course.avg_internal.toFixed(1) : '--'}
+                      <span className="text-slate-500">实考平均得分率:</span>
+                      <span className="ml-2 font-medium tabular-nums">
+                        {course.actual_exam_avg === null
+                          ? '暂无实考记录'
+                          : `${formatScore(course.actual_exam_avg)}%`}
                       </span>
                     </div>
                     <div>
-                      <span className="text-slate-500">模考均分:</span>
-                      <span className="ml-2 font-medium">
-                        {course.avg_mock ? course.avg_mock.toFixed(1) : '--'}
+                      <span className="text-slate-500">实考覆盖:</span>
+                      <span className="ml-2 font-medium tabular-nums">
+                        {course.actual_exam_student_count}/{course.student_count} 人，{course.actual_exam_unit_count} 单元
                       </span>
                     </div>
                   </div>
@@ -198,18 +206,18 @@ export function GradeOverview({ grade }: GradeOverviewProps) {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-500">有雅思成绩</span>
-                    <span className="font-medium">{data.languageStats?.has_ielts || 0} 人</span>
+                    <span className="font-medium">{data.languageStats?.has_ielts ?? 0} 人</span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-500">平均分</span>
                     <span className="font-medium">
-                      {data.languageStats?.avg_ielts ? data.languageStats.avg_ielts.toFixed(1) : '--'}
+                      {formatScore(data.languageStats?.avg_ielts)}
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-slate-500">最高分</span>
                     <span className="font-medium">
-                      {data.languageStats?.max_ielts || '--'}
+                      {formatScore(data.languageStats?.max_ielts)}
                     </span>
                   </div>
                 </div>

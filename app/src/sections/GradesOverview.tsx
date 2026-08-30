@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import type { ALevelSubject, LanguageScore, StandardizedTest } from '@/types/student';
+import { ConfirmedGradeBadge } from '@/components/ConfirmedGradeBadge';
 import { BookOpen, Award, AlertCircle, CheckCircle } from 'lucide-react';
 
 interface GradesOverviewProps {
@@ -14,10 +15,11 @@ export function GradesOverview({ aLevelSubjects, languageScores, standardizedTes
   // 计算A-Level整体进度
   const totalUnits = aLevelSubjects.reduce((acc, subj) => acc + (subj.totalConfiguredUnits || subj.unitGrades.length), 0);
   const completedUnits = aLevelSubjects.reduce(
-    (acc, subj) => acc + subj.unitGrades.filter((u) => u.grade).length,
+    // 重考不应把同一单元重复计数；组合型数学课程以六个有效单元为完成口径。
+    (acc, subj) => acc + (subj.finishedFinalUnits ?? subj.unitGrades.filter((u) => u.grade).length),
     0
   );
-  const progressPercentage = Math.round((completedUnits / totalUnits) * 100);
+  const progressPercentage = totalUnits > 0 ? Math.round((completedUnits / totalUnits) * 100) : 0;
 
   // 获取最佳语言成绩
   const bestLanguage = languageScores.find((l) => l.bestScore) || languageScores[0];
@@ -53,6 +55,7 @@ export function GradesOverview({ aLevelSubjects, languageScores, standardizedTes
                       <Badge variant="secondary" className="text-xs">
                         {subject.board}
                       </Badge>
+                    {subject.predictionFinalized && <ConfirmedGradeBadge />}
                     {subject.computedAlevelGrade && (
                       <Badge className={subject.computedAlevelGrade === 'A*' ? 'bg-purple-100 text-purple-700 border-0' : 'bg-green-100 text-green-700 border-0'}>
                         当前: {subject.computedAlevelGrade}

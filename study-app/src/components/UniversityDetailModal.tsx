@@ -22,6 +22,12 @@ import {
   ShoppingBag,
 } from 'lucide-react';
 import { useData } from '@/context/DataContext';
+import {
+  getDifficultyColor,
+  getDifficultyFullLabel,
+  getDifficultyInfo,
+  getUniversityDifficultyTier,
+} from '@/lib/admissionDifficulty';
 
 /* ------------------------------------------------------------------ */
 /*  Types                                                              */
@@ -50,6 +56,7 @@ interface UniRecord {
   living_cost?: Record<string, unknown>;
   official_website?: string;
   portfolio_tips?: string;
+  admission_difficulty?: number;
   [key: string]: unknown;
 }
 
@@ -118,21 +125,6 @@ const REGION_COLORS: Record<string, string> = {
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-function parseAcceptanceRateNumeric(rate: unknown): number {
-  if (typeof rate === 'number') return rate;
-  if (typeof rate === 'string') {
-    const match = rate.match(/[\d.]+/);
-    return match ? parseFloat(match[0]) : 0;
-  }
-  return 0;
-}
-
-function formatAcceptanceRateDisplay(rate: unknown): string {
-  if (typeof rate === 'string') return rate;
-  if (typeof rate === 'number') return `${rate}%`;
-  return '--';
-}
-
 function formatCurrency(amount: unknown, currency: unknown): string {
   const amt = typeof amount === 'number' ? amount : 0;
   if (!amt) return '--';
@@ -144,13 +136,6 @@ function formatCurrency(amount: unknown, currency: unknown): string {
   if (c === 'AUD') return `A$${amt.toLocaleString()}`;
   if (c === 'CHF') return `CHF ${amt.toLocaleString()}`;
   return `${amt.toLocaleString()} ${c}`;
-}
-
-function getAcceptanceColor(rate: number): string {
-  if (rate < 5) return '#8B2332';
-  if (rate < 15) return '#C8A45C';
-  if (rate < 30) return '#4A7C6F';
-  return 'rgba(74,124,111,0.7)';
 }
 
 function getCitySlug(city: string): string {
@@ -210,7 +195,7 @@ function OverviewTab({ u }: { u: UniRecord }) {
         {[
           { label: '学校类型', value: u.school_type || '--' },
           { label: '所在城市', value: (u.location?.city as string) || '--' },
-          { label: '录取率', value: formatAcceptanceRateDisplay(u.admission?.acceptance_rate) },
+          { label: '录取难度', value: getDifficultyFullLabel(u) },
           { label: '专业数量', value: String(u.majors?.length || 0) },
         ].map((fact) => (
           <div
@@ -307,8 +292,9 @@ function OverviewTab({ u }: { u: UniRecord }) {
 /* ------------------------------------------------------------------ */
 
 function AdmissionTab({ u }: { u: UniRecord }) {
-  const rate = parseAcceptanceRateNumeric(u.admission?.acceptance_rate);
-  const rateColor = getAcceptanceColor(rate);
+  const tier = getUniversityDifficultyTier(u);
+  const tierInfo = tier ? getDifficultyInfo(tier) : null;
+  const tierColor = getDifficultyColor(u);
   const adm = u.admission || {};
 
   return (
@@ -373,39 +359,42 @@ function AdmissionTab({ u }: { u: UniRecord }) {
         </div>
       </div>
 
-      {/* Acceptance rate visualization */}
+      {/* Admission difficulty */}
       <div>
         <h4
           className="text-[12px] font-medium uppercase tracking-wider mb-3"
           style={{ color: '#6B6560', letterSpacing: '0.08em' }}
         >
-          录取率
+          录取难度
         </h4>
-        <p className="font-mono text-[48px] font-normal" style={{ color: rateColor }}>
-          {formatAcceptanceRateDisplay(adm.acceptance_rate)}
+        <p className="text-[28px] font-medium" style={{ color: tierColor }}>
+          {tierInfo?.fullLabel ?? '暂无分级'}
         </p>
-        {/* Progress bar */}
-        <div
-          className="w-full h-2 rounded-full mt-3 overflow-hidden"
-          style={{ backgroundColor: '#F0EBE3' }}
-        >
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: `${Math.min(rate * 2, 100)}%` }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] }}
-            className="h-full rounded-full"
-            style={{ backgroundColor: rateColor }}
-          />
-        </div>
-        <p className="text-[12px] mt-2" style={{ color: '#6B6560' }}>
-          {rate < 5
-            ? '极难录取 — 竞争激烈'
-            : rate < 15
-              ? '较难录取 — 需要优秀成绩'
-              : rate < 30
-                ? '中等难度 — 合理准备有机会'
-                : '相对容易 — 录取机会较大'}
-        </p>
+        {tierInfo && (
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              { label: 'A-Level/标化', value: tierInfo.aLevel },
+              { label: '语言要求', value: tierInfo.language },
+              { label: '附加考试', value: tierInfo.additionalExams },
+              { label: '竞赛要求', value: tierInfo.competitions },
+              { label: '课外活动', value: tierInfo.extracurriculars },
+              { label: '面试', value: tierInfo.interview },
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-[10px] p-4"
+                style={{ backgroundColor: '#F0EBE3' }}
+              >
+                <p className="text-[12px] mb-1" style={{ color: '#6B6560' }}>
+                  {item.label}
+                </p>
+                <p className="text-[14px] leading-relaxed" style={{ color: '#2C2420' }}>
+                  {item.value}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Interview & Portfolio */}

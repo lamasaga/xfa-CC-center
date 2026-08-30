@@ -46,12 +46,13 @@ export interface ALevelSubject {
   computedFinalScore?: number | null;
   computedInternalAvg?: number | null;
   computedAdvancedPct?: number | null;
-  computedAlevelGrade?: 'A*' | 'A' | null;
+  computedAlevelGrade?: 'A*' | 'A' | 'B' | 'C' | 'D' | 'E' | 'U' | null;
   // 中间层推算（用于院校匹配）
   predictedFinalPct?: number | null; // 0-100
   predictedFinalGrade?: 'A*' | 'A' | 'B' | 'C' | 'D' | 'E' | 'U' | null;
   predictedConfidence?: number | null; // 0-1
   predictedProbabilities?: Record<string, number> | null;
+  predictionFinalized?: boolean;
   totalConfiguredUnits?: number;
   finishedFinalUnits?: number;
   needsRetake: boolean;
